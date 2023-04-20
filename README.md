@@ -34,9 +34,8 @@
     </li>
     <li><a href="#uso">Uso</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#licencia">Licencia</a></li>
+    <li><a href="#contacto">Contacto</a></li>
   </ol>
 </details>
 
@@ -88,8 +87,8 @@ Distribuida por la licencia CCZ (Creative Commons Zero). Mira `LICENSE` para mas
 
 
 
-<!-- CONTACT -->
-## Contact
+<!-- CONTACTO -->
+## Contacto
 
 Isaac - isaacsanzgomez102125@gmail.com
 
