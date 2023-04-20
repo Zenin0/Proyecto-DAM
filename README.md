@@ -1,27 +1,17 @@
 <a name="readme-top"></a>
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/Zenin0/Proyecto-DAM">
-    <img src="images/logo-nobg.png" alt="Logo" width="300" height="300">
+    <img src="images/logo.png" alt="Logo" width="300" height="300">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Manolo Airlines</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Monolo Airlines, una compañia dedicada a satisfacer el cliente!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Zenin0/Proyecto-DAM"><strong>Explora el Codigo »</strong></a>
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
