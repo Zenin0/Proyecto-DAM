@@ -2,6 +2,7 @@ package app;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -37,6 +38,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         // Botones
         buttonLog.setOnMouseClicked((event) -> {
             try {
@@ -48,11 +50,34 @@ public class LoginController implements Initializable {
                 dialog.show();
             }
         });
+
+        buttonReg.setOnMouseClicked((event) -> registrar());
     }
 
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
+    }
+
+    private void registrar() {
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/users", "root", "admini");
+        if (this.passReg1.getText().equals(this.passReg2.getText())) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setHeaderText("Las contraseñas no coinciden");
+            dialog.show();
+        } else {
+            String username = this.usuReg.getText();
+            String pass = this.passReg1.getText();
+        }
+    } catch (SQLException e) {
+        Alert dialog = new Alert(AlertType.ERROR);
+        dialog.setTitle("ERROR");
+        dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+        dialog.show();
+    }
+
     }
 
 }

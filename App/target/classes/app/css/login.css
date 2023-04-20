@@ -6,7 +6,6 @@
 
 .label {
     -fx-font-size: 14px;
-    -fx-font-weight: bold;
 }
 
 .text-field {
@@ -18,19 +17,19 @@
 }
 
 .button {
-    -fx-background-color: #1e90ff;
+    -fx-background-color: #606d79;
     -fx-text-fill: #ffffff;
     -fx-font-size: 14px;
     -fx-padding: 5px 10px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
-    -fx-border-color: #1e90ff;
+    -fx-border-color: #606d79;
 }
 
 .button:hover {
     -fx-background-color: #ffffff;
-    -fx-text-fill: #1e90ff;
-    -fx-border-color: #1e90ff;
+    -fx-text-fill: #606d79;
+    -fx-border-color: #606d79;
 }
 
 .v-box {

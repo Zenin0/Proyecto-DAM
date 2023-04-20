@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -15,7 +16,7 @@
       <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" VBox.vgrow="SOMETIMES">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="197.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
@@ -24,21 +25,20 @@
          <children>
             <GridPane alignment="CENTER" styleClass="login-grid" GridPane.rowIndex="1">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="117.0" />
-                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" maxWidth="203.0" minWidth="10.0" prefWidth="203.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="141.0" />
+                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" maxWidth="203.0" minWidth="10.0" prefWidth="169.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="156.0" minHeight="10.0" prefHeight="132.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="154.0" minHeight="10.0" prefHeight="154.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Usuario" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-                  <TextField fx:id="usuLog" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button fx:id="buttonLog" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                  <PasswordField fx:id="pasLog" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Usuario" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                  <TextField fx:id="usuLog" GridPane.columnIndex="1" />
+                  <Button fx:id="buttonLog" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <PasswordField fx:id="pasLog" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
                <GridPane.margin>
                   <Insets right="10.0" />
@@ -46,24 +46,39 @@
             </GridPane>
             <GridPane alignment="CENTER" styleClass="login-grid" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="117.0" />
-                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" maxWidth="203.0" minWidth="10.0" prefWidth="203.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="140.0" />
+                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" maxWidth="203.0" minWidth="10.0" prefWidth="170.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Usuario" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-                  <TextField fx:id="usuReg" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button fx:id="buttonReg" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Registrar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="97.0" text="Repite la Contraseña" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="3" />
-                  <PasswordField fx:id="passReg1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <PasswordField fx:id="passReg2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Usuario" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                  <TextField fx:id="usuReg" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets right="15.0" />
+                     </GridPane.margin></TextField>
+                  <Button fx:id="buttonReg" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Registrar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="97.0" text="Repite la Contraseña" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2" />
+                  <PasswordField fx:id="passReg1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets right="15.0" />
+                     </GridPane.margin>
+                  </PasswordField>
+                  <PasswordField fx:id="passReg2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="15.0" />
+                     </GridPane.margin>
+                  </PasswordField>
+                  <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="122.0" text="Administrador" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="15.0" />
+                     </GridPane.margin>
+                  </CheckBox>
                </children>
                <GridPane.margin>
                   <Insets left="10.0" />
