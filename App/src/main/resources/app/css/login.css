@@ -1,0 +1,38 @@
+.login-grid {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+.button {
+    -fx-background-color: #1e90ff;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 5px 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #1e90ff;
+}
+
+.button:hover {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #1e90ff;
+    -fx-border-color: #1e90ff;
+}
+
+.v-box {
+    -fx-background-color: #ffffff;
+}

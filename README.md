@@ -66,8 +66,8 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
 <!-- ROADMAP -->
 ## Roadmap
 
-- [X] Crear y configurar la BDD
 - [ ] Crear la GUI
+- [ ] Crear y configurar la BDD
 - [ ] Código App
   - [ ] Gestión de los usuarios
   - [ ] Listar vuelos de los usuarios normales
@@ -80,10 +80,10 @@ Mira los  [problemas abiertos](https://github.com/Zenin0/Proyecto-DAM/issues) pa
 
 
 
-<!-- LICENCIA -->
+<!-- LICENCIA --> 
 ## Licencia
 
-Distribuida por la licencia CCZ (Creative Commons Zero). Mira `LICENSE` para mas información.
+Distribuida por la licencia CC0 (Creative Commons Zero). Mira `LICENSE` para mas información.
 
 
 
