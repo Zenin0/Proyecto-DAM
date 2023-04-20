@@ -59,7 +59,7 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
 
 <!-- Ejemplos de uso -->
 ## Uso
- Capturas de la App
+ Capturas de la App cuando esté
 
 
 
