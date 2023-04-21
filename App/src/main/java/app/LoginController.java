@@ -48,6 +48,8 @@ public class LoginController implements Initializable {
         App.setRoot("register");
     }
 
-    private void registrar() {}
+    private void registrar() {
+        
+    }
 
 }
