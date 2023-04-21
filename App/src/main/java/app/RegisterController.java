@@ -30,7 +30,6 @@ public class RegisterController implements Initializable {
     @FXML
     private TextField usuReg;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -54,27 +53,51 @@ public class RegisterController implements Initializable {
 
     private void registrar() {
         try {
-        Connection con = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root", "admini");
-        if (!this.passReg1.getText().equals(this.passReg2.getText())) {
+            Connection con = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root",
+                    "admini");
+            if (!this.passReg1.getText().equals(this.passReg2.getText())) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText("Las contraseñas no coinciden");
+                dialog.show();
+            } else {
+                String username = this.usuReg.getText();
+                String pass = this.passReg1.getText();
+
+                // Comprobar si el usuario y la contraseña ya existen en la base de datos
+                String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario=? AND Pass=?";
+                PreparedStatement checkStatement = con.prepareStatement(query);
+                checkStatement.setString(1, username);
+                checkStatement.setString(2, pass);
+                ResultSet resultSet = checkStatement.executeQuery();
+                resultSet.next();
+                int count = resultSet.getInt(1);
+
+                if (count > 0) {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText("Este Usuario y est contraseña ya existen");
+                    dialog.show();
+                } else {
+                    // Insert the new record into the database
+                    String consulta = "INSERT INTO Usuarios (id, Nombre_Usuario, Pass, Tipo) VALUES ('1', ?, ?, 'admin')";
+                    PreparedStatement insertStatement = con.prepareStatement(consulta);
+                    insertStatement.setString(1, username);
+                    insertStatement.setString(2, pass);
+                    insertStatement.executeUpdate();
+                    Alert dialog = new Alert(AlertType.CONFIRMATION);
+                    dialog.setTitle("Usuario");
+                    dialog.setHeaderText("Usuario creado correctamente");
+                    dialog.show();
+                }
+
+            }
+        } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setHeaderText("Las contraseñas no coinciden");
+            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
-        } else {
-            String username = this.usuReg.getText();
-            String pass = this.passReg1.getText();
-            // String de la consulta
-            String consulta = "INSERT INTO `Usuarios` (id, Nombre_Usuario, Pass, Tipo) VALUES ('1','" + username + "', '" + pass + "', 'admin');";
-            // Preparar la consulta
-            PreparedStatement statement = con.prepareStatement(consulta);
-            statement.execute();
         }
-    } catch (SQLException e) {
-        Alert dialog = new Alert(AlertType.ERROR);
-        dialog.setTitle("ERROR");
-        dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
-        dialog.show();
-    }
 
     }
 
