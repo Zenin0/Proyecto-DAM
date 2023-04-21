@@ -60,11 +60,11 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
 <!-- Ejemplos de uso -->
 ## Uso
 
-Login Screen
+### Login Screen
 
   ![Login](./images/Login-Screen.png)
 
-Register Screen
+### Register Screen
 
   ![Login](./images/Register-Screen.png)
 
