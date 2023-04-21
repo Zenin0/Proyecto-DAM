@@ -59,7 +59,11 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
 
 <!-- Ejemplos de uso -->
 ## Uso
- Capturas de la App cuando esté
+* Login Screen
+  ![Login](./images/Login-Screen.png)
+  
+* Register Screen
+  ![Login](./images/Register-Screen.png)
 
 
 
