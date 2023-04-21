@@ -78,6 +78,8 @@ public class RegisterController implements Initializable {
                     dialog.setTitle("ERROR");
                     dialog.setHeaderText("Este Usuario y est contraseña ya existen");
                     dialog.show();
+                    clear();
+                    
                 } else {
                     // Insert the new record into the database
                     String consulta = "INSERT INTO Usuarios (id, Nombre_Usuario, Pass, Tipo) VALUES ('1', ?, ?, 'admin')";
@@ -89,6 +91,7 @@ public class RegisterController implements Initializable {
                     dialog.setTitle("Usuario");
                     dialog.setHeaderText("Usuario creado correctamente");
                     dialog.show();
+                    clear();
                 }
 
             }
@@ -99,6 +102,12 @@ public class RegisterController implements Initializable {
             dialog.show();
         }
 
+    }
+
+    public void clear() {
+        this.usuReg.setText("");
+        this.passReg1.setText("");
+        this.passReg2.setText("");
     }
 
 }
