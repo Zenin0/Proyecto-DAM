@@ -81,7 +81,7 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
 - [ ] Crear y configurar la BDD
 - [ ] Código App
   - [ ] Gestión de los usuarios
-    - [ ] Creación de los usuarios
+    - [X] Creación de los usuarios
       - [ ] Gestión de creación de usuarios administradores
     - [ ] Login de los usuarios
   - [ ] Listar vuelos de los usuarios normales
