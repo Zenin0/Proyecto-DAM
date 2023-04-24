@@ -83,7 +83,7 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
   - [ ] Gestión de los usuarios
     - [X] Creación de los usuarios
       - [ ] Gestión de creación de usuarios administradores
-    - [ ] Login de los usuarios
+    - [X] Login de los usuarios
   - [ ] Listar vuelos de los usuarios normales
   - [ ] Crear vuelos/destinos, solo con usuarios administradores
   - [ ] Reservar vuelos con usuarios normales
