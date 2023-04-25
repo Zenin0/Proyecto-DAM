@@ -78,7 +78,7 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
 ## Roadmap
 
 - [X] [Crear y configurar la BDD](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/bdd.sql)
-- [ ] Código App
+- [ ] [Código App](https://github.com/Zenin0/Proyecto-DAM/tree/main/App/src/main/java/app)
   - [X] Gestión de los usuarios
     - [X] Creación de los usuarios
       - [X] Gestión de creación de usuarios administradores
