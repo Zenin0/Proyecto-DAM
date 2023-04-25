@@ -77,19 +77,20 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Crear la GUI
 - [X] [Crear y configurar la BDD](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/bdd.sql)
 - [ ] Código App
-  - [ ] Gestión de los usuarios
+  - [X] Gestión de los usuarios
     - [X] Creación de los usuarios
       - [X] Gestión de creación de usuarios administradores
+      - [X] Gestión de creación de usuarios no administradores
     - [X] Login de los usuarios
-      - [X] Login de usuarios admin
-      - [X] Login de usuarios no admin
+      - [X] Login de usuarios admin al inicio admin
+      - [X] Login de usuarios no admin al inicio usuario
   - [ ] Listar vuelos de los usuarios normales
   - [ ] Crear vuelos/destinos, solo con usuarios administradores
   - [ ] Reservar vuelos con usuarios normales
   - [ ] Cancelar vuelos con usuarios normales
+- [ ] Crear la GUI
 
 Mira los  [problemas abiertos](https://github.com/Zenin0/Proyecto-DAM/issues) para una lista completa de las propuestas (y errores conocidos).
 
