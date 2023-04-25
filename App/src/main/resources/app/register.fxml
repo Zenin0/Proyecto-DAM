@@ -56,11 +56,6 @@
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </PasswordField>
-                  <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="122.0" text="Administrador" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets left="15.0" />
-                     </GridPane.margin>
-                  </CheckBox>
                   <ImageView fitHeight="386.0" fitWidth="402.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                      <image>
                         <Image url="@css/logo.png" />
@@ -70,6 +65,11 @@
                      </GridPane.margin>
                   </ImageView>
                   <Button fx:id="buttonlogCh" mnemonicParsing="false" text="Ya tienes una cuenta?" GridPane.rowIndex="3" />
+                  <CheckBox fx:id="adminCheckBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="122.0" text="Administrador" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="15.0" />
+                     </GridPane.margin>
+                  </CheckBox>
                </children>
                <GridPane.margin>
                   <Insets left="10.0" />

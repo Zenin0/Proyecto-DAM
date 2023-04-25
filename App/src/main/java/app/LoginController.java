@@ -26,11 +26,19 @@ public class LoginController implements Initializable {
     @FXML
     private TextField usuLog;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        buttonLog.setOnMouseClicked((event) -> registrar());
+        buttonLog.setOnMouseClicked((event) -> {
+            try {
+                registrar();
+            } catch (IOException e) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
+            }
+        });
         buttonRegCh.setOnMouseClicked((event) -> {
             try {
                 registerChange();
@@ -48,8 +56,18 @@ public class LoginController implements Initializable {
         App.setRoot("register");
     }
 
-    private void registrar() {
-        
+    private void registrar() throws IOException {
+        LoginClass Log = new LoginClass(this.usuLog.getText(), this.passLog.getText());
+        if (Log.login() == 1) {
+            this.usuLog.setText("");
+            this.passLog.setText("");
+            App.setRoot("inicio_admin");
+        } else {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setHeaderText("Inicio de sesión incorrecto");
+            dialog.show();
+        }
     }
 
 }
