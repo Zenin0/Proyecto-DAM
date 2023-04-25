@@ -13,8 +13,8 @@ public class AddCiudad {
     private int id;
 
     AddCiudad(String Ciudad, String Pais) {
-        this.ciudad = Ciudad;
-        this.pais = Pais;
+        this.ciudad = Ciudad.substring(0,1).toUpperCase() + Ciudad.substring(1).toLowerCase();
+        this.pais = Pais.substring(0,1).toUpperCase() + Pais.substring(1).toLowerCase();
     }
 
     public boolean registrar() {

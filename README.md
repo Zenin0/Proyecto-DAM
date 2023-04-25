@@ -86,9 +86,9 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
     - [X] Login de los usuarios
       - [X] Login de usuarios admin al inicio admin
       - [X] Login de usuarios no admin al inicio usuario
+  - [X] Crear ciudades de destino, solo con usuarios administradores
   - [ ] Listar vuelos de los usuarios normales
   - [ ] Crear vuelos, solo con usuarios administradores
-  - [X] Crear ciudades de destino, solo con usuarios administradores
   - [ ] Reservar vuelos con usuarios normales
   - [ ] Cancelar vuelos con usuarios normales
 - [ ] Crear la GUI
