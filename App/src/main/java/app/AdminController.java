@@ -6,14 +6,12 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.*;
 
 public class AdminController implements Initializable {
 
     @FXML
-    private Button aceptarButtonDestino;
-
-    @FXML
-    private Button aceptarButtonVuelo;
+    private Button aceptarButtonCiudad;
 
     @FXML
     private MenuItem addAvion;
@@ -25,92 +23,57 @@ public class AdminController implements Initializable {
     private MenuItem addVuelo;
 
     @FXML
-    private Label ciudad_llegada;
-
-    @FXML
-    private TextField ciudad_llegada_field;
-
-    @FXML
-    private Label ciudad_salida;
-
-    @FXML
-    private TextField ciudad_salida_field;
-
-    @FXML
-    private Label destino;
-
-    @FXML
-    private TextField destino_field;
-
-    @FXML
-    private Label fecha_salida;
-
-    @FXML
-    private TextField fecha_salida_field;
-
-    @FXML
     private SplitMenuButton menu;
 
     @FXML
-    private Label pasajeros;
+    private Label nombreCiudad;
 
     @FXML
-    private TextField pasajeros_label;
+    private TextField nombreCiudadField;
 
     @FXML
-    private Label salida;
+    private Label nombrePais;
 
     @FXML
-    private TextField salida_field;
+    private TextField nombrePaisField;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        addCiudad.setOnAction((event) -> destino());
+        addCiudad.setOnAction((event) -> ciudad());
         addVuelo.setOnAction((event) -> vuelo());
         addAvion.setOnAction((event) -> avion());
+        aceptarButtonCiudad.setOnAction((event) -> addCiudad());
     }
 
     private void vuelo() {
         // Cosas para hacerlo mas bonito
         this.menu.setText("Añadir Vuelo");
-        this.aceptarButtonDestino.setVisible(true);
-        this.destino.setVisible(true);
-        this.destino_field.setVisible(true);
-        this.salida.setVisible(true);
-        this.salida_field.setVisible(true);
-        this.fecha_salida.setVisible(true);
-        this.fecha_salida_field.setVisible(true);
-        this.pasajeros.setVisible(true);
-        this.pasajeros_label.setVisible(true);
-        this.ciudad_llegada.setVisible(false);
-        this.ciudad_salida.setVisible(false);
-        this.ciudad_llegada_field.setVisible(false);
-        this.ciudad_salida_field.setVisible(false);
-        this.aceptarButtonVuelo.setVisible(false);
+
     }
 
-    private void destino() {
-        // Cosas para hacerlo mas bonito
+    private void ciudad() {
         this.menu.setText("Añadir Ciudad");
-        this.aceptarButtonVuelo.setVisible(true);
-        this.ciudad_llegada.setVisible(true);
-        this.ciudad_salida.setVisible(true);
-        this.ciudad_llegada_field.setVisible(true);
-        this.ciudad_salida_field.setVisible(true);
-        this.destino.setVisible(false);
-        this.destino_field.setVisible(false);
-        this.salida.setVisible(false);
-        this.salida_field.setVisible(false);
-        this.fecha_salida.setVisible(false);
-        this.fecha_salida_field.setVisible(false);
-        this.pasajeros.setVisible(false);
-        this.pasajeros_label.setVisible(false);
-        this.aceptarButtonDestino.setVisible(false);
+        this.nombreCiudad.setVisible(true);
+        this.nombreCiudadField.setVisible(true);
+        this.nombrePais.setVisible(true);
+        this.nombrePaisField.setVisible(true);
+        this.aceptarButtonCiudad.setVisible(true);
     }
 
     private void avion() {
         // Cosas para hacerlo mas bonito
         this.menu.setText("Añadir Avión");
+    }
+
+    private void addCiudad() {
+        if (new AddCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText()).registrar()){
+            Alert dialog = new Alert(AlertType.CONFIRMATION);
+            dialog.setTitle("Ciudad");
+            dialog.setHeaderText("Ciudad creada correctamente");
+            dialog.show();
+            this.nombreCiudadField.setText("");
+        }
+
     }
 
 }
