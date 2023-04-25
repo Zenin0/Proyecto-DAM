@@ -33,7 +33,7 @@ public class RegistroClass {
                 return false;
             } else {
                 String username = this.usuario;
-                MD5_hashing md5 = new MD5_hashing(this.pass1);
+                MD5_Hashing md5 = new MD5_Hashing(this.pass1);
                 Boolean admin = this.admin;
 
                 // Comprobar si el usuario y la contraseña ya existen en la base de datos
@@ -57,7 +57,7 @@ public class RegistroClass {
                     if (admin) {
                         PasswordDialog adminck = new PasswordDialog();
                         Optional<String> result = adminck.showAndWait();
-                        if (!new MD5_hashing(result.get()).getMd5().equals(new MD5_hashing("root").getMd5())) {
+                        if (!new MD5_Hashing(result.get()).getMd5().equals(new MD5_Hashing("root").getMd5())) {
                             Alert dialog = new Alert(AlertType.ERROR);
                             dialog.setTitle("ERROR");
                             dialog.setHeaderText("Contraseña de administrador incorrecta");
@@ -73,7 +73,7 @@ public class RegistroClass {
                         this.id = resulttest.getInt(1);
 
                         // Insert the new record into the database
-                        String consulta = "INSERT INTO Usuarios (id, Nombre_Usuario, Pass, is_Admin) VALUES (? , ?, ?, ?)";
+                        String consulta = "INSERT INTO Usuarios (ID_Usuario, Nombre_Usuario, Pass, is_Admin) VALUES (? , ?, ?, ?)";
                         PreparedStatement insertStatement = con.prepareStatement(consulta);
                         insertStatement.setInt(1, this.id + 1);
                         insertStatement.setString(2, username);

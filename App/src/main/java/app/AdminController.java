@@ -9,7 +9,6 @@ import javafx.scene.control.*;
 
 public class AdminController implements Initializable {
 
-
     @FXML
     private Button aceptarButtonDestino;
 
@@ -64,15 +63,15 @@ public class AdminController implements Initializable {
     @FXML
     private TextField salida_field;
 
-
-
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         addCiudad.setOnAction((event) -> destino());
         addVuelo.setOnAction((event) -> vuelo());
+        addAvion.setOnAction((event) -> avion());
     }
 
     private void vuelo() {
+        // Cosas para hacerlo mas bonito
         this.menu.setText("Añadir Vuelo");
         this.aceptarButtonDestino.setVisible(true);
         this.destino.setVisible(true);
@@ -91,6 +90,7 @@ public class AdminController implements Initializable {
     }
 
     private void destino() {
+        // Cosas para hacerlo mas bonito
         this.menu.setText("Añadir Ciudad");
         this.aceptarButtonVuelo.setVisible(true);
         this.ciudad_llegada.setVisible(true);
@@ -108,6 +108,9 @@ public class AdminController implements Initializable {
         this.aceptarButtonDestino.setVisible(false);
     }
 
+    private void avion() {
+        // Cosas para hacerlo mas bonito
+        this.menu.setText("Añadir Avión");
+    }
 
-    
 }

@@ -3,11 +3,11 @@ package app;
 import java.math.*;
 import java.security.*;
 
-public class MD5_hashing {
+public class MD5_Hashing {
 
     private String input;
 
-    MD5_hashing(String str) {
+    MD5_Hashing(String str) {
         this.input = str;
 
     }

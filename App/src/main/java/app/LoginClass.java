@@ -15,15 +15,16 @@ public class LoginClass {
         this.pass = Pass1;
     }
 
-    // Guía returns, return 0 == Acceso No admin, return 1 == Acceso admin, return
-    // -1, Error login
+    // Guía returns
+    // return 1 == Acceso admin
+    // return 0 == Acceso NO admin
+    // return -1, Error login
     public int login() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root",
-                    "admini");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root","admini");
 
             String username = this.usuario;
-            MD5_hashing md5 = new MD5_hashing(this.pass);
+            MD5_Hashing md5 = new MD5_Hashing(this.pass);
 
             // Comprobar si el usuario y la contraseña ya existen en la base de datos
             String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario=? AND Pass=?";
@@ -50,12 +51,13 @@ public class LoginClass {
                 if (resultSet.getInt(1) == 1) {
                     conn.close();
                     return 1;
-                } else {
+                } else if (resultSet.getInt(1) == 0) {
                     conn.close();
                     return 0;
                 }
 
             }
+            conn.close();
 
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
@@ -65,5 +67,6 @@ public class LoginClass {
             return -1;
         }
         return -1;
+
     }
 }
