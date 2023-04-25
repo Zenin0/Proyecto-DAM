@@ -37,7 +37,7 @@ public class RegistroClass {
                 Boolean admin = this.admin;
 
                 // Comprobar si el usuario y la contraseña ya existen en la base de datos
-                String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario=? AND Pass=?";
+                String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
                 PreparedStatement checkStatement = con.prepareStatement(query);
                 checkStatement.setString(1, username);
                 checkStatement.setString(2, md5.getMd5());
@@ -66,7 +66,7 @@ public class RegistroClass {
                         }
                     }
                     
-                    String test = "SELECT max(id) FROM Usuarios";
+                    String test = "SELECT max(ID_Usuario) FROM Usuarios";
                     PreparedStatement prst = con.prepareStatement(test);
                     ResultSet resulttest = prst.executeQuery();
                     if (resulttest.next()) {
