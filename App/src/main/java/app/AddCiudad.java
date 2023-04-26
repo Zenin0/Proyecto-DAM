@@ -58,6 +58,7 @@ public class AddCiudad {
 
             }
 
+            
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");

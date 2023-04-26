@@ -25,6 +25,7 @@ public class RegistroClass {
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root",
                     "admini");
+            // Comprobar que las contraseñas coincidan
             if (!this.pass1.equals(this.pass2)) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
@@ -65,7 +66,7 @@ public class RegistroClass {
                             return false;
                         }
                     }
-                    
+
                     String test = "SELECT max(ID_Usuario) FROM Usuarios";
                     PreparedStatement prst = con.prepareStatement(test);
                     ResultSet resulttest = prst.executeQuery();
