@@ -88,7 +88,11 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
       - [X] [Login de usuarios no admin al inicio usuario](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/LoginController.java)
   - [X] [Crear ciudades de destino, solo con usuarios administradores](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/AddCiudad.java)
   - [ ] Listar vuelos de los usuarios normales
-  - [ ] Crear vuelos, solo con usuarios administradores
+  - [X] [Crear vuelos, solo con usuarios administradores](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/AddVuelo.java)
+    - [X] [Listar ciudades de salida con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/MenuCiudades.java)
+    - [X] [Listar ciudades de destino con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/MenuCiudades.java)
+    - [X] [Listar aviones con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/MenuAviones.java)
+    - [X] Selector de fechas
   - [ ] Reservar vuelos con usuarios normales
   - [ ] Cancelar vuelos con usuarios normales
 - [ ] Crear la GUI
