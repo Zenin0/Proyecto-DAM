@@ -72,19 +72,19 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
     <img src="./images/Register-Screen.png" alt="Login Screen">
   </p>
 
-### Crear Vuelo Screen
+### Añadir Vuelo Screen
 
   <p align="center">
     <img src="./images/AddVuelo.png" alt="Login Screen">
   </p>
 
-### Crear Ciudad Screen
+### Añadir Ciudad Screen
 
   <p align="center">
     <img src="./images/AddCiudad.png" alt="Login Screen">
   </p>
 
-### Crear Avion Screen
+### Añadir Avion Screen
 
   <p align="center">
     <img src="./images/AddAvion.png" alt="Login Screen">
