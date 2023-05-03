@@ -22,6 +22,7 @@ CREATE TABLE `Ciudades`(
 CREATE TABLE `Aviones`(
     ID_Avion INT NOT NULL ,
     Nombre_Avion VARCHAR(255) NOT NULL,
+    Capacidad INT NOT NULL,
     Anyo_Fabricacion INT NOT NULl,
     CONSTRAINT PK_Aviones PRIMARY KEY(ID_Avion)
 );
@@ -31,12 +32,12 @@ CREATE TABLE `Vuelos`(
     ID_Vuelo INT NOT NULL ,
     Ciudad_Salida INT NOT NULL,
     Ciudad_Destino INT NOT NULL,
-    N_Asientos INT NOT NULL,
     ID_Avion INT NOT NULL,
     Fecha_Salida DATE NOT NULL,
     CONSTRAINT PK_Vuelos PRIMARY KEY(ID_Vuelo),
     CONSTRAINT FK_Ciudad_Salida FOREIGN KEY (Ciudad_Salida) REFERENCES Ciudades(ID_Ciudad) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_Ciudad_Destino FOREIGN KEY (Ciudad_Destino) REFERENCES Ciudades(ID_Ciudad) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT FK_Ciudad_Destino FOREIGN KEY (Ciudad_Destino) REFERENCES Ciudades(ID_Ciudad) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_Avion FOREIGN KEY (ID_Avion) REFERENCES Aviones(ID_Avion) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE `Reservas`(

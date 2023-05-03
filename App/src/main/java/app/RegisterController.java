@@ -2,7 +2,6 @@ package app;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -53,8 +52,9 @@ public class RegisterController implements Initializable {
 
     private void registrar() {
 
-        RegistroClass Reg = new RegistroClass(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected());
-        if (Reg.registrar()) {
+        RegistroClass Reg = new RegistroClass();
+        if (Reg.registrar(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(),
+                this.adminCheckBox.isSelected())) {
             this.usuReg.setText("");
             this.passReg1.setText("");
             this.passReg2.setText("");

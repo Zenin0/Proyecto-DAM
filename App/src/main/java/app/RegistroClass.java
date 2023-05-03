@@ -8,34 +8,26 @@ import javafx.scene.control.Alert.*;
 
 public class RegistroClass {
 
-    private String usuario;
-    private String pass1;
-    private String pass2;
-    private boolean admin;
-    private int id;
+    RegistroClass() {
 
-    RegistroClass(String Usuario, String Pass1, String Pass2, boolean admin) {
-        this.usuario = Usuario;
-        this.pass1 = Pass1;
-        this.pass2 = Pass2;
-        this.admin = admin;
     }
 
-    public boolean registrar() {
+    public boolean registrar(String Usuario, String Pass1, String Pass2, boolean admin) {
+        int id;
+
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root",
                     "admini");
             // Comprobar que las contraseñas coincidan
-            if (!this.pass1.equals(this.pass2)) {
+            if (!Pass1.equals(Pass2)) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText("Las contraseñas no coinciden");
                 dialog.show();
                 return false;
             } else {
-                String username = this.usuario;
-                MD5_Hashing md5 = new MD5_Hashing(this.pass1);
-                Boolean admin = this.admin;
+                String username = Usuario;
+                MD5_Hashing md5 = new MD5_Hashing(Pass1);
 
                 // Comprobar si el usuario y la contraseña ya existen en la base de datos
                 String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
@@ -71,12 +63,12 @@ public class RegistroClass {
                     PreparedStatement prst = con.prepareStatement(test);
                     ResultSet resulttest = prst.executeQuery();
                     if (resulttest.next()) {
-                        this.id = resulttest.getInt(1);
+                        id = resulttest.getInt(1);
 
                         // Insert the new record into the database
                         String consulta = "INSERT INTO Usuarios (ID_Usuario, Nombre_Usuario, Pass, is_Admin) VALUES (? , ?, ?, ?)";
                         PreparedStatement insertStatement = con.prepareStatement(consulta);
-                        insertStatement.setInt(1, this.id + 1);
+                        insertStatement.setInt(1, id + 1);
                         insertStatement.setString(2, username);
                         insertStatement.setString(3, md5.getMd5());
                         insertStatement.setBoolean(4, admin);
