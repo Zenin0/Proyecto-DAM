@@ -11,7 +11,7 @@ public class AddAvion {
 
     }
 
-    public boolean registrar(String NombreAvion, int AnyoFabricacion, int Capacidad) {
+    public boolean registrar(String nombreAvion, int anyoFabricacion, int capacidad) {
         try {
             int id;
             Connection con = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root",
@@ -19,8 +19,8 @@ public class AddAvion {
             // Comprobar si el usuario y la contraseña ya existen en la base de datos
             String query = "SELECT COUNT(*) FROM Aviones WHERE Nombre_Avion = ? AND Anyo_Fabricacion = ?";
             PreparedStatement checkStatement = con.prepareStatement(query);
-            checkStatement.setString(1, NombreAvion);
-            checkStatement.setInt(2, AnyoFabricacion);
+            checkStatement.setString(1, nombreAvion);
+            checkStatement.setInt(2, anyoFabricacion);
             ResultSet resultSet = checkStatement.executeQuery();
             resultSet.next();
             int count = resultSet.getInt(1);
@@ -41,12 +41,12 @@ public class AddAvion {
                     id = resulttest.getInt(1);
 
                     // Insert the new record into the database
-                    String consulta = "INSERT INTO Aviones (ID_Avion, Nombre_Avion, Anyo_Fabricacion, Capacidad) VALUES (? , ?, ?, ?)";
+                    String consulta = "INSERT INTO Aviones (ID_Avion, Nombre_Avion, Anyo_Fabricacion, capacidad) VALUES (? , ?, ?, ?)";
                     PreparedStatement insertStatement = con.prepareStatement(consulta);
                     insertStatement.setInt(1, id + 1);
-                    insertStatement.setString(2, NombreAvion);
-                    insertStatement.setInt(3, AnyoFabricacion);
-                    insertStatement.setInt(4, Capacidad);
+                    insertStatement.setString(2, nombreAvion);
+                    insertStatement.setInt(3, anyoFabricacion);
+                    insertStatement.setInt(4, capacidad);
                     insertStatement.executeUpdate();
                     return true;
                 }

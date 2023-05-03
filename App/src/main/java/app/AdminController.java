@@ -54,6 +54,9 @@ public class AdminController implements Initializable {
     private Label ciudadSalidaVuelo;
 
     @FXML
+    private MenuItem delVuelo;
+
+    @FXML
     private Label fechaLabel;
 
     @FXML
@@ -104,6 +107,7 @@ public class AdminController implements Initializable {
             }
         });
         addAvion.setOnAction((event) -> menuAddAvion());
+        delVuelo.setOnAction(event -> menuDelVuelo());
         aceptarButtonCiudad.setOnAction((event) -> addCiudad());
         aceptarButtonAvion.setOnAction((event) -> addAvion());
         aceptarButtonVuelo.setOnAction(event -> {
@@ -117,6 +121,10 @@ public class AdminController implements Initializable {
                 this.nombreCiudadField.setText("");
             }
         });
+    }
+
+    private void menuDelVuelo() {
+        this.menu.setText("Eliminar Vuelo");
     }
 
     private void menuAddVuelo() throws SQLException {
