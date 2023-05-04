@@ -5,6 +5,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.*;
 
 public class AddCiudad {
+    
+    private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
+    private final String USER = "root";
+    private final String PASS = "admini";
 
     AddCiudad() {
     }
@@ -15,8 +19,7 @@ public class AddCiudad {
         String pais = Pais.substring(0, 1).toUpperCase() + Pais.substring(1).toLowerCase();
 
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root",
-                    "admini");
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
 
             // Comprobar si el usuario y la contraseña ya existen en la base de datos
             String query = "SELECT COUNT(*) FROM Ciudades WHERE Nombre_Ciudad = ? AND Pais = ?";

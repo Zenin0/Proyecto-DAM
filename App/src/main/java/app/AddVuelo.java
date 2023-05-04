@@ -8,6 +8,10 @@ import javafx.scene.control.Alert.*;
 
 public class AddVuelo {
 
+    private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
+    private final String USER = "root";
+    private final String PASS = "admini";
+
     AddVuelo() {
 
     }
@@ -19,8 +23,7 @@ public class AddVuelo {
         int idAvionInt;
         int id;
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root",
-                    "admini");
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             String query = "SELECT ID_Ciudad FROM Ciudades WHERE Nombre_Ciudad = ?";
             PreparedStatement checkStatement = con.prepareStatement(query);
             checkStatement.setString(1, CiudadDestino);

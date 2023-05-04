@@ -8,16 +8,18 @@ import javafx.scene.control.Alert.*;
 
 public class RegistroClass {
 
+    private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
+    private final String USER = "root";
+    private final String PASS = "admini";
+
     RegistroClass() {
 
     }
 
     public boolean registrar(String Usuario, String Pass1, String Pass2, boolean admin) {
         int id;
-
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root",
-                    "admini");
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             // Comprobar que las contraseñas coincidan
             if (!Pass1.equals(Pass2)) {
                 Alert dialog = new Alert(AlertType.ERROR);

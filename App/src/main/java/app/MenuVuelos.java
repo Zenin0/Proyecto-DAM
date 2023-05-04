@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 public class MenuVuelos {
 
+    private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
+    private final String USER = "root";
+    private final String PASS = "admini";
+
     MenuVuelos() {
     }
 
@@ -12,7 +16,7 @@ public class MenuVuelos {
 
         ArrayList<String> out = new ArrayList<String>();
 
-        Connection con = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root", "admini");
+        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
         // Comprobar si el usuario y la contraseña ya existen en la base de datos
         String query = "SELECT ID_Vuelo FROM Vuelos";
         PreparedStatement checkStatement = con.prepareStatement(query);
