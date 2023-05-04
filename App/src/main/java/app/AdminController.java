@@ -142,7 +142,7 @@ public class AdminController implements Initializable {
         App.setRoot("login");
         Alert dialog = new Alert(AlertType.CONFIRMATION);
         dialog.setTitle("Session Terminada");
-        dialog.setHeaderText("Sessión terminada con éxito");
+        dialog.setHeaderText("Sesión terminada con éxito");
         dialog.show();
         this.nombreCiudadField.setText("");
     }
@@ -192,7 +192,7 @@ public class AdminController implements Initializable {
         this.aceptarButtonVuelo.setVisible(true);
         this.fechaLabel.setVisible(true);
         this.fechaSelect.setVisible(true);
-        // Esconder avion
+        // Esconder avión
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
         this.anyoFabricacion.setVisible(false);
@@ -217,7 +217,7 @@ public class AdminController implements Initializable {
         this.nombrePais.setVisible(true);
         this.nombrePaisField.setVisible(true);
         this.aceptarButtonCiudad.setVisible(true);
-        // Esconder avion
+        // Esconder avión
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
         this.anyoFabricacion.setVisible(false);
@@ -240,7 +240,7 @@ public class AdminController implements Initializable {
     private void menuAddAvion() {
         // Cosas para hacerlo mas bonito
         this.menu.setText("Añadir Avión");
-        // Mostrar avion
+        // Mostrar avión
         this.nombreAvion.setVisible(true);
         this.nombreAvionField.setVisible(true);
         this.anyoFabricacion.setVisible(true);
