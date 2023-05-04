@@ -121,7 +121,7 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
       - [ ] Verificación de usuario al cancelar vuelo
     - [ ] Habilitar función de modificación del vuelo
       - [ ] Modificar asiento
-      - [ ] Verificación de usuario al cancelar vuelo
+      - [ ] Verificación de usuario al modificar vuelo
   - [ ] Reservar vuelos con usuarios normales
     - [ ] Listar vuelos disponibles con un menú
       - [ ] Mostrar información de cada vuelo
