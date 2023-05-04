@@ -2,12 +2,16 @@ package app;
 
 import java.sql.*;
 
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.*;
 
 public class LoginClass {
 
     private String usuario;
+    private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
+    private final String USER = "root";
+    private final String PASS = "admini";
     private String pass;
 
     LoginClass(String Usuario, String Pass1) {
@@ -21,8 +25,7 @@ public class LoginClass {
     // return -1, Error login
     public int login() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root",
-                    "admini");
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             String username = this.usuario;
             MD5_Hashing md5 = new MD5_Hashing(this.pass);
