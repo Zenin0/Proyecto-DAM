@@ -128,6 +128,7 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
           - Destino
           - Salida
           - Fecha 
+    - [ ] Verificación de usuario al reservar vuelo  
 - [ ] Crear la GUI
 
 Mira los  [problemas abiertos](https://github.com/Zenin0/Proyecto-DAM/issues) para una lista completa de las propuestas (y errores conocidos).
