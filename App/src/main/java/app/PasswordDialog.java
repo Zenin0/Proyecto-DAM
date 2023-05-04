@@ -27,7 +27,7 @@ public class PasswordDialog extends Dialog<String> {
         hBox.getChildren().add(passwordField);
         hBox.setPadding(new Insets(20));
 
-        HBox.setHgrow(passwordField, Priority.ALWAYS);
+        HBox.setHgrow(passwordField, Priority.ALWAYS);  
 
         getDialogPane().setContent(hBox);
 
