@@ -21,13 +21,14 @@ public class LoginClass {
     // return -1, Error login
     public int login() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root","admini");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://172.17.0.2:3306/Manolo_Airlines", "root",
+                    "admini");
 
             String username = this.usuario;
             MD5_Hashing md5 = new MD5_Hashing(this.pass);
 
             // Comprobar si el usuario y la contraseña ya existen en la base de datos
-            String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario=? AND Pass=?";
+            String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
             PreparedStatement checkStatement = conn.prepareStatement(query);
             checkStatement.setString(1, username);
             checkStatement.setString(2, md5.getMd5());
