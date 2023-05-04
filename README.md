@@ -110,9 +110,14 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
     - [X] [Listar ciudades de destino con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/MenuCiudades.java)
     - [X] [Listar aviones con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/MenuAviones.java)
     - [X] Selector de fechas
-  - [ ] Listar vuelos de los usuarios normales
+  - [ ] Listar vuelos de los usuarios normales con un menú
+    - [ ] Mostrar información de cada uno de esos vuelos
+    - [ ] Habilitar función de cancelación del vuelo
+    - [ ] Habilitar función de modificación del vuelo
+      - [ ] Modificar asiento
   - [ ] Reservar vuelos con usuarios normales
-  - [ ] Cancelar vuelos con usuarios normales
+    - [ ] Listar vuelos disponibles con un menú
+      - [ ] Mostrar información de cada vuelo
 - [ ] Crear la GUI
 
 Mira los  [problemas abiertos](https://github.com/Zenin0/Proyecto-DAM/issues) para una lista completa de las propuestas (y errores conocidos).
