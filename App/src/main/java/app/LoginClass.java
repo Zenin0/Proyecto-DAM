@@ -51,9 +51,11 @@ public class LoginClass {
 
                 if (resultSet.getInt(1) == 1) {
                     conn.close();
+                    GlobalData.userName = username;
                     return 1;
                 } else if (resultSet.getInt(1) == 0) {
                     conn.close();
+                    GlobalData.userName = username;
                     return 0;
                 }
 

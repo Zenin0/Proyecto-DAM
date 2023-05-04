@@ -34,6 +34,7 @@ CREATE TABLE `Vuelos`(
     Ciudad_Destino INT NOT NULL,
     ID_Avion INT NOT NULL,
     Fecha_Salida DATE NOT NULL,
+    Creada_Por varchar(255) NOT NULL,
     CONSTRAINT PK_Vuelos PRIMARY KEY(ID_Vuelo),
     CONSTRAINT FK_Ciudad_Salida FOREIGN KEY (Ciudad_Salida) REFERENCES Ciudades(ID_Ciudad) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT FK_Ciudad_Destino FOREIGN KEY (Ciudad_Destino) REFERENCES Ciudades(ID_Ciudad) ON DELETE CASCADE ON UPDATE CASCADE,

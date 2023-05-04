@@ -62,7 +62,7 @@ public class AddVuelo {
                     id = resulttest.getInt(1);
 
                     // Insert the new record into the database
-                    String consulta = "INSERT INTO Vuelos (ID_Vuelo, Ciudad_Salida, Ciudad_Destino, ID_Avion, Fecha_Salida) VALUES (? , ?, ?, ?, ?)";
+                    String consulta = "INSERT INTO Vuelos (ID_Vuelo, Ciudad_Salida, Ciudad_Destino, ID_Avion, Fecha_Salida, Creada_Por) VALUES (? , ?, ?, ?, ?, ?)";
                     PreparedStatement insertStatement = con.prepareStatement(consulta);
                     insertStatement.setInt(1, id + 1);
                     insertStatement.setInt(2, ciudadSalida);
@@ -71,6 +71,7 @@ public class AddVuelo {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     java.util.Date date = dateFormat.parse(fecha);
                     insertStatement.setDate(5, new java.sql.Date(date.getTime()));
+                    insertStatement.setString(6, GlobalData.userName);
                     insertStatement.executeUpdate();
                     return true;
                 }
