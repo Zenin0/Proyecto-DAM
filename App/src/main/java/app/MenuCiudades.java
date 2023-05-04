@@ -23,8 +23,8 @@ public class MenuCiudades {
             arr = em.replace("\n", ",");
             out.add(arr);
         }
+        con.close();
         return out;
     }
-
 
 }

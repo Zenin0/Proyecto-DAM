@@ -83,6 +83,8 @@ public class RegistroClass {
 
                 }
             }
+            con.close();
+
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");

@@ -259,8 +259,8 @@ public class AdminController implements Initializable {
                 Integer.parseInt(this.anyoFabricacionField.getText()),
                 Integer.parseInt(this.capacidadField.getText()))) {
             Alert dialog = new Alert(AlertType.CONFIRMATION);
-            dialog.setTitle("Ciudad");
-            dialog.setHeaderText("Ciudad creada correctamente");
+            dialog.setTitle("Avión");
+            dialog.setHeaderText("Avión creada correctamente");
             dialog.show();
             this.nombreCiudadField.setText("");
         }
@@ -274,8 +274,8 @@ public class AdminController implements Initializable {
         if (new AddVuelo().registrar(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(),
                 numero, String.valueOf(localDate))) {
             Alert dialog = new Alert(AlertType.CONFIRMATION);
-            dialog.setTitle("Ciudad");
-            dialog.setHeaderText("Ciudad creada correctamente");
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Vuelo creada correctamente");
             dialog.show();
             this.nombreCiudadField.setText("");
         }

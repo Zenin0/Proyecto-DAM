@@ -8,13 +8,12 @@ import javafx.scene.control.Alert.*;
 
 public class AddVuelo {
 
-
-
     AddVuelo() {
 
     }
 
-    public boolean registrar(String CiudadSalida, String CiudadDestino, int idAvion, String fecha) throws ParseException {
+    public boolean registrar(String CiudadSalida, String CiudadDestino, int idAvion, String fecha)
+            throws ParseException {
         int ciudadSalida = 0;
         int ciudadDestino = 0;
         int idAvionInt;
@@ -38,7 +37,7 @@ public class AddVuelo {
             }
             idAvionInt = idAvion;
             // Comprobar si el usuario y la contraseña ya existen en la base de datos
-             query = "SELECT COUNT(*) FROM Vuelos WHERE Ciudad_Salida = ? AND Ciudad_Destino = ? AND ID_Avion = ?";
+            query = "SELECT COUNT(*) FROM Vuelos WHERE Ciudad_Salida = ? AND Ciudad_Destino = ? AND ID_Avion = ?";
             checkStatement = con.prepareStatement(query);
             checkStatement.setInt(1, ciudadSalida);
             checkStatement.setInt(2, ciudadDestino);
@@ -77,7 +76,7 @@ public class AddVuelo {
                 }
 
             }
-
+            con.close();
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
