@@ -1,5 +1,6 @@
 package app;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -55,6 +56,9 @@ public class AdminController implements Initializable {
 
     @FXML
     private MenuItem delVuelo;
+
+    @FXML
+    private Button endSession;
 
     @FXML
     private Label fechaLabel;
@@ -121,6 +125,26 @@ public class AdminController implements Initializable {
                 this.nombreCiudadField.setText("");
             }
         });
+        endSession.setOnAction((event) -> {
+            try {
+                endSession();
+            } catch (IOException e) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
+                this.nombreCiudadField.setText("");
+            }
+        });
+    }
+
+    private void endSession() throws IOException {
+        App.setRoot("login");
+        Alert dialog = new Alert(AlertType.CONFIRMATION);
+        dialog.setTitle("Session Terminada");
+        dialog.setHeaderText("Sessión terminada con éxito");
+        dialog.show();
+        this.nombreCiudadField.setText("");
     }
 
     private void menuDelVuelo() {

@@ -18,7 +18,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView fitHeight="326.0" fitWidth="332.0" layoutX="4.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="326.0" fitWidth="332.0" layoutX="15.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@css/logo.png" />
                </image>
@@ -68,6 +68,7 @@
                   <Label fx:id="fechaLabel" contentDisplay="CENTER" text="Fecha Salida" textAlignment="CENTER" visible="false" GridPane.rowIndex="3" />
                </children>
             </GridPane>
+            <Button fx:id="endSession" layoutX="119.0" layoutY="339.0" mnemonicParsing="false" text="Cerrar Sesión" />
          </children>
       </AnchorPane>
    </children>
