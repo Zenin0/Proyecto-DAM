@@ -104,15 +104,15 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
     - [X] [Login de los usuarios](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/LoginClass.java)
       - [X] [Login de usuarios admin al inicio admin](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/LoginController.java)
       - [X] [Login de usuarios no admin al inicio usuario](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/LoginController.java)
-  - [X] [Crear ciudades de destino, solo con usuarios administradores](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/AddCiudad.java)
-  - [X] [Crear vuelos, solo con usuarios administradores](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/AddVuelo.java)
-    - [X] [Listar ciudades de salida con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/MenuCiudades.java)
-    - [X] [Listar ciudades de destino con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/MenuCiudades.java)
+  - [X] [Crear ciudades de destino, solo con usuarios administradores](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+  - [X] [Crear vuelos, solo con usuarios administradores](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+    - [X] [Listar ciudades de salida con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
+    - [X] [Listar ciudades de destino con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
     - [X] [Listar aviones con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/MenuAviones.java)
     - [X] [Almacenar que usuario a creado ese vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/GlobalData.java)
     - [X] Selector de fechas
-  - [ ] Borrar vuelos ya creados
-    - [ ] Listar los vuelos creados
+  - [X] [Borrar vuelos ya creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+    - [X] [Listar los vuelos creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
   - [ ] Listar vuelos de los usuarios normales con un menú
     - [ ] Mostrar información de cada uno de esos vuelos
       - Destino

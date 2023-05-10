@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/AddAvion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/AddCiudad.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/AddVuelo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MD5_Hashing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MenuAviones.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MenuCiudades.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MenuVuelos.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/PasswordDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegistroClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/RegistroClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +35,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/dam/Escritorio/DAM/PRM/Proyecto-DAM/App"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/dam/Escritorio/DAM/PRM/Proyecto-DAM"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
