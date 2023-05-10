@@ -7,11 +7,8 @@ import javafx.scene.control.Alert.*;
 
 public class LoginClass {
 
-    private String usuario;
-    private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
-    private final String USER = "root";
-    private final String PASS = "admini";
-    private String pass;
+    private final String usuario;
+    private final String pass;
 
     LoginClass(String Usuario, String Pass1) {
         this.usuario = Usuario;
@@ -24,6 +21,9 @@ public class LoginClass {
     // return -1, Error login
     public int login() {
         try {
+            String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
+            String USER = "root";
+            String PASS = "admini";
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             String username = this.usuario;

@@ -61,10 +61,4 @@ public class RegisterController implements Initializable {
         }
     }
 
-    public void clear() {
-        this.usuReg.setText("");
-        this.passReg1.setText("");
-        this.passReg2.setText("");
-    }
-
 }

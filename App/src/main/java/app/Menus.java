@@ -11,14 +11,14 @@ public class Menus {
 
     public ArrayList<String> listaCiudadesStrings() throws SQLException {
 
-        ArrayList<String> out = new ArrayList<String>();
+        ArrayList<String> out = new ArrayList<>();
 
         Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
         // Comprobar si el usuario y la contraseña ya existen en la base de datos
         String query = "SELECT Nombre_Ciudad FROM Ciudades";
         PreparedStatement checkStatement = con.prepareStatement(query);
         ResultSet rs = checkStatement.executeQuery();
-        String arr = null;
+        String arr;
         while (rs.next()) {
             String em = rs.getString("Nombre_Ciudad");
             arr = em.replace("\n", ",");
@@ -30,7 +30,7 @@ public class Menus {
 
     public ArrayList<String> listaAvionesStrings() throws SQLException {
 
-        ArrayList<String> out = new ArrayList<String>();
+        ArrayList<String> out = new ArrayList<>();
 
         Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
         // Comprobar si el usuario y la contraseña ya existen en la base de datos
@@ -47,14 +47,14 @@ public class Menus {
 
     public ArrayList<String> listaVuelosStrings() throws SQLException {
 
-        ArrayList<String> out = new ArrayList<String>();
+        ArrayList<String> out = new ArrayList<>();
 
         Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
         // Comprobar si el usuario y la contraseña ya existen en la base de datos
         String query = "SELECT * FROM Vuelos";
         PreparedStatement checkStatement = con.prepareStatement(query);
         ResultSet rs = checkStatement.executeQuery();
-        String arr = null;
+        String arr;
         while (rs.next()) {
             String em = rs.getString("ID_Vuelo") + " - " +rs.getString("Ciudad_Salida") + " - " + rs.getString("Ciudad_Destino") + " - " + rs.getDate("Fecha_Salida");
             arr = em.replace("\n", ",");

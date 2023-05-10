@@ -4,16 +4,15 @@ import java.sql.*;
 
 public class Getter {
 
-    private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
-    private final String USER = "root";
-    private final String PASS = "admini";
-
     Getter() {
     }
 
     public String getNombreCiudad(int ID) throws SQLException {
 
         String em = "";
+        String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
+        String USER = "root";
+        String PASS = "admini";
         Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
         // Comprobar si el usuario y la contraseña ya existen en la base de datos
         String query = "SELECT Nombre_Ciudad FROM Ciudades WHERE ID_Ciudad = ?";

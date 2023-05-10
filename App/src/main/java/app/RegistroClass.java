@@ -8,10 +8,6 @@ import javafx.scene.control.Alert.*;
 
 public class RegistroClass {
 
-    private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
-    private final String USER = "root";
-    private final String PASS = "admini";
-
     RegistroClass() {
 
     }
@@ -19,6 +15,9 @@ public class RegistroClass {
     public boolean registrar(String Usuario, String Pass1, String Pass2, boolean admin) {
         int id;
         try {
+            String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
+            String USER = "root";
+            String PASS = "admini";
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             // Comprobar que las contraseñas coincidan
             if (!Pass1.equals(Pass2)) {
@@ -28,13 +27,12 @@ public class RegistroClass {
                 dialog.show();
                 return false;
             } else {
-                String username = Usuario;
                 MD5Hasher md5 = new MD5Hasher(Pass1);
 
                 // Comprobar si el usuario y la contraseña ya existen en la base de datos
                 String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
                 PreparedStatement checkStatement = con.prepareStatement(query);
-                checkStatement.setString(1, username);
+                checkStatement.setString(1, Usuario);
                 checkStatement.setString(2, md5.getMd5());
                 ResultSet resultSet = checkStatement.executeQuery();
                 resultSet.next();
@@ -71,7 +69,7 @@ public class RegistroClass {
                         String consulta = "INSERT INTO Usuarios (ID_Usuario, Nombre_Usuario, Pass, is_Admin) VALUES (? , ?, ?, ?)";
                         PreparedStatement insertStatement = con.prepareStatement(consulta);
                         insertStatement.setInt(1, id + 1);
-                        insertStatement.setString(2, username);
+                        insertStatement.setString(2, Usuario);
                         insertStatement.setString(3, md5.getMd5());
                         insertStatement.setBoolean(4, admin);
                         insertStatement.executeUpdate();

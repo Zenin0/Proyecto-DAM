@@ -13,10 +13,7 @@ public class InicioUserController implements Initializable {
     @FXML
     private ListView<String> listaVuelos;
 
-    @FXML
-    private Button reservarButton;
-
-    private Menus menus = new Menus();
+    private final Menus menus = new Menus();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

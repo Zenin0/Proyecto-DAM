@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class App extends Application {
 
@@ -17,7 +18,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"));
         stage.setTitle("Manolo Airlines");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("css/logoMA.png")));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("css/logoMA.png"))));
         stage.setScene(scene); 
         stage.setScene(scene);
         stage.show();
