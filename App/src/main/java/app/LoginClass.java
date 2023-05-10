@@ -2,7 +2,6 @@ package app;
 
 import java.sql.*;
 
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.*;
 
@@ -28,7 +27,7 @@ public class LoginClass {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             String username = this.usuario;
-            MD5_Hashing md5 = new MD5_Hashing(this.pass);
+            MD5Hasher md5 = new MD5Hasher(this.pass);
 
             // Comprobar si el usuario y la contraseña ya existen en la base de datos
             String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
@@ -48,16 +47,21 @@ public class LoginClass {
                 resultSet = checkStatement.executeQuery();
                 resultSet.next();
                 Alert dialog = new Alert(AlertType.CONFIRMATION);
-                dialog.setTitle("Login correcto");
-                dialog.setHeaderText("Acceso Concedido");
-                dialog.show();
 
+                // Return Acceso Admin
                 if (resultSet.getInt(1) == 1) {
                     conn.close();
+                    dialog.setTitle("Login correcto");
+                    dialog.setHeaderText("Bienvenido "+ username);
+                    dialog.show();
                     GlobalData.userName = username;
                     return 1;
+                    // Return acceso usuario
                 } else if (resultSet.getInt(1) == 0) {
                     conn.close();
+                    dialog.setTitle("Login correcto");
+                    dialog.setHeaderText("Bienvenido "+ username);
+                    dialog.show();
                     GlobalData.userName = username;
                     return 0;
                 }

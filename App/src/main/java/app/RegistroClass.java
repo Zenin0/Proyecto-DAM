@@ -29,7 +29,7 @@ public class RegistroClass {
                 return false;
             } else {
                 String username = Usuario;
-                MD5_Hashing md5 = new MD5_Hashing(Pass1);
+                MD5Hasher md5 = new MD5Hasher(Pass1);
 
                 // Comprobar si el usuario y la contraseña ya existen en la base de datos
                 String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
@@ -50,9 +50,9 @@ public class RegistroClass {
                 } else {
 
                     if (admin) {
-                        PasswordDialog adminck = new PasswordDialog();
+                        PassDialog adminck = new PassDialog();
                         Optional<String> result = adminck.showAndWait();
-                        if (!new MD5_Hashing(result.get()).getMd5().equals(new MD5_Hashing("root").getMd5())) {
+                        if (!new MD5Hasher(result.get()).getMd5().equals(new MD5Hasher("root").getMd5())) {
                             Alert dialog = new Alert(AlertType.ERROR);
                             dialog.setTitle("ERROR");
                             dialog.setHeaderText("Contraseña de administrador incorrecta");

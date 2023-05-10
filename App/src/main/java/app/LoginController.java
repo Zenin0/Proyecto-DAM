@@ -31,7 +31,7 @@ public class LoginController implements Initializable {
 
         buttonLog.setOnMouseClicked((event) -> {
             try {
-                registrar();
+                login();
             } catch (IOException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
@@ -56,12 +56,12 @@ public class LoginController implements Initializable {
         App.setRoot("register");
     }
 
-    private void registrar() throws IOException {
-        LoginClass Log = new LoginClass(this.usuLog.getText(), this.passLog.getText());
-        if (Log.login() == 1) {
-            this.usuLog.setText("");
-            this.passLog.setText("");
+    private void login() throws IOException {
+        LoginClass logger = new LoginClass(this.usuLog.getText(), this.passLog.getText());
+        if (logger.login() == 1) {
             App.setRoot("inicio_admin");
+        } else if (logger.login() == 0) {
+            App.setRoot("inicio_user");
         } else {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
