@@ -50,7 +50,7 @@ Este proyecto se ha creado para `Manolo Airlines` para facilitar el uso de su ba
 
 ### Construido con
 
-Este código estará creado con Java para el desarrollo principal de la aplicación, Mysql para la gestión de la base de datos, y JavaFX para el apartado de GUI.
+Este código estará creado con `Java` para el desarrollo principal de la aplicación, `MYSQL` para la gestión de la base de datos, y `JavaFX` para el apartado de GUI.
 
 * [![Java](https://img.shields.io/badge/java-ED8B00?style=for-the-badge)](https://www.java.com)
 * [![JavaFX](https://img.shields.io/badge/javafx-ED8B00?style=for-the-badge)](https://openjfx.io/)
