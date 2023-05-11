@@ -83,8 +83,7 @@ public class InicioUserController implements Initializable {
     public void loadVuelos() throws SQLException {
         for (String vuelo : menus.listaVuelosStrings()) {
             String[] parts = vuelo.replaceAll(" ", "").split("-");
-            String res = parts[0] + " - Salida: " + new Getter().getNombreCiudad(Integer.parseInt(parts[1])) + " \nDestino: "
-                    + new Getter().getNombreCiudad(Integer.parseInt(parts[2])) + "\nFecha Salida: " + parts[5] + "/" + parts[4] + "/" + parts[3];
+            String res = parts[0] + " - Salida: " + new Getter().getNombreCiudad(Integer.parseInt(parts[1])) + " \nDestino: " + new Getter().getNombreCiudad(Integer.parseInt(parts[2])) + "\nFecha Salida: " + parts[5] + "/" + parts[4] + "/" + parts[3];
             vuelosDisponiblesReservaList.getItems().add(res);
         }
     }

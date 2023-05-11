@@ -181,9 +181,7 @@ public class InicioAdminController implements Initializable {
 
     // Funcion para añadir un Avion
     private void addAvion() {
-        if (gestioner.registrarAvion(this.nombreAvionField.getText(),
-                Integer.parseInt(this.anyoFabricacionField.getText()),
-                Integer.parseInt(this.capacidadField.getText()))) {
+        if (gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.anyoFabricacionField.getText()), Integer.parseInt(this.capacidadField.getText()))) {
             Alert dialog = new Alert(AlertType.CONFIRMATION);
             dialog.setTitle("Avión");
             dialog.setHeaderText("Avión creada correctamente");
@@ -198,8 +196,7 @@ public class InicioAdminController implements Initializable {
         String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
         int numero = Integer.parseInt(tokens[0]);
         LocalDate localDate = fechaSelect.getValue();
-        if (gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(),
-                numero, String.valueOf(localDate))) {
+        if (gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), numero, String.valueOf(localDate))) {
             Alert dialog = new Alert(AlertType.CONFIRMATION);
             dialog.setTitle("Vuelo");
             dialog.setHeaderText("Vuelo creada correctamente");

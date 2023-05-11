@@ -14,23 +14,9 @@ public class App extends Application {
 
     private static Scene scene;
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"), 900, 600);
-        stage.setTitle("Manolo Airlines");
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("css/logoMA.png"))));
-        stage.setScene(scene); 
-        stage.setScene(scene);
-        stage.show();
-
-    }
-    
-    
-
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
-    
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
@@ -39,6 +25,17 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        scene = new Scene(loadFXML("login"), 900, 600);
+        stage.setTitle("Manolo Airlines");
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("css/logoMA.png"))));
+        stage.setScene(scene);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
 }

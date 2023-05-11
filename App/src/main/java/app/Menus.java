@@ -1,7 +1,7 @@
 package app;
 
 import java.sql.*;
-import java.util.*;
+import java.util.ArrayList;
 
 // Objecto que devuelve listar de Strings que se usan en los Menus
 public class Menus {
@@ -60,7 +60,7 @@ public class Menus {
         ResultSet rs = checkStatement.executeQuery();
         String arr;
         while (rs.next()) {
-            String em = rs.getString("ID_Vuelo") + " - " +rs.getString("Ciudad_Salida") + " - " + rs.getString("Ciudad_Destino") + " - " + rs.getDate("Fecha_Salida");
+            String em = rs.getString("ID_Vuelo") + " - " + rs.getString("Ciudad_Salida") + " - " + rs.getString("Ciudad_Destino") + " - " + rs.getDate("Fecha_Salida");
             arr = em.replace("\n", ",");
             out.add(arr);
         }

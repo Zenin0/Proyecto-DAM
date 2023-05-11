@@ -1,7 +1,8 @@
 package app;
 
-import java.math.*;
-import java.security.*;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 // Objecto de encriptacion de contraseñas
 public class MD5Hasher {

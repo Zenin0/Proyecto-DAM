@@ -268,8 +268,7 @@ public class Gestioner {
     }
 
     // Funcion para registrar un nuevo vuelo
-    public boolean registrarVuelo(String CiudadSalida, String CiudadDestino, int idAvion, String fecha)
-            throws ParseException {
+    public boolean registrarVuelo(String CiudadSalida, String CiudadDestino, int idAvion, String fecha) throws ParseException {
         int ciudadSalida = 0;
         int ciudadDestino = 0;
         int idAvionInt;
