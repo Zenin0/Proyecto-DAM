@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="FXMLs updates">
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/home_ad.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logoMA.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/register.fxml" beforeDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Updated">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +47,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;project.scopes&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="app" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ManoloAirlines Launch" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="18" />
@@ -143,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683828650540</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Updated">
+      <created>1683828663706</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683828663706</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -154,6 +160,7 @@
     <MESSAGE value="Roadman links Updated" />
     <MESSAGE value="Resaltado algun texto importante" />
     <MESSAGE value="FXMLs updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="FXMLs updates" />
+    <MESSAGE value="Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated" />
   </component>
 </project>

@@ -6,7 +6,6 @@ import javafx.scene.control.Alert.AlertType;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Optional;
 
 // Objecto para gestionar las interaccciones de insercion/eliminacion de datos de la BDD
 public class Gestioner {
@@ -31,13 +30,12 @@ public class Gestioner {
             String PASS = "admini";
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-            String username = usuario;
             MD5Hasher md5 = new MD5Hasher(pass);
 
             // Comprobar si el usuario y la contraseña ya existen en la base de datos
             String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
             PreparedStatement checkStatement = conn.prepareStatement(query);
-            checkStatement.setString(1, username);
+            checkStatement.setString(1, usuario);
             checkStatement.setString(2, md5.getMd5());
             ResultSet resultSet = checkStatement.executeQuery();
             resultSet.next();
@@ -47,19 +45,19 @@ public class Gestioner {
                 // Comprobar si el usuario es admin o no
                 query = "SELECT Is_Admin FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
                 checkStatement = conn.prepareStatement(query);
-                checkStatement.setString(1, username);
+                checkStatement.setString(1, usuario);
                 checkStatement.setString(2, md5.getMd5());
                 resultSet = checkStatement.executeQuery();
                 resultSet.next();
                 // Return Acceso Admin
                 if (resultSet.getInt(1) == 1) {
                     conn.close();
-                    GlobalData.userName = username;
+                    GlobalData.userName = usuario;
                     return 1;
                 } else if (resultSet.getInt(1) == 0) {
                     // Return acceso usuario
                     conn.close();
-                    GlobalData.userName = username;
+                    GlobalData.userName = usuario;
                     return 0;
                 } else {
                     return -1;
@@ -116,9 +114,7 @@ public class Gestioner {
                 } else {
 
                     if (admin) {
-                        PassDialog adminck = new PassDialog();
-                        Optional<String> result = adminck.showAndWait();
-                        if (!new MD5Hasher(result.get()).getMd5().equals(new MD5Hasher("root").getMd5())) {
+                        if (!new MD5Hasher(new PassDialog().showAndWait().get()).getMd5().equals(new MD5Hasher("root").getMd5())) {
                             Alert dialog = new Alert(AlertType.ERROR);
                             dialog.setTitle("ERROR");
                             dialog.setHeaderText("Contraseña de administrador incorrecta");
