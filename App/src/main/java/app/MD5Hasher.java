@@ -3,6 +3,7 @@ package app;
 import java.math.*;
 import java.security.*;
 
+// Objecto de encriptacion de contraseñas
 public class MD5Hasher {
 
     private final String input;

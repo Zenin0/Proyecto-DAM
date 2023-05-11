@@ -1,13 +1,13 @@
 package app;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.Alert.*;
+import javafx.scene.control.Alert.AlertType;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
     // Items
@@ -32,7 +32,9 @@ public class RegisterController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        // Boton que inicia la funcion de registro
         buttonReg.setOnMouseClicked((event) -> registrar());
+        // Boton para cambiar a la ventana de login
         buttonlogCh.setOnMouseClicked((event) -> {
             try {
                 loginChange();
@@ -45,15 +47,16 @@ public class RegisterController implements Initializable {
         });
     }
 
+    // Funcion para cambiar a la ventana de lgin
     @FXML
     private void loginChange() throws IOException {
         App.setRoot("login");
     }
 
+    // Funcion para registrar un usuario
     private void registrar() {
 
-        RegistroClass Reg = new RegistroClass();
-        if (Reg.registrar(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(),
+        if (new Gestioner().registrar(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(),
                 this.adminCheckBox.isSelected())) {
             this.usuReg.setText("");
             this.passReg1.setText("");

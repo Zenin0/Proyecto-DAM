@@ -3,12 +3,14 @@ package app;
 import java.sql.*;
 import java.util.*;
 
+// Objecto que devuelve listar de Strings que se usan en los Menus
 public class Menus {
 
     private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
     private final String USER = "root";
     private final String PASS = "admini";
 
+    // Funcion para obtener una ArrayList de las Ciudades
     public ArrayList<String> listaCiudadesStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
@@ -28,6 +30,7 @@ public class Menus {
         return out;
     }
 
+    // Funcion para obtener una ArrayList de los Aviones
     public ArrayList<String> listaAvionesStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
@@ -45,6 +48,7 @@ public class Menus {
         return out;
     }
 
+    // Funcion para obtener una ArrayList de los Vuelos
     public ArrayList<String> listaVuelosStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();

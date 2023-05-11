@@ -4,9 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Use ELiminar Vuelo Screen">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Reorganización Roadmap, y añaidos apartados nuevos">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MD5Hasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/MD5Hasher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Menus.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Menus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/PassDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/PassDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegistroClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/register.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,21 +51,22 @@
   </component>
   <component name="ProjectId" id="2PboQnjdUxj2O7tMVYGapvKDAhW" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+    <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/dam/Escritorio/DAM/PRM/Proyecto-DAM/App&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/dam/Escritorio/DAM/PRM/Proyecto-DAM/App",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.scopes"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="ManoloAirlines Launch" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="18" />
@@ -84,12 +108,20 @@
       <option name="project" value="LOCAL" />
       <updated>1683807835741</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Reorganización Roadmap, y añaidos apartados nuevos">
+      <created>1683819906983</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683819906983</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Roadmap Updated" />
     <MESSAGE value="Use ELiminar Vuelo Screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Use ELiminar Vuelo Screen" />
+    <MESSAGE value="Reorganización Roadmap, y añaidos apartados nuevos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reorganización Roadmap, y añaidos apartados nuevos" />
   </component>
 </project>

@@ -13,7 +13,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class AdminController implements Initializable {
+public class InicioAdminController implements Initializable {
 
     private final Menus menus = new Menus();
     private final Gestioner gestioner = new Gestioner();
@@ -80,7 +80,9 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        // Cambiar a la funcion de Añadir una Ciudad
         this.addCiudad.setOnAction((event) -> menuAddCiudad());
+        // Cambiar  la funcion de Añadir un Vuelo
         this.addVuelo.setOnAction((event) -> {
             try {
                 menuAddVuelo();
@@ -92,7 +94,9 @@ public class AdminController implements Initializable {
                 this.nombreCiudadField.setText("");
             }
         });
+        // Cambir a la funcion de Añadir un Avion
         this.addAvion.setOnAction((event) -> menuAddAvion());
+        // Cambiar a la funcion de eliminar un Vuelo
         this.delVuelo.setOnAction(event -> {
             try {
                 menuDelVuelo();
@@ -104,6 +108,7 @@ public class AdminController implements Initializable {
                 this.nombreCiudadField.setText("");
             }
         });
+        // Boton para ejecutar el borrado de un vuelo seleccionado
         this.deleteButton.setOnAction(event -> {
             try {
                 delVuelo(this.vuelosList.getSelectionModel().getSelectedItem());
@@ -115,6 +120,7 @@ public class AdminController implements Initializable {
                 this.nombreCiudadField.setText("");
             }
         });
+        // Botones para ejecutar el añadido de sus correspondientes
         this.aceptarButtonCiudad.setOnAction((event) -> addCiudad());
         this.aceptarButtonAvion.setOnAction((event) -> addAvion());
         this.aceptarButtonVuelo.setOnAction(event -> {
@@ -128,6 +134,7 @@ public class AdminController implements Initializable {
                 this.nombreCiudadField.setText("");
             }
         });
+        // Boton para terminar la sesion
         this.endSession.setOnAction((event) -> {
             try {
                 endSession();
@@ -141,15 +148,16 @@ public class AdminController implements Initializable {
         });
     }
 
+    // Funcion para terminal la sesion
     private void endSession() throws IOException {
         App.setRoot("login");
         Alert dialog = new Alert(AlertType.CONFIRMATION);
         dialog.setTitle("Session Terminada");
         dialog.setHeaderText("Sesión terminada con éxito");
         dialog.show();
-        this.nombreCiudadField.setText("");
     }
 
+    // Funcion para listar los vuelos y meterlos en la lista
     private void listarVuelos() throws SQLException {
         this.vuelosList.getItems().clear();
         for (String vuelo : menus.listaVuelosStrings()) {
@@ -159,6 +167,7 @@ public class AdminController implements Initializable {
         }
     }
 
+    // Funcion para añadir una Ciudad
     private void addCiudad() {
         if (gestioner.registrarCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText())) {
             Alert dialog = new Alert(AlertType.CONFIRMATION);
@@ -170,6 +179,7 @@ public class AdminController implements Initializable {
 
     }
 
+    // Funcion para añadir un Avion
     private void addAvion() {
         if (gestioner.registrarAvion(this.nombreAvionField.getText(),
                 Integer.parseInt(this.anyoFabricacionField.getText()),
@@ -183,6 +193,7 @@ public class AdminController implements Initializable {
 
     }
 
+    // Funcion para añadir un Vuelo
     private void addVuelo() throws ParseException, SQLException {
         String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
         int numero = Integer.parseInt(tokens[0]);
@@ -198,6 +209,7 @@ public class AdminController implements Initializable {
 
     }
 
+    // Funcion para eliminar un Vuelo
     public void delVuelo(String vuelo) throws SQLException {
         String[] vueloParts = vuelo.replaceAll(" ", "").split("-");
         if (gestioner.eliminarVuelo(Integer.parseInt(vueloParts[0]))) {
@@ -214,6 +226,7 @@ public class AdminController implements Initializable {
         listarVuelos();
     }
 
+    // Cambiar al modo Borrar un vuelo
     private void menuDelVuelo() throws SQLException {
         this.menu.setText("Eliminar Vuelo");
         listarVuelos();
@@ -247,6 +260,7 @@ public class AdminController implements Initializable {
 
     }
 
+    // Cambiar al modo Añadir un Vuelo
     private void menuAddVuelo() throws SQLException {
         // Cosas para hacerlo mas bonito
         this.menu.setText("Añadir Vuelo");
@@ -305,6 +319,7 @@ public class AdminController implements Initializable {
 
     }
 
+    // Cambiar al modo Añadir Ciudad
     private void menuAddCiudad() {
         this.menu.setText("Añadir Ciudad");
         // Mostrar ciudad
@@ -336,6 +351,7 @@ public class AdminController implements Initializable {
         this.deleteButton.setVisible(false);
     }
 
+    // Cambiar al modo Añadir un avion
     private void menuAddAvion() {
         // Cosas para hacerlo mas bonito
         this.menu.setText("Añadir Avión");

@@ -4,10 +4,6 @@
     border-radius: 5px;
 }
 
-.label {
-    -fx-font-size: 14px;
-}
-
 .text-field {
     -fx-background-color: #ffffff;
     -fx-border-color: #cccccc;
