@@ -78,6 +78,12 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
     <img src="./images/AddVuelo.png" alt="Login Screen">
   </p>
 
+### Eliminar Vuelo Screen
+
+  <p align="center">
+    <img src="./images/DelVuelo.png" alt="Login Screen">
+  </p>
+
 ### Añadir Ciudad Screen
 
   <p align="center">
