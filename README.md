@@ -110,32 +110,35 @@ Este código estará creado con Java para el desarrollo principal de la aplicaci
     - [X] [Login de los usuarios](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/LoginClass.java)
       - [X] [Login de usuarios admin al inicio admin](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/LoginController.java)
       - [X] [Login de usuarios no admin al inicio usuario](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/LoginController.java)
-  - [X] [Crear ciudades de destino, solo con usuarios administradores](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
-  - [X] [Crear vuelos, solo con usuarios administradores](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
-    - [X] [Listar ciudades de salida con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
-    - [X] [Listar ciudades de destino con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
-    - [X] [Listar aviones con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/MenuAviones.java)
-    - [X] [Almacenar que usuario a creado ese vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/GlobalData.java)
-    - [X] Selector de fechas 
-  - [X] [Borrar vuelos ya creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
-    - [X] [Listar los vuelos creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
-  - [ ] Listar vuelos de los usuarios normales con un menú
-    - [ ] Mostrar información de cada uno de esos vuelos
-      - Destino
-      - Salida
-      - Fecha 
+  - [X] Apartado Administradores 
+    - [X] [Crear ciudades de destino, solo con usuarios administradores](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+    - [X] [Crear vuelos, solo con usuarios administradores](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+      - [X] [Listar ciudades de salida con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
+      - [X] [Listar ciudades de destino con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
+      - [X] [Listar aviones con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/MenuAviones.java)
+      - [X] [Almacenar que usuario a creado ese vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/GlobalData.java)
+      - [X] Selector de fechas 
+    - [X] [Borrar vuelos ya creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+      - [X] [Listar los vuelos creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
+  - [ ] Apartado Usuarios 
+    - [ ] Reservar vuelos con usuarios normales
+      - [ ] Listar vuelos disponibles con un menú
+        - [ ] Mostrar información de cada vuelo
+          - Destino
+          - Salida
+          - Fecha
+        - [ ] Generar PDF con los datos de la Reserva
+        - [ ] Verificación de usuario al reservar vuelo
+    - [ ] Listar vuelos de los usuarios normales con un menú
+      - [ ] Mostrar información de cada uno de esos vuelos
+        - Destino
+        - Salida
+        - Fecha 
     - [ ] Habilitar función de cancelación del vuelo
       - [ ] Verificación de usuario al cancelar vuelo
     - [ ] Habilitar función de modificación del vuelo
       - [ ] Modificar asiento
-      - [ ] Verificación de usuario al modificar vuelo
-  - [ ] Reservar vuelos con usuarios normales
-    - [ ] Listar vuelos disponibles con un menú
-      - [ ] Mostrar información de cada vuelo
-          - Destino
-          - Salida
-          - Fecha 
-    - [ ] Verificación de usuario al reservar vuelo  
+      - [ ] Verificación de usuario al modificar vuelo 
 - [ ] Crear la GUI
 
 Mira los  [problemas abiertos](https://github.com/Zenin0/Proyecto-DAM/issues) para una lista completa de las propuestas (y errores conocidos).
