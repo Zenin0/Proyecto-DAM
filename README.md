@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Zenin0/Proyecto-DAM">
-    <img src="images/logo.png" alt="Logo" width="300" height="300">
+    <img src="images/logo.png" alt="Logo" width="500" height="500">
   </a>
 
   <h3 align="center">Manolo Airlines</h3>
