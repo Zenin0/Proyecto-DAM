@@ -48,7 +48,7 @@ public class Gestioner {
             PDFdocument.add(image);
 
             // Insertar la informacion de el vuelo
-            paragraph = new Paragraph(pdfText);
+            paragraph = new Paragraph(pdfText, new Font(Font.FontFamily.TIMES_ROMAN, 18));
             paragraph.setAlignment(Paragraph.ALIGN_CENTER);
             PDFdocument.add(paragraph);
 
@@ -60,7 +60,10 @@ public class Gestioner {
 
             PDFdocument.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText(e.getMessage());
+            dialog.show();
         }
     }
 
