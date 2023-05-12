@@ -5,9 +5,11 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+import java.io.FileOutputStream;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,12 +32,12 @@ public class Gestioner {
         Document PDFdocument = new Document();
         try {
             // Informacion del Archivo
+            PdfWriter.getInstance(PDFdocument, new FileOutputStream("JustificanteDeVuelo.pdf"));
 
             PDFdocument.open();
-            Paragraph paragraph;
 
             // Titulo
-            paragraph = new Paragraph("Justificante de Vuelo", new Font(Font.FontFamily.TIMES_ROMAN, 25));
+            Paragraph paragraph = new Paragraph("Justificante de Vuelo", new Font(Font.FontFamily.TIMES_ROMAN, 25));
             paragraph.setAlignment(Paragraph.ALIGN_CENTER);
             PDFdocument.add(paragraph);
 
