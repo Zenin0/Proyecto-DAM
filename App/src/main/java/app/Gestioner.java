@@ -1,8 +1,13 @@
 package app;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+import java.io.FileOutputStream;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +21,24 @@ public class Gestioner {
 
     public Gestioner() {
 
+    }
+
+    public static void createPDF(String pdfText) {
+        Document document = new Document();
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("output.pdf"));
+            document.open();
+            Image image = Image.getInstance("./images/logo.png");
+            image.setAlignment(Image.MIDDLE); // set alignment to center
+            image.scaleAbsolute(200, 200); // set width and height to 100h to image file
+            document.add(image);
+            Paragraph paragraph = new Paragraph(pdfText);
+            paragraph.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(paragraph);
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Funcion pra el login de usuarios

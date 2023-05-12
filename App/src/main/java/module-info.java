@@ -2,7 +2,7 @@ module app {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires transitive javafx.graphics;
+    requires itextpdf;
 
 
     opens app to javafx.fxml;

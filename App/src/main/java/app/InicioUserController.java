@@ -8,6 +8,7 @@ import javafx.scene.control.Alert.AlertType;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class InicioUserController implements Initializable {
@@ -16,6 +17,7 @@ public class InicioUserController implements Initializable {
     private final Menus menus = new Menus();
 
     private final Getter getter = new Getter();
+    private final Gestioner gestioner = new Gestioner();
 
 
     @FXML
@@ -81,10 +83,24 @@ public class InicioUserController implements Initializable {
 
 
     public void loadVuelos() throws SQLException {
-        for (String vuelo : menus.listaVuelosStrings()) {
-            String[] parts = vuelo.replaceAll(" ", "").split("-");
-            String res = parts[0] + " - Salida: " + new Getter().getNombreCiudad(Integer.parseInt(parts[1])) + " \nDestino: " + new Getter().getNombreCiudad(Integer.parseInt(parts[2])) + "\nFecha Salida: " + parts[5] + "/" + parts[4] + "/" + parts[3];
-            vuelosDisponiblesReservaList.getItems().add(res);
+        ArrayList<String> vuelos = menus.listaVuelosStrings();
+        if (vuelos.size() > 0) {
+            for (String vuelo : vuelos) {
+                String[] parts = vuelo.replaceAll(" ", "").split("-");
+                if (getter.getAsientosLibres(getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0])) > 0) {
+                    String asientosLibres = String.valueOf(getter.getAsientosLibres(getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0])));
+                    String nombreCiudadSalida = new Getter().getNombreCiudad(Integer.parseInt(parts[1]));
+                    String nombreCiudadDestino = new Getter().getNombreCiudad(Integer.parseInt(parts[2]));
+                    String res = parts[0] + "\nCiudad de Salida: " + nombreCiudadSalida + " \nCiuad de Destino: " + nombreCiudadDestino + "\nFecha Despegue: " + parts[5] + "/" + parts[4] + "/" + parts[3] + "\nAsientos Disponibles: " + asientosLibres;
+                    this.vuelosDisponiblesReservaList.getItems().add(res);
+                }
+            }
+        }else{
+            Alert dialog = new Alert(AlertType.INFORMATION);
+            dialog.setTitle("Vuelos");
+            dialog.setHeaderText("No hay vuelos Dispnibles");
+            dialog.show();
+            this.vuelosDisponiblesReservaList.getItems().add("No hay vuelos Dispnibles");
         }
     }
 
@@ -97,11 +113,12 @@ public class InicioUserController implements Initializable {
     }
 
     private void reservar() throws SQLException {
-        String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().replace(" ", "").split("-");
+        String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().split("\n");
         Alert dialog = new Alert(AlertType.INFORMATION);
         dialog.setTitle("Asientos Libres");
         dialog.setHeaderText(String.valueOf(getter.getAsientosLibres(getter.getIDAvioFromVuelo(Integer.parseInt(s[0])), Integer.parseInt(s[0]))));
         dialog.show();
+        Gestioner.createPDF(this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem());
 
     }
 }
