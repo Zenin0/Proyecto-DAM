@@ -1,8 +1,9 @@
 package app;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
+
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -23,23 +24,46 @@ public class Gestioner {
 
     }
 
+
+    // Funcion para crear el PDF para el Ticket del Vuelo
     public static void createPDF(String pdfText) {
-        Document document = new Document();
+        // Generar Objecto Documento
+        Document PDFdocument = new Document();
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("output.pdf"));
-            document.open();
-            Image image = Image.getInstance("./images/logo.png");
-            image.setAlignment(Image.MIDDLE); // set alignment to center
-            image.scaleAbsolute(200, 200); // set width and height to 100h to image file
-            document.add(image);
-            Paragraph paragraph = new Paragraph(pdfText);
+            // Informacion del Archivo
+            PdfWriter writer = PdfWriter.getInstance(PDFdocument, new FileOutputStream("JustificanteDeVuelo.pdf"));
+
+            PDFdocument.open();
+            Paragraph paragraph = new Paragraph();
+
+            // Titulo
+            paragraph = new Paragraph("Justificante de Vuelo", new Font(Font.FontFamily.TIMES_ROMAN, 25));
             paragraph.setAlignment(Paragraph.ALIGN_CENTER);
-            document.add(paragraph);
-            document.close();
+            PDFdocument.add(paragraph);
+
+            // Insertar el Logo
+            Image image = Image.getInstance("src/main/resources/app/css/logoT.png");
+            image.setAlignment(Image.MIDDLE);
+            image.scaleAbsolute(300, 300);
+            PDFdocument.add(image);
+
+            // Insertar la informacion de el vuelo
+            paragraph = new Paragraph(pdfText);
+            paragraph.setAlignment(Paragraph.ALIGN_CENTER);
+            PDFdocument.add(paragraph);
+
+            // Generar el QR
+            String qrCodeUrl = "https://github.com/Zenin0/Proyecto-DAM";
+            Image qrCodeImage = Image.getInstance("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrCodeUrl);
+            qrCodeImage.setAbsolutePosition((PDFdocument.getPageSize().getWidth() - qrCodeImage.getScaledWidth()) / 2, 50);
+            PDFdocument.add(qrCodeImage);
+
+            PDFdocument.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     // Funcion pra el login de usuarios
     // Guía returns

@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="POM config">
+      <change afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/logoT.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/app-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/home_ad.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logoMA.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/register.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +57,12 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/App/src/main/resources/app/css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="app" />
     </key>
@@ -182,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683898680840</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="POM config">
+      <created>1683899030333</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1683899030333</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -196,6 +199,7 @@
     <MESSAGE value="Updated" />
     <MESSAGE value="Compression del codigo" />
     <MESSAGE value="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo" />
+    <MESSAGE value="POM config" />
+    <option name="LAST_COMMIT_MESSAGE" value="POM config" />
   </component>
 </project>
