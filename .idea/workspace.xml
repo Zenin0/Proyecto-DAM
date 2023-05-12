@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Archivos Formateados">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/lib/mysql-connector-java-8.0.29.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/app-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/home_ad.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logoMA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/register.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683829052935</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo">
+      <created>1683898680840</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683898680840</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -181,6 +195,7 @@
     <MESSAGE value="FXMLs updates" />
     <MESSAGE value="Updated" />
     <MESSAGE value="Compression del codigo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Compression del codigo" />
+    <MESSAGE value="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo" />
   </component>
 </project>
