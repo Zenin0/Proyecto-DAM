@@ -1,14 +1,13 @@
 package app;
 
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfPageEventHelper;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-import java.io.FileOutputStream;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,10 +30,9 @@ public class Gestioner {
         Document PDFdocument = new Document();
         try {
             // Informacion del Archivo
-            PdfWriter writer = PdfWriter.getInstance(PDFdocument, new FileOutputStream("JustificanteDeVuelo.pdf"));
 
             PDFdocument.open();
-            Paragraph paragraph = new Paragraph();
+            Paragraph paragraph;
 
             // Titulo
             paragraph = new Paragraph("Justificante de Vuelo", new Font(Font.FontFamily.TIMES_ROMAN, 25));
