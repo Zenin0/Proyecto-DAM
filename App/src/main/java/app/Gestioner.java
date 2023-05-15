@@ -8,7 +8,9 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.*;
 import java.text.ParseException;
@@ -23,12 +25,17 @@ public class Gestioner {
 
 
     // Funcion para crear el PDF para el Ticket del Vuelo
-    public static void createPDF(String pdfText, String filepath) {
+    public static void createPDF(String pdfText) {
         // Generar Objecto Documento
         Document PDFdocument = new Document();
         try {
+
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Justificante de Vuelo");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+            File selectedFile = fileChooser.showSaveDialog(null);
             // Informacion del Archivo
-            PdfWriter.getInstance(PDFdocument, new FileOutputStream(filepath));
+            PdfWriter.getInstance(PDFdocument, new FileOutputStream(selectedFile.getAbsolutePath()));
 
             PDFdocument.open();
 

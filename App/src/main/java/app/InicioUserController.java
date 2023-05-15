@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.FileChooser;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -140,17 +138,25 @@ public class InicioUserController implements Initializable {
                 Optional<ButtonType> alertResult = alert.showAndWait();
                 ButtonType button = alertResult.orElse(ButtonType.CANCEL);
                 if (button == downloadButton) {
-                    FileChooser fileChooser = new FileChooser();
-                    fileChooser.setTitle("Justificante de Vuelo");
-                    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
-                    File selectedFile = fileChooser.showSaveDialog(null);
-                    String filePath = selectedFile.getAbsolutePath();
-                    Gestioner.createPDF(this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem(), filePath);
+
+                    Gestioner.createPDF(this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem());
+                    Alert fin = new Alert(AlertType.CONFIRMATION);
+                    fin.setTitle("PDF");
+                    fin.setHeaderText("PDF descargado con exito");
+                    fin.show();
                 } else {
-                    System.out.println("Canceled");
+                    Alert fin = new Alert(AlertType.ERROR);
+                    fin.setTitle("PDF");
+                    fin.setHeaderText("Operacion Cancelada");
+                    fin.show();
                 }
 
                 loadVuelos();
+            } else {
+                Alert fin = new Alert(AlertType.ERROR);
+                fin.setTitle("PDF");
+                fin.setHeaderText("Operacion Cancelada");
+                fin.show();
             }
 
         }
