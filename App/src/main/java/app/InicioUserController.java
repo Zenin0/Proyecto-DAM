@@ -138,7 +138,6 @@ public class InicioUserController implements Initializable {
                 Optional<ButtonType> alertResult = alert.showAndWait();
                 ButtonType button = alertResult.orElse(ButtonType.CANCEL);
                 if (button == downloadButton) {
-
                     Gestioner.createPDF(this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem());
                     Alert fin = new Alert(AlertType.CONFIRMATION);
                     fin.setTitle("PDF");
