@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class InicioUserController implements Initializable {
@@ -83,25 +84,27 @@ public class InicioUserController implements Initializable {
 
 
     public void loadVuelos() throws SQLException {
+        this.vuelosDisponiblesReservaList.getItems().clear();
         ArrayList<String> vuelos = menus.listaVuelosStrings();
         if (vuelos.size() > 0) {
             for (String vuelo : vuelos) {
                 String[] parts = vuelo.replaceAll(" ", "").split("-");
-                if (getter.getAsientosLibres(getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0])) > 0) {
-                    String asientosLibres = String.valueOf(getter.getAsientosLibres(getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0])));
+                if (getter.getAsientosLibresCant(getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0])) > 0) {
+                    String asientosLibres = String.valueOf(getter.getAsientosLibresCant(getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0])));
                     String nombreCiudadSalida = new Getter().getNombreCiudad(Integer.parseInt(parts[1]));
                     String nombreCiudadDestino = new Getter().getNombreCiudad(Integer.parseInt(parts[2]));
                     String res = parts[0] + "\nCiudad de Salida: " + nombreCiudadSalida + " \nCiuad de Destino: " + nombreCiudadDestino + "\nFecha Despegue: " + parts[5] + "/" + parts[4] + "/" + parts[3] + "\nAsientos Disponibles: " + asientosLibres;
                     this.vuelosDisponiblesReservaList.getItems().add(res);
                 }
             }
-        }else{
+        } else {
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("Vuelos");
             dialog.setHeaderText("No hay vuelos Dispnibles");
             dialog.show();
             this.vuelosDisponiblesReservaList.getItems().add("No hay vuelos Dispnibles");
         }
+
     }
 
     private void endSession() throws IOException {
@@ -114,11 +117,31 @@ public class InicioUserController implements Initializable {
 
     private void reservar() throws SQLException {
         String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().split("\n");
-        Alert dialog = new Alert(AlertType.INFORMATION);
-        dialog.setTitle("Asientos Libres");
-        dialog.setHeaderText(String.valueOf(getter.getAsientosLibres(getter.getIDAvioFromVuelo(Integer.parseInt(s[0])), Integer.parseInt(s[0]))));
-        dialog.show();
-        Gestioner.createPDF(this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem());
+        ArrayList<Integer> asientosLibres = getter.getAsientosLibres(getter.getIDAvioFromVuelo(Integer.parseInt(s[0])), Integer.parseInt(s[0]));
+        ChoiceDialog<Integer> dialog = new ChoiceDialog<>(asientosLibres.get(0), asientosLibres);
+        dialog.setTitle("Seleccionar Asiento");
+        dialog.setContentText("Seleccione un asiento:");
+        Optional<Integer> result = dialog.showAndWait();
 
+        if (result.isPresent()) {
+            int selectedAsiento = result.get();
+            if (gestioner.reservarVuelo(getter.getUsername(GlobalData.userName), Integer.parseInt(s[0]), selectedAsiento)) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Vuelo Reservado");
+                alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
+                alert.setResizable(false);
+                alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
+
+                Optional<ButtonType> alertResult = alert.showAndWait();
+                ButtonType button = alertResult.orElse(ButtonType.CANCEL);
+                if (button == ButtonType.OK) {
+                    Gestioner.createPDF(this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem());
+                } else {
+                    System.out.println("Canceled");
+                }
+                loadVuelos();
+            }
+        }
     }
+
 }

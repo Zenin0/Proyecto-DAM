@@ -389,5 +389,36 @@ public class Gestioner {
         return false;
     }
 
+    // Funcion para reservar un vuelo
+    public boolean reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) throws SQLException {
+        try {
+            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
+            int id;
+            // Sacar la siguiente ID de las Ciudades
+            String test = "SELECT max(ID_Reserva) FROM Reservas";
+            PreparedStatement prst = con.prepareStatement(test);
+            ResultSet resulttest = prst.executeQuery();
+            if (resulttest.next()) {
+                id = resulttest.getInt(1);
+                String consulta = "INSERT INTO Reservas (ID_Reserva, ID_Usuario, ID_Vuelo, Asiento) VALUES (? , ?, ?, ?)";
+                PreparedStatement insertStatement = con.prepareStatement(consulta);
+                insertStatement.setInt(1, id + 1);
+                insertStatement.setInt(2, IDUSU);
+                insertStatement.setInt(3, IDVUELO);
+                insertStatement.setInt(4, selectedAsiento);
+                insertStatement.executeUpdate();
+                con.close();
+                return true;
+
+            }
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+        return false;
+    }
+
 
 }
