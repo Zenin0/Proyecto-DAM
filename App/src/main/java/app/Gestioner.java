@@ -378,8 +378,8 @@ public class Gestioner {
     // Funcion para eliminar un vuelo de la BDD
     public boolean eliminarVuelo(int ID) {
         try {
-            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
 
+            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
             String query = "DELETE FROM Vuelos WHERE ID_Vuelo = ?";
             PreparedStatement checkStatement = con.prepareStatement(query);
             checkStatement.setInt(1, ID);
@@ -401,11 +401,12 @@ public class Gestioner {
         try {
             Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
             int id;
-            // Sacar la siguiente ID de las Ciudades
+            // Sacar la siguiente ID del vuelo
             String test = "SELECT max(ID_Reserva) FROM Reservas";
             PreparedStatement prst = con.prepareStatement(test);
             ResultSet resulttest = prst.executeQuery();
             if (resulttest.next()) {
+                // Insertarlo
                 id = resulttest.getInt(1);
                 String consulta = "INSERT INTO Reservas (ID_Reserva, ID_Usuario, ID_Vuelo, Asiento) VALUES (? , ?, ?, ?)";
                 PreparedStatement insertStatement = con.prepareStatement(consulta);
