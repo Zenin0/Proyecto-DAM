@@ -121,24 +121,34 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
     - [X] [Borrar vuelos ya creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
       - [X] [Listar los vuelos creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
   - [ ] Apartado Usuarios 
-    - [ ] Reservar vuelos con usuarios normales
-      - [ ] Listar vuelos disponibles con un menú
-        - [ ] Mostrar información de cada vuelo
+    - [X] [Reservar vuelos con usuarios normales](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+      - [X] [Listar vuelos disponibles con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Menus.java)
+        - [X] Mostrar información de cada vuelo
           - Destino
           - Salida
           - Fecha
-        - [ ] Generar PDF con los datos de la Reserva
-        - [ ] Verificación de usuario al reservar vuelo
+        - [X] [Generar PDF con los datos de la Reserva](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+          - [X] [Mostrar ruta donde descargar el fichero PDF](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/InicioUserController.java)
     - [ ] Listar vuelos de los usuarios normales con un menú
       - [ ] Mostrar información de cada uno de esos vuelos
         - Destino
         - Salida
         - Fecha 
+      - [ ] Descargar PDF con la información del vuelo seleccionado
+        - [ ] Mostrar ruta donde descargar el fichero PDF
     - [ ] Habilitar función de cancelación del vuelo
-      - [ ] Verificación de usuario al cancelar vuelo
+      - [ ] Listar vuelos disponibles con un menú
+        - [ ] Mostrar información de cada vuelo
+          - Destino
+          - Salida
+          - Fecha
     - [ ] Habilitar función de modificación del vuelo
+      - [ ] Listar vuelos disponibles con un menú
+        - [ ] Mostrar información de cada vuelo
+          - Destino
+          - Salida
+          - Fecha
       - [ ] Modificar asiento
-      - [ ] Verificación de usuario al modificar vuelo 
 - [ ] Crear la GUI
 
 Mira los  [problemas abiertos](https://github.com/Zenin0/Proyecto-DAM/issues) para una lista completa de las propuestas (y errores conocidos).
