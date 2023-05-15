@@ -28,7 +28,6 @@ public class Getter {
     // Funcion para conseguir el ID del a avion a parti del ID del vuelo
     public int getIDAvioFromVuelo(int IDVuelo) throws SQLException {
 
-        String em = "";
         Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
         String query = "SELECT ID_Avion FROM Vuelos WHERE ID_Vuelo = ?";
         PreparedStatement checkStatement = con.prepareStatement(query);
@@ -46,7 +45,6 @@ public class Getter {
     // Funcion para conseguir los asientos libre de un Vuelo, a partir de la ID del avion que se usa y su ID del vuelo
     public int getAsientosLibresCant(int IDAvion, int IDVuelo) throws SQLException {
 
-        String em = "";
         Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
         String query = "SELECT count(*) FROM Reservas WHERE ID_Vuelo = ?";
         PreparedStatement checkStatement = con.prepareStatement(query);
