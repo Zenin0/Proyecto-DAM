@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="POM config">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Gitignore .pdf files">
       <change beforePath="$PROJECT_DIR$/App/JustificanteDeVuelo.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/App/JustificanteDeVuelo.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683899030333</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Gitignore .pdf files">
+      <created>1684168977478</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684168977478</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -199,6 +205,7 @@
     <MESSAGE value="Compression del codigo" />
     <MESSAGE value="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo" />
     <MESSAGE value="POM config" />
-    <option name="LAST_COMMIT_MESSAGE" value="POM config" />
+    <MESSAGE value="Gitignore .pdf files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gitignore .pdf files" />
   </component>
 </project>

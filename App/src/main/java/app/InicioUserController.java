@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -116,6 +118,7 @@ public class InicioUserController implements Initializable {
     }
 
     private void reservar() throws SQLException {
+
         String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().split("\n");
         ArrayList<Integer> asientosLibres = getter.getAsientosLibres(getter.getIDAvioFromVuelo(Integer.parseInt(s[0])), Integer.parseInt(s[0]));
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(asientosLibres.get(0), asientosLibres);
@@ -131,16 +134,25 @@ public class InicioUserController implements Initializable {
                 alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
                 alert.setResizable(false);
                 alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
-
+                ButtonType noThanksButton = new ButtonType("No, Gracias");
+                ButtonType downloadButton = new ButtonType("Descargar");
+                alert.getButtonTypes().setAll(noThanksButton, downloadButton);
                 Optional<ButtonType> alertResult = alert.showAndWait();
                 ButtonType button = alertResult.orElse(ButtonType.CANCEL);
-                if (button == ButtonType.OK) {
-                    Gestioner.createPDF(this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem());
+                if (button == downloadButton) {
+                    FileChooser fileChooser = new FileChooser();
+                    fileChooser.setTitle("Justificante de Vuelo");
+                    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+                    File selectedFile = fileChooser.showSaveDialog(null);
+                    String filePath = selectedFile.getAbsolutePath();
+                    Gestioner.createPDF(this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem(), filePath);
                 } else {
                     System.out.println("Canceled");
                 }
+
                 loadVuelos();
             }
+
         }
     }
 

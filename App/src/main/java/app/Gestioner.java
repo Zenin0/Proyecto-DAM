@@ -23,12 +23,12 @@ public class Gestioner {
 
 
     // Funcion para crear el PDF para el Ticket del Vuelo
-    public static void createPDF(String pdfText) {
+    public static void createPDF(String pdfText, String filepath) {
         // Generar Objecto Documento
         Document PDFdocument = new Document();
         try {
             // Informacion del Archivo
-            PdfWriter.getInstance(PDFdocument, new FileOutputStream("JustificanteDeVuelo.pdf"));
+            PdfWriter.getInstance(PDFdocument, new FileOutputStream(filepath));
 
             PDFdocument.open();
 
