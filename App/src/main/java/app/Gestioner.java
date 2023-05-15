@@ -397,7 +397,7 @@ public class Gestioner {
     }
 
     // Funcion para reservar un vuelo
-    public boolean reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) throws SQLException {
+    public boolean reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) {
         try {
             Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
             int id;
