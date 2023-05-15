@@ -11,10 +11,7 @@ public class Getter {
     public String getNombreCiudad(int IDCiudad) throws SQLException {
 
         String em = "";
-        String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
-        String USER = "root";
-        String PASS = "admini";
-        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
         String query = "SELECT Nombre_Ciudad FROM Ciudades WHERE ID_Ciudad = ?";
         PreparedStatement checkStatement = con.prepareStatement(query);
         checkStatement.setInt(1, IDCiudad);
@@ -31,10 +28,7 @@ public class Getter {
     public int getIDAvioFromVuelo(int IDVuelo) throws SQLException {
 
         String em = "";
-        String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
-        String USER = "root";
-        String PASS = "admini";
-        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
         String query = "SELECT ID_Avion FROM Vuelos WHERE ID_Vuelo = ?";
         PreparedStatement checkStatement = con.prepareStatement(query);
         checkStatement.setInt(1, IDVuelo);
@@ -55,10 +49,7 @@ public class Getter {
     public int getAsientosLibres(int IDAvion, int IDVuelo) throws SQLException {
 
         String em = "";
-        String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
-        String USER = "root";
-        String PASS = "admini";
-        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
         String query = "SELECT count(*) FROM Reservas WHERE ID_Vuelo = ?";
         PreparedStatement checkStatement = con.prepareStatement(query);
         checkStatement.setInt(1, IDVuelo);

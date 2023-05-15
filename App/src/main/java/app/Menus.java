@@ -6,16 +6,12 @@ import java.util.ArrayList;
 // Objecto que devuelve listar de Strings que se usan en los Menus
 public class Menus {
 
-    private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
-    private final String USER = "root";
-    private final String PASS = "admini";
-
     // Funcion para obtener una ArrayList de las Ciudades
     public ArrayList<String> listaCiudadesStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
 
-        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
         // Comprobar si el usuario y la contraseña ya existen en la base de datos
         String query = "SELECT Nombre_Ciudad FROM Ciudades";
         PreparedStatement checkStatement = con.prepareStatement(query);
@@ -35,7 +31,7 @@ public class Menus {
 
         ArrayList<String> out = new ArrayList<>();
 
-        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
         // Comprobar si el usuario y la contraseña ya existen en la base de datos
         String query = "SELECT ID_Avion,Nombre_Avion,Anyo_Fabricacion,Capacidad FROM Aviones";
         PreparedStatement checkStatement = con.prepareStatement(query);
@@ -53,7 +49,7 @@ public class Menus {
 
         ArrayList<String> out = new ArrayList<>();
 
-        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
         // Comprobar si el usuario y la contraseña ya existen en la base de datos
         String query = "SELECT * FROM Vuelos";
         PreparedStatement checkStatement = con.prepareStatement(query);

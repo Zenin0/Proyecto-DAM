@@ -17,10 +17,6 @@ import java.text.SimpleDateFormat;
 // Objecto para gestionar las interaccciones de insercion/eliminacion de datos de la BDD
 public class Gestioner {
 
-    private final String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
-    private final String USER = "root";
-    private final String PASS = "admini";
-
     public Gestioner() {
 
     }
@@ -75,10 +71,7 @@ public class Gestioner {
     // return -1, Error login
     public int login(String usuario, String pass) {
         try {
-            String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
-            String USER = "root";
-            String PASS = "admini";
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection conn = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
 
             MD5Hasher md5 = new MD5Hasher(pass);
 
@@ -131,10 +124,7 @@ public class Gestioner {
     public boolean registrar(String Usuario, String Pass1, String Pass2, boolean admin) {
         int id;
         try {
-            String DB_URL = "jdbc:mysql://172.17.0.2:3306/Manolo_Airlines";
-            String USER = "root";
-            String PASS = "admini";
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
             // Comprobar que las contraseñas coincidan
             if (!Pass1.equals(Pass2)) {
                 Alert dialog = new Alert(AlertType.ERROR);
@@ -213,7 +203,7 @@ public class Gestioner {
     public boolean registrarAvion(String nombreAvion, int anyoFabricacion, int capacidad) {
         try {
             int id;
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
             String query = "SELECT COUNT(*) FROM Aviones WHERE Nombre_Avion = ? AND Anyo_Fabricacion = ?";
             PreparedStatement checkStatement = con.prepareStatement(query);
             checkStatement.setString(1, nombreAvion);
@@ -268,7 +258,7 @@ public class Gestioner {
         String pais = Pais.substring(0, 1).toUpperCase() + Pais.substring(1).toLowerCase();
 
         try {
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
 
             String query = "SELECT COUNT(*) FROM Ciudades WHERE Nombre_Ciudad = ? AND Pais = ?";
             PreparedStatement checkStatement = con.prepareStatement(query);
@@ -326,7 +316,7 @@ public class Gestioner {
         try {
 
             // Conseguir la ID de la Ciudad en funcion del Nombre de la ciudad de destino
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
             String query = "SELECT ID_Ciudad FROM Ciudades WHERE Nombre_Ciudad = ?";
             PreparedStatement checkStatement = con.prepareStatement(query);
             checkStatement.setString(1, CiudadDestino);
@@ -381,7 +371,7 @@ public class Gestioner {
     // Funcion para eliminar un vuelo de la BDD
     public boolean eliminarVuelo(int ID) {
         try {
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
 
             String query = "DELETE FROM Vuelos WHERE ID_Vuelo = ?";
             PreparedStatement checkStatement = con.prepareStatement(query);
