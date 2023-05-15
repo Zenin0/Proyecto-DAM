@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+# PDF files
+.pdf
+
 # Log file
 *.log
 
