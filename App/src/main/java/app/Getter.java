@@ -266,7 +266,7 @@ public class Getter {
             Date date = rs.getDate(4);
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             String formattedDate = dateFormat.format(date);
-            em = "Ciudad Saldida: " + getNombreCiudad(rs.getInt(1)) + "\nCiudad Destino: " + getNombreCiudad(rs.getInt(2)) + "\nAvion: " + getNombreAvion(rs.getInt(3)) + "\nFecha Salida: " + formattedDate;
+            em = "Ciudad de Saldida: " + getNombreCiudad(rs.getInt(1)) + "\nCiudad de Destino: " + getNombreCiudad(rs.getInt(2)) + "\nAvión: " + getNombreAvion(rs.getInt(3)) + "\nFecha Salida: " + formattedDate;
         }
         return em;
     }
@@ -286,7 +286,7 @@ public class Getter {
             Asiento = rs.getInt("Asiento");
         }
         em += "Nombre de Usuario: " + getUsernameNombre(ID_Usuario) + "\n";
-        em += "Asiento: " + Asiento + "\n";
+        em += "Asiento asignado: " + Asiento + "\n";
         em += getVueloInfo(ID_Vuelo);
         return em;
     }
