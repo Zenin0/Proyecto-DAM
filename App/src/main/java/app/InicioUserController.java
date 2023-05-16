@@ -153,7 +153,7 @@ public class InicioUserController implements Initializable {
         } else {  // No hay vuelos Disponibles
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("Vuelos");
-            dialog.setHeaderText("No hay vuelos Dispnibles");
+            dialog.setHeaderText("No hay vuelos dispnibles");
             dialog.show();
             this.vuelosDisponiblesReservaList.getItems().add("No hay vuelos Dispnibles");
         }
@@ -163,18 +163,18 @@ public class InicioUserController implements Initializable {
     // Cargar las reservas de un usuario en la ListView
     public void loadReservas() throws SQLException {
         this.misReservasList.getItems().clear();
-        // Araylist de String con la informacion de los vuelos
+        // Araylist de String con la informacion de las reservas
         ArrayList<String> reservas = getter.getListaReservasUser(getter.getUsernameID(GlobalData.userName));
         if (reservas.size() > 0) {
             for (String reserva : reservas) {
                 this.misReservasList.getItems().add(reserva);
             }
-        } else {  // No hay vuelos Disponibles
+        } else {  // No hay reservas Disponibles
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("Reservas");
             dialog.setHeaderText("No hay reservas dispnibles");
             dialog.show();
-            this.misReservasList.getItems().add("No hay reservas Dispnibles");
+            this.misReservasList.getItems().add("No hay reservas dispnibles");
         }
 
     }
