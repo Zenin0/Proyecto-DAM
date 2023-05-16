@@ -19,13 +19,25 @@ public class InicioUserController implements Initializable {
 
 
     @FXML
-    private MenuItem misReservasMenuItem;
+    private Button downloadJustificanteButton;
 
     @FXML
     private Button endSession;
 
     @FXML
+    private ListView<String> misReservasList;
+
+    @FXML
+    private MenuItem misReservasMenuItem;
+
+    @FXML
+    private Button modificarReservaButton;
+
+    @FXML
     private SplitMenuButton optionsMenu;
+
+    @FXML
+    private Button removeReservaButton;
 
     @FXML
     private Button reservarButton;
@@ -38,9 +50,6 @@ public class InicioUserController implements Initializable {
 
     @FXML
     private ListView<String> vuelosDisponiblesReservaList;
-
-    @FXML
-    private ListView<String> misReservasList;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -84,6 +93,16 @@ public class InicioUserController implements Initializable {
                 dialog.show();
             }
         });
+        this.downloadJustificanteButton.setOnAction(event -> {
+            try {
+                descargarJustificante();
+            } catch (SQLException e) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
+            }
+        });
 
     }
 
@@ -94,6 +113,9 @@ public class InicioUserController implements Initializable {
         this.reservarButton.setVisible(true);
         this.reservarLabel.setVisible(true);
         this.misReservasList.setVisible(false);
+        this.removeReservaButton.setVisible(false);
+        this.modificarReservaButton.setVisible(false);
+        this.downloadJustificanteButton.setVisible(false);
         loadVuelos();
     }
 
@@ -101,6 +123,9 @@ public class InicioUserController implements Initializable {
     public void menuMisReservas() throws SQLException {
         this.optionsMenu.setText("Mis Reservas");
         this.misReservasList.setVisible(true);
+        this.removeReservaButton.setVisible(true);
+        this.modificarReservaButton.setVisible(true);
+        this.downloadJustificanteButton.setVisible(true);
         this.vuelosDisponiblesReservaList.setVisible(false);
         this.reservarButton.setVisible(false);
         this.reservarLabel.setVisible(false);
@@ -165,7 +190,6 @@ public class InicioUserController implements Initializable {
 
     // Funcion que se ejecuta al pulsar el boton de Reservar
     private void reservar() throws SQLException {
-
         // Sacamos los asientos libres y hacemos un ChoiceDialog con ellos
         String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().split("\n");
         ArrayList<Integer> asientosLibres = getter.getAsientosLibres(getter.getIDAvioFromVuelo(Integer.parseInt(s[0])), Integer.parseInt(s[0]));
@@ -207,6 +231,10 @@ public class InicioUserController implements Initializable {
                 fin.show();
             }
         }
+    }
+
+    public void descargarJustificante() throws SQLException {
+        Gestioner.createPDF(this.misReservasList.getSelectionModel().getSelectedItem());
     }
 
 

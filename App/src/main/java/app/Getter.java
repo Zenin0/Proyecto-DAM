@@ -74,10 +74,10 @@ public class Getter {
         ArrayList<String> out = new ArrayList<>();
         Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
         // Comprobar si el usuario y la contraseña ya existen en la base de datos
-        String query = "SELECT ID_Reserva FROM Reservas";
+        String query = "SELECT ID_Reserva FROM Reservas WHERE ID_Usuario = ?";
         PreparedStatement checkStatement = con.prepareStatement(query);
+        checkStatement.setInt(1, IDUser);
         ResultSet rs = checkStatement.executeQuery();
-        String arr;
         while (rs.next()) {
             reservas.add(rs.getInt(1));
         }
