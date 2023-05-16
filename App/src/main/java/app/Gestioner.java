@@ -397,7 +397,7 @@ public class Gestioner {
     }
 
     // Funcion para reservar un vuelo
-    public boolean reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) {
+    public int reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) {
         try {
             Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
             int id;
@@ -416,7 +416,7 @@ public class Gestioner {
                 insertStatement.setInt(4, selectedAsiento);
                 insertStatement.executeUpdate();
                 con.close();
-                return true;
+                return id + 1;
 
             }
         } catch (SQLException e) {
@@ -425,8 +425,7 @@ public class Gestioner {
             dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
-        return false;
+        return 0;
     }
-
 
 }

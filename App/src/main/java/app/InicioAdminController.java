@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 
 public class InicioAdminController implements Initializable {
 
-    private final Menus menus = new Menus();
     private final Gestioner gestioner = new Gestioner();
 
     private final Getter getter = new Getter();
@@ -160,7 +159,7 @@ public class InicioAdminController implements Initializable {
     // Funcion para listar los vuelos y meterlos en la lista
     private void listarVuelos() throws SQLException {
         this.vuelosList.getItems().clear();
-        for (String vuelo : menus.listaVuelosStrings()) {
+        for (String vuelo : getter.getlistaVuelosStrings()) {
             String[] vueloParts = vuelo.replaceAll(" ", "").split("-");
 
             this.vuelosList.getItems().add(vueloParts[0] + " - " + getter.getNombreCiudad(Integer.parseInt(vueloParts[1])) + " - " + getter.getNombreCiudad(Integer.parseInt(vueloParts[2])) + " - " + vueloParts[4] + "/" + vueloParts[5] + "/" + vueloParts[3]);
@@ -265,21 +264,21 @@ public class InicioAdminController implements Initializable {
         this.menuCiudadesDestino.getItems().clear();
         this.menuAviones.getItems().clear();
 
-        for (String ciudad : menus.listaCiudadesStrings()) {
+        for (String ciudad : getter.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> menuCiudadesDestino.setText(item.getText()));
             menuCiudadesDestino.getItems().add(item);
         }
         menuCiudadesDestino.setPopupSide(Side.BOTTOM);
 
-        for (String ciudad : menus.listaCiudadesStrings()) {
+        for (String ciudad : getter.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> menuCiudadesSalida.setText(item.getText()));
             menuCiudadesSalida.getItems().add(item);
         }
         menuCiudadesSalida.setPopupSide(Side.BOTTOM);
 
-        for (String avion : menus.listaAvionesStrings()) {
+        for (String avion : getter.getlistaAvionesStrings()) {
             MenuItem item = new MenuItem(avion);
             item.setOnAction(event -> menuAviones.setText(item.getText()));
             menuAviones.getItems().add(item);
