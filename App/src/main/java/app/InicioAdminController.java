@@ -18,69 +18,114 @@ public class InicioAdminController implements Initializable {
     private final Gestioner gestioner = new Gestioner();
 
     private final Getter getter = new Getter();
+
     @FXML
     private Button aceptarButtonAvion;
+
     @FXML
     private Button aceptarButtonCiudad;
+
     @FXML
     private Button aceptarButtonVuelo;
+
     @FXML
     private MenuItem addAvion;
+
     @FXML
     private MenuItem addCiudad;
+
     @FXML
     private MenuItem addVuelo;
+
     @FXML
     private Label anyoFabricacion;
-    @FXML
-    private TextField anyoFabricacionField;
+
     @FXML
     private Label avionVuelo;
+
     @FXML
     private Label capacidad;
+
     @FXML
     private TextField capacidadField;
+
     @FXML
     private Label ciudadDestinoVuelo;
+
     @FXML
     private Label ciudadSalidaVuelo;
+
     @FXML
     private MenuItem delVuelo;
+
     @FXML
     private Button deleteButton;
+
     @FXML
     private Button endSession;
+
     @FXML
     private Label fechaLabel;
+
     @FXML
     private DatePicker fechaSelect;
+
+    @FXML
+    private MenuItem grandeMenuItem;
+
     @FXML
     private SplitMenuButton menu;
+
     @FXML
     private SplitMenuButton menuAviones;
+
     @FXML
     private SplitMenuButton menuCiudadesDestino;
+
     @FXML
     private SplitMenuButton menuCiudadesSalida;
+
     @FXML
     private Label nombreAvion;
+
     @FXML
     private TextField nombreAvionField;
+
     @FXML
     private Label nombreCiudad;
+
     @FXML
     private TextField nombreCiudadField;
+
     @FXML
     private Label nombrePais;
+
     @FXML
     private TextField nombrePaisField;
+
+    @FXML
+    private MenuItem normalMenuItem;
+
+    @FXML
+    private SplitMenuButton tipoAvionMenu;
+
     @FXML
     private ListView<String> vuelosList;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         // Cambiar a la funcion de Añadir una Ciudad
-        this.addCiudad.setOnAction((event) -> menuAddCiudad());
+        this.addCiudad.setOnAction((event) -> {
+            try {
+                menuAddCiudad();
+            } catch (IOException e) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
+                this.nombreCiudadField.setText("");
+            }
+        });
         // Cambiar  la funcion de Añadir un Vuelo
         this.addVuelo.setOnAction((event) -> {
             try {
@@ -92,7 +137,12 @@ public class InicioAdminController implements Initializable {
                 dialog.show();
                 this.nombreCiudadField.setText("");
             }
+
         });
+        this.grandeMenuItem.setOnAction(event ->
+                this.tipoAvionMenu.setText("Grande"));
+        this.normalMenuItem.setOnAction(event ->
+                this.tipoAvionMenu.setText("Normal"));
         // Cambir a la funcion de Añadir un Avion
         this.addAvion.setOnAction((event) -> menuAddAvion());
         // Cambiar a la funcion de eliminar un Vuelo
@@ -180,15 +230,25 @@ public class InicioAdminController implements Initializable {
 
     // Funcion para añadir un Avion
     private void addAvion() {
-        if (gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.anyoFabricacionField.getText()), Integer.parseInt(this.capacidadField.getText()))) {
-            Alert dialog = new Alert(AlertType.CONFIRMATION);
-            dialog.setTitle("Avión");
-            dialog.setHeaderText("Avión creada correctamente");
+        if (Integer.parseInt(this.capacidadField.getText()) > 200) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("Capacidad");
+            dialog.setHeaderText("Lo siento, nuestras aerolienas no pueden disponer de aviones de mas de 200 pasajeros,");
             dialog.show();
             this.nombreCiudadField.setText("");
+        } else {
+            if (gestioner.registrarAvion(this.nombreAvionField.getText(), this.tipoAvionMenu.getText(), Integer.parseInt(this.capacidadField.getText()))) {
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Avión");
+                dialog.setHeaderText("Avión creada correctamente");
+                dialog.show();
+                this.nombreCiudadField.setText("");
+
+            }
         }
 
     }
+
 
     // Funcion para añadir un Vuelo
     private void addVuelo() throws ParseException, SQLException {
@@ -243,7 +303,7 @@ public class InicioAdminController implements Initializable {
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
         this.anyoFabricacion.setVisible(false);
-        this.anyoFabricacionField.setVisible(false);
+        this.tipoAvionMenu.setVisible(false);
         this.aceptarButtonAvion.setVisible(false);
         this.capacidad.setVisible(false);
         this.capacidadField.setVisible(false);
@@ -299,7 +359,7 @@ public class InicioAdminController implements Initializable {
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
         this.anyoFabricacion.setVisible(false);
-        this.anyoFabricacionField.setVisible(false);
+        this.tipoAvionMenu.setVisible(false);
         this.aceptarButtonAvion.setVisible(false);
         this.capacidad.setVisible(false);
         this.capacidadField.setVisible(false);
@@ -316,8 +376,8 @@ public class InicioAdminController implements Initializable {
     }
 
     // Cambiar al modo Añadir Ciudad
-    private void menuAddCiudad() {
-        this.menu.setText("Añadir Ciudad");
+    private void menuAddCiudad() throws IOException {
+
         // Mostrar ciudad
         this.nombreCiudad.setVisible(true);
         this.nombreCiudadField.setVisible(true);
@@ -328,7 +388,7 @@ public class InicioAdminController implements Initializable {
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
         this.anyoFabricacion.setVisible(false);
-        this.anyoFabricacionField.setVisible(false);
+        this.tipoAvionMenu.setVisible(false);
         this.aceptarButtonAvion.setVisible(false);
         this.capacidad.setVisible(false);
         this.capacidadField.setVisible(false);
@@ -355,7 +415,7 @@ public class InicioAdminController implements Initializable {
         this.nombreAvion.setVisible(true);
         this.nombreAvionField.setVisible(true);
         this.anyoFabricacion.setVisible(true);
-        this.anyoFabricacionField.setVisible(true);
+        this.tipoAvionMenu.setVisible(true);
         this.aceptarButtonAvion.setVisible(true);
         this.capacidad.setVisible(true);
         this.capacidadField.setVisible(true);

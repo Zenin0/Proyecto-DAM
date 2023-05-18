@@ -78,13 +78,12 @@ public class Gestioner {
     // return -1, Error login
     public int login(String usuario, String pass) {
         try {
-            Connection conn = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
-
+            
             MD5Hasher md5 = new MD5Hasher(pass);
 
             // Comprobar si el usuario y la contraseña ya existen en la base de datos
             String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
-            PreparedStatement checkStatement = conn.prepareStatement(query);
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
             checkStatement.setString(1, usuario);
             checkStatement.setString(2, md5.getMd5());
             ResultSet resultSet = checkStatement.executeQuery();
@@ -94,19 +93,17 @@ public class Gestioner {
             if (count > 0) {
                 // Comprobar si el usuario es admin o no
                 query = "SELECT Is_Admin FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
-                checkStatement = conn.prepareStatement(query);
+                checkStatement = App.con.prepareStatement(query);
                 checkStatement.setString(1, usuario);
                 checkStatement.setString(2, md5.getMd5());
                 resultSet = checkStatement.executeQuery();
                 resultSet.next();
                 // Return Acceso Admin
                 if (resultSet.getInt(1) == 1) {
-                    conn.close();
                     GlobalData.userName = usuario;
                     return 1;
                 } else if (resultSet.getInt(1) == 0) {
                     // Return acceso usuario
-                    conn.close();
                     GlobalData.userName = usuario;
                     return 0;
                 } else {
@@ -114,7 +111,6 @@ public class Gestioner {
                 }
 
             }
-            conn.close();
 
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
@@ -131,7 +127,7 @@ public class Gestioner {
     public boolean registrar(String Usuario, String Pass1, String Pass2, boolean admin) {
         int id;
         try {
-            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
+            
             // Comprobar que las contraseñas coincidan
             if (!Pass1.equals(Pass2)) {
                 Alert dialog = new Alert(AlertType.ERROR);
@@ -144,7 +140,7 @@ public class Gestioner {
 
                 // Comprobar si el usuario y la contraseña ya existen en la base de datos
                 String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
-                PreparedStatement checkStatement = con.prepareStatement(query);
+                PreparedStatement checkStatement = App.con.prepareStatement(query);
                 checkStatement.setString(1, Usuario);
                 checkStatement.setString(2, md5.getMd5());
                 ResultSet resultSet = checkStatement.executeQuery();
@@ -171,14 +167,14 @@ public class Gestioner {
                     }
 
                     String test = "SELECT max(ID_Usuario) FROM Usuarios";
-                    PreparedStatement prst = con.prepareStatement(test);
+                    PreparedStatement prst = App.con.prepareStatement(test);
                     ResultSet resulttest = prst.executeQuery();
                     if (resulttest.next()) {
                         id = resulttest.getInt(1);
 
                         // Insert the new record into the database
                         String consulta = "INSERT INTO Usuarios (ID_Usuario, Nombre_Usuario, Pass, is_Admin) VALUES (? , ?, ?, ?)";
-                        PreparedStatement insertStatement = con.prepareStatement(consulta);
+                        PreparedStatement insertStatement = App.con.prepareStatement(consulta);
                         insertStatement.setInt(1, id + 1);
                         insertStatement.setString(2, Usuario);
                         insertStatement.setString(3, md5.getMd5());
@@ -194,7 +190,6 @@ public class Gestioner {
 
                 }
             }
-            con.close();
 
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
@@ -207,14 +202,13 @@ public class Gestioner {
     }
 
     // Funcion que registra un avion nuevo
-    public boolean registrarAvion(String nombreAvion, int anyoFabricacion, int capacidad) {
+    public boolean registrarAvion(String nombreAvion, String tipo, int capacidad) {
         try {
             int id;
-            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
-            String query = "SELECT COUNT(*) FROM Aviones WHERE Nombre_Avion = ? AND Anyo_Fabricacion = ?";
-            PreparedStatement checkStatement = con.prepareStatement(query);
+            boolean type = tipo.equals("Grande");
+            String query = "SELECT COUNT(*) FROM Aviones WHERE Nombre_Avion = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
             checkStatement.setString(1, nombreAvion);
-            checkStatement.setInt(2, anyoFabricacion);
             ResultSet resultSet = checkStatement.executeQuery();
             resultSet.next();
             int count = resultSet.getInt(1);
@@ -229,17 +223,17 @@ public class Gestioner {
             } else {
                 // Sacar la siguiente ID de los Aviones
                 String test = "SELECT max(ID_Avion) FROM Aviones";
-                PreparedStatement prst = con.prepareStatement(test);
+                PreparedStatement prst = App.con.prepareStatement(test);
                 ResultSet resulttest = prst.executeQuery();
                 if (resulttest.next()) {
                     id = resulttest.getInt(1);
 
                     // Insertar los datos
-                    String consulta = "INSERT INTO Aviones (ID_Avion, Nombre_Avion, Anyo_Fabricacion, capacidad) VALUES (? , ?, ?, ?)";
-                    PreparedStatement insertStatement = con.prepareStatement(consulta);
+                    String consulta = "INSERT INTO Aviones (ID_Avion, Nombre_Avion, Tipo, capacidad) VALUES (? , ?, ?, ?)";
+                    PreparedStatement insertStatement = App.con.prepareStatement(consulta);
                     insertStatement.setInt(1, id + 1);
                     insertStatement.setString(2, nombreAvion);
-                    insertStatement.setInt(3, anyoFabricacion);
+                    insertStatement.setBoolean(3, type);
                     insertStatement.setInt(4, capacidad);
                     insertStatement.executeUpdate();
                     return true;
@@ -247,7 +241,6 @@ public class Gestioner {
 
             }
 
-            con.close();
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
@@ -265,10 +258,10 @@ public class Gestioner {
         String pais = Pais.substring(0, 1).toUpperCase() + Pais.substring(1).toLowerCase();
 
         try {
-            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
+            
 
             String query = "SELECT COUNT(*) FROM Ciudades WHERE Nombre_Ciudad = ? AND Pais = ?";
-            PreparedStatement checkStatement = con.prepareStatement(query);
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
             checkStatement.setString(1, ciudad);
             checkStatement.setString(2, pais);
             ResultSet resultSet = checkStatement.executeQuery();
@@ -287,14 +280,14 @@ public class Gestioner {
 
                 // Sacar la siguiente ID de las Ciudades
                 String test = "SELECT max(ID_Ciudad) FROM Ciudades";
-                PreparedStatement prst = con.prepareStatement(test);
+                PreparedStatement prst = App.con.prepareStatement(test);
                 ResultSet resulttest = prst.executeQuery();
                 if (resulttest.next()) {
                     id = resulttest.getInt(1);
 
                     // Insertas la nueva ciudad
                     String consulta = "INSERT INTO Ciudades (ID_Ciudad, Nombre_Ciudad, Pais) VALUES (? , ?, ?)";
-                    PreparedStatement insertStatement = con.prepareStatement(consulta);
+                    PreparedStatement insertStatement = App.con.prepareStatement(consulta);
                     insertStatement.setInt(1, id + 1);
                     insertStatement.setString(2, ciudad);
                     insertStatement.setString(3, pais);
@@ -303,7 +296,6 @@ public class Gestioner {
                 }
 
             }
-            con.close();
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
@@ -323,9 +315,9 @@ public class Gestioner {
         try {
 
             // Conseguir la ID de la Ciudad en funcion del Nombre de la ciudad de destino
-            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
+            
             String query = "SELECT ID_Ciudad FROM Ciudades WHERE Nombre_Ciudad = ?";
-            PreparedStatement checkStatement = con.prepareStatement(query);
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
             checkStatement.setString(1, CiudadDestino);
             ResultSet resultSet = checkStatement.executeQuery();
             if (resultSet.next()) {
@@ -333,7 +325,7 @@ public class Gestioner {
             }
             // Conseguir la ID de la Ciudad en funcion del Nombre de la ciudad de salida
             query = "SELECT ID_Ciudad FROM Ciudades WHERE Nombre_Ciudad = ?";
-            checkStatement = con.prepareStatement(query);
+            checkStatement = App.con.prepareStatement(query);
             checkStatement.setString(1, CiudadSalida);
             resultSet = checkStatement.executeQuery();
             if (resultSet.next()) {
@@ -343,14 +335,14 @@ public class Gestioner {
             // Conseguir la siguiente ID de los Vuelos
             idAvionInt = idAvion;
             String test = "SELECT max(ID_Vuelo) FROM Vuelos";
-            PreparedStatement prst = con.prepareStatement(test);
+            PreparedStatement prst = App.con.prepareStatement(test);
             ResultSet resulttest = prst.executeQuery();
             if (resulttest.next()) {
                 id = resulttest.getInt(1);
 
                 // Realizar la siguiente insercion de los datos del nuevo vuelo
                 String consulta = "INSERT INTO Vuelos (ID_Vuelo, Ciudad_Salida, Ciudad_Destino, ID_Avion, Fecha_Salida, Creada) VALUES (? , ?, ?, ?, ?, ?)";
-                PreparedStatement insertStatement = con.prepareStatement(consulta);
+                PreparedStatement insertStatement = App.con.prepareStatement(consulta);
                 insertStatement.setInt(1, id + 1);
                 insertStatement.setInt(2, ciudadSalida);
                 insertStatement.setInt(3, ciudadDestino);
@@ -362,9 +354,6 @@ public class Gestioner {
                 insertStatement.executeUpdate();
                 return true;
             }
-
-
-            con.close();
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
@@ -379,12 +368,11 @@ public class Gestioner {
     public boolean eliminarVuelo(int ID) {
         try {
 
-            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
+            
             String query = "DELETE FROM Vuelos WHERE ID_Vuelo = ?";
-            PreparedStatement checkStatement = con.prepareStatement(query);
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
             checkStatement.setInt(1, ID);
             checkStatement.executeUpdate();
-            con.close();
             return true;
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
@@ -399,23 +387,22 @@ public class Gestioner {
     // Funcion para reservar un vuelo
     public int reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) {
         try {
-            Connection con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
+            
             int id;
             // Sacar la siguiente ID del vuelo
             String test = "SELECT max(ID_Reserva) FROM Reservas";
-            PreparedStatement prst = con.prepareStatement(test);
+            PreparedStatement prst = App.con.prepareStatement(test);
             ResultSet resulttest = prst.executeQuery();
             if (resulttest.next()) {
                 // Insertarlo
                 id = resulttest.getInt(1);
                 String consulta = "INSERT INTO Reservas (ID_Reserva, ID_Usuario, ID_Vuelo, Asiento) VALUES (? , ?, ?, ?)";
-                PreparedStatement insertStatement = con.prepareStatement(consulta);
+                PreparedStatement insertStatement = App.con.prepareStatement(consulta);
                 insertStatement.setInt(1, id + 1);
                 insertStatement.setInt(2, IDUSU);
                 insertStatement.setInt(3, IDVUELO);
                 insertStatement.setInt(4, selectedAsiento);
                 insertStatement.executeUpdate();
-                con.close();
                 return id + 1;
 
             }

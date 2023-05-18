@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -190,18 +191,41 @@ public class InicioUserController implements Initializable {
 
     // Funcion que se ejecuta al pulsar el boton de Reservar
     private void reservar() throws SQLException {
-        // Sacamos los asientos libres y hacemos un ChoiceDialog con ellos
         String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().split("\n");
-        ArrayList<Integer> asientosLibres = getter.getAsientosLibres(getter.getIDAvioFromVuelo(Integer.parseInt(s[0])), Integer.parseInt(s[0]));
-        ChoiceDialog<Integer> dialog = new ChoiceDialog<>(asientosLibres.get(0), asientosLibres);
-        dialog.setTitle("Seleccionar Asiento");
-        dialog.setContentText("Seleccione un asiento:");
-        Optional<Integer> result = dialog.showAndWait();
+        int vueloID = Integer.parseInt(s[0]);
+        int numCols = getter.getNumColsAsientos(getter.getCapacidadAvion(getter.getIDAvioFromVuelo(vueloID)));
+        int numRows = 4;
+        ArrayList<Integer> asientosLibres = getter.getAsientosLibres(getter.getIDAvioFromVuelo(vueloID), vueloID);
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
 
-        // Una vez tenemos el asiento
-        if (result.isPresent()) {
-            int selectedAsiento = result.get();
-            // Hacemos la reserva
+        final int[] selectedSeat = {-1};
+
+        for (int row = 1; row <= numRows; row++) {
+            for (int col = 1; col <= numCols; col++) {
+                int seatNum = (row - 1) * numCols + col;
+                Button seatButton = new Button(String.valueOf(seatNum));
+                seatButton.setPrefSize(50, 50);
+
+                if (asientosLibres.contains(seatNum)) {
+                    seatButton.setOnAction(event -> selectedSeat[0] = Integer.parseInt(seatButton.getText()));
+                } else {
+                    seatButton.setDisable(true);
+                }
+                gridPane.add(seatButton, col, row);
+            }
+        }
+
+        Dialog<Void> dialog = new Dialog<>();
+        dialog.setTitle("Seleccionar Asiento");
+        dialog.getDialogPane().setContent(gridPane);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.APPLY);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        dialog.showAndWait();
+        int selectedAsiento = selectedSeat[0];
+        // Hacemos la reserva
+        if (selectedAsiento != -1 ){
             int outReserva = gestioner.reservarVuelo(getter.getUsernameID(GlobalData.userName), Integer.parseInt(s[0]), selectedAsiento);
             if (outReserva != 0) {
                 // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
@@ -230,7 +254,14 @@ public class InicioUserController implements Initializable {
                 fin.setHeaderText("Operacion Cancelada");
                 fin.show();
             }
+        }else{
+            Alert fin = new Alert(AlertType.ERROR);
+            fin.setTitle("Seleccion de Asiento");
+            fin.setHeaderText("Operacion Cancelada");
+            fin.show();
         }
+
+
     }
 
     public void descargarJustificante() throws SQLException {

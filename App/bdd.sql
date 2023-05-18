@@ -23,7 +23,7 @@ CREATE TABLE `Aviones`(
     ID_Avion INT NOT NULL ,
     Nombre_Avion VARCHAR(255) NOT NULL,
     Capacidad INT NOT NULL,
-    Anyo_Fabricacion INT NOT NULl,
+    TIPO BOOLEAN NOT NULl,
     CONSTRAINT PK_Aviones PRIMARY KEY(ID_Avion)
 );
 

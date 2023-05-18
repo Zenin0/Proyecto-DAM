@@ -40,8 +40,7 @@
             <Button fx:id="aceptarButtonAvion" mnemonicParsing="false" text="Aceptar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <TextField fx:id="nombreAvionField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label fx:id="nombreAvion" contentDisplay="CENTER" text="Nombre del Avion" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="anyoFabricacionField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label fx:id="anyoFabricacion" contentDisplay="CENTER" text="Año Fabricación" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="anyoFabricacion" contentDisplay="CENTER" text="Tamaño" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="ciudadSalidaVuelo" contentDisplay="CENTER" text="Ciudad Salida" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="ciudadDestinoVuelo" contentDisplay="CENTER" text="Ciudad Destino" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="avionVuelo" contentDisplay="CENTER" text="Avion" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -74,6 +73,12 @@
             </SplitMenuButton>
             <Label styleClass="h1" text="Gestion Administrativa" wrapText="true" GridPane.columnIndex="1" />
             <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="4" />
+            <SplitMenuButton fx:id="tipoAvionMenu" mnemonicParsing="false" text="Tamaño" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+              <items>
+                <MenuItem fx:id="grandeMenuItem" mnemonicParsing="false" text="Grande" />
+                <MenuItem fx:id="normalMenuItem" mnemonicParsing="false" text="Normal" />
+              </items>
+            </SplitMenuButton>
          </children>
          <VBox.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
