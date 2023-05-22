@@ -105,31 +105,23 @@ public class InicioUserController implements Initializable {
             }
         });
 
+        this.removeReservaButton.setOnAction(event -> {
+            try {
+                eliminarReserva();
+            } catch (SQLException e) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
+            }
+        });
+
     }
 
-    // Modificar la vista para reservar un avion
-    public void menuReservas() throws SQLException {
-        this.optionsMenu.setText("Reservar");
-        this.vuelosDisponiblesReservaList.setVisible(true);
-        this.reservarButton.setVisible(true);
-        this.reservarLabel.setVisible(true);
-        this.misReservasList.setVisible(false);
-        this.removeReservaButton.setVisible(false);
-        this.modificarReservaButton.setVisible(false);
-        this.downloadJustificanteButton.setVisible(false);
-        loadVuelos();
-    }
 
-    // Modificar la vista para reservar un avion
-    public void menuMisReservas() throws SQLException {
-        this.optionsMenu.setText("Mis Reservas");
-        this.misReservasList.setVisible(true);
-        this.removeReservaButton.setVisible(true);
-        this.modificarReservaButton.setVisible(true);
-        this.downloadJustificanteButton.setVisible(true);
-        this.vuelosDisponiblesReservaList.setVisible(false);
-        this.reservarButton.setVisible(false);
-        this.reservarLabel.setVisible(false);
+    public void eliminarReserva() throws SQLException {
+        String idreserva = this.misReservasList.getSelectionModel().getSelectedItem().replaceAll("[^0-9]", "").substring(0, 1);
+        gestioner.eliminarReserva(Integer.parseInt(idreserva));
         loadReservas();
     }
 
@@ -193,8 +185,10 @@ public class InicioUserController implements Initializable {
     private void reservar() throws SQLException {
         String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().split("\n");
         int vueloID = Integer.parseInt(s[0]);
-        int numCols = getter.getNumColsAsientos(getter.getCapacidadAvion(getter.getIDAvioFromVuelo(vueloID)));
-        int numRows = 4;
+        int numAsientos = getter.getAsientosLibres(getter.getIDAvioFromVuelo(vueloID), vueloID).size();
+        int numCols = getter.getNumCols(numAsientos);
+        int numRows = getter.getNumRows(numAsientos, numCols);
+
         ArrayList<Integer> asientosLibres = getter.getAsientosLibres(getter.getIDAvioFromVuelo(vueloID), vueloID);
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
@@ -211,61 +205,106 @@ public class InicioUserController implements Initializable {
                 if (asientosLibres.contains(seatNum)) {
                     seatButton.setOnAction(event -> selectedSeat[0] = Integer.parseInt(seatButton.getText()));
                 } else {
+                    seatButton.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #000000");
                     seatButton.setDisable(true);
                 }
                 gridPane.add(seatButton, col, row);
             }
         }
 
-        Dialog<Void> dialog = new Dialog<>();
+        Dialog<Integer> dialog = new Dialog<>();
         dialog.setTitle("Seleccionar Asiento");
         dialog.getDialogPane().setContent(gridPane);
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.APPLY);
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-        dialog.showAndWait();
-        int selectedAsiento = selectedSeat[0];
-        // Hacemos la reserva
-        if (selectedAsiento != -1 ){
-            int outReserva = gestioner.reservarVuelo(getter.getUsernameID(GlobalData.userName), Integer.parseInt(s[0]), selectedAsiento);
-            if (outReserva != 0) {
-                // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Vuelo Reservado");
-                alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
-                alert.setResizable(false);
-                alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
-                ButtonType noThanksButton = new ButtonType("No, Gracias");
-                ButtonType downloadButton = new ButtonType("Descargar");
-                alert.getButtonTypes().setAll(noThanksButton, downloadButton);
-                Optional<ButtonType> alertResult = alert.showAndWait();
-                ButtonType button = alertResult.orElse(ButtonType.CANCEL);
-                if (button == downloadButton) { // Aceptado
-                    // Crear y descargar el PDF
-                    Gestioner.createPDF(getter.getReservaInfo(outReserva));
-                    Alert fin = new Alert(AlertType.CONFIRMATION);
-                    fin.setTitle("PDF");
-                    fin.setHeaderText("PDF descargado con exito");
+
+        ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType reservar = new ButtonType("Reservar", ButtonBar.ButtonData.OK_DONE);
+
+        dialog.getDialogPane().getButtonTypes().add(noReservar);
+        dialog.getDialogPane().getButtonTypes().add(reservar);
+
+        dialog.setResultConverter(buttonType -> {
+            if (buttonType == reservar) {
+                int selectedAsiento = selectedSeat[0];
+                // Hacemos la reserva
+                if (selectedAsiento != -1) {
+                    try {
+                        int outReserva = gestioner.reservarVuelo(getter.getUsernameID(GlobalData.userName), Integer.parseInt(s[0]), selectedAsiento);
+
+                        if (outReserva != 0) {
+                            // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Vuelo Reservado");
+                            alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
+                            alert.setResizable(false);
+                            alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
+                            ButtonType noThanksButton = new ButtonType("No, Gracias");
+                            ButtonType downloadButton = new ButtonType("Descargar");
+                            alert.getButtonTypes().setAll(noThanksButton, downloadButton);
+                            Optional<ButtonType> alertResult = alert.showAndWait();
+                            ButtonType button = alertResult.orElse(ButtonType.CANCEL);
+                            if (button == downloadButton) { // Aceptado
+                                // Crear y descargar el PDF
+                                Gestioner.createPDF(getter.getReservaInfo(outReserva));
+                                Alert fin = new Alert(AlertType.CONFIRMATION);
+                                fin.setTitle("PDF");
+                                fin.setHeaderText("PDF descargado con exito");
+                                fin.show();
+                            }
+                            loadVuelos();
+                        } else { // No reservado
+                            Alert fin = new Alert(AlertType.ERROR);
+                            fin.setTitle("PDF");
+                            fin.setHeaderText("Operacion Cancelada");
+                            fin.show();
+                        }
+                        return outReserva;
+                    } catch (SQLException e) {
+                        Alert sqlerror = new Alert(AlertType.ERROR);
+                        sqlerror.setTitle("ERROR");
+                        sqlerror.setHeaderText(e.getMessage());
+                        sqlerror.show();
+                    }
+                } else {
+                    Alert fin = new Alert(AlertType.ERROR);
+                    fin.setTitle("Seleccion de Asiento");
+                    fin.setHeaderText("Operacion Cancelada");
                     fin.show();
                 }
-                loadVuelos();
-            } else { // No reservado
-                Alert fin = new Alert(AlertType.ERROR);
-                fin.setTitle("PDF");
-                fin.setHeaderText("Operacion Cancelada");
-                fin.show();
             }
-        }else{
-            Alert fin = new Alert(AlertType.ERROR);
-            fin.setTitle("Seleccion de Asiento");
-            fin.setHeaderText("Operacion Cancelada");
-            fin.show();
-        }
-
-
+            return null;
+        });
+        dialog.showAndWait();
     }
 
     public void descargarJustificante() throws SQLException {
         Gestioner.createPDF(this.misReservasList.getSelectionModel().getSelectedItem());
+    }
+
+
+    // Modificar la vista para reservar un avion
+    public void menuReservas() throws SQLException {
+        this.optionsMenu.setText("Reservar");
+        this.vuelosDisponiblesReservaList.setVisible(true);
+        this.reservarButton.setVisible(true);
+        this.reservarLabel.setVisible(true);
+        this.misReservasList.setVisible(false);
+        this.removeReservaButton.setVisible(false);
+        this.modificarReservaButton.setVisible(false);
+        this.downloadJustificanteButton.setVisible(false);
+        loadVuelos();
+    }
+
+    // Modificar la vista para reservar un avion
+    public void menuMisReservas() throws SQLException {
+        this.optionsMenu.setText("Mis Reservas");
+        this.misReservasList.setVisible(true);
+        this.removeReservaButton.setVisible(true);
+        this.modificarReservaButton.setVisible(true);
+        this.downloadJustificanteButton.setVisible(true);
+        this.vuelosDisponiblesReservaList.setVisible(false);
+        this.reservarButton.setVisible(false);
+        this.reservarLabel.setVisible(false);
+        loadReservas();
     }
 
 

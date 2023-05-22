@@ -71,9 +71,6 @@ public class InicioAdminController implements Initializable {
     private DatePicker fechaSelect;
 
     @FXML
-    private MenuItem grandeMenuItem;
-
-    @FXML
     private SplitMenuButton menu;
 
     @FXML
@@ -103,11 +100,6 @@ public class InicioAdminController implements Initializable {
     @FXML
     private TextField nombrePaisField;
 
-    @FXML
-    private MenuItem normalMenuItem;
-
-    @FXML
-    private SplitMenuButton tipoAvionMenu;
 
     @FXML
     private ListView<String> vuelosList;
@@ -139,11 +131,6 @@ public class InicioAdminController implements Initializable {
             }
 
         });
-        this.grandeMenuItem.setOnAction(event ->
-                this.tipoAvionMenu.setText("Grande"));
-        this.normalMenuItem.setOnAction(event ->
-                this.tipoAvionMenu.setText("Normal"));
-        // Cambir a la funcion de Añadir un Avion
         this.addAvion.setOnAction((event) -> menuAddAvion());
         // Cambiar a la funcion de eliminar un Vuelo
         this.delVuelo.setOnAction(event -> {
@@ -237,7 +224,7 @@ public class InicioAdminController implements Initializable {
             dialog.show();
             this.nombreCiudadField.setText("");
         } else {
-            if (gestioner.registrarAvion(this.nombreAvionField.getText(), this.tipoAvionMenu.getText(), Integer.parseInt(this.capacidadField.getText()))) {
+            if (gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.capacidadField.getText()))) {
                 Alert dialog = new Alert(AlertType.CONFIRMATION);
                 dialog.setTitle("Avión");
                 dialog.setHeaderText("Avión creada correctamente");
@@ -303,7 +290,6 @@ public class InicioAdminController implements Initializable {
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
         this.anyoFabricacion.setVisible(false);
-        this.tipoAvionMenu.setVisible(false);
         this.aceptarButtonAvion.setVisible(false);
         this.capacidad.setVisible(false);
         this.capacidadField.setVisible(false);
@@ -359,7 +345,6 @@ public class InicioAdminController implements Initializable {
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
         this.anyoFabricacion.setVisible(false);
-        this.tipoAvionMenu.setVisible(false);
         this.aceptarButtonAvion.setVisible(false);
         this.capacidad.setVisible(false);
         this.capacidadField.setVisible(false);
@@ -388,7 +373,6 @@ public class InicioAdminController implements Initializable {
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
         this.anyoFabricacion.setVisible(false);
-        this.tipoAvionMenu.setVisible(false);
         this.aceptarButtonAvion.setVisible(false);
         this.capacidad.setVisible(false);
         this.capacidadField.setVisible(false);
@@ -415,7 +399,6 @@ public class InicioAdminController implements Initializable {
         this.nombreAvion.setVisible(true);
         this.nombreAvionField.setVisible(true);
         this.anyoFabricacion.setVisible(true);
-        this.tipoAvionMenu.setVisible(true);
         this.aceptarButtonAvion.setVisible(true);
         this.capacidad.setVisible(true);
         this.capacidadField.setVisible(true);

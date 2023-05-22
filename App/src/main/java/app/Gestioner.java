@@ -202,10 +202,9 @@ public class Gestioner {
     }
 
     // Funcion que registra un avion nuevo
-    public boolean registrarAvion(String nombreAvion, String tipo, int capacidad) {
+    public boolean registrarAvion(String nombreAvion, int capacidad) {
         try {
             int id;
-            boolean type = tipo.equals("Grande");
             String query = "SELECT COUNT(*) FROM Aviones WHERE Nombre_Avion = ?";
             PreparedStatement checkStatement = App.con.prepareStatement(query);
             checkStatement.setString(1, nombreAvion);
@@ -229,12 +228,11 @@ public class Gestioner {
                     id = resulttest.getInt(1);
 
                     // Insertar los datos
-                    String consulta = "INSERT INTO Aviones (ID_Avion, Nombre_Avion, Tipo, capacidad) VALUES (? , ?, ?, ?)";
+                    String consulta = "INSERT INTO Aviones (ID_Avion, Nombre_Avion, capacidad) VALUES (? , ?, ?)";
                     PreparedStatement insertStatement = App.con.prepareStatement(consulta);
                     insertStatement.setInt(1, id + 1);
                     insertStatement.setString(2, nombreAvion);
-                    insertStatement.setBoolean(3, type);
-                    insertStatement.setInt(4, capacidad);
+                    insertStatement.setInt(3, capacidad);
                     insertStatement.executeUpdate();
                     return true;
                 }
@@ -415,4 +413,19 @@ public class Gestioner {
         return 0;
     }
 
+    // Funcion para eliminar un vuelo de la BDD
+    public void eliminarReserva(int IDReserva) {
+        try {
+            String query = "DELETE FROM Reservas WHERE ID_Reserva = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
+            checkStatement.setInt(1, IDReserva);
+            checkStatement.executeUpdate();
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+
+    }
 }

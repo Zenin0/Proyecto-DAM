@@ -23,7 +23,6 @@ CREATE TABLE `Aviones`(
     ID_Avion INT NOT NULL ,
     Nombre_Avion VARCHAR(255) NOT NULL,
     Capacidad INT NOT NULL,
-    TIPO BOOLEAN NOT NULl,
     CONSTRAINT PK_Aviones PRIMARY KEY(ID_Avion)
 );
 
@@ -53,3 +52,6 @@ CREATE TABLE `Reservas`(
 
 
 INSERT INTO `Usuarios` (ID_Usuario, Nombre_Usuario, Pass, is_Admin) VALUES (1, "root", "63a9f0ea7bb98050796b649e85481845", true)
+
+
+

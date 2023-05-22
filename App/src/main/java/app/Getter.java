@@ -241,24 +241,45 @@ public class Getter {
 
     public String getReservaInfo(int IDReserva) throws SQLException {
         String em = "";
-        int ID_Usuario = 0, ID_Vuelo = 0, Asiento = 0;
-        String query = "SELECT ID_Usuario, ID_Vuelo, Asiento FROM Reservas WHERE ID_Reserva = ?";
+        int ID_Reserva = 0, ID_Usuario = 0, ID_Vuelo = 0, Asiento = 0;
+        String query = "SELECT ID_Reserva, ID_Usuario, ID_Vuelo, Asiento FROM Reservas WHERE ID_Reserva = ?";
         PreparedStatement checkStatement = App.con.prepareStatement(query);
         checkStatement.setInt(1, IDReserva);
         ResultSet rs = checkStatement.executeQuery();
         if (rs.next()) {
+            ID_Reserva = rs.getInt("ID_Reserva");
             ID_Usuario = rs.getInt("ID_Usuario");
             ID_Vuelo = rs.getInt("ID_Vuelo");
             Asiento = rs.getInt("Asiento");
         }
+        em += "Numero de la Reserva: " + ID_Reserva + "\n";
         em += "Nombre de Usuario: " + getUsernameNombre(ID_Usuario) + "\n";
         em += "Asiento asignado: " + Asiento + "\n";
         em += getVueloInfo(ID_Vuelo);
         return em;
     }
 
-    public int getNumColsAsientos(int numSeats) {
-        return numSeats / 4;
+
+    public int getNumCols(int numSeats) {
+        int maxCols = 40; // Maximum number of columns
+        int numCols = 4; // Default number of columns
+        while (numCols <= maxCols) {
+            int numRows = (int) Math.ceil((double) numSeats / numCols);
+            if (numRows <= 8) { // Maximum number of rows
+                return numCols;
+            }
+            numCols++;
+        }
+        return maxCols; // Return maximum number of columns if no suitable number is found
+    }
+
+    public int getNumRows(int numSeats, int numCols) {
+        int maxRows = 8; // Maximum number of rows
+        int numRows = (int) Math.ceil((double) numSeats / numCols);
+        if (numRows > maxRows) {
+            numRows = maxRows;
+        }
+        return numRows;
     }
 
 }
