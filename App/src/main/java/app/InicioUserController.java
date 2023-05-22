@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
@@ -197,6 +199,15 @@ public class InicioUserController implements Initializable {
                 int seatNum = (row - 1) * numCols + col;
                 Button seatButton = new Button(String.valueOf(seatNum));
                 seatButton.setPrefSize(50, 50);
+
+                /* Añadir Imagenes de Asientos
+                Image image = new Image("https://cdn-icons-png.flaticon.com/512/99/99342.png");
+                ImageView seatButton = new ImageView(image);
+                seatButton.setId(String.valueOf(seatNum));
+                seatButton.setFitWidth(50);
+                seatButton.setFitHeight(50);
+                 */
+
 
                 if (asientosLibres.contains(seatNum)) {
                     seatButton.setOnAction(event -> selectedSeat[0] = Integer.parseInt(seatButton.getText()));
