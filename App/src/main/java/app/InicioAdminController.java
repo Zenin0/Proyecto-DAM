@@ -15,9 +15,6 @@ import java.util.ResourceBundle;
 
 public class InicioAdminController implements Initializable {
 
-    private final Gestioner gestioner = new Gestioner();
-
-    private final Getter getter = new Getter();
 
     @FXML
     private Button aceptarButtonAvion;
@@ -196,16 +193,16 @@ public class InicioAdminController implements Initializable {
     // Funcion para listar los vuelos y meterlos en la lista
     private void listarVuelos() throws SQLException {
         this.vuelosList.getItems().clear();
-        for (String vuelo : getter.getlistaVuelosStrings()) {
+        for (String vuelo : Getter.getlistaVuelosStrings()) {
             String[] vueloParts = vuelo.replaceAll(" ", "").split("-");
 
-            this.vuelosList.getItems().add(vueloParts[0] + " - " + getter.getNombreCiudad(Integer.parseInt(vueloParts[1])) + " - " + getter.getNombreCiudad(Integer.parseInt(vueloParts[2])) + " - " + vueloParts[4] + "/" + vueloParts[5] + "/" + vueloParts[3]);
+            this.vuelosList.getItems().add(vueloParts[0] + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[1])) + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[2])) + " - " + vueloParts[4] + "/" + vueloParts[5] + "/" + vueloParts[3]);
         }
     }
 
     // Funcion para añadir una Ciudad
     private void addCiudad() {
-        if (gestioner.registrarCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText())) {
+        if (Gestioner.registrarCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText())) {
             Alert dialog = new Alert(AlertType.CONFIRMATION);
             dialog.setTitle("Ciudad");
             dialog.setHeaderText("Ciudad creada correctamente");
@@ -224,7 +221,7 @@ public class InicioAdminController implements Initializable {
             dialog.show();
             this.nombreCiudadField.setText("");
         } else {
-            if (gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.capacidadField.getText()))) {
+            if (Gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.capacidadField.getText()))) {
                 Alert dialog = new Alert(AlertType.CONFIRMATION);
                 dialog.setTitle("Avión");
                 dialog.setHeaderText("Avión creada correctamente");
@@ -242,7 +239,7 @@ public class InicioAdminController implements Initializable {
         String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
         int numero = Integer.parseInt(tokens[0]);
         LocalDate localDate = fechaSelect.getValue();
-        if (gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), numero, String.valueOf(localDate))) {
+        if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), numero, String.valueOf(localDate))) {
             Alert dialog = new Alert(AlertType.CONFIRMATION);
             dialog.setTitle("Vuelo");
             dialog.setHeaderText("Vuelo creada correctamente");
@@ -255,7 +252,7 @@ public class InicioAdminController implements Initializable {
     // Funcion para eliminar un Vuelo
     public void delVuelo(String vuelo) throws SQLException {
         String[] vueloParts = vuelo.replaceAll(" ", "").split("-");
-        if (gestioner.eliminarVuelo(Integer.parseInt(vueloParts[0]))) {
+        if (Gestioner.eliminarVuelo(Integer.parseInt(vueloParts[0]))) {
             Alert dialog = new Alert(AlertType.CONFIRMATION);
             dialog.setTitle("Vuelo");
             dialog.setHeaderText("Vuelo eliminado correctamente");
@@ -310,21 +307,21 @@ public class InicioAdminController implements Initializable {
         this.menuCiudadesDestino.getItems().clear();
         this.menuAviones.getItems().clear();
 
-        for (String ciudad : getter.getlistaCiudadesStrings()) {
+        for (String ciudad : Getter.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> menuCiudadesDestino.setText(item.getText()));
             menuCiudadesDestino.getItems().add(item);
         }
         menuCiudadesDestino.setPopupSide(Side.BOTTOM);
 
-        for (String ciudad : getter.getlistaCiudadesStrings()) {
+        for (String ciudad : Getter.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> menuCiudadesSalida.setText(item.getText()));
             menuCiudadesSalida.getItems().add(item);
         }
         menuCiudadesSalida.setPopupSide(Side.BOTTOM);
 
-        for (String avion : getter.getlistaAvionesStrings()) {
+        for (String avion : Getter.getlistaAvionesStrings()) {
             MenuItem item = new MenuItem(avion);
             item.setOnAction(event -> menuAviones.setText(item.getText()));
             menuAviones.getItems().add(item);

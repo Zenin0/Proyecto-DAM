@@ -63,12 +63,12 @@ public class LoginController implements Initializable {
     private void login() throws IOException {
 
         Alert dialog = new Alert(AlertType.CONFIRMATION);
-        if (new Gestioner().login(this.usuLog.getText(), this.passLog.getText()) == 1) {
+        if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 1) {
             dialog.setTitle("Login correcto");
             dialog.setHeaderText("Bienvenido " + this.usuLog.getText());
             dialog.show();
             App.setRoot("inicio_admin");
-        } else if (new Gestioner().login(this.usuLog.getText(), this.passLog.getText()) == 0) {
+        } else if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 0) {
             dialog.setTitle("Login correcto");
             dialog.setHeaderText("Bienvenido " + this.usuLog.getText());
             dialog.show();

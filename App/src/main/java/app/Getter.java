@@ -8,14 +8,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
-public class Getter {
+public  class Getter {
 
     Getter() {
     }
 
 
     // Funcion para obtener una ArrayList de las Ciudades
-    public ArrayList<String> getlistaCiudadesStrings() throws SQLException {
+    public static ArrayList<String> getlistaCiudadesStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
 
@@ -33,7 +33,7 @@ public class Getter {
     }
 
     // Funcion para obtener una ArrayList de los Aviones
-    public ArrayList<String> getlistaAvionesStrings() throws SQLException {
+    public static ArrayList<String> getlistaAvionesStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
         // Comprobar si el usuario y la contraseña ya existen en la base de datos
@@ -48,7 +48,7 @@ public class Getter {
     }
 
     // Funcion para obtener una ArrayList de los Vuelos
-    public ArrayList<String> getlistaVuelosStrings() throws SQLException {
+    public static ArrayList<String> getlistaVuelosStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
 
@@ -66,7 +66,7 @@ public class Getter {
     }
 
     // Funcion para obtener una ArrayList de las Reservas de un Usuario
-    public ArrayList<String> getListaReservasUser(int IDUser) throws SQLException {
+    public static ArrayList<String> getListaReservasUser(int IDUser) throws SQLException {
 
         ArrayList<Integer> reservas = new ArrayList<>();
         ArrayList<String> out = new ArrayList<>();
@@ -85,7 +85,7 @@ public class Getter {
     }
 
     // Funcion para conseguir el nombre de la Ciudad en funcion de su ID
-    public String getNombreCiudad(int IDCiudad) throws SQLException {
+    public static String getNombreCiudad(int IDCiudad) throws SQLException {
 
         String em = "";
         String query = "SELECT Nombre_Ciudad FROM Ciudades WHERE ID_Ciudad = ?";
@@ -100,7 +100,7 @@ public class Getter {
     }
 
     // Funcion para conseguir el nombre del AVion en funcion de su ID
-    public String getNombreAvion(int IDAvion) throws SQLException {
+    public static String getNombreAvion(int IDAvion) throws SQLException {
 
         String em = "";
         String query = "SELECT Nombre_Avion FROM Aviones WHERE ID_Avion = ?";
@@ -115,7 +115,7 @@ public class Getter {
     }
 
     // Funcion para conseguir el ID del a avion a parti del ID del vuelo
-    public int getIDAvioFromVuelo(int IDVuelo) throws SQLException {
+    public static int getIDAvioFromVuelo(int IDVuelo) throws SQLException {
 
         String query = "SELECT ID_Avion FROM Vuelos WHERE ID_Vuelo = ?";
         PreparedStatement checkStatement = App.con.prepareStatement(query);
@@ -129,7 +129,7 @@ public class Getter {
     }
 
     // Funcion para conseguir los asientos libre de un Vuelo, a partir de la ID del avion que se usa y su ID del vuelo
-    public int getAsientosLibresCant(int IDAvion, int IDVuelo) throws SQLException {
+    public static int getAsientosLibresCant(int IDAvion, int IDVuelo) throws SQLException {
 
         String query = "SELECT count(*) FROM Reservas WHERE ID_Vuelo = ?";
         PreparedStatement checkStatement = App.con.prepareStatement(query);
@@ -152,7 +152,7 @@ public class Getter {
     }
 
     // Funcion para conseguir los asientos libre de un Vuelo, a partir de la ID del avion que se usa y su ID del vuelo
-    public ArrayList<Integer> getAsientosLibres(int IDAvion, int IDVuelo) throws SQLException {
+    public static ArrayList<Integer> getAsientosLibres(int IDAvion, int IDVuelo) throws SQLException {
         ArrayList<Integer> asientosOcupados = new ArrayList<>();
 
         // Retrieve the occupied seats for the specified flight and avion
@@ -180,7 +180,7 @@ public class Getter {
         return asientosLibres;
     }
 
-    public int getCapacidadAvion(int IDAvion) throws SQLException {
+    public static int getCapacidadAvion(int IDAvion) throws SQLException {
         int capacidad = 0;
 
         String query = "SELECT Capacidad FROM Aviones WHERE ID_Avion = ?";
@@ -195,7 +195,7 @@ public class Getter {
     }
 
     // Funcion para conseguir el ID del usuario en base a su Nombre
-    public int getUsernameID(String Username) throws SQLException {
+    public static int getUsernameID(String Username) throws SQLException {
 
         int em = 0;
         String query = "SELECT ID_Usuario FROM Usuarios WHERE Nombre_Usuario = ?";
@@ -210,7 +210,7 @@ public class Getter {
     }
 
     // Funcion para conseguir el Nombre de un Usuario por su ID
-    public String getUsernameNombre(int IDUser) throws SQLException {
+    public static String getUsernameNombre(int IDUser) throws SQLException {
 
         String em = "";
         String query = "SELECT Nombre_Usuario FROM Usuarios WHERE ID_Usuario = ?";
@@ -224,7 +224,7 @@ public class Getter {
         return em;
     }
 
-    public String getVueloInfo(int IDVuelo) throws SQLException {
+    public static String getVueloInfo(int IDVuelo) throws SQLException {
         String em = "";
         String query = "SELECT Ciudad_Salida, Ciudad_Destino, ID_Avion, Fecha_Salida FROM Vuelos WHERE ID_Vuelo = ?";
         PreparedStatement checkStatement = App.con.prepareStatement(query);
@@ -239,7 +239,7 @@ public class Getter {
         return em;
     }
 
-    public String getReservaInfo(int IDReserva) throws SQLException {
+    public static String getReservaInfo(int IDReserva) throws SQLException {
         String em = "";
         int ID_Reserva = 0, ID_Usuario = 0, ID_Vuelo = 0, Asiento = 0;
         String query = "SELECT ID_Reserva, ID_Usuario, ID_Vuelo, Asiento FROM Reservas WHERE ID_Reserva = ?";
@@ -260,7 +260,7 @@ public class Getter {
     }
 
 
-    public int getNumCols(int numSeats) {
+    public static int getNumCols(int numSeats) {
         int maxCols = 40; // Maximum number of columns
         int numCols = 4; // Default number of columns
         while (numCols <= maxCols) {
@@ -273,7 +273,7 @@ public class Getter {
         return maxCols; // Return maximum number of columns if no suitable number is found
     }
 
-    public int getNumRows(int numSeats, int numCols) {
+    public static int getNumRows(int numSeats, int numCols) {
         int maxRows = 8; // Maximum number of rows
         int numRows = (int) Math.ceil((double) numSeats / numCols);
         if (numRows > maxRows) {

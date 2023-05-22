@@ -76,7 +76,7 @@ public class Gestioner {
     // return 1 == Acceso admin
     // return 0 == Acceso NO admin
     // return -1, Error login
-    public int login(String usuario, String pass) {
+    public static int login(String usuario, String pass) {
         try {
             
             MD5Hasher md5 = new MD5Hasher(pass);
@@ -124,7 +124,7 @@ public class Gestioner {
     }
 
     // Funcion para registrar un nuevo usuario
-    public boolean registrar(String Usuario, String Pass1, String Pass2, boolean admin) {
+    public static boolean registrar(String Usuario, String Pass1, String Pass2, boolean admin) {
         int id;
         try {
             
@@ -202,7 +202,7 @@ public class Gestioner {
     }
 
     // Funcion que registra un avion nuevo
-    public boolean registrarAvion(String nombreAvion, int capacidad) {
+    public static boolean registrarAvion(String nombreAvion, int capacidad) {
         try {
             int id;
             String query = "SELECT COUNT(*) FROM Aviones WHERE Nombre_Avion = ?";
@@ -250,7 +250,7 @@ public class Gestioner {
     }
 
     // Funcion para registrar una nueva ciudad
-    public boolean registrarCiudad(String Ciudad, String Pais) {
+    public static boolean registrarCiudad(String Ciudad, String Pais) {
         int id;
         String ciudad = Ciudad.substring(0, 1).toUpperCase() + Ciudad.substring(1).toLowerCase();
         String pais = Pais.substring(0, 1).toUpperCase() + Pais.substring(1).toLowerCase();
@@ -305,7 +305,7 @@ public class Gestioner {
     }
 
     // Funcion para registrar un nuevo vuelo
-    public boolean registrarVuelo(String CiudadSalida, String CiudadDestino, int idAvion, String fecha) throws ParseException {
+    public static boolean registrarVuelo(String CiudadSalida, String CiudadDestino, int idAvion, String fecha) throws ParseException {
         int ciudadSalida = 0;
         int ciudadDestino = 0;
         int idAvionInt;
@@ -363,7 +363,7 @@ public class Gestioner {
     }
 
     // Funcion para eliminar un vuelo de la BDD
-    public boolean eliminarVuelo(int ID) {
+    public static boolean eliminarVuelo(int ID) {
         try {
 
             
@@ -383,7 +383,7 @@ public class Gestioner {
     }
 
     // Funcion para reservar un vuelo
-    public int reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) {
+    public static int reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) {
         try {
             
             int id;
@@ -414,7 +414,7 @@ public class Gestioner {
     }
 
     // Funcion para eliminar un vuelo de la BDD
-    public void eliminarReserva(int IDReserva) {
+    public static void eliminarReserva(int IDReserva) {
         try {
             String query = "DELETE FROM Reservas WHERE ID_Reserva = ?";
             PreparedStatement checkStatement = App.con.prepareStatement(query);

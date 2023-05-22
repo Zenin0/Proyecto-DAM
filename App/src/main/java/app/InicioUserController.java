@@ -15,10 +15,6 @@ import java.util.ResourceBundle;
 
 public class InicioUserController implements Initializable {
 
-    private final Getter getter = new Getter();
-    private final Gestioner gestioner = new Gestioner();
-
-
     @FXML
     private Button downloadJustificanteButton;
 
@@ -121,7 +117,7 @@ public class InicioUserController implements Initializable {
 
     public void eliminarReserva() throws SQLException {
         String idreserva = this.misReservasList.getSelectionModel().getSelectedItem().replaceAll("[^0-9]", "").substring(0, 1);
-        gestioner.eliminarReserva(Integer.parseInt(idreserva));
+        Gestioner.eliminarReserva(Integer.parseInt(idreserva));
         loadReservas();
     }
 
@@ -130,16 +126,16 @@ public class InicioUserController implements Initializable {
     public void loadVuelos() throws SQLException {
         this.vuelosDisponiblesReservaList.getItems().clear();
         // Araylist de String con la informacion de los vuelos
-        ArrayList<String> vuelos = getter.getlistaVuelosStrings();
+        ArrayList<String> vuelos = Getter.getlistaVuelosStrings();
         if (vuelos.size() > 0) {
             for (String vuelo : vuelos) {
                 // Instroducirlo a la ListView formateado
                 String[] parts = vuelo.replaceAll(" ", "").split("-");
-                if (getter.getAsientosLibresCant(getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0])) > 0) {
-                    String res = parts[0] + "\nCiudad de Salida: " + new Getter().getNombreCiudad(Integer.parseInt(parts[1])) +
-                            " \nCiuad de Destino: " + new Getter().getNombreCiudad(Integer.parseInt(parts[2])) +
+                if (Getter.getAsientosLibresCant(Getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0])) > 0) {
+                    String res = parts[0] + "\nCiudad de Salida: " + Getter.getNombreCiudad(Integer.parseInt(parts[1])) +
+                            " \nCiuad de Destino: " + Getter.getNombreCiudad(Integer.parseInt(parts[2])) +
                             "\nFecha Despegue: " + parts[5] + "/" + parts[4] + "/" + parts[3] +
-                            "\nAsientos Disponibles: " + getter.getAsientosLibresCant(getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0]));
+                            "\nAsientos Disponibles: " + Getter.getAsientosLibresCant(Getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0]));
                     this.vuelosDisponiblesReservaList.getItems().add(res);
                 }
             }
@@ -157,7 +153,7 @@ public class InicioUserController implements Initializable {
     public void loadReservas() throws SQLException {
         this.misReservasList.getItems().clear();
         // Araylist de String con la informacion de las reservas
-        ArrayList<String> reservas = getter.getListaReservasUser(getter.getUsernameID(GlobalData.userName));
+        ArrayList<String> reservas = Getter.getListaReservasUser(Getter.getUsernameID(GlobalData.userName));
         if (reservas.size() > 0) {
             for (String reserva : reservas) {
                 this.misReservasList.getItems().add(reserva);
@@ -185,11 +181,11 @@ public class InicioUserController implements Initializable {
     private void reservar() throws SQLException {
         String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().split("\n");
         int vueloID = Integer.parseInt(s[0]);
-        int numAsientos = getter.getAsientosLibres(getter.getIDAvioFromVuelo(vueloID), vueloID).size();
-        int numCols = getter.getNumCols(numAsientos);
-        int numRows = getter.getNumRows(numAsientos, numCols);
+        int numAsientos = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID).size();
+        int numCols = Getter.getNumCols(numAsientos);
+        int numRows = Getter.getNumRows(numAsientos, numCols);
 
-        ArrayList<Integer> asientosLibres = getter.getAsientosLibres(getter.getIDAvioFromVuelo(vueloID), vueloID);
+        ArrayList<Integer> asientosLibres = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID);
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
@@ -228,7 +224,7 @@ public class InicioUserController implements Initializable {
                 // Hacemos la reserva
                 if (selectedAsiento != -1) {
                     try {
-                        int outReserva = gestioner.reservarVuelo(getter.getUsernameID(GlobalData.userName), Integer.parseInt(s[0]), selectedAsiento);
+                        int outReserva = Gestioner.reservarVuelo(Getter.getUsernameID(GlobalData.userName), Integer.parseInt(s[0]), selectedAsiento);
 
                         if (outReserva != 0) {
                             // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
@@ -244,7 +240,7 @@ public class InicioUserController implements Initializable {
                             ButtonType button = alertResult.orElse(ButtonType.CANCEL);
                             if (button == downloadButton) { // Aceptado
                                 // Crear y descargar el PDF
-                                Gestioner.createPDF(getter.getReservaInfo(outReserva));
+                                Gestioner.createPDF(Getter.getReservaInfo(outReserva));
                                 Alert fin = new Alert(AlertType.CONFIRMATION);
                                 fin.setTitle("PDF");
                                 fin.setHeaderText("PDF descargado con exito");

@@ -56,7 +56,7 @@ public class RegisterController implements Initializable {
     // Funcion para registrar un usuario
     private void registrar() {
 
-        if (new Gestioner().registrar(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
+        if (Gestioner.registrar(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
             this.usuReg.setText("");
             this.passReg1.setText("");
             this.passReg2.setText("");
