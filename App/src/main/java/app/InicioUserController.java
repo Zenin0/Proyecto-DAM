@@ -208,7 +208,6 @@ public class InicioUserController implements Initializable {
                 seatButton.setFitHeight(50);
                  */
 
-
                 if (asientosLibres.contains(seatNum)) {
                     seatButton.setOnAction(event -> selectedSeat[0] = Integer.parseInt(seatButton.getText()));
                 } else {

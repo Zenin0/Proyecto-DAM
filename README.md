@@ -146,17 +146,19 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
     - [X] [Borrar vuelos ya creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
       - [X] [Listar los vuelos creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
   - [ ] Apartado Usuarios 
-    - [X] [Reservar vuelos con usuarios normales](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
-      - [X] [Listar vuelos disponibles con un menú](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
-        - [X] Mostrar información de cada vuelo
-          - Nombre
-          - Asiento
-          - Salida
-          - Destino
-          - Avion
-          - Fecha
-        - [X] [Generar PDF con los datos de la Reserva](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
-          - [X] [Mostrar ruta donde descargar el fichero PDF](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/InicioUserController.java)
+    - [ ] Reservar vuelos con usuarios normales
+      - [ ] Funciones para filtrar la busqueda de vuelos
+        - [ ] Por Ciudad de Destino
+        - [ ] Por Ciuad de Salida
+      - [ ] Mostrar información de cada vuelo
+        - Nombre
+        - Asiento
+        - Salida
+        - Destino
+        - Avion
+        - Fecha
+        - [ ] Generar PDF con los datos de la Reserva
+          - [ ] Mostrar ruta donde descargar el fichero PDF
     - [X] [Listar vuelos de los usuarios normales con una lista](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
       - [X] [Mostrar información de cada uno de esos vuelos](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
           - Nombre
@@ -165,28 +167,28 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
           - Destino
           - Avion
           - Fecha
-      - [X] [Descargar PDF con la información del vuelo seleccionado]((https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java))
-        - [X] [Mostrar ruta donde descargar el fichero PDF]((https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java))
-    - [ ] Habilitar función de cancelación del vuelo
-      - [ ] Listar vuelos disponibles con un menú
-        - [ ] Mostrar información de cada vuelo
+        - [X] [Descargar PDF con la información del vuelo seleccionado](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+          - [X] [Mostrar ruta donde descargar el fichero PDF](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+    - [X] [Habilitar función de cancelación del vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+      - [X] [Listar vuelos disponibles con una lista](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
+        - [X] [Mostrar información de cada vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
           - Nombre
           - Asiento
           - Salida
           - Destino
           - Avion
           - Fecha
-    - [ ] Habilitar función de modificación del vuelo
-      - [ ] Listar vuelos disponibles con un menú
-        - [ ] Mostrar información de cada vuelo
-          - Nombre
-          - Asiento
-          - Salida
-          - Destino
-          - Avion
-          - Fecha
+    - [ ]  Habilitar función de modificación del vuelo
+      - [ ] Listar vuelos disponibles con una lista
       - [ ] Modificar asiento
-- [ ] Crear la GUI
+        - [ ] Mostrar información de cada vuelo
+          - Nombre
+          - Asiento
+          - Salida
+          - Destino
+          - Avion
+          - Fecha
+
 
 Mira los  [problemas abiertos](https://github.com/Zenin0/Proyecto-DAM/issues) para una lista completa de las propuestas (y errores conocidos).
 
