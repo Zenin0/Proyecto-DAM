@@ -16,15 +16,20 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-// Objecto para gestionar las interaccciones de insercion/eliminacion de datos de la BDD
+/**
+ * Gestionar las interaccciones de insercion/eliminacion de datos de la BDD
+ */
 public class Gestioner {
 
-    public Gestioner() {
+    /**
+     * Constructor de la clase
+     */
+    public Gestioner() {}
 
-    }
-
-
-    // Funcion para crear el PDF para el Ticket del Vuelo
+    /**
+     * Generar un justificante del vuelo
+     * @param pdfText texto de la reserva
+     */
     public static void createPDF(String pdfText) {
         // Generar Objecto Documento
         Document PDFdocument = new Document();
@@ -71,11 +76,13 @@ public class Gestioner {
     }
 
 
-    // Funcion pra el login de usuarios
-    // Guía returns
-    // return 1 == Acceso admin
-    // return 0 == Acceso NO admin
-    // return -1, Error login
+    /**
+     * Gestionar el login de los usuarios
+     * @param usuario Nombre del usuario introducido
+     * @param pass Contraseña introducida
+     * @return 1 Acceso de un usuario admin   0 Acceso de un usuario no admin -1  Error en el login
+     * @see MD5Hasher#getMd5()
+     */
     public static int login(String usuario, String pass) {
         try {
             
@@ -123,7 +130,15 @@ public class Gestioner {
         return -1;
     }
 
-    // Funcion para registrar un nuevo usuario
+    /**
+     * Registrar un usuario
+     * @param Usuario Nombre de usuario
+     * @param Pass1 Contraseña 1
+     * @param Pass2 Contraseña 2
+     * @param admin Checkbox de Administrador
+     * @return  si se ha creado o si no true|false
+     * @see MD5Hasher#getMd5()
+     */
     public static boolean registrar(String Usuario, String Pass1, String Pass2, boolean admin) {
         int id;
         try {
@@ -201,7 +216,12 @@ public class Gestioner {
         return false;
     }
 
-    // Funcion que registra un avion nuevo
+    /**
+     * Registrar un avión nuevo
+     * @param nombreAvion Nombre del avión
+     * @param capacidad Capacidad del avión
+     * @return si se ha creado o si no true|false
+     */
     public static boolean registrarAvion(String nombreAvion, int capacidad) {
         try {
             int id;
@@ -211,7 +231,7 @@ public class Gestioner {
             ResultSet resultSet = checkStatement.executeQuery();
             resultSet.next();
             int count = resultSet.getInt(1);
-            // Comprobacion de si existe ya ese avion
+            // Comprobacion de si existe ya ese avión
             if (count > 0) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
@@ -249,7 +269,12 @@ public class Gestioner {
         return false;
     }
 
-    // Funcion para registrar una nueva ciudad
+    /**
+     * Crear una nueva ciudad
+     * @param Ciudad Nombre de la ciudad
+     * @param Pais País al que pertenece
+     * @return si se ha creado o si no true|false
+     */
     public static boolean registrarCiudad(String Ciudad, String Pais) {
         int id;
         String ciudad = Ciudad.substring(0, 1).toUpperCase() + Ciudad.substring(1).toLowerCase();
@@ -304,7 +329,14 @@ public class Gestioner {
         return false;
     }
 
-    // Funcion para registrar un nuevo vuelo
+    /**
+     * Registrar un vuelo
+     * @param CiudadSalida Nombre de la ciudad de Salida
+     * @param CiudadDestino Nombre de la ciuada de Destino
+     * @param idAvion ID del avión
+     * @param fecha Fecha de salida 
+     * @return si se ha creado o si no true|false
+     */
     public static boolean registrarVuelo(String CiudadSalida, String CiudadDestino, int idAvion, String fecha) throws ParseException {
         int ciudadSalida = 0;
         int ciudadDestino = 0;
@@ -313,7 +345,6 @@ public class Gestioner {
         try {
 
             // Conseguir la ID de la Ciudad en funcion del Nombre de la ciudad de destino
-            
             String query = "SELECT ID_Ciudad FROM Ciudades WHERE Nombre_Ciudad = ?";
             PreparedStatement checkStatement = App.con.prepareStatement(query);
             checkStatement.setString(1, CiudadDestino);
@@ -362,7 +393,11 @@ public class Gestioner {
         return false;
     }
 
-    // Funcion para eliminar un vuelo de la BDD
+    /**
+     * Eliminar un vuelo
+     * @param ID ID del vuelo 
+     * @return si se ha creado o si no true|false
+     */
     public static boolean eliminarVuelo(int ID) {
         try {
 
@@ -382,7 +417,13 @@ public class Gestioner {
         return false;
     }
 
-    // Funcion para reservar un vuelo
+    /**
+     * Reservar un vuelo
+     * @param IDUSU ID del usuario
+     * @param IDVUELO ID del vuelo
+     * @param selectedAsiento asiento seleccionado
+     * @return ID de la reserva
+     */
     public static int reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) {
         try {
             
@@ -413,7 +454,10 @@ public class Gestioner {
         return 0;
     }
 
-    // Funcion para eliminar un vuelo de la BDD
+    /**
+     * Eliminar una reserva
+     * @param IDReserva ID de la reserva
+     */
     public static void eliminarReserva(int IDReserva) {
         try {
             String query = "DELETE FROM Reservas WHERE ID_Reserva = ?";

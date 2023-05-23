@@ -4,16 +4,26 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-// Objecto de encriptacion de contraseñas
+/**
+ * Encriptacion de contraseñas
+ */
 public class MD5Hasher {
 
     private final String input;
 
+    /**
+     * Contructor
+     */
     MD5Hasher(String str) {
         this.input = str;
 
     }
 
+
+    /**
+     * Devolver una String encriptada con MD5
+     * @return String encriptada con MD5
+     */
     public String getMd5() {
         try {
 

@@ -4,8 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
@@ -15,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador del FXML iniciouser
+ */
 public class InicioUserController implements Initializable {
 
     @FXML
@@ -50,6 +51,10 @@ public class InicioUserController implements Initializable {
     @FXML
     private ListView<String> vuelosDisponiblesReservaList;
 
+    
+    /** 
+     * Inicializar la ventana
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         this.reservarMeuItem.setOnAction(event -> {
@@ -117,6 +122,10 @@ public class InicioUserController implements Initializable {
     }
 
 
+    /**
+     * Elimina una reserva seleccionada
+     * @see Gestioner#eliminarReserva(int)
+     */
     public void eliminarReserva() throws SQLException {
         String idreserva = this.misReservasList.getSelectionModel().getSelectedItem().replaceAll("[^0-9]", "").substring(0, 1);
         Gestioner.eliminarReserva(Integer.parseInt(idreserva));
@@ -124,7 +133,10 @@ public class InicioUserController implements Initializable {
     }
 
 
-    // Cargar los vuelos en la ListView
+    /**
+     * Cargar los vuelos en la lista
+     * @see #loadReservas()
+     */
     public void loadVuelos() throws SQLException {
         this.vuelosDisponiblesReservaList.getItems().clear();
         // Araylist de String con la informacion de los vuelos
@@ -151,7 +163,10 @@ public class InicioUserController implements Initializable {
 
     }
 
-    // Cargar las reservas de un usuario en la ListView
+    /**
+     * Cargar las reservas de un usuario
+     * @see #loadVuelos()
+     */
     public void loadReservas() throws SQLException {
         this.misReservasList.getItems().clear();
         // Araylist de String con la informacion de las reservas
@@ -170,7 +185,9 @@ public class InicioUserController implements Initializable {
 
     }
 
-    // Terminar la Session
+    /**
+     * Cerrar la sesión
+     */
     private void endSession() throws IOException {
         App.setRoot("login");
         Alert dialog = new Alert(AlertType.CONFIRMATION);
@@ -179,7 +196,12 @@ public class InicioUserController implements Initializable {
         dialog.show();
     }
 
-    // Funcion que se ejecuta al pulsar el boton de Reservar
+    /**
+     * Reservar un vuelo seleccionado
+     * @see #reservar()
+     * @see Getter
+     * @see Gestioner
+     */
     private void reservar() throws SQLException {
         String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().split("\n");
         int vueloID = Integer.parseInt(s[0]);
@@ -282,12 +304,19 @@ public class InicioUserController implements Initializable {
         dialog.showAndWait();
     }
 
+    
+    /** 
+     * Descargar un justufucante del vuelo
+     * @see Gestioner#createPDF(String) 
+     */
     public void descargarJustificante() throws SQLException {
         Gestioner.createPDF(this.misReservasList.getSelectionModel().getSelectedItem());
     }
 
 
-    // Modificar la vista para reservar un avion
+    /**
+     * Modificar la vista para reservar un vueloi
+     */
     public void menuReservas() throws SQLException {
         this.optionsMenu.setText("Reservar");
         this.vuelosDisponiblesReservaList.setVisible(true);
@@ -300,7 +329,9 @@ public class InicioUserController implements Initializable {
         loadVuelos();
     }
 
-    // Modificar la vista para reservar un avion
+    /**
+     * Modificar la vista para ver mis reservas
+     */
     public void menuMisReservas() throws SQLException {
         this.optionsMenu.setText("Mis Reservas");
         this.misReservasList.setVisible(true);

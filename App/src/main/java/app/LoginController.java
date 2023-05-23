@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador del FXML login
+ */
 public class LoginController implements Initializable {
     // Items
     @FXML
@@ -26,6 +29,9 @@ public class LoginController implements Initializable {
     @FXML
     private TextField usuLog;
 
+    /**
+     * Inicializar la ventana
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -53,13 +59,19 @@ public class LoginController implements Initializable {
         });
     }
 
-    // Cambiar a la ventana de registro
+    /**
+     * Cambiar a la ventana de registro
+     */
     @FXML
     private void registerChange() throws IOException {
         App.setRoot("register");
     }
 
-    // Ejecutar la comprobacion de login
+    
+    /** 
+     * Login de los usuarios
+     * @see Gestioner#login(String, String) 
+     */
     private void login() throws IOException {
 
         Alert dialog = new Alert(AlertType.CONFIRMATION);

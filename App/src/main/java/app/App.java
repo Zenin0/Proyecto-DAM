@@ -14,8 +14,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Objects;
 
+/**
+ * Inicio del Programa
+ */
 public class App extends Application {
 
+    /**
+     */
     public static Connection con;
     private static Scene scene;
 
@@ -33,20 +38,33 @@ public class App extends Application {
     public App() {
     }
 
+    /**
+     * Seleccionar el FXML de inicio
+     * @param fxml nombre del archivo FXML
+     */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
+    
+    /** 
+     * @param fxml Nombre del FXML
+     * @return Parent
+     */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
-
         launch();
     }
 
+
+    
+    /** 
+     * @param stage Programa
+     */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 900, 600);

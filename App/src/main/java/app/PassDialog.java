@@ -9,11 +9,16 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
-// Objecto para comprobar en una alerta emergente una contraseña
+/**
+ * Comprobar en una alerta emergente una contraseña
+ */
 public class PassDialog extends Dialog<String> {
 
     private final PasswordField passwordField;
 
+    /**
+     * Generar la ventana para introducir la contraseña
+     */
     public PassDialog() {
         setTitle("Password");
         setHeaderText("Introduce la contraseña de admin.");

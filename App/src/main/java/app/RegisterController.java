@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador del FXML register
+ */
 public class RegisterController implements Initializable {
     // Items
     @FXML
@@ -29,6 +32,10 @@ public class RegisterController implements Initializable {
     @FXML
     private TextField usuReg;
 
+    
+    /**
+     * Inicializar la ventana
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -47,16 +54,22 @@ public class RegisterController implements Initializable {
         });
     }
 
-    // Funcion para cambiar a la ventana de lgin
+    /**
+     * Funcion para cambiar a la ventana de login
+     */
     @FXML
     private void loginChange() throws IOException {
         App.setRoot("login");
     }
 
-    // Funcion para registrar un usuario
+    /**
+     * Funcion para registrar un usuario
+     * @see Gestioner#registrar(String, String, String, boolean)  
+     */
     private void registrar() {
 
-        if (Gestioner.registrar(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
+        if (Gestioner.registrar(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(),
+                this.adminCheckBox.isSelected())) {
             this.usuReg.setText("");
             this.passReg1.setText("");
             this.passReg2.setText("");

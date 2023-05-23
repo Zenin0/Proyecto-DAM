@@ -7,14 +7,22 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-
+/**
+ * Obtener datos de la Base de Datos
+ */
 public  class Getter {
 
+    /**
+     * Construcor de la clase
+     */
     Getter() {
     }
 
 
-    // Funcion para obtener una ArrayList de las Ciudades
+    /**
+     * Obtener una lista de ciuades
+     * @return una ArrayList de las ciudades
+     */
     public static ArrayList<String> getlistaCiudadesStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
@@ -32,7 +40,10 @@ public  class Getter {
         return out;
     }
 
-    // Funcion para obtener una ArrayList de los Aviones
+    /**
+     * Obtener una lista de aviones
+     * @return una ArrayList de los Aviones
+     */
     public static ArrayList<String> getlistaAvionesStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
@@ -47,7 +58,10 @@ public  class Getter {
         return out;
     }
 
-    // Funcion para obtener una ArrayList de los Vuelos
+    /**
+     * Obtener una lista de los vuelos
+     * @return una ArrayList de los vuelos
+     */
     public static ArrayList<String> getlistaVuelosStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
@@ -65,7 +79,11 @@ public  class Getter {
         return out;
     }
 
-    // Funcion para obtener una ArrayList de las Reservas de un Usuario
+    /**
+     * Obtener una lista de las Reservas de un Usuario
+     * @param IDUser ID del usuario
+     * @return ArrayList de las reservas de un usuario
+     */
     public static ArrayList<String> getListaReservasUser(int IDUser) throws SQLException {
 
         ArrayList<Integer> reservas = new ArrayList<>();
@@ -84,7 +102,11 @@ public  class Getter {
         return out;
     }
 
-    // Funcion para conseguir el nombre de la Ciudad en funcion de su ID
+    /**
+     * Obtener el nombre de una ciudad en base a su ID
+     * @param IDCiudad ID de la ciudad
+     * @return Nombre de la ciudad
+     */
     public static String getNombreCiudad(int IDCiudad) throws SQLException {
 
         String em = "";
@@ -99,7 +121,11 @@ public  class Getter {
         return em;
     }
 
-    // Funcion para conseguir el nombre del AVion en funcion de su ID
+    /**
+     * Obtener el nombre del avion en base de su ID
+     * @param IDAvion ID del avión
+     * @return nombe del avión
+     */
     public static String getNombreAvion(int IDAvion) throws SQLException {
 
         String em = "";
@@ -114,7 +140,11 @@ public  class Getter {
         return em;
     }
 
-    // Funcion para conseguir el ID del a avion a parti del ID del vuelo
+    /**
+     * Obtener ID del avión en base a la ID del vuelo
+     * @param IDVuelo ID del vuelo
+     * @return ID del avión
+     */
     public static int getIDAvioFromVuelo(int IDVuelo) throws SQLException {
 
         String query = "SELECT ID_Avion FROM Vuelos WHERE ID_Vuelo = ?";
@@ -128,7 +158,12 @@ public  class Getter {
         return IDAvion;
     }
 
-    // Funcion para conseguir los asientos libre de un Vuelo, a partir de la ID del avion que se usa y su ID del vuelo
+    /**
+     * Obtener cantidad de los asientos libres de un Vuelo
+     * @param IDAvion ID del avión
+     * @param IDVuelo ID del vuelo
+     * @return Cantidad de asientos libres
+     */
     public static int getAsientosLibresCant(int IDAvion, int IDVuelo) throws SQLException {
 
         String query = "SELECT count(*) FROM Reservas WHERE ID_Vuelo = ?";
@@ -151,7 +186,12 @@ public  class Getter {
         return asientosTotales - asientosOcupados;
     }
 
-    // Funcion para conseguir los asientos libre de un Vuelo, a partir de la ID del avion que se usa y su ID del vuelo
+    /**
+     * Obtener asientos libres
+     * @param IDAvion ID del avión
+     * @param IDVuelo ID del vuelo
+     * @return Arraylist de numeros con los asientos libres
+     */
     public static ArrayList<Integer> getAsientosLibres(int IDAvion, int IDVuelo) throws SQLException {
         ArrayList<Integer> asientosOcupados = new ArrayList<>();
 
@@ -180,6 +220,11 @@ public  class Getter {
         return asientosLibres;
     }
 
+    /**
+     * Obtener la capacidad del avión
+     * @param IDAvion ID del avion
+     * @return Capaciad del avion
+     */
     public static int getCapacidadAvion(int IDAvion) throws SQLException {
         int capacidad = 0;
 
@@ -194,7 +239,11 @@ public  class Getter {
         return capacidad;
     }
 
-    // Funcion para conseguir el ID del usuario en base a su Nombre
+    /**
+     * Obtener el ID de un usuario en base a su nombre
+     * @param Username Nombre del usuario
+     * @return ID del usuario
+     */
     public static int getUsernameID(String Username) throws SQLException {
 
         int em = 0;
@@ -209,7 +258,11 @@ public  class Getter {
         return em;
     }
 
-    // Funcion para conseguir el Nombre de un Usuario por su ID
+    /**
+     * Obtener el nombre de un usuario en base a si ID
+     * @param IDUser ID del usuario
+     * @return Nombre del usuario
+     */
     public static String getUsernameNombre(int IDUser) throws SQLException {
 
         String em = "";
@@ -223,7 +276,12 @@ public  class Getter {
 
         return em;
     }
-
+    
+    /**
+     * Obtener una String de la informacion del vuelo
+     * @param IDVuelo ID del Vuelo
+     * @return Informacion del Vuelo
+     */
     public static String getVueloInfo(int IDVuelo) throws SQLException {
         String em = "";
         String query = "SELECT Ciudad_Salida, Ciudad_Destino, ID_Avion, Fecha_Salida FROM Vuelos WHERE ID_Vuelo = ?";
@@ -239,6 +297,11 @@ public  class Getter {
         return em;
     }
 
+    /**
+     * Obtener informacion de la reserva
+     * @param IDReserva ID de la reserva
+     * @return Informacion de la reserva
+     */
     public static String getReservaInfo(int IDReserva) throws SQLException {
         String em = "";
         int ID_Reserva = 0, ID_Usuario = 0, ID_Vuelo = 0, Asiento = 0;
@@ -260,6 +323,12 @@ public  class Getter {
     }
 
 
+    /**
+     * Obtener un numero de columnas y filas con una proporcion
+     * @param numSeats Numero de asientos
+     * @return numero de columnas
+     * @see #getNumRows(int, int)
+     */
     public static int getNumCols(int numSeats) {
         int maxCols = 40; // Maximum number of columns
         int numCols = 4; // Default number of columns
@@ -273,6 +342,13 @@ public  class Getter {
         return maxCols; // Return maximum number of columns if no suitable number is found
     }
 
+    /**
+     * Obtener el numero de filas y columnas con una proporcion
+     * @param numSeats Numero de asientos
+     * @param numCols Numero de columnas
+     * @return Numero de filas
+     * @see #getNumCols(int)
+     */
     public static int getNumRows(int numSeats, int numCols) {
         int maxRows = 8; // Maximum number of rows
         int numRows = (int) Math.ceil((double) numSeats / numCols);
