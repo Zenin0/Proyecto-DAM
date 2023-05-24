@@ -55,8 +55,8 @@ public class InicioUserController implements Initializable {
     @FXML
     private ListView<String> vuelosDisponiblesReservaList;
 
-    
-    /** 
+
+    /**
      * Inicializar la ventana
      */
     @Override
@@ -128,6 +128,7 @@ public class InicioUserController implements Initializable {
 
     /**
      * Elimina una reserva seleccionada
+     *
      * @see Gestioner#eliminarReserva(int)
      */
     public void eliminarReserva() throws SQLException {
@@ -139,6 +140,7 @@ public class InicioUserController implements Initializable {
 
     /**
      * Cargar los vuelos en la lista
+     *
      * @see #loadReservas()
      */
     public void loadVuelos() throws SQLException {
@@ -169,6 +171,7 @@ public class InicioUserController implements Initializable {
 
     /**
      * Cargar las reservas de un usuario
+     *
      * @see #loadVuelos()
      */
     public void loadReservas() throws SQLException {
@@ -202,6 +205,7 @@ public class InicioUserController implements Initializable {
 
     /**
      * Reservar un vuelo seleccionado
+     *
      * @see #reservar()
      * @see Getter
      * @see Gestioner
@@ -235,16 +239,19 @@ public class InicioUserController implements Initializable {
                 StackPane.setAlignment(seatLabel, Pos.CENTER);
                 seatButton.setId(String.valueOf(seatNum));
                 if (asientosLibres.contains(seatNum)) {
-                    seatButton.setOnMouseClicked(event -> selectedSeat[0] = Integer.parseInt(seatButton.getId()));
+                    seatButton.setOnMouseClicked(event -> {
+                        selectedSeat[0] = Integer.parseInt(seatButton.getId());
+                        seatButton.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000000");
+                        seatButton.setOpacity(0.2);
+                    });
                 } else {
-                    seatButton.setOpacity(0.5); // Set opacity for unavailable seats
+                    seatButton.setOpacity(0.5);
                     seatButton.setDisable(true);
+                    seatButton.setStyle("-fx-text-fill: #000000");
                 }
                 gridPane.add(stackPane, col, row);
             }
         }
-
-
 
 
         Dialog<Integer> dialog = new Dialog<>();
@@ -311,10 +318,11 @@ public class InicioUserController implements Initializable {
         dialog.showAndWait();
     }
 
-    
-    /** 
+
+    /**
      * Descargar un justufucante del vuelo
-     * @see Gestioner#createPDF(String) 
+     *
+     * @see Gestioner#createPDF(String)
      */
     public void descargarJustificante() throws SQLException {
         Gestioner.createPDF(this.misReservasList.getSelectionModel().getSelectedItem());
