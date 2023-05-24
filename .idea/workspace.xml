@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-    </list>
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -257,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684948041849</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Modificacion de Asientos con seleccion de asientos por imagenes">
+      <created>1684949514007</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1684949514007</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -279,6 +281,7 @@
     <MESSAGE value="Image Update" />
     <MESSAGE value="Seat Deleted" />
     <MESSAGE value="Asientos Seleccionables con imagenes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Asientos Seleccionables con imagenes" />
+    <MESSAGE value="Modificacion de Asientos con seleccion de asientos por imagenes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modificacion de Asientos con seleccion de asientos por imagenes" />
   </component>
 </project>
