@@ -219,7 +219,7 @@ public class InicioUserController implements Initializable {
         gridPane.setVgap(10);
 
         final int[] selectedSeat = {-1};
-        Image image = new Image("https://cdn-icons-png.flaticon.com/512/99/99342.png");
+        Image image = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seat.png");
         for (int row = 1; row <= numRows; row++) {
             for (int col = 1; col <= numCols; col++) {
                 int seatNum = (row - 1) * numCols + col;
