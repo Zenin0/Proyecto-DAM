@@ -223,32 +223,36 @@ public class InicioUserController implements Initializable {
         gridPane.setVgap(10);
 
         final int[] selectedSeat = {-1};
-        Image image = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seat.png");
+        Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
+        Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
         for (int row = 1; row <= numRows; row++) {
             for (int col = 1; col <= numCols; col++) {
                 int seatNum = (row - 1) * numCols + col;
                 /* Add Seat Images */
-                ImageView seatButton = new ImageView(image);
+                ImageView seatButton = new ImageView();
                 seatButton.setId(String.valueOf(seatNum));
                 seatButton.setFitWidth(50);
                 seatButton.setFitHeight(50);
+
                 Label seatLabel = new Label(String.valueOf(seatNum));
                 seatLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #000000; -fx-alignment: center;");
+
                 StackPane stackPane = new StackPane();
                 stackPane.getChildren().addAll(seatButton, seatLabel);
                 StackPane.setAlignment(seatLabel, Pos.CENTER);
-                seatButton.setId(String.valueOf(seatNum));
+
                 if (asientosLibres.contains(seatNum)) {
+                    seatButton.setImage(able);
                     seatButton.setOnMouseClicked(event -> {
                         selectedSeat[0] = Integer.parseInt(seatButton.getId());
-                        seatButton.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000000");
                         seatButton.setOpacity(0.2);
                     });
                 } else {
+                    seatButton.setImage(unable);
                     seatButton.setOpacity(0.5);
                     seatButton.setDisable(true);
-                    seatButton.setStyle("-fx-text-fill: #000000");
                 }
+
                 gridPane.add(stackPane, col, row);
             }
         }
