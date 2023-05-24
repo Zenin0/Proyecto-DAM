@@ -27,22 +27,19 @@ public class InicioUserController implements Initializable {
     private Button downloadJustificanteButton;
 
     @FXML
-    private Label misReservasLabel;
+    private Button endSession;
 
     @FXML
-    private Button endSession;
+    private Label misReservasLabel;
 
     @FXML
     private ListView<String> misReservasList;
 
     @FXML
-    private MenuItem misReservasMenuItem;
+    private Button misReservasMenuItem;
 
     @FXML
     private Button modificarReservaButton;
-
-    @FXML
-    private SplitMenuButton optionsMenu;
 
     @FXML
     private Button removeReservaButton;
@@ -54,20 +51,27 @@ public class InicioUserController implements Initializable {
     private Label reservarLabel;
 
     @FXML
-    private MenuItem reservarMeuItem;
+    private Button reservarMeuItem;
 
     @FXML
     private ListView<String> vuelosDisponiblesReservaList;
-
 
     /**
      * Inicializar la ventana
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        try {
+            menuReservar();
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setHeaderText(e.getMessage());
+            dialog.show();
+        }
         this.reservarMeuItem.setOnAction(event -> {
             try {
-                menuReservas();
+                menuReservar();
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
@@ -114,7 +118,14 @@ public class InicioUserController implements Initializable {
         });
         this.downloadJustificanteButton.setOnAction(event -> {
             try {
-                descargarJustificante();
+                if (!misReservasList.getSelectionModel().isEmpty())
+                    descargarJustificante();
+                else {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText("Seleccione una reserva antes de poder descargar un justificante");
+                    dialog.show();
+                }
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
@@ -125,7 +136,14 @@ public class InicioUserController implements Initializable {
 
         this.removeReservaButton.setOnAction(event -> {
             try {
-                eliminarReserva();
+                if (!misReservasList.getSelectionModel().isEmpty())
+                    eliminarReserva();
+                else {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText("Seleccione una reserva antes de eliminarla");
+                    dialog.show();
+                }
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
@@ -135,9 +153,17 @@ public class InicioUserController implements Initializable {
         });
         this.modificarReservaButton.setOnAction(event -> {
             try {
-                modificarReserva();
-                this.misReservasList.getItems().clear();
-                loadReservas();
+                if (!misReservasList.getSelectionModel().isEmpty()) {
+                    modificarReserva();
+                    this.misReservasList.getItems().clear();
+                    loadReservas();
+                } else {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText("Seleccione una reserva antes de modificarla");
+                    dialog.show();
+                }
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -216,7 +242,7 @@ public class InicioUserController implements Initializable {
                 // Hacemos la reserva
                 if (selectedAsiento != -1) {
                     try {
-                        int outReserva = Gestioner.modificarReserva(Integer.parseInt(idreserva) ,selectedAsiento);
+                        int outReserva = Gestioner.modificarReserva(Integer.parseInt(idreserva), selectedAsiento);
                         if (outReserva != 0) {
                             // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -484,8 +510,8 @@ public class InicioUserController implements Initializable {
     /**
      * Modificar la vista para reservar un vueloi
      */
-    public void menuReservas() throws SQLException {
-        this.optionsMenu.setText("Reservar");
+    public void menuReservar() throws SQLException {
+        this.misReservasMenuItem.setVisible(true);
         this.vuelosDisponiblesReservaList.setVisible(true);
         this.reservarButton.setVisible(true);
         this.reservarLabel.setVisible(true);
@@ -494,6 +520,7 @@ public class InicioUserController implements Initializable {
         this.modificarReservaButton.setVisible(false);
         this.downloadJustificanteButton.setVisible(false);
         this.misReservasLabel.setVisible(false);
+        this.reservarMeuItem.setVisible(false);
         loadVuelos();
     }
 
@@ -501,7 +528,7 @@ public class InicioUserController implements Initializable {
      * Modificar la vista para ver mis reservas
      */
     public void menuMisReservas() throws SQLException {
-        this.optionsMenu.setText("Mis Reservas");
+        this.reservarMeuItem.setVisible(true);
         this.misReservasList.setVisible(true);
         this.misReservasLabel.setVisible(true);
         this.removeReservaButton.setVisible(true);
@@ -510,6 +537,7 @@ public class InicioUserController implements Initializable {
         this.vuelosDisponiblesReservaList.setVisible(false);
         this.reservarButton.setVisible(false);
         this.reservarLabel.setVisible(false);
+        this.misReservasMenuItem.setVisible(false);
         loadReservas();
     }
 

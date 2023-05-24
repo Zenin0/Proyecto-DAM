@@ -37,9 +37,6 @@ public class InicioAdminController implements Initializable {
     private MenuItem addVuelo;
 
     @FXML
-    private Label anyoFabricacion;
-
-    @FXML
     private Label avionVuelo;
 
     @FXML
@@ -98,7 +95,6 @@ public class InicioAdminController implements Initializable {
 
     @FXML
     private TextField nombrePaisField;
-
 
     @FXML
     private ListView<String> vuelosList;
@@ -312,7 +308,6 @@ public class InicioAdminController implements Initializable {
         // Esconder avión
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
-        this.anyoFabricacion.setVisible(false);
         this.aceptarButtonAvion.setVisible(false);
         this.capacidad.setVisible(false);
         this.capacidadField.setVisible(false);
@@ -370,7 +365,6 @@ public class InicioAdminController implements Initializable {
         // Esconder avión
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
-        this.anyoFabricacion.setVisible(false);
         this.aceptarButtonAvion.setVisible(false);
         this.capacidad.setVisible(false);
         this.capacidadField.setVisible(false);
@@ -400,7 +394,6 @@ public class InicioAdminController implements Initializable {
         // Esconder avión
         this.nombreAvion.setVisible(false);
         this.nombreAvionField.setVisible(false);
-        this.anyoFabricacion.setVisible(false);
         this.aceptarButtonAvion.setVisible(false);
         this.capacidad.setVisible(false);
         this.capacidadField.setVisible(false);
@@ -428,7 +421,6 @@ public class InicioAdminController implements Initializable {
         // Mostrar avión
         this.nombreAvion.setVisible(true);
         this.nombreAvionField.setVisible(true);
-        this.anyoFabricacion.setVisible(true);
         this.aceptarButtonAvion.setVisible(true);
         this.capacidad.setVisible(true);
         this.capacidadField.setVisible(true);
