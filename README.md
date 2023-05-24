@@ -150,6 +150,7 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
       - [ ] Funciones para filtrar la busqueda de vuelos
         - [ ] Por Ciudad de Destino
         - [ ] Por Ciuad de Salida
+      - [X] Mostrar grid con imagenes de asientos para reservar el asiento
       - [ ] Mostrar información de cada vuelo
         - [ ] Generar PDF con los datos de la Reserva
           - [ ] Mostrar ruta donde descargar el fichero PDF

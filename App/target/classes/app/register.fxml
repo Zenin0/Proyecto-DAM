@@ -31,19 +31,19 @@
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="Usuario" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-            <TextField fx:id="usuReg" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <TextField fx:id="usuReg" promptText="Usuario" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
             </TextField>
             <Button fx:id="buttonReg" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Registrar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="97.0" text="Repite la Contraseña" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <PasswordField fx:id="passReg1" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <PasswordField fx:id="passReg1" promptText="Contraseña" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
             </PasswordField>
-            <PasswordField fx:id="passReg2" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <PasswordField fx:id="passReg2" prefHeight="30.0" prefWidth="168.0" promptText="Repita Contraseña" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>

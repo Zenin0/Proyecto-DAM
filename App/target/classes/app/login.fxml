@@ -29,13 +29,13 @@
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="Usuario" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-            <TextField fx:id="usuLog" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <TextField fx:id="usuLog" promptText="Usuario" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
             </TextField>
             <Button fx:id="buttonLog" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Login" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-            <PasswordField fx:id="passLog" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <PasswordField fx:id="passLog" promptText="Contraseña" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>

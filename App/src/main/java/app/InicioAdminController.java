@@ -156,7 +156,6 @@ public class InicioAdminController implements Initializable {
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText(e.getMessage());
                 dialog.show();
-                this.nombreCiudadField.setText("");
             }
         });
         // Botones para ejecutar el añadido de sus correspondientes

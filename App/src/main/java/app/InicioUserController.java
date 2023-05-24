@@ -3,6 +3,7 @@ package app;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -24,6 +25,9 @@ public class InicioUserController implements Initializable {
 
     @FXML
     private Button downloadJustificanteButton;
+
+    @FXML
+    private Label misReservasLabel;
 
     @FXML
     private Button endSession;
@@ -93,7 +97,14 @@ public class InicioUserController implements Initializable {
         });
         this.reservarButton.setOnAction(event -> {
             try {
-                reservar();
+                if (!vuelosDisponiblesReservaList.getSelectionModel().isEmpty())
+                    reservar();
+                else {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText("Seleccione un vuelo antes de intentar reservar");
+                    dialog.show();
+                }
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
@@ -162,7 +173,7 @@ public class InicioUserController implements Initializable {
         } else {  // No hay vuelos Disponibles
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("Vuelos");
-            dialog.setHeaderText("No hay vuelos dispnibles");
+            dialog.setHeaderText("No hay vuelos disponibles");
             dialog.show();
             this.vuelosDisponiblesReservaList.getItems().add("No hay vuelos Dispnibles");
         }
@@ -185,7 +196,7 @@ public class InicioUserController implements Initializable {
         } else {  // No hay reservas Disponibles
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("Reservas");
-            dialog.setHeaderText("No hay reservas dispnibles");
+            dialog.setHeaderText("No hay reservas disponibles");
             dialog.show();
             this.misReservasList.getItems().add("No hay reservas dispnibles");
         }
@@ -212,6 +223,7 @@ public class InicioUserController implements Initializable {
      */
     private void reservar() throws SQLException {
         String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().split("\n");
+
         int vueloID = Integer.parseInt(s[0]);
         int numAsientos = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID).size();
         int numCols = Getter.getNumCols(numAsientos);
@@ -225,28 +237,38 @@ public class InicioUserController implements Initializable {
         final int[] selectedSeat = {-1};
         Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
         Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
+        final ImageView[] previouslySelectedButton = {null};
+
         for (int row = 1; row <= numRows; row++) {
             for (int col = 1; col <= numCols; col++) {
                 int seatNum = (row - 1) * numCols + col;
-                /* Add Seat Images */
+                // Añadir Imagenes
                 ImageView seatButton = new ImageView();
                 seatButton.setId(String.valueOf(seatNum));
                 seatButton.setFitWidth(50);
                 seatButton.setFitHeight(50);
 
+                // Añadir el numero de asiento (ID)
                 Label seatLabel = new Label(String.valueOf(seatNum));
                 seatLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #000000; -fx-alignment: center;");
-
+                seatLabel.setTranslateX(-6);
                 StackPane stackPane = new StackPane();
                 stackPane.getChildren().addAll(seatButton, seatLabel);
                 StackPane.setAlignment(seatLabel, Pos.CENTER);
 
+                // Asignar que ID hemos pulsado, y cambiar opacidades
                 if (asientosLibres.contains(seatNum)) {
                     seatButton.setImage(able);
-                    seatButton.setOnMouseClicked(event -> {
+                    stackPane.setOnMouseClicked(event -> {
+                        if (previouslySelectedButton[0] != null) {
+                            previouslySelectedButton[0].setOpacity(1.0);
+                        }
                         selectedSeat[0] = Integer.parseInt(seatButton.getId());
                         seatButton.setOpacity(0.2);
                     });
+                    stackPane.setOnMouseEntered(event -> stackPane.setOpacity(0.2));
+                    stackPane.setOnMouseExited(event -> stackPane.setOpacity(1));
+                    stackPane.cursorProperty().set(Cursor.HAND);
                 } else {
                     seatButton.setImage(unable);
                     seatButton.setOpacity(0.5);
@@ -345,6 +367,7 @@ public class InicioUserController implements Initializable {
         this.removeReservaButton.setVisible(false);
         this.modificarReservaButton.setVisible(false);
         this.downloadJustificanteButton.setVisible(false);
+        this.misReservasLabel.setVisible(false);
         loadVuelos();
     }
 
@@ -354,6 +377,7 @@ public class InicioUserController implements Initializable {
     public void menuMisReservas() throws SQLException {
         this.optionsMenu.setText("Mis Reservas");
         this.misReservasList.setVisible(true);
+        this.misReservasLabel.setVisible(true);
         this.removeReservaButton.setVisible(true);
         this.modificarReservaButton.setVisible(true);
         this.downloadJustificanteButton.setVisible(true);

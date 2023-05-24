@@ -42,7 +42,7 @@
                </GridPane.margin>
             </ListView>
             <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="2" />
-            <Label fx:id="reservarLabel" text="Vuelos Disponibles:" visible="false" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="reservarLabel" text="Vuelos Disponibles" visible="false" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="26.0" />
                </font>
@@ -52,6 +52,11 @@
             <Button fx:id="removeReservaButton" mnemonicParsing="false" text="Eliminar Reserva" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button fx:id="modificarReservaButton" layoutX="169.0" layoutY="304.0" mnemonicParsing="false" text="Modificar Reserva" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button fx:id="downloadJustificanteButton" mnemonicParsing="false" text="Descargar Justificante" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label fx:id="misReservasLabel" text="Mis Reservas" visible="false" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
    </children>

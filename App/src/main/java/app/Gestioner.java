@@ -54,7 +54,7 @@ public class Gestioner {
             PDFdocument.add(paragraph);
 
             // Insertar el Logo
-            Image image = Image.getInstance("src/main/resources/app/css/logoT.png");
+            Image image = Image.getInstance("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/logoT.png");
             image.setAlignment(Image.MIDDLE);
             image.scaleAbsolute(300, 300);
             PDFdocument.add(image);
