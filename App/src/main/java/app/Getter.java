@@ -145,6 +145,24 @@ public class Getter {
     }
 
     /**
+     * Obtener la ID de la ciudad en base a su nombre
+     *
+     * @param IDReserva ID de la reserva
+     * @return ID del vuelo
+     */
+    public static int getIDVueloFromIDReserva(int IDReserva) throws SQLException {
+
+        String query = "SELECT ID_Vuelo FROM Reservas WHERE ID_Reserva = ?";
+        PreparedStatement checkStatement = App.con.prepareStatement(query);
+        checkStatement.setInt(1, IDReserva);
+        ResultSet rs = checkStatement.executeQuery();
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+        return -1;
+    }
+
+    /**
      * Obtener el nombre del avion en base de su ID
      *
      * @param IDAvion ID del avión

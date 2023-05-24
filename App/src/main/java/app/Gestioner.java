@@ -464,4 +464,28 @@ public class Gestioner {
         }
 
     }
+
+    /**
+     * Eliminar una reserva
+     *
+     * @param IDReserva ID de la reserva
+     * @param AsientoNew Nuevo asiento seleccionado
+     */
+    public static int modificarReserva(int IDReserva, int AsientoNew) {
+        try {
+            String query = "UPDATE Reservas SET Asiento = ? WHERE ID_Reserva = ?";
+            PreparedStatement updateStatement = App.con.prepareStatement(query);
+            updateStatement.setInt(1, AsientoNew);
+            updateStatement.setInt(2, IDReserva);
+            updateStatement.executeUpdate();
+            return 1;
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+        return 0;
+    }
+
 }

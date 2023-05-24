@@ -152,8 +152,8 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
         - [ ] Por Ciuad de Salida
       - [X] Mostrar grid con imagenes de asientos para reservar el asiento
       - [ ] Mostrar información de cada vuelo
-        - [ ] Generar PDF con los datos de la Reserva
-          - [ ] Mostrar ruta donde descargar el fichero PDF
+        - [X] [Generar PDF con los datos de la Reserva](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+          - [X] Mostrar ruta donde descargar el fichero PDF
     - [X] [Listar vuelos de los usuarios normales con una lista](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
       - [X] [Mostrar información de cada uno de esos vuelos](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
         - [X] [Descargar PDF con la información del vuelo seleccionado](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
@@ -161,10 +161,11 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
     - [X] [Habilitar función de cancelación del vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
       - [X] [Listar vuelos disponibles con una lista](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
         - [X] [Mostrar información de cada vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
-    - [ ]  Habilitar función de modificación del vuelo
-      - [ ] Listar vuelos disponibles con una lista
-      - [ ] Modificar asiento
-        - [ ] Mostrar información de cada vuelo
+    - [X]  [Habilitar función de modificación del vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+      - [X] [Listar vuelos disponibles con una lista](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
+      - [X] Mostrar grid con imagenes de asientos para reservar el asiento
+      - [X] Modificar asiento
+      - [X] Mostrar información de cada vuelo
 
 
 Mira los  [problemas abiertos](https://github.com/Zenin0/Proyecto-DAM/issues) para una lista completa de las propuestas (y errores conocidos).
