@@ -12,7 +12,9 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -24,10 +26,12 @@ public class Gestioner {
     /**
      * Constructor de la clase
      */
-    public Gestioner() {}
+    public Gestioner() {
+    }
 
     /**
      * Generar un justificante del vuelo
+     *
      * @param pdfText texto de la reserva
      */
     public static void createPDF(String pdfText) {
@@ -78,14 +82,15 @@ public class Gestioner {
 
     /**
      * Gestionar el login de los usuarios
+     *
      * @param usuario Nombre del usuario introducido
-     * @param pass Contraseña introducida
+     * @param pass    Contraseña introducida
      * @return 1 Acceso de un usuario admin   0 Acceso de un usuario no admin -1  Error en el login
      * @see MD5Hasher#getMd5()
      */
     public static int login(String usuario, String pass) {
         try {
-            
+
             MD5Hasher md5 = new MD5Hasher(pass);
 
             // Comprobar si el usuario y la contraseña ya existen en la base de datos
@@ -132,17 +137,18 @@ public class Gestioner {
 
     /**
      * Registrar un usuario
+     *
      * @param Usuario Nombre de usuario
-     * @param Pass1 Contraseña 1
-     * @param Pass2 Contraseña 2
-     * @param admin Checkbox de Administrador
-     * @return  si se ha creado o si no true|false
+     * @param Pass1   Contraseña 1
+     * @param Pass2   Contraseña 2
+     * @param admin   Checkbox de Administrador
+     * @return si se ha creado o si no true|false
      * @see MD5Hasher#getMd5()
      */
     public static boolean registrar(String Usuario, String Pass1, String Pass2, boolean admin) {
         int id;
         try {
-            
+
             // Comprobar que las contraseñas coincidan
             if (!Pass1.equals(Pass2)) {
                 Alert dialog = new Alert(AlertType.ERROR);
@@ -218,8 +224,9 @@ public class Gestioner {
 
     /**
      * Registrar un avión nuevo
+     *
      * @param nombreAvion Nombre del avión
-     * @param capacidad Capacidad del avión
+     * @param capacidad   Capacidad del avión
      * @return si se ha creado o si no true|false
      */
     public static boolean registrarAvion(String nombreAvion, int capacidad) {
@@ -271,8 +278,9 @@ public class Gestioner {
 
     /**
      * Crear una nueva ciudad
+     *
      * @param Ciudad Nombre de la ciudad
-     * @param Pais País al que pertenece
+     * @param Pais   País al que pertenece
      * @return si se ha creado o si no true|false
      */
     public static boolean registrarCiudad(String Ciudad, String Pais) {
@@ -281,7 +289,7 @@ public class Gestioner {
         String pais = Pais.substring(0, 1).toUpperCase() + Pais.substring(1).toLowerCase();
 
         try {
-            
+
 
             String query = "SELECT COUNT(*) FROM Ciudades WHERE Nombre_Ciudad = ? AND Pais = ?";
             PreparedStatement checkStatement = App.con.prepareStatement(query);
@@ -331,35 +339,18 @@ public class Gestioner {
 
     /**
      * Registrar un vuelo
-     * @param CiudadSalida Nombre de la ciudad de Salida
+     *
+     * @param CiudadSalida  Nombre de la ciudad de Salida
      * @param CiudadDestino Nombre de la ciuada de Destino
-     * @param idAvion ID del avión
-     * @param fecha Fecha de salida 
+     * @param idAvion       ID del avión
+     * @param fecha         Fecha de salida
      * @return si se ha creado o si no true|false
      */
     public static boolean registrarVuelo(String CiudadSalida, String CiudadDestino, int idAvion, String fecha) throws ParseException {
-        int ciudadSalida = 0;
-        int ciudadDestino = 0;
+
         int idAvionInt;
         int id;
         try {
-
-            // Conseguir la ID de la Ciudad en funcion del Nombre de la ciudad de destino
-            String query = "SELECT ID_Ciudad FROM Ciudades WHERE Nombre_Ciudad = ?";
-            PreparedStatement checkStatement = App.con.prepareStatement(query);
-            checkStatement.setString(1, CiudadDestino);
-            ResultSet resultSet = checkStatement.executeQuery();
-            if (resultSet.next()) {
-                ciudadDestino = resultSet.getInt(1);
-            }
-            // Conseguir la ID de la Ciudad en funcion del Nombre de la ciudad de salida
-            query = "SELECT ID_Ciudad FROM Ciudades WHERE Nombre_Ciudad = ?";
-            checkStatement = App.con.prepareStatement(query);
-            checkStatement.setString(1, CiudadSalida);
-            resultSet = checkStatement.executeQuery();
-            if (resultSet.next()) {
-                ciudadSalida = resultSet.getInt(1);
-            }
 
             // Conseguir la siguiente ID de los Vuelos
             idAvionInt = idAvion;
@@ -373,8 +364,8 @@ public class Gestioner {
                 String consulta = "INSERT INTO Vuelos (ID_Vuelo, Ciudad_Salida, Ciudad_Destino, ID_Avion, Fecha_Salida, Creada) VALUES (? , ?, ?, ?, ?, ?)";
                 PreparedStatement insertStatement = App.con.prepareStatement(consulta);
                 insertStatement.setInt(1, id + 1);
-                insertStatement.setInt(2, ciudadSalida);
-                insertStatement.setInt(3, ciudadDestino);
+                insertStatement.setInt(2, Getter.getIDCiudad(CiudadSalida));
+                insertStatement.setInt(3, Getter.getIDCiudad(CiudadDestino));
                 insertStatement.setInt(4, idAvionInt);
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 java.util.Date date = dateFormat.parse(fecha);
@@ -395,13 +386,12 @@ public class Gestioner {
 
     /**
      * Eliminar un vuelo
-     * @param ID ID del vuelo 
+     *
+     * @param ID ID del vuelo
      * @return si se ha creado o si no true|false
      */
     public static boolean eliminarVuelo(int ID) {
         try {
-
-            
             String query = "DELETE FROM Vuelos WHERE ID_Vuelo = ?";
             PreparedStatement checkStatement = App.con.prepareStatement(query);
             checkStatement.setInt(1, ID);
@@ -419,14 +409,15 @@ public class Gestioner {
 
     /**
      * Reservar un vuelo
-     * @param IDUSU ID del usuario
-     * @param IDVUELO ID del vuelo
+     *
+     * @param IDUSU           ID del usuario
+     * @param IDVUELO         ID del vuelo
      * @param selectedAsiento asiento seleccionado
      * @return ID de la reserva
      */
     public static int reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) {
         try {
-            
+
             int id;
             // Sacar la siguiente ID del vuelo
             String test = "SELECT max(ID_Reserva) FROM Reservas";
@@ -456,6 +447,7 @@ public class Gestioner {
 
     /**
      * Eliminar una reserva
+     *
      * @param IDReserva ID de la reserva
      */
     public static void eliminarReserva(int IDReserva) {

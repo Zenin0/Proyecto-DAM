@@ -2,9 +2,13 @@ package app;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -215,30 +219,33 @@ public class InicioUserController implements Initializable {
         gridPane.setVgap(10);
 
         final int[] selectedSeat = {-1};
-
+        Image image = new Image("https://cdn-icons-png.flaticon.com/512/99/99342.png");
         for (int row = 1; row <= numRows; row++) {
             for (int col = 1; col <= numCols; col++) {
                 int seatNum = (row - 1) * numCols + col;
-                Button seatButton = new Button(String.valueOf(seatNum));
-                seatButton.setPrefSize(50, 50);
-
-                /* Añadir Imagenes de Asientos
-                Image image = new Image("https://cdn-icons-png.flaticon.com/512/99/99342.png");
+                /* Add Seat Images */
                 ImageView seatButton = new ImageView(image);
                 seatButton.setId(String.valueOf(seatNum));
                 seatButton.setFitWidth(50);
                 seatButton.setFitHeight(50);
-                 */
-
+                Label seatLabel = new Label(String.valueOf(seatNum));
+                seatLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #000000; -fx-alignment: center;");
+                StackPane stackPane = new StackPane();
+                stackPane.getChildren().addAll(seatButton, seatLabel);
+                StackPane.setAlignment(seatLabel, Pos.CENTER);
+                seatButton.setId(String.valueOf(seatNum));
                 if (asientosLibres.contains(seatNum)) {
-                    seatButton.setOnAction(event -> selectedSeat[0] = Integer.parseInt(seatButton.getText()));
+                    seatButton.setOnMouseClicked(event -> selectedSeat[0] = Integer.parseInt(seatButton.getId()));
                 } else {
-                    seatButton.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #000000");
+                    seatButton.setOpacity(0.5); // Set opacity for unavailable seats
                     seatButton.setDisable(true);
                 }
-                gridPane.add(seatButton, col, row);
+                gridPane.add(stackPane, col, row);
             }
         }
+
+
+
 
         Dialog<Integer> dialog = new Dialog<>();
         dialog.setTitle("Seleccionar Asiento");

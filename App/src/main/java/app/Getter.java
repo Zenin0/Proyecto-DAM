@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Obtener datos de la Base de Datos
  */
-public  class Getter {
+public class Getter {
 
     /**
      * Construcor de la clase
@@ -21,6 +21,7 @@ public  class Getter {
 
     /**
      * Obtener una lista de ciuades
+     *
      * @return una ArrayList de las ciudades
      */
     public static ArrayList<String> getlistaCiudadesStrings() throws SQLException {
@@ -42,6 +43,7 @@ public  class Getter {
 
     /**
      * Obtener una lista de aviones
+     *
      * @return una ArrayList de los Aviones
      */
     public static ArrayList<String> getlistaAvionesStrings() throws SQLException {
@@ -60,6 +62,7 @@ public  class Getter {
 
     /**
      * Obtener una lista de los vuelos
+     *
      * @return una ArrayList de los vuelos
      */
     public static ArrayList<String> getlistaVuelosStrings() throws SQLException {
@@ -81,6 +84,7 @@ public  class Getter {
 
     /**
      * Obtener una lista de las Reservas de un Usuario
+     *
      * @param IDUser ID del usuario
      * @return ArrayList de las reservas de un usuario
      */
@@ -104,6 +108,7 @@ public  class Getter {
 
     /**
      * Obtener el nombre de una ciudad en base a su ID
+     *
      * @param IDCiudad ID de la ciudad
      * @return Nombre de la ciudad
      */
@@ -122,7 +127,26 @@ public  class Getter {
     }
 
     /**
+     * Obtener la ID de la ciudad en base a su nombre
+     *
+     * @param Nombre Nombre de la ciudad
+     * @return ID de la ciudad
+     */
+    public static int getIDCiudad(String Nombre) throws SQLException {
+
+        String query = "SELECT ID_Ciudad FROM Ciudades WHERE Nombre_Ciudad = ?";
+        PreparedStatement checkStatement = App.con.prepareStatement(query);
+        checkStatement.setString(1, Nombre);
+        ResultSet rs = checkStatement.executeQuery();
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+        return -1;
+    }
+
+    /**
      * Obtener el nombre del avion en base de su ID
+     *
      * @param IDAvion ID del avión
      * @return nombe del avión
      */
@@ -142,6 +166,7 @@ public  class Getter {
 
     /**
      * Obtener ID del avión en base a la ID del vuelo
+     *
      * @param IDVuelo ID del vuelo
      * @return ID del avión
      */
@@ -160,6 +185,7 @@ public  class Getter {
 
     /**
      * Obtener cantidad de los asientos libres de un Vuelo
+     *
      * @param IDAvion ID del avión
      * @param IDVuelo ID del vuelo
      * @return Cantidad de asientos libres
@@ -188,6 +214,7 @@ public  class Getter {
 
     /**
      * Obtener asientos libres
+     *
      * @param IDAvion ID del avión
      * @param IDVuelo ID del vuelo
      * @return Arraylist de numeros con los asientos libres
@@ -222,6 +249,7 @@ public  class Getter {
 
     /**
      * Obtener la capacidad del avión
+     *
      * @param IDAvion ID del avion
      * @return Capaciad del avion
      */
@@ -241,6 +269,7 @@ public  class Getter {
 
     /**
      * Obtener el ID de un usuario en base a su nombre
+     *
      * @param Username Nombre del usuario
      * @return ID del usuario
      */
@@ -260,6 +289,7 @@ public  class Getter {
 
     /**
      * Obtener el nombre de un usuario en base a si ID
+     *
      * @param IDUser ID del usuario
      * @return Nombre del usuario
      */
@@ -276,9 +306,10 @@ public  class Getter {
 
         return em;
     }
-    
+
     /**
      * Obtener una String de la informacion del vuelo
+     *
      * @param IDVuelo ID del Vuelo
      * @return Informacion del Vuelo
      */
@@ -299,6 +330,7 @@ public  class Getter {
 
     /**
      * Obtener informacion de la reserva
+     *
      * @param IDReserva ID de la reserva
      * @return Informacion de la reserva
      */
@@ -325,6 +357,7 @@ public  class Getter {
 
     /**
      * Obtener un numero de columnas y filas con una proporcion
+     *
      * @param numSeats Numero de asientos
      * @return numero de columnas
      * @see #getNumRows(int, int)
@@ -344,8 +377,9 @@ public  class Getter {
 
     /**
      * Obtener el numero de filas y columnas con una proporcion
+     *
      * @param numSeats Numero de asientos
-     * @param numCols Numero de columnas
+     * @param numCols  Numero de columnas
      * @return Numero de filas
      * @see #getNumCols(int)
      */
