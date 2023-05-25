@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/images/PDF-Example.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -319,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685028329956</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="PDF de ejemplo añadido al README.md">
+      <created>1685029640008</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1685029640008</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -348,6 +354,7 @@
     <MESSAGE value="Esconder texto ciudades al cambio" />
     <MESSAGE value="Readme images Update" />
     <MESSAGE value="Roadmap Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Roadmap Update" />
+    <MESSAGE value="PDF de ejemplo añadido al README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="PDF de ejemplo añadido al README.md" />
   </component>
 </project>
