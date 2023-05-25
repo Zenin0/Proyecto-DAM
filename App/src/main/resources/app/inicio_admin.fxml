@@ -5,7 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -47,11 +47,11 @@
             <Label fx:id="ciudadSalidaVuelo" contentDisplay="CENTER" text="Ciudad Salida" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="ciudadDestinoVuelo" contentDisplay="CENTER" text="Ciudad Destino" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="avionVuelo" contentDisplay="CENTER" text="Avion" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <SplitMenuButton fx:id="menuCiudadesSalida" mnemonicParsing="false" text="Ciudades" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <SplitMenuButton fx:id="menuCiudadesDestino" mnemonicParsing="false" text="Ciudades" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <SplitMenuButton fx:id="menuAviones" mnemonicParsing="false" text="Aviones" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <MenuButton fx:id="menuCiudadesSalida" mnemonicParsing="false" text="Ciudades Salida" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <MenuButton fx:id="menuCiudadesDestino" mnemonicParsing="false" text="Ciudades Destino" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <MenuButton fx:id="menuAviones" mnemonicParsing="false" text="Aviones" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Button fx:id="aceptarButtonVuelo" mnemonicParsing="false" text="Aceptar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Label fx:id="capacidad" contentDisplay="CENTER" text="Capacidad" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="capacidad" contentDisplay="CENTER" text="MenuButton" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="capacidadField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <DatePicker fx:id="fechaSelect" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label fx:id="fechaLabel" contentDisplay="CENTER" text="Fecha Salida" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />

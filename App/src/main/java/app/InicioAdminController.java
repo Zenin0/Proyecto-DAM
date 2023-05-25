@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
  */
 public class InicioAdminController implements Initializable {
 
+
     @FXML
     private Button aceptarButtonAvion;
 
@@ -67,13 +68,13 @@ public class InicioAdminController implements Initializable {
     private DatePicker fechaSelect;
 
     @FXML
-    private SplitMenuButton menuAviones;
+    private MenuButton menuAviones;
 
     @FXML
-    private SplitMenuButton menuCiudadesDestino;
+    private MenuButton menuCiudadesDestino;
 
     @FXML
-    private SplitMenuButton menuCiudadesSalida;
+    private MenuButton menuCiudadesSalida;
 
     @FXML
     private Label nombreAvion;
@@ -95,7 +96,6 @@ public class InicioAdminController implements Initializable {
 
     @FXML
     private ListView<String> vuelosList;
-
 
     /**
      * Inicializar la ventana
