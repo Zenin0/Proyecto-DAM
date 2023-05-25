@@ -16,7 +16,7 @@
     <br />
     <a href="https://github.com/Zenin0/Proyecto-DAM/issues">Reportar un Bug</a>
     ·
-    <a href="https://zenin0.github.io/">Java Doc</a>
+    <a href="https://zenin0.github.io/Manolo-Airlines-JavaDoc.github.io/app/module-summary.html">Java Doc</a>
     ·
     <a href="https://github.com/Zenin0/Proyecto-DAM/issues">Pedir una función</a>
   </p>
