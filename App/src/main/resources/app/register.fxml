@@ -13,20 +13,20 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox minHeight="600.0" minWidth="900.0" stylesheets="@css/login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.RegisterController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="1080.0" stylesheets="@css/login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.RegisterController">
    <children>
-      <GridPane alignment="CENTER" styleClass="login-grid" VBox.vgrow="ALWAYS">
+      <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="1080.0" styleClass="login-grid" VBox.vgrow="ALWAYS">
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" maxWidth="256.0" minWidth="210.0" prefWidth="210.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="250.0" />
-            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" maxWidth="203.0" minWidth="10.0" prefWidth="170.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="256.0" minWidth="0.0" prefWidth="232.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="722.0" minWidth="10.0" prefWidth="323.0" />
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="ALWAYS" maxWidth="501.0" minWidth="0.0" prefWidth="501.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="82.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="88.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="70.0" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="Usuario" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
@@ -48,7 +48,7 @@
                   <Insets right="15.0" />
                </GridPane.margin>
             </PasswordField>
-            <ImageView fitHeight="386.0" fitWidth="402.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+            <ImageView fitHeight="386.0" fitWidth="402.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <image>
                   <Image url="@css/logo.png" />
                </image>
@@ -62,10 +62,10 @@
                   <Insets left="15.0" />
                </GridPane.margin>
             </CheckBox>
-            <Label style="-fx-font-size: 30px;" styleClass="h1" text="Registro de Usuario" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" />
+            <Label style="-fx-font-size: 30px;" styleClass="h1" text="Registro de Usuario" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="3" />
          </children>
          <VBox.margin>
-            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </VBox.margin>
       </GridPane>
    </children>
