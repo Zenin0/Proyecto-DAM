@@ -107,7 +107,7 @@ public class InicioAdminController implements Initializable {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setHeaderText(e.getMessage());
+            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
         // Cambiar a la funcion de Añadir una Ciudad
@@ -128,7 +128,7 @@ public class InicioAdminController implements Initializable {
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
+                dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
 
@@ -141,7 +141,7 @@ public class InicioAdminController implements Initializable {
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
+                dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
         });
@@ -152,7 +152,7 @@ public class InicioAdminController implements Initializable {
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
+                dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
         });

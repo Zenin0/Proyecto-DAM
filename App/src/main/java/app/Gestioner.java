@@ -468,7 +468,7 @@ public class Gestioner {
     /**
      * Eliminar una reserva
      *
-     * @param IDReserva ID de la reserva
+     * @param IDReserva  ID de la reserva
      * @param AsientoNew Nuevo asiento seleccionado
      */
     public static int modificarReserva(int IDReserva, int AsientoNew) {

@@ -75,8 +75,8 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </TableView>
-            <MenuButton fx:id="menuciudadDestino" mnemonicParsing="false" text="Ciudades Destino" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <MenuButton fx:id="menuciudadSalida" mnemonicParsing="false" text="Ciudades Salida" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <MenuButton fx:id="menuciudadDestino" mnemonicParsing="false" text="Cualquiera" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <MenuButton fx:id="menuciudadSalida" mnemonicParsing="false" text="Cualquiera" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
             <Label text="Ciudades De Destino" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />

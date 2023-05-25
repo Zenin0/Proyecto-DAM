@@ -32,7 +32,7 @@ public class RegisterController implements Initializable {
     @FXML
     private TextField usuReg;
 
-    
+
     /**
      * Inicializar la ventana
      */
@@ -64,12 +64,12 @@ public class RegisterController implements Initializable {
 
     /**
      * Funcion para registrar un usuario
-     * @see Gestioner#registrar(String, String, String, boolean)  
+     *
+     * @see Gestioner#registrar(String, String, String, boolean)
      */
     private void registrar() {
 
-        if (Gestioner.registrar(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(),
-                this.adminCheckBox.isSelected())) {
+        if (Gestioner.registrar(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
             this.usuReg.setText("");
             this.passReg1.setText("");
             this.passReg2.setText("");

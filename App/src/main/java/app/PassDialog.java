@@ -20,8 +20,8 @@ public class PassDialog extends Dialog<String> {
      * Generar la ventana para introducir la contraseña
      */
     public PassDialog() {
-        setTitle("Password");
-        setHeaderText("Introduce la contraseña de admin.");
+        setTitle("Contraseña");
+        setHeaderText("Introduce la contraseña de administrador.");
 
         ButtonType passwordButtonType = new ButtonType("Aceptar", ButtonData.OK_DONE);
         getDialogPane().getButtonTypes().addAll(passwordButtonType, ButtonType.CANCEL);

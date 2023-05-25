@@ -76,17 +76,17 @@ public class LoginController implements Initializable {
 
         Alert dialog = new Alert(AlertType.CONFIRMATION);
         if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 1) {
-            dialog.setTitle("Login correcto");
-            dialog.setHeaderText("Bienvenido " + this.usuLog.getText());
+            dialog.setTitle("¡Login correcto!");
+            dialog.setHeaderText("¡Bienvenido " + this.usuLog.getText() + "!");
             dialog.show();
             App.setRoot("inicio_admin");
         } else if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 0) {
-            dialog.setTitle("Login correcto");
-            dialog.setHeaderText("Bienvenido " + this.usuLog.getText());
+            dialog.setTitle("¡Login correcto!");
+            dialog.setHeaderText("¡Bienvenido " + this.usuLog.getText() + "!");
             dialog.show();
             App.setRoot("inicio_user");
         } else {
-            dialog.setTitle("ERROR");
+            dialog.setTitle("Login Incorrecto");
             dialog.setHeaderText("Inicio de sesión incorrecto");
             dialog.show();
         }

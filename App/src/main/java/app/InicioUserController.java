@@ -215,13 +215,14 @@ public class InicioUserController implements Initializable {
         gridPane.setHgap(10);
         gridPane.setVgap(10);
 
+
         final int[] selectedSeat = {-1};
         Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
         Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
 
-        for (int row = 1; row <= numRows; row++) {
-            for (int col = 1; col <= numCols; col++) {
-                int seatNum = (row - 1) * numCols + col;
+        for (int col = 1; col <= numCols; col++) {
+            for (int row = 1; row <= numRows; row++) {
+                int seatNum = (col - 1) * numRows + row;
                 // Añadir Imagenes
                 ImageView seatButton = new ImageView();
                 seatButton.setId(String.valueOf(seatNum));
@@ -258,7 +259,7 @@ public class InicioUserController implements Initializable {
 
 
         Dialog<Integer> dialog = new Dialog<>();
-        dialog.setTitle("Seleccionar Asiento");
+        dialog.setTitle("Seleccion de  Asiento");
         dialog.getDialogPane().setContent(gridPane);
 
         ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -310,8 +311,8 @@ public class InicioUserController implements Initializable {
                     }
                 } else {
                     Alert fin = new Alert(AlertType.ERROR);
-                    fin.setTitle("Seleccion de Asiento");
-                    fin.setHeaderText("Operacion Cancelada");
+                    fin.setTitle("Selección de Asiento");
+                    fin.setHeaderText("Operación Cancelada");
                     fin.show();
                 }
             }
@@ -387,7 +388,7 @@ public class InicioUserController implements Initializable {
         App.setRoot("login");
         Alert dialog = new Alert(AlertType.CONFIRMATION);
         dialog.setTitle("Session Terminada");
-        dialog.setHeaderText("Sesión terminada con éxito");
+        dialog.setHeaderText("¡Sesión terminada con éxito!");
         dialog.show();
     }
 
@@ -456,7 +457,7 @@ public class InicioUserController implements Initializable {
 
 
             Dialog<Integer> dialog = new Dialog<>();
-            dialog.setTitle("Seleccionar Asiento");
+            dialog.setTitle("Seleccion de Asiento");
             dialog.getDialogPane().setContent(gridPane);
 
             ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -496,20 +497,20 @@ public class InicioUserController implements Initializable {
                             } else { // No reservado
                                 Alert fin = new Alert(AlertType.ERROR);
                                 fin.setTitle("PDF");
-                                fin.setHeaderText("Operacion Cancelada");
+                                fin.setHeaderText("Operación Cancelada");
                                 fin.show();
                             }
                             return outReserva;
                         } catch (SQLException e) {
                             Alert sqlerror = new Alert(AlertType.ERROR);
                             sqlerror.setTitle("ERROR");
-                            sqlerror.setHeaderText(e.getMessage());
+                            sqlerror.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
                             sqlerror.show();
                         }
                     } else {
                         Alert fin = new Alert(AlertType.ERROR);
-                        fin.setTitle("Seleccion de Asiento");
-                        fin.setHeaderText("Operacion Cancelada");
+                        fin.setTitle("Selección de Asiento");
+                        fin.setHeaderText("Operación Cancelada");
                         fin.show();
                     }
                 }

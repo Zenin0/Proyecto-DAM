@@ -1,5 +1,8 @@
 package app;
 
+/**
+ * Objecto que respresenta los vuelos, para usarlo en una TableView
+ */
 public class Vuelo {
 
     private final int id;
@@ -8,7 +11,16 @@ public class Vuelo {
     private final String Fecha;
     private final int Asientos;
 
-    public Vuelo(int id, String Ciudad_Salida, String Ciudad_Llegada, String Fecha, int Asientos){
+    /**
+     *
+     *
+     * @param id             I del vuelo
+     * @param Ciudad_Salida  Ciudad de Salida del vuelo
+     * @param Ciudad_Llegada Ciudad de Llegada del vuelo
+     * @param Fecha          Fecha de salida del vuelo
+     * @param Asientos       Asientos libres del vuelo
+     */
+    public Vuelo(int id, String Ciudad_Salida, String Ciudad_Llegada, String Fecha, int Asientos) {
         this.id = id;
         this.Ciudad_Salida = Ciudad_Salida;
         this.Ciudad_Llegada = Ciudad_Llegada;
@@ -18,22 +30,42 @@ public class Vuelo {
     }
 
 
+    /**
+     * Obtener la ID
+     * @return ID del vuelo
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Obtener la ciudad de Salida
+     * @return Ciudad de Salida
+     */
     public String getCiudad_Salida() {
         return Ciudad_Salida;
     }
 
+    /**
+     * Obtener la Ciudad de Llegada
+     * @return Ciudad de Llegada
+     */
     public String getCiudad_Llegada() {
         return Ciudad_Llegada;
     }
 
+    /**
+     * Obtener la Fecha del vuelo
+     * @return Fecha
+     */
     public String getFecha() {
         return Fecha;
     }
 
+    /**
+     * Obtener los asientos libres
+     * @return Asientos Libres
+     */
     public int getAsientos() {
         return Asientos;
     }

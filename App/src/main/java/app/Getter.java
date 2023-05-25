@@ -21,7 +21,6 @@ public class Getter {
     Getter() {
     }
 
-
     /**
      * Obtener una lista de ciuades
      *

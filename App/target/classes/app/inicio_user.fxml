@@ -65,18 +65,18 @@
             </Button>
             <TableView fx:id="vuelosDisponiblesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="4" GridPane.valignment="CENTER">
               <columns>
-                <TableColumn fx:id="iDVueloColumn" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="ciudadSalidaVueloColumn" prefWidth="194.0" text="Ciudad de Salida" />
-                  <TableColumn fx:id="ciudadLlegadaVueloColumn" prefWidth="167.0" text="Ciudad de Llegada" />
-                  <TableColumn fx:id="fechaSalidaVueloColumn" prefWidth="205.0" text="Fecha de Salida" />
-                  <TableColumn fx:id="asientosLibresVueloColumn" prefWidth="156.0" text="Asientos libres" />
+                <TableColumn fx:id="iDVueloColumn" prefWidth="75.0" sortable="false" text="ID" />
+                <TableColumn fx:id="ciudadSalidaVueloColumn" prefWidth="194.0" sortable="false" text="Ciudad de Salida" />
+                  <TableColumn fx:id="ciudadLlegadaVueloColumn" prefWidth="167.0" sortable="false" text="Ciudad de Llegada" />
+                  <TableColumn fx:id="fechaSalidaVueloColumn" prefWidth="205.0" sortable="false" text="Fecha de Salida" />
+                  <TableColumn fx:id="asientosLibresVueloColumn" prefWidth="156.0" sortable="false" text="Asientos libres" />
               </columns>
                <GridPane.margin>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </TableView>
-            <MenuButton fx:id="menuciudadDestino" mnemonicParsing="false" text="Ciudades Destino" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <MenuButton fx:id="menuciudadSalida" mnemonicParsing="false" text="Ciudades Salida" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <MenuButton fx:id="menuciudadDestino" mnemonicParsing="false" text="Cualquiera" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <MenuButton fx:id="menuciudadSalida" mnemonicParsing="false" text="Cualquiera" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
             <Label text="Ciudades De Destino" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
