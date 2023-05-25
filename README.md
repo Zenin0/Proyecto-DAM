@@ -145,23 +145,24 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
       - [X] Selector de fechas 
     - [X] [Borrar vuelos ya creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
       - [X] [Listar los vuelos creados](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
-  - [ ] Apartado Usuarios 
-    - [ ] Reservar vuelos con usuarios normales
-      - [ ] Funciones para filtrar la busqueda de vuelos
-        - [ ] Por Ciudad de Destino
-        - [ ] Por Ciuad de Salida
+  - [X] Apartado Usuarios 
+    - [X] [Reservar vuelos](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+      - [X] [Funciones para filtrar la busqueda de vuelos](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
+        - [X] Por Ciudad de Destino
+        - [X] Por Ciuad de Salida
       - [X] Mostrar grid con imagenes de asientos para reservar el asiento
-      - [ ] Mostrar información de cada vuelo
+      - [X] Mostrar información de cada vuelo
         - [X] [Generar PDF con los datos de la Reserva](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
           - [X] Mostrar ruta donde descargar el fichero PDF
-    - [X] [Listar vuelos de los usuarios normales con una lista](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
-      - [X] [Mostrar información de cada uno de esos vuelos](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
-        - [X] [Descargar PDF con la información del vuelo seleccionado](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
-          - [X] [Mostrar ruta donde descargar el fichero PDF](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
-    - [X] [Habilitar función de cancelación del vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
-      - [X] [Listar vuelos disponibles con una lista](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
-        - [X] [Mostrar información de cada vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
-    - [X]  [Habilitar función de modificación del vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+    - [ ] Mis Reservas
+      - [X] [Listar vuelos de los usuarios normales con una lista](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
+        - [X] [Mostrar información de cada uno de esos vuelos](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
+          - [X] [Descargar PDF con la información del vuelo seleccionado](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+            - [X] [Mostrar ruta donde descargar el fichero PDF](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+      - [X] [Habilitar función de cancelación del vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
+        - [X] [Listar vuelos disponibles con una lista](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
+          - [X] [Mostrar información de cada vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
+      - [X]  [Habilitar función de modificación del vuelo](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
       - [X] [Listar vuelos disponibles con una lista](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
       - [X] Mostrar grid con imagenes de asientos para reservar el asiento
       - [X] Modificar asiento

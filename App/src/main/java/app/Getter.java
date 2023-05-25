@@ -1,5 +1,8 @@
 package app;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -409,5 +412,57 @@ public class Getter {
         }
         return numRows;
     }
+
+    public static ObservableList<Vuelo> getVuelosObservableList(int ciudadSalida, int ciudadLlegada) throws SQLException {
+        ObservableList<Vuelo> out = FXCollections.observableArrayList();
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("SELECT * FROM Vuelos");
+
+        if (ciudadSalida > 0) {
+            queryBuilder.append(" WHERE Ciudad_Salida = ?");
+        }
+        if (ciudadLlegada > 0) {
+            if (ciudadSalida <= 0) {
+                queryBuilder.append(" WHERE Ciudad_Destino = ?");
+            } else {
+                queryBuilder.append(" AND Ciudad_Destino = ?");
+            }
+        }
+
+        String query = queryBuilder.toString();
+        PreparedStatement checkStatement = App.con.prepareStatement(query);
+
+        int indiceParametro = 1;
+        if (ciudadSalida > 0) {
+            checkStatement.setInt(indiceParametro++, ciudadSalida);
+        }
+        if (ciudadLlegada > 0) {
+            checkStatement.setInt(indiceParametro++, ciudadLlegada);
+        }
+
+
+        ResultSet rs = checkStatement.executeQuery();
+        while (rs.next()) {
+            java.sql.Date fechaSalida = rs.getDate("Fecha_Salida");
+            String fechaSalidaStr = null;
+
+            if (fechaSalida != null) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                fechaSalidaStr = dateFormat.format(fechaSalida);
+            }
+
+            out.add(new Vuelo(
+                    rs.getInt("ID_Vuelo"),
+                    Getter.getNombreCiudad(rs.getInt("Ciudad_Salida")),
+                    Getter.getNombreCiudad(rs.getInt("Ciudad_Destino")),
+                    fechaSalidaStr,
+                    getAsientosLibresCant(Getter.getIDAvioFromVuelo(rs.getInt("ID_Vuelo")), rs.getInt("ID_Vuelo"))
+            ));
+        }
+
+        return out;
+    }
+
 
 }

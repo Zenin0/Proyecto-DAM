@@ -1,11 +1,14 @@
 package app;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -23,11 +26,34 @@ import java.util.ResourceBundle;
  */
 public class InicioUserController implements Initializable {
 
+
+    @FXML
+    private TableColumn<Vuelo, String> asientosLibresVueloColumn;
+
+    @FXML
+    private TableColumn<Vuelo, String> ciudadLlegadaVueloColumn;
+
+    @FXML
+    private TableColumn<Vuelo, String> ciudadSalidaVueloColumn;
+
     @FXML
     private Button downloadJustificanteButton;
 
     @FXML
     private Button endSession;
+
+    @FXML
+    private TableColumn<Vuelo, String> fechaSalidaVueloColumn;
+
+    @FXML
+    private TableColumn<Vuelo, String> iDVueloColumn;
+
+
+    @FXML
+    private MenuButton menuciudadDestino;
+
+    @FXML
+    private MenuButton menuciudadSalida;
 
     @FXML
     private Label misReservasLabel;
@@ -54,7 +80,10 @@ public class InicioUserController implements Initializable {
     private Button reservarMeuItem;
 
     @FXML
-    private ListView<String> vuelosDisponiblesReservaList;
+    private TableView<Vuelo> vuelosDisponiblesTable;
+
+    public InicioUserController() {
+    }
 
     /**
      * Inicializar la ventana
@@ -99,9 +128,10 @@ public class InicioUserController implements Initializable {
                 dialog.show();
             }
         });
-        this.reservarButton.setOnAction(event -> {
+
+                this.reservarButton.setOnAction(event -> {
             try {
-                if (!vuelosDisponiblesReservaList.getSelectionModel().isEmpty())
+                if (!vuelosDisponiblesTable.getSelectionModel().isEmpty())
                     reservar();
                 else {
                     Alert dialog = new Alert(AlertType.ERROR);
@@ -116,6 +146,7 @@ public class InicioUserController implements Initializable {
                 dialog.show();
             }
         });
+
         this.downloadJustificanteButton.setOnAction(event -> {
             try {
                 if (!misReservasList.getSelectionModel().isEmpty())
@@ -308,28 +339,21 @@ public class InicioUserController implements Initializable {
      * @see #loadReservas()
      */
     public void loadVuelos() throws SQLException {
-        this.vuelosDisponiblesReservaList.getItems().clear();
-        // Araylist de String con la informacion de los vuelos
-        ArrayList<String> vuelos = Getter.getlistaVuelosStrings();
-        if (vuelos.size() > 0) {
-            for (String vuelo : vuelos) {
-                // Instroducirlo a la ListView formateado
-                String[] parts = vuelo.replaceAll(" ", "").split("-");
-                if (Getter.getAsientosLibresCant(Getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0])) > 0) {
-                    String res = parts[0] + "\nCiudad de Salida: " + Getter.getNombreCiudad(Integer.parseInt(parts[1])) +
-                            " \nCiuad de Destino: " + Getter.getNombreCiudad(Integer.parseInt(parts[2])) +
-                            "\nFecha Despegue: " + parts[5] + "/" + parts[4] + "/" + parts[3] +
-                            "\nAsientos Disponibles: " + Getter.getAsientosLibresCant(Getter.getIDAvioFromVuelo(Integer.parseInt(parts[0])), Integer.parseInt(parts[0]));
-                    this.vuelosDisponiblesReservaList.getItems().add(res);
-                }
-            }
-        } else {  // No hay vuelos Disponibles
+        ObservableList<Vuelo> vuelos = Getter.getVuelosObservableList(Getter.getIDCiudad(this.menuciudadSalida.getText()), Getter.getIDCiudad(this.menuciudadDestino.getText()));
+        if (vuelos.size() < 1) {
             Alert dialog = new Alert(AlertType.INFORMATION);
-            dialog.setTitle("Vuelos");
-            dialog.setHeaderText("No hay vuelos disponibles");
+            dialog.setTitle("No Encontrado");
+            dialog.setHeaderText("Ningún vuelo encontrado con esos parámetros");
             dialog.show();
-            this.vuelosDisponiblesReservaList.getItems().add("No hay vuelos Dispnibles");
+        } else {
+            this.iDVueloColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            this.ciudadSalidaVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Ciudad_Salida"));
+            this.ciudadLlegadaVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Ciudad_Llegada"));
+            this.fechaSalidaVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
+            this.asientosLibresVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Asientos"));
+            this.vuelosDisponiblesTable.setItems(vuelos);
         }
+
 
     }
 
@@ -375,125 +399,130 @@ public class InicioUserController implements Initializable {
      * @see Gestioner
      */
     private void reservar() throws SQLException {
-        String[] s = this.vuelosDisponiblesReservaList.getSelectionModel().getSelectedItem().split("\n");
 
-        int vueloID = Integer.parseInt(s[0]);
-        int numAsientos = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID).size();
-        int numCols = Getter.getNumCols(numAsientos);
-        int numRows = Getter.getNumRows(numAsientos, numCols);
+        Vuelo selectedVuelo = vuelosDisponiblesTable.getSelectionModel().getSelectedItem();
 
-        ArrayList<Integer> asientosLibres = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID);
-        GridPane gridPane = new GridPane();
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
+        if (selectedVuelo != null) {
+            int vueloID = selectedVuelo.getId();
+            int numAsientos = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID).size();
+            int numCols = Getter.getNumCols(numAsientos);
+            int numRows = Getter.getNumRows(numAsientos, numCols);
 
-        final int[] selectedSeat = {-1};
-        Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
-        Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
-        final ImageView[] previouslySelectedButton = {null};
+            ArrayList<Integer> asientosLibres = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID);
+            GridPane gridPane = new GridPane();
+            gridPane.setHgap(10);
+            gridPane.setVgap(10);
 
-        for (int row = 1; row <= numRows; row++) {
-            for (int col = 1; col <= numCols; col++) {
-                int seatNum = (row - 1) * numCols + col;
-                // Añadir Imagenes
-                ImageView seatButton = new ImageView();
-                seatButton.setId(String.valueOf(seatNum));
-                seatButton.setFitWidth(50);
-                seatButton.setFitHeight(50);
+            final int[] selectedSeat = {-1};
+            Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
+            Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
 
-                // Añadir el numero de asiento (ID)
-                Label seatLabel = new Label(String.valueOf(seatNum));
-                seatLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #000000; -fx-alignment: center;");
-                seatLabel.setTranslateX(-6);
-                StackPane stackPane = new StackPane();
-                stackPane.getChildren().addAll(seatButton, seatLabel);
-                StackPane.setAlignment(seatLabel, Pos.CENTER);
+            for (int row = 1; row <= numRows; row++) {
+                for (int col = 1; col <= numCols; col++) {
+                    int seatNum = (row - 1) * numCols + col;
+                    // Añadir Imagenes
+                    ImageView seatButton = new ImageView();
+                    seatButton.setId(String.valueOf(seatNum));
+                    seatButton.setFitWidth(50);
+                    seatButton.setFitHeight(50);
 
-                // Asignar que ID hemos pulsado, y cambiar opacidades
-                if (asientosLibres.contains(seatNum)) {
-                    seatButton.setImage(able);
-                    stackPane.setOnMouseClicked(event -> {
-                        if (previouslySelectedButton[0] != null) {
-                            previouslySelectedButton[0].setOpacity(1.0);
-                        }
-                        selectedSeat[0] = Integer.parseInt(seatButton.getId());
-                        seatButton.setOpacity(0.2);
-                    });
-                    stackPane.setOnMouseEntered(event -> stackPane.setOpacity(0.2));
-                    stackPane.setOnMouseExited(event -> stackPane.setOpacity(1));
-                    stackPane.cursorProperty().set(Cursor.HAND);
-                } else {
-                    seatButton.setImage(unable);
-                    seatButton.setOpacity(0.5);
-                    seatButton.setDisable(true);
+                    // Añadir el numero de asiento (ID)
+                    Label seatLabel = new Label(String.valueOf(seatNum));
+                    seatLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #000000; -fx-alignment: center;");
+                    seatLabel.setTranslateX(-6);
+                    StackPane stackPane = new StackPane();
+                    stackPane.getChildren().addAll(seatButton, seatLabel);
+                    StackPane.setAlignment(seatLabel, Pos.CENTER);
+
+                    // Asignar que ID hemos pulsado, y cambiar opacidades
+                    if (asientosLibres.contains(seatNum)) {
+                        seatButton.setImage(able);
+                        stackPane.setOnMouseClicked(event -> {
+                            selectedSeat[0] = Integer.parseInt(seatButton.getId());
+                            seatButton.setOpacity(0.2);
+                        });
+                        stackPane.setOnMouseEntered(event -> stackPane.setOpacity(0.2));
+                        stackPane.setOnMouseExited(event -> stackPane.setOpacity(1));
+                        stackPane.cursorProperty().set(Cursor.HAND);
+                    } else {
+                        seatButton.setImage(unable);
+                        seatButton.setOpacity(0.5);
+                        seatButton.setDisable(true);
+                    }
+
+                    gridPane.add(stackPane, col, row);
                 }
-
-                gridPane.add(stackPane, col, row);
             }
-        }
 
 
-        Dialog<Integer> dialog = new Dialog<>();
-        dialog.setTitle("Seleccionar Asiento");
-        dialog.getDialogPane().setContent(gridPane);
+            Dialog<Integer> dialog = new Dialog<>();
+            dialog.setTitle("Seleccionar Asiento");
+            dialog.getDialogPane().setContent(gridPane);
 
-        ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
-        ButtonType reservar = new ButtonType("Reservar", ButtonBar.ButtonData.OK_DONE);
+            ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
+            ButtonType reservar = new ButtonType("Reservar", ButtonBar.ButtonData.OK_DONE);
 
-        dialog.getDialogPane().getButtonTypes().add(noReservar);
-        dialog.getDialogPane().getButtonTypes().add(reservar);
+            dialog.getDialogPane().getButtonTypes().add(noReservar);
+            dialog.getDialogPane().getButtonTypes().add(reservar);
 
-        dialog.setResultConverter(buttonType -> {
-            if (buttonType == reservar) {
-                int selectedAsiento = selectedSeat[0];
-                // Hacemos la reserva
-                if (selectedAsiento != -1) {
-                    try {
-                        int outReserva = Gestioner.reservarVuelo(Getter.getUsernameID(GlobalData.userName), Integer.parseInt(s[0]), selectedAsiento);
-                        if (outReserva != 0) {
-                            // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
-                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                            alert.setTitle("Vuelo Reservado");
-                            alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
-                            alert.setResizable(false);
-                            alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
-                            ButtonType noThanksButton = new ButtonType("No, Gracias");
-                            ButtonType downloadButton = new ButtonType("Descargar");
-                            alert.getButtonTypes().setAll(noThanksButton, downloadButton);
-                            Optional<ButtonType> alertResult = alert.showAndWait();
-                            ButtonType button = alertResult.orElse(ButtonType.CANCEL);
-                            if (button == downloadButton) { // Aceptado
-                                // Crear y descargar el PDF
-                                Gestioner.createPDF(Getter.getReservaInfo(outReserva));
-                                Alert fin = new Alert(AlertType.CONFIRMATION);
+            dialog.setResultConverter(buttonType -> {
+                if (buttonType == reservar) {
+                    int selectedAsiento = selectedSeat[0];
+                    // Hacemos la reserva
+                    if (selectedAsiento != -1) {
+                        try {
+                            int outReserva = Gestioner.reservarVuelo(Getter.getUsernameID(GlobalData.userName), vueloID, selectedAsiento);
+                            if (outReserva != 0) {
+                                // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setTitle("Vuelo Reservado");
+                                alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
+                                alert.setResizable(false);
+                                alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
+                                ButtonType noThanksButton = new ButtonType("No, Gracias");
+                                ButtonType downloadButton = new ButtonType("Descargar");
+                                alert.getButtonTypes().setAll(noThanksButton, downloadButton);
+                                Optional<ButtonType> alertResult = alert.showAndWait();
+                                ButtonType button = alertResult.orElse(ButtonType.CANCEL);
+                                if (button == downloadButton) { // Aceptado
+                                    // Crear y descargar el PDF
+                                    Gestioner.createPDF(Getter.getReservaInfo(outReserva));
+                                    Alert fin = new Alert(AlertType.CONFIRMATION);
+                                    fin.setTitle("PDF");
+                                    fin.setHeaderText("PDF descargado con exito");
+                                    fin.show();
+                                }
+                                loadVuelos();
+                            } else { // No reservado
+                                Alert fin = new Alert(AlertType.ERROR);
                                 fin.setTitle("PDF");
-                                fin.setHeaderText("PDF descargado con exito");
+                                fin.setHeaderText("Operacion Cancelada");
                                 fin.show();
                             }
-                            loadVuelos();
-                        } else { // No reservado
-                            Alert fin = new Alert(AlertType.ERROR);
-                            fin.setTitle("PDF");
-                            fin.setHeaderText("Operacion Cancelada");
-                            fin.show();
+                            return outReserva;
+                        } catch (SQLException e) {
+                            Alert sqlerror = new Alert(AlertType.ERROR);
+                            sqlerror.setTitle("ERROR");
+                            sqlerror.setHeaderText(e.getMessage());
+                            sqlerror.show();
                         }
-                        return outReserva;
-                    } catch (SQLException e) {
-                        Alert sqlerror = new Alert(AlertType.ERROR);
-                        sqlerror.setTitle("ERROR");
-                        sqlerror.setHeaderText(e.getMessage());
-                        sqlerror.show();
+                    } else {
+                        Alert fin = new Alert(AlertType.ERROR);
+                        fin.setTitle("Seleccion de Asiento");
+                        fin.setHeaderText("Operacion Cancelada");
+                        fin.show();
                     }
-                } else {
-                    Alert fin = new Alert(AlertType.ERROR);
-                    fin.setTitle("Seleccion de Asiento");
-                    fin.setHeaderText("Operacion Cancelada");
-                    fin.show();
                 }
-            }
-            return null;
-        });
-        dialog.showAndWait();
+                return null;
+            });
+            dialog.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No se ha seleccionado ningún vuelo.");
+            alert.show();
+        }
+
     }
 
 
@@ -511,8 +540,63 @@ public class InicioUserController implements Initializable {
      * Modificar la vista para reservar un vueloi
      */
     public void menuReservar() throws SQLException {
+
+
+        MenuItem emptyItem = new MenuItem("Cualquiera");
+        emptyItem.setOnAction(event -> {
+            menuciudadDestino.setText("Cualquiera");
+            try {
+                loadVuelos();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        menuciudadDestino.getItems().add(emptyItem);
+
+        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+            MenuItem item = new MenuItem(ciudad);
+            item.setOnAction(event -> {
+                menuciudadDestino.setText(item.getText());
+                try {
+                    loadVuelos();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            menuciudadDestino.getItems().add(item);
+        }
+        menuciudadDestino.setPopupSide(Side.BOTTOM);
+
+
+        emptyItem = new MenuItem("Cualquiera");
+        emptyItem.setOnAction(event -> {
+            menuciudadSalida.setText("Cualquiera");
+            try {
+                loadVuelos();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        menuciudadSalida.getItems().add(emptyItem);
+
+        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+            MenuItem item = new MenuItem(ciudad);
+            item.setOnAction(event -> {
+                menuciudadSalida.setText(item.getText());
+                try {
+                    loadVuelos();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            menuciudadSalida.getItems().add(item);
+        }
+
+        menuciudadSalida.setPopupSide(Side.BOTTOM);
+        this.menuciudadDestino.setVisible(true);
+        this.menuciudadSalida.setVisible(true);
         this.misReservasMenuItem.setVisible(true);
-        this.vuelosDisponiblesReservaList.setVisible(true);
+        this.vuelosDisponiblesTable.setVisible(true);
         this.reservarButton.setVisible(true);
         this.reservarLabel.setVisible(true);
         this.misReservasList.setVisible(false);
@@ -528,16 +612,20 @@ public class InicioUserController implements Initializable {
      * Modificar la vista para ver mis reservas
      */
     public void menuMisReservas() throws SQLException {
+        this.menuciudadSalida.getItems().clear();
+        this.menuciudadDestino.getItems().clear();
         this.reservarMeuItem.setVisible(true);
         this.misReservasList.setVisible(true);
         this.misReservasLabel.setVisible(true);
         this.removeReservaButton.setVisible(true);
         this.modificarReservaButton.setVisible(true);
         this.downloadJustificanteButton.setVisible(true);
-        this.vuelosDisponiblesReservaList.setVisible(false);
+        this.vuelosDisponiblesTable.setVisible(false);
         this.reservarButton.setVisible(false);
         this.reservarLabel.setVisible(false);
         this.misReservasMenuItem.setVisible(false);
+        this.menuciudadDestino.setVisible(false);
+        this.menuciudadSalida.setVisible(false);
         loadReservas();
     }
 

@@ -28,13 +28,13 @@ public class InicioAdminController implements Initializable {
     private Button aceptarButtonVuelo;
 
     @FXML
-    private MenuItem addAvion;
+    private Button addAvion;
 
     @FXML
-    private MenuItem addCiudad;
+    private Button addCiudad;
 
     @FXML
-    private MenuItem addVuelo;
+    private Button addVuelo;
 
     @FXML
     private Label avionVuelo;
@@ -52,7 +52,7 @@ public class InicioAdminController implements Initializable {
     private Label ciudadSalidaVuelo;
 
     @FXML
-    private MenuItem delVuelo;
+    private Button delVuelo;
 
     @FXML
     private Button deleteButton;
@@ -65,9 +65,6 @@ public class InicioAdminController implements Initializable {
 
     @FXML
     private DatePicker fechaSelect;
-
-    @FXML
-    private SplitMenuButton menu;
 
     @FXML
     private SplitMenuButton menuAviones;
@@ -105,6 +102,14 @@ public class InicioAdminController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        try {
+            menuAddVuelo();
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setHeaderText(e.getMessage());
+            dialog.show();
+        }
         // Cambiar a la funcion de Añadir una Ciudad
         this.addCiudad.setOnAction((event) -> {
             try {
@@ -114,7 +119,6 @@ public class InicioAdminController implements Initializable {
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText(e.getMessage());
                 dialog.show();
-                this.nombreCiudadField.setText("");
             }
         });
         // Cambiar  la funcion de Añadir un Vuelo
@@ -126,7 +130,6 @@ public class InicioAdminController implements Initializable {
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText(e.getMessage());
                 dialog.show();
-                this.nombreCiudadField.setText("");
             }
 
         });
@@ -140,7 +143,6 @@ public class InicioAdminController implements Initializable {
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText(e.getMessage());
                 dialog.show();
-                this.nombreCiudadField.setText("");
             }
         });
         // Boton para ejecutar el borrado de un vuelo seleccionado
@@ -165,7 +167,6 @@ public class InicioAdminController implements Initializable {
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText(e.getMessage());
                 dialog.show();
-                this.nombreCiudadField.setText("");
             }
         });
         // Boton para terminar la sesion
@@ -177,7 +178,6 @@ public class InicioAdminController implements Initializable {
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText(e.getMessage());
                 dialog.show();
-                this.nombreCiudadField.setText("");
             }
         });
     }
@@ -233,14 +233,12 @@ public class InicioAdminController implements Initializable {
             dialog.setTitle("Capacidad");
             dialog.setHeaderText("Lo siento, nuestras aerolienas no pueden disponer de aviones de mas de 200 pasajeros,");
             dialog.show();
-            this.nombreCiudadField.setText("");
         } else {
             if (Gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.capacidadField.getText()))) {
                 Alert dialog = new Alert(AlertType.CONFIRMATION);
                 dialog.setTitle("Avión");
                 dialog.setHeaderText("Avión creada correctamente");
                 dialog.show();
-                this.nombreCiudadField.setText("");
 
             }
         }
@@ -261,7 +259,6 @@ public class InicioAdminController implements Initializable {
             dialog.setTitle("Vuelo");
             dialog.setHeaderText("Vuelo creada correctamente");
             dialog.show();
-            this.nombreCiudadField.setText("");
         }
 
     }
@@ -290,8 +287,11 @@ public class InicioAdminController implements Initializable {
      * Cambiar al modo Borrar un vuelo
      */
     private void menuDelVuelo() throws SQLException {
-        this.menu.setText("Eliminar Vuelo");
         listarVuelos();
+        this.delVuelo.setDisable(true);
+        this.addVuelo.setDisable(false);
+        this.addCiudad.setDisable(false);
+        this.addAvion.setDisable(false);
         // Mostrar delVuelos
         this.vuelosList.setVisible(true);
         this.deleteButton.setVisible(true);
@@ -325,8 +325,12 @@ public class InicioAdminController implements Initializable {
      * @see Getter
      */
     private void menuAddVuelo() throws SQLException {
+        this.delVuelo.setDisable(false);
+        this.addVuelo.setDisable(true);
+        this.addCiudad.setDisable(false);
+        this.addAvion.setDisable(false);
+
         // Cosas para hacerlo mas bonito
-        this.menu.setText("Añadir Vuelo");
         this.menuCiudadesSalida.getItems().clear();
         this.menuCiudadesDestino.getItems().clear();
         this.menuAviones.getItems().clear();
@@ -384,7 +388,10 @@ public class InicioAdminController implements Initializable {
      * Cambiar al modo Añadir Ciudad
      */
     private void menuAddCiudad() throws IOException {
-
+        this.delVuelo.setDisable(false);
+        this.addVuelo.setDisable(false);
+        this.addCiudad.setDisable(true);
+        this.addAvion.setDisable(false);
         // Mostrar ciudad
         this.nombreCiudad.setVisible(true);
         this.nombreCiudadField.setVisible(true);
@@ -416,8 +423,11 @@ public class InicioAdminController implements Initializable {
      * Cambiar al modo Añadir un avion
      */
     private void menuAddAvion() {
+        this.delVuelo.setDisable(false);
+        this.addVuelo.setDisable(false);
+        this.addCiudad.setDisable(false);
+        this.addAvion.setDisable(true);
         // Cosas para hacerlo mas bonito
-        this.menu.setText("Añadir Avión");
         // Mostrar avión
         this.nombreAvion.setVisible(true);
         this.nombreAvionField.setVisible(true);

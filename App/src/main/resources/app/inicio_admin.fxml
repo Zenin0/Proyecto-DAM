@@ -5,7 +5,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -32,6 +31,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <ImageView fitHeight="401.0" fitWidth="382.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@css/logo.png" />
+               </image>
+            </ImageView>
             <Label fx:id="nombreCiudad" contentDisplay="CENTER" text="Nombre Ciudad" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="nombrePais" contentDisplay="CENTER" text="Nombre Pais" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button fx:id="aceptarButtonCiudad" mnemonicParsing="false" text="Aceptar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
@@ -57,21 +61,12 @@
                </GridPane.margin>
             </ListView>
             <Button fx:id="deleteButton" mnemonicParsing="false" text="Eliminar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <ImageView fitHeight="401.0" fitWidth="382.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@css/logo.png" />
-               </image>
-            </ImageView>
-            <SplitMenuButton fx:id="menu" mnemonicParsing="false" text="Gestión" GridPane.rowIndex="1">
-              <items>
-                <MenuItem fx:id="addVuelo" mnemonicParsing="false" text="Añadir Vuelo" />
-                <MenuItem fx:id="addCiudad" mnemonicParsing="false" text="Añadir Ciudad" />
-                  <MenuItem fx:id="addAvion" mnemonicParsing="false" text="Añadir Avión" />
-                  <MenuItem fx:id="delVuelo" mnemonicParsing="false" text="Eliminar Vuelo" />
-              </items>
-            </SplitMenuButton>
             <Label styleClass="h1" text="Gestion Administrativa" wrapText="true" GridPane.columnIndex="1" />
-            <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="4" />
+            <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="5" />
+            <Button fx:id="addVuelo" mnemonicParsing="false" text="Añadir Vuelo" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <Button fx:id="delVuelo" mnemonicParsing="false" text="Eliminar Vuelo" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+            <Button fx:id="addCiudad" mnemonicParsing="false" text="Añadir Ciudad" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+            <Button fx:id="addAvion" mnemonicParsing="false" text="Añadir Avión" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
          </children>
          <VBox.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
