@@ -202,6 +202,9 @@ public class InicioUserController implements Initializable {
 
     }
 
+    /**
+     * Modificar una Reserva
+     */
     private void modificarReserva() throws SQLException {
         String idreserva = this.misReservasList.getSelectionModel().getSelectedItem().replaceAll("[^0-9]", "").substring(0, 1);
 

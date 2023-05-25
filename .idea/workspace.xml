@@ -5,75 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/App/javadoc/app/app/Vuelo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-13.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/legal/ASSEMBLY_EXCEPTION" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-bg_glass_55_fbf9ee_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-bg_glass_65_dadada_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-bg_glass_75_dadada_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-bg_glass_75_e6e6e6_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-bg_glass_95_fef1ec_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-bg_highlight-soft_75_cccccc_1x100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-icons_222222_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-icons_2e83ff_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-icons_454545_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-icons_888888_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/images/ui-icons_cd0a0a_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/jquery-3.5.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/javadoc/script-dir/jquery-ui.structure.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/allpackages-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/App.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/App.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/Gestioner.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/Gestioner.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/Getter.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/Getter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/GlobalData.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/GlobalData.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/InicioAdminController.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/InicioAdminController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/InicioUserController.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/InicioUserController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/LoginController.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/LoginController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/MD5Hasher.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/MD5Hasher.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/PassDialog.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/PassDialog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/RegisterController.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/RegisterController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/module-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/module-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/copy.svg" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/copy.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-11.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-12.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-9.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/jquery-ui.overrides.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/jquery-ui.overrides.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/legal/jquery.md" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/legal/jquery.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/member-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/script-dir/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/script-dir/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/script-dir/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/script-dir/jquery-ui.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/type-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/PassDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/PassDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Vuelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Vuelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/app-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/home_ad.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logoMA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logoT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/seatAble.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/seatUnable.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/register.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -350,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685022893732</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="JavaDoc">
+      <created>1685025677143</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1685025677144</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -376,6 +330,7 @@
     <MESSAGE value="Roadmap Update" />
     <MESSAGE value="Updates" />
     <MESSAGE value="Fultrar Vuelos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fultrar Vuelos" />
+    <MESSAGE value="JavaDoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="JavaDoc" />
   </component>
 </project>
