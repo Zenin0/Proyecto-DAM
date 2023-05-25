@@ -115,6 +115,12 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
     <img src="./images/PDFDownloadScreeb.png" alt="Login Screen">
   </p>
 
+### Ejemplo PDF
+
+  <p align="center">
+    <img src="./images/PDF-Example.png" alt="Login Screen">
+  </p>
+
   ### Mis Reservas Screen
 
   <p align="center">
