@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/app-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/home_ad.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logoMA.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/logoT.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/seatAble.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/seatUnable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/register.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685025677144</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="JavaDoc">
+      <created>1685025790398</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1685025790398</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

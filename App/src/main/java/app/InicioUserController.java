@@ -82,6 +82,13 @@ public class InicioUserController implements Initializable {
     @FXML
     private TableView<Vuelo> vuelosDisponiblesTable;
 
+    @FXML
+    private Label ciudadesDestinoLabel;
+
+    @FXML
+    private Label ciudadesSalidaLabel;
+
+
     public InicioUserController() {
     }
 
@@ -597,6 +604,8 @@ public class InicioUserController implements Initializable {
         }
 
         menuciudadSalida.setPopupSide(Side.BOTTOM);
+        this.ciudadesDestinoLabel.setVisible(true);
+        this.ciudadesSalidaLabel.setVisible(true);
         this.menuciudadDestino.setVisible(true);
         this.menuciudadSalida.setVisible(true);
         this.misReservasMenuItem.setVisible(true);
@@ -630,6 +639,8 @@ public class InicioUserController implements Initializable {
         this.misReservasMenuItem.setVisible(false);
         this.menuciudadDestino.setVisible(false);
         this.menuciudadSalida.setVisible(false);
+        this.ciudadesDestinoLabel.setVisible(false);
+        this.ciudadesSalidaLabel.setVisible(false);
         loadReservas();
     }
 

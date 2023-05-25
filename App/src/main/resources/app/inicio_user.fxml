@@ -77,12 +77,12 @@
             </TableView>
             <MenuButton fx:id="menuciudadDestino" mnemonicParsing="false" text="Cualquiera" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
             <MenuButton fx:id="menuciudadSalida" mnemonicParsing="false" text="Cualquiera" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Label text="Ciudades De Destino" GridPane.rowIndex="2">
+            <Label fx:id="ciudadesDestinoLabel" text="Ciudades De Destino" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label text="Ciudades De Salida" GridPane.rowIndex="1">
+            <Label fx:id="ciudadesSalidaLabel" text="Ciudades De Salida" GridPane.rowIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
