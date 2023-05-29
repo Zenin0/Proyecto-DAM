@@ -361,12 +361,18 @@
       <option name="project" value="LOCAL" />
       <updated>1685375999146</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Images Updates">
+      <created>1685376441759</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1685376441759</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Roadman links Updated" />
     <MESSAGE value="Resaltado algun texto importante" />
     <MESSAGE value="FXMLs updates" />
     <MESSAGE value="Updated" />
@@ -391,6 +397,7 @@
     <MESSAGE value="FXML Updates" />
     <MESSAGE value="Generar los asientos por columnas en vez de por filas" />
     <MESSAGE value="Seats Selecable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Seats Selecable" />
+    <MESSAGE value="Images Updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Images Updates" />
   </component>
 </project>

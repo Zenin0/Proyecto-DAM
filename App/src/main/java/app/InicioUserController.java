@@ -136,7 +136,7 @@ public class InicioUserController implements Initializable {
             }
         });
 
-                this.reservarButton.setOnAction(event -> {
+        this.reservarButton.setOnAction(event -> {
             try {
                 if (!vuelosDisponiblesTable.getSelectionModel().isEmpty())
                     reservar();
@@ -229,6 +229,10 @@ public class InicioUserController implements Initializable {
         final int[] selectedSeat = {-1};
         Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
         Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
+        Image selected = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatSelected.png");
+
+        final StackPane[] selectedSeatPane = {null};
+        final ImageView[] selectedSeatImage = {null};
 
         for (int col = 1; col <= numCols; col++) {
             for (int row = 1; row <= numRows; row++) {
@@ -251,19 +255,23 @@ public class InicioUserController implements Initializable {
                 if (asientosLibres.contains(seatNum)) {
                     seatButton.setImage(able);
                     stackPane.setOnMouseClicked(event -> {
+                        if (selectedSeatPane[0] != null) {
+                            selectedSeatImage[0].setImage(able);
+                        }
+
                         selectedSeat[0] = Integer.parseInt(seatButton.getId());
-                        seatButton.setOpacity(0.2);
+                        selectedSeatPane[0] = stackPane;
+                        selectedSeatImage[0] = seatButton;
+                        selectedSeatImage[0].setImage(selected);
                     });
-                    stackPane.setOnMouseEntered(event -> stackPane.setOpacity(0.2));
+                    stackPane.setOnMouseEntered(event -> stackPane.setOpacity(0.5));
                     stackPane.setOnMouseExited(event -> stackPane.setOpacity(1));
                     stackPane.cursorProperty().set(Cursor.HAND);
                 } else {
                     seatButton.setImage(unable);
-                    seatButton.setOpacity(0.5);
-                    seatButton.setDisable(true);
+                    stackPane.setOpacity(0.5);
+                    stackPane.setDisable(true);
                 }
-
-                gridPane.add(stackPane, col, row);
             }
         }
 
@@ -427,11 +435,10 @@ public class InicioUserController implements Initializable {
             final int[] selectedSeat = {-1};
             Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
             Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
-            Image selected = new Image ("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatSelected.png");
+            Image selected = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatSelected.png");
 
             final StackPane[] selectedSeatPane = {null};
-            final ImageView[] selectedSeatButton = {null};
-            ImageView previousSeatButton = null;
+            final ImageView[] selectedSeatImage = {null};
 
             for (int col = 1; col <= numCols; col++) {
                 for (int row = 1; row <= numRows; row++) {
@@ -456,15 +463,15 @@ public class InicioUserController implements Initializable {
                         seatButton.setImage(able);
                         stackPane.setOnMouseClicked(event -> {
                             if (selectedSeatPane[0] != null) {
-                                selectedSeatButton[0].setImage(able);
+                                selectedSeatImage[0].setImage(able);
                             }
-
                             selectedSeat[0] = Integer.parseInt(seatButton.getId());
                             selectedSeatPane[0] = stackPane;
-                            selectedSeatButton[0] = seatButton;
-                            selectedSeatButton[0].setImage(selected);
+                            selectedSeatImage[0] = seatButton;
+                            selectedSeatImage[0].setImage(selected);
                         });
-
+                        stackPane.setOnMouseEntered(event -> stackPane.setOpacity(0.5));
+                        stackPane.setOnMouseExited(event -> stackPane.setOpacity(1));
                         stackPane.cursorProperty().set(Cursor.HAND);
                     } else {
                         seatButton.setImage(unable);
