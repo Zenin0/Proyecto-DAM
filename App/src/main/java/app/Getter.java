@@ -85,30 +85,6 @@ public class Getter {
     }
 
     /**
-     * Obtener una lista de las Reservas de un Usuario
-     *
-     * @param IDUser ID del usuario
-     * @return ArrayList de las reservas de un usuario
-     */
-    public static ArrayList<String> getListaReservasUser(int IDUser) throws SQLException {
-
-        ArrayList<Integer> reservas = new ArrayList<>();
-        ArrayList<String> out = new ArrayList<>();
-        // Comprobar si el usuario y la contraseña ya existen en la base de datos
-        String query = "SELECT ID_Reserva FROM Reservas WHERE ID_Usuario = ?";
-        PreparedStatement checkStatement = App.con.prepareStatement(query);
-        checkStatement.setInt(1, IDUser);
-        ResultSet rs = checkStatement.executeQuery();
-        while (rs.next()) {
-            reservas.add(rs.getInt(1));
-        }
-        for (int IDReserva : reservas) {
-            out.add(getReservaInfo(IDReserva));
-        }
-        return out;
-    }
-
-    /**
      * Obtener el nombre de una ciudad en base a su ID
      *
      * @param IDCiudad ID de la ciudad
@@ -309,26 +285,6 @@ public class Getter {
 
 
     /**
-     * Obtener el nombre de un usuario en base a si ID
-     *
-     * @param IDUser ID del usuario
-     * @return Nombre del usuario
-     */
-    public static String getUsernameNombre(int IDUser) throws SQLException {
-
-        String em = "";
-        String query = "SELECT Nombre_Usuario FROM Usuarios WHERE ID_Usuario = ?";
-        PreparedStatement checkStatement = App.con.prepareStatement(query);
-        checkStatement.setInt(1, IDUser);
-        ResultSet rs = checkStatement.executeQuery();
-        if (rs.next()) {
-            em = rs.getString(1);
-        }
-
-        return em;
-    }
-
-    /**
      * Obtener el nombre y los apellidos de un usuario en base a su ID
      *
      * @param IDUser ID del usuario
@@ -482,6 +438,38 @@ public class Getter {
             ));
         }
 
+        return out;
+    }
+
+    public static ObservableList<Reserva> getReservasObservableList(int IDUsuario) throws SQLException {
+        ObservableList<Reserva> out = FXCollections.observableArrayList();
+        String query1 = "SELECT ID_Reserva, ID_Usuario, ID_Vuelo, Asiento FROM Reservas WHERE ID_Usuario = ?";
+        PreparedStatement checkStatement1 = App.con.prepareStatement(query1);
+        checkStatement1.setInt(1, IDUsuario);
+        ResultSet rs1 = checkStatement1.executeQuery();
+        while (rs1.next()) {
+            String query2 = "SELECT * FROM Vuelos WHERE ID_Vuelo = ?";
+            PreparedStatement checkStatement2 = App.con.prepareStatement(query2);
+            checkStatement2.setInt(1, rs1.getInt(3));
+            ResultSet rs2 = checkStatement2.executeQuery();
+            if (rs2.next()) {
+                java.sql.Date fechaSalida = rs2.getDate("Fecha_Salida");
+                String fechaSalidaStr = null;
+
+                if (fechaSalida != null) {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    fechaSalidaStr = dateFormat.format(fechaSalida);
+                }
+                out.add(new Reserva(
+                        rs1.getInt(1),
+                        getNombreAndApellidos(rs1.getInt(2)),
+                        rs1.getInt(4),
+                        getNombreCiudad(rs2.getInt("Ciudad_Salida")),
+                        getNombreCiudad(rs2.getInt("Ciudad_Destino")),
+                        getNombreAvion(rs2.getInt("ID_Avion")),
+                        fechaSalidaStr));
+            }
+        }
         return out;
     }
 

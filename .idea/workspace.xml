@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/app/Reserva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/headerPDF.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/justificante_vuelo.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/home_ad.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/home_ad.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -375,12 +383,18 @@
       <option name="project" value="LOCAL" />
       <updated>1685377062000</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="PDF generator cambiado, añadido el nombre y apellidos del Usuario">
+      <created>1685377399706</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1685377399706</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="FXMLs updates" />
     <MESSAGE value="Updated" />
     <MESSAGE value="Compression del codigo" />
     <MESSAGE value="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo" />
@@ -405,6 +419,7 @@
     <MESSAGE value="Seats Selecable" />
     <MESSAGE value="Images Updates" />
     <MESSAGE value="Mouse Hover cambiando la opacidad" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mouse Hover cambiando la opacidad" />
+    <MESSAGE value="PDF generator cambiado, añadido el nombre y apellidos del Usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="PDF generator cambiado, añadido el nombre y apellidos del Usuario" />
   </component>
 </project>

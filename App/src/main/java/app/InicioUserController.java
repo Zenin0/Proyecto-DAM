@@ -26,28 +26,61 @@ import java.util.ResourceBundle;
  */
 public class InicioUserController implements Initializable {
 
+    // Tabla Vuelos
+    @FXML
+    private TableView<Vuelo> vuelosDisponiblesTable;
 
     @FXML
-    private TableColumn<Vuelo, String> asientosLibresVueloColumn;
+    private TableColumn<Vuelo, String> IDVueloColumn;
 
     @FXML
-    private TableColumn<Vuelo, String> ciudadLlegadaVueloColumn;
+    private TableColumn<Vuelo, String> salidaVueloColum;
 
     @FXML
-    private TableColumn<Vuelo, String> ciudadSalidaVueloColumn;
+    private TableColumn<Vuelo, String> asientosVueloColumn;
+
+    @FXML
+    private TableColumn<Vuelo, String> fechaVueloColumn;
+
+    @FXML
+    private TableColumn<Vuelo, String> llegadaVueloColum;
+
+    // Tabla Reservas
+    @FXML
+    private TableView<Reserva> reservasDisponiblesTable;
+
+    @FXML
+    private TableColumn<Reserva, String> IDReservaColum;
+
+    @FXML
+    private TableColumn<Reserva, String> asientoReservaColum;
+
+    @FXML
+    private TableColumn<Reserva, String> avionReservaColumn;
+
+    @FXML
+    private TableColumn<Reserva, String> ciudadDestinoReservaColumn;
+
+    @FXML
+    private TableColumn<Reserva, String> ciudadSaludaReservaColumn;
+
+    @FXML
+    private TableColumn<Reserva, String> fechaReservaColum;
+
+    @FXML
+    private TableColumn<Reserva, String> nameReservaColum;
+
+    @FXML
+    private Label ciudadesDestinoLabel;
+
+    @FXML
+    private Label ciudadesSalidaLabel;
 
     @FXML
     private Button downloadJustificanteButton;
 
     @FXML
     private Button endSession;
-
-    @FXML
-    private TableColumn<Vuelo, String> fechaSalidaVueloColumn;
-
-    @FXML
-    private TableColumn<Vuelo, String> iDVueloColumn;
-
 
     @FXML
     private MenuButton menuciudadDestino;
@@ -57,9 +90,6 @@ public class InicioUserController implements Initializable {
 
     @FXML
     private Label misReservasLabel;
-
-    @FXML
-    private ListView<String> misReservasList;
 
     @FXML
     private Button misReservasMenuItem;
@@ -79,16 +109,6 @@ public class InicioUserController implements Initializable {
     @FXML
     private Button reservarMeuItem;
 
-    @FXML
-    private TableView<Vuelo> vuelosDisponiblesTable;
-
-    @FXML
-    private Label ciudadesDestinoLabel;
-
-    @FXML
-    private Label ciudadesSalidaLabel;
-
-
     public InicioUserController() {
     }
 
@@ -97,6 +117,7 @@ public class InicioUserController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+
         try {
             menuReservar();
         } catch (SQLException e) {
@@ -156,7 +177,7 @@ public class InicioUserController implements Initializable {
 
         this.downloadJustificanteButton.setOnAction(event -> {
             try {
-                if (!misReservasList.getSelectionModel().isEmpty())
+                if (!reservasDisponiblesTable.getSelectionModel().isEmpty())
                     descargarJustificante();
                 else {
                     Alert dialog = new Alert(AlertType.ERROR);
@@ -174,7 +195,7 @@ public class InicioUserController implements Initializable {
 
         this.removeReservaButton.setOnAction(event -> {
             try {
-                if (!misReservasList.getSelectionModel().isEmpty())
+                if (!reservasDisponiblesTable.getSelectionModel().isEmpty())
                     eliminarReserva();
                 else {
                     Alert dialog = new Alert(AlertType.ERROR);
@@ -191,9 +212,9 @@ public class InicioUserController implements Initializable {
         });
         this.modificarReservaButton.setOnAction(event -> {
             try {
-                if (!misReservasList.getSelectionModel().isEmpty()) {
+                if (!reservasDisponiblesTable.getSelectionModel().isEmpty()) {
                     modificarReserva();
-                    this.misReservasList.getItems().clear();
+                    this.reservasDisponiblesTable.getItems().clear();
                     loadReservas();
                 } else {
                     Alert dialog = new Alert(AlertType.ERROR);
@@ -213,9 +234,10 @@ public class InicioUserController implements Initializable {
      * Modificar una Reserva
      */
     private void modificarReserva() throws SQLException {
-        String idreserva = this.misReservasList.getSelectionModel().getSelectedItem().replaceAll("[^0-9]", "").substring(0, 1);
+        Reserva selectedReserva = this.reservasDisponiblesTable.getSelectionModel().getSelectedItem();
+        int idreserva = selectedReserva.getID();
 
-        int vueloID = Getter.getIDVueloFromIDReserva(Integer.parseInt(idreserva));
+        int vueloID = Getter.getIDVueloFromIDReserva(idreserva);
         int numAsientos = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID).size();
         int numCols = Getter.getNumCols(numAsientos);
         int numRows = Getter.getNumRows(numAsientos, numCols);
@@ -251,6 +273,7 @@ public class InicioUserController implements Initializable {
                 stackPane.getChildren().addAll(seatButton, seatLabel);
                 StackPane.setAlignment(seatLabel, Pos.CENTER);
 
+
                 // Asignar que ID hemos pulsado, y cambiar opacidades
                 if (asientosLibres.contains(seatNum)) {
                     seatButton.setImage(able);
@@ -258,7 +281,6 @@ public class InicioUserController implements Initializable {
                         if (selectedSeatPane[0] != null) {
                             selectedSeatImage[0].setImage(able);
                         }
-
                         selectedSeat[0] = Integer.parseInt(seatButton.getId());
                         selectedSeatPane[0] = stackPane;
                         selectedSeatImage[0] = seatButton;
@@ -272,7 +294,10 @@ public class InicioUserController implements Initializable {
                     stackPane.setOpacity(0.5);
                     stackPane.setDisable(true);
                 }
+
+                gridPane.add(stackPane, col, row);
             }
+
         }
 
 
@@ -292,7 +317,7 @@ public class InicioUserController implements Initializable {
                 // Hacemos la reserva
                 if (selectedAsiento != -1) {
                     try {
-                        int outReserva = Gestioner.modificarReserva(Integer.parseInt(idreserva), selectedAsiento);
+                        int outReserva = Gestioner.modificarReserva(idreserva, selectedAsiento);
                         if (outReserva != 0) {
                             // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -346,8 +371,8 @@ public class InicioUserController implements Initializable {
      * @see Gestioner#eliminarReserva(int)
      */
     public void eliminarReserva() throws SQLException {
-        String idreserva = this.misReservasList.getSelectionModel().getSelectedItem().replaceAll("[^0-9]", "").substring(0, 1);
-        Gestioner.eliminarReserva(Integer.parseInt(idreserva));
+        Reserva selectedReserva = this.reservasDisponiblesTable.getSelectionModel().getSelectedItem();
+        Gestioner.eliminarReserva(selectedReserva.getID());
         loadReservas();
     }
 
@@ -365,14 +390,20 @@ public class InicioUserController implements Initializable {
             dialog.setHeaderText("Ningún vuelo encontrado con esos parámetros");
             dialog.show();
         } else {
-            this.iDVueloColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-            this.ciudadSalidaVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Ciudad_Salida"));
-            this.ciudadLlegadaVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Ciudad_Llegada"));
-            this.fechaSalidaVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
-            this.asientosLibresVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Asientos"));
+            this.IDVueloColumn.setStyle("-fx-alignment: CENTER");
+            this.vuelosDisponiblesTable.setStyle("-fx-alignment: CENTER");
+            this.salidaVueloColum.setStyle("-fx-alignment: CENTER");
+            this.llegadaVueloColum.setStyle("-fx-alignment: CENTER");
+            this.fechaVueloColumn.setStyle("-fx-alignment: CENTER");
+            this.asientosVueloColumn.setStyle("-fx-alignment: CENTER");
+
+            this.IDVueloColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            this.salidaVueloColum.setCellValueFactory(new PropertyValueFactory<>("Ciudad_Salida"));
+            this.llegadaVueloColum.setCellValueFactory(new PropertyValueFactory<>("Ciudad_Llegada"));
+            this.fechaVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
+            this.asientosVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Asientos"));
             this.vuelosDisponiblesTable.setItems(vuelos);
         }
-
 
     }
 
@@ -382,19 +413,30 @@ public class InicioUserController implements Initializable {
      * @see #loadVuelos()
      */
     public void loadReservas() throws SQLException {
-        this.misReservasList.getItems().clear();
-        // Araylist de String con la informacion de las reservas
-        ArrayList<String> reservas = Getter.getListaReservasUser(Getter.getUsernameID(GlobalData.userName));
-        if (reservas.size() > 0) {
-            for (String reserva : reservas) {
-                this.misReservasList.getItems().add(reserva);
-            }
-        } else {  // No hay reservas Disponibles
+
+        ObservableList<Reserva> reservas = Getter.getReservasObservableList(Getter.getUsernameID(GlobalData.userName));
+        if (reservas.size() < 1) {
             Alert dialog = new Alert(AlertType.INFORMATION);
-            dialog.setTitle("Reservas");
-            dialog.setHeaderText("No hay reservas disponibles");
+            dialog.setTitle("No Encontrado");
+            dialog.setHeaderText("Ningún vuelo encontrado con esos parámetros");
             dialog.show();
-            this.misReservasList.getItems().add("No hay reservas dispnibles");
+        } else {
+            this.IDReservaColum.setStyle("-fx-alignment: CENTER");
+            this.nameReservaColum.setStyle("-fx-alignment: CENTER");
+            this.asientoReservaColum.setStyle("-fx-alignment: CENTER");
+            this.ciudadSaludaReservaColumn.setStyle("-fx-alignment: CENTER");
+            this.ciudadDestinoReservaColumn.setStyle("-fx-alignment: CENTER");
+            this.avionReservaColumn.setStyle("-fx-alignment: CENTER");
+            this.fechaReservaColum.setStyle("-fx-alignment: CENTER");
+
+            this.IDReservaColum.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            this.nameReservaColum.setCellValueFactory(new PropertyValueFactory<>("nameSubname"));
+            this.asientoReservaColum.setCellValueFactory(new PropertyValueFactory<>("Asiento"));
+            this.ciudadSaludaReservaColumn.setCellValueFactory(new PropertyValueFactory<>("CiudadSalida"));
+            this.ciudadDestinoReservaColumn.setCellValueFactory(new PropertyValueFactory<>("CiudadDestino"));
+            this.avionReservaColumn.setCellValueFactory(new PropertyValueFactory<>("Avion"));
+            this.fechaReservaColum.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
+            this.reservasDisponiblesTable.setItems(reservas);
         }
 
     }
@@ -561,7 +603,11 @@ public class InicioUserController implements Initializable {
      * @see Gestioner#createPDF(String)
      */
     public void descargarJustificante() throws SQLException {
-        Gestioner.createPDF(this.misReservasList.getSelectionModel().getSelectedItem());
+        Reserva selectedReserva = reservasDisponiblesTable.getSelectionModel().getSelectedItem();
+        if (selectedReserva != null) {
+            int selectedID = selectedReserva.getID();
+        Gestioner.createPDF(Getter.getReservaInfo(selectedReserva.getID()));
+        }
     }
 
 
@@ -630,7 +676,7 @@ public class InicioUserController implements Initializable {
         this.vuelosDisponiblesTable.setVisible(true);
         this.reservarButton.setVisible(true);
         this.reservarLabel.setVisible(true);
-        this.misReservasList.setVisible(false);
+        this.reservasDisponiblesTable.setVisible(false);
         this.removeReservaButton.setVisible(false);
         this.modificarReservaButton.setVisible(false);
         this.downloadJustificanteButton.setVisible(false);
@@ -646,7 +692,7 @@ public class InicioUserController implements Initializable {
         this.menuciudadSalida.getItems().clear();
         this.menuciudadDestino.getItems().clear();
         this.reservarMeuItem.setVisible(true);
-        this.misReservasList.setVisible(true);
+        this.reservasDisponiblesTable.setVisible(true);
         this.misReservasLabel.setVisible(true);
         this.removeReservaButton.setVisible(true);
         this.modificarReservaButton.setVisible(true);

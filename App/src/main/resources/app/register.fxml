@@ -36,7 +36,6 @@
                   <Insets right="15.0" />
                </GridPane.margin>
             </TextField>
-            <Button fx:id="buttonReg" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Registrar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="97.0" text="Repite la Contraseña" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <PasswordField fx:id="passReg1" promptText="Contraseña" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
@@ -56,6 +55,7 @@
                   <Insets left="60.0" />
                </GridPane.margin>
             </ImageView>
+            <Button fx:id="buttonReg" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Registrar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             <Button fx:id="buttonlogCh" mnemonicParsing="false" text="Ya tienes una cuenta?" GridPane.rowIndex="4" />
             <CheckBox fx:id="adminCheckBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="122.0" text="Administrador" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>

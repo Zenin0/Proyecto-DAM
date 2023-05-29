@@ -22,3 +22,6 @@
 .v-box {
     -fx-background-color: #ffffff;
 }
+#vuelosTable {
+    -fx-alignment: CENTER;
+}

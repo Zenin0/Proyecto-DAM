@@ -34,12 +34,12 @@
                   <Insets right="15.0" />
                </GridPane.margin>
             </TextField>
-            <Button fx:id="buttonLog" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Login" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <PasswordField fx:id="passLog" promptText="Contraseña" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
             </PasswordField>
+            <Button fx:id="buttonLog" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Login" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <ImageView fitHeight="394.0" fitWidth="393.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <image>
                   <Image url="@css/logo.png" />
