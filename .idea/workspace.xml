@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Cambios en el objeto Vuelo.java">
+      <change afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/seat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/seatSelected.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Vuelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Vuelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/seatAble.png" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/seatAble.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/seatUnable.png" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/seatUnable.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +31,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {

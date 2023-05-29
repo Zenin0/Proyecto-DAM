@@ -428,6 +428,10 @@ public class InicioUserController implements Initializable {
             Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
             Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
 
+            final StackPane[] selectedSeatPane = {null};
+            final ImageView[] selectedSeatButton = {null};
+            ImageView previousSeatButton = null;
+
             for (int col = 1; col <= numCols; col++) {
                 for (int row = 1; row <= numRows; row++) {
                     int seatNum = (col - 1) * numRows + row;
@@ -445,20 +449,26 @@ public class InicioUserController implements Initializable {
                     stackPane.getChildren().addAll(seatButton, seatLabel);
                     StackPane.setAlignment(seatLabel, Pos.CENTER);
 
+
                     // Asignar que ID hemos pulsado, y cambiar opacidades
                     if (asientosLibres.contains(seatNum)) {
                         seatButton.setImage(able);
                         stackPane.setOnMouseClicked(event -> {
+                            if (selectedSeatPane[0] != null) {
+                                selectedSeatButton[0].setImage(able);
+                            }
+
                             selectedSeat[0] = Integer.parseInt(seatButton.getId());
-                            seatButton.setOpacity(0.2);
+                            selectedSeatPane[0] = stackPane;
+                            selectedSeatButton[0] = seatButton;
+                            selectedSeatButton[0].setImage(unable);
                         });
-                        stackPane.setOnMouseEntered(event -> stackPane.setOpacity(0.2));
-                        stackPane.setOnMouseExited(event -> stackPane.setOpacity(1));
+
                         stackPane.cursorProperty().set(Cursor.HAND);
                     } else {
                         seatButton.setImage(unable);
-                        seatButton.setOpacity(0.5);
-                        seatButton.setDisable(true);
+                        stackPane.setOpacity(0.5);
+                        stackPane.setDisable(true);
                     }
 
                     gridPane.add(stackPane, col, row);
