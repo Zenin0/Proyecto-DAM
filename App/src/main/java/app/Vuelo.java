@@ -12,8 +12,6 @@ public class Vuelo {
     private final int Asientos;
 
     /**
-     *
-     *
      * @param id             I del vuelo
      * @param Ciudad_Salida  Ciudad de Salida del vuelo
      * @param Ciudad_Llegada Ciudad de Llegada del vuelo
@@ -32,42 +30,47 @@ public class Vuelo {
 
     /**
      * Obtener la ID
+     *
      * @return ID del vuelo
      */
     public int getId() {
-        return id;
+        return this.id;
     }
 
     /**
      * Obtener la ciudad de Salida
+     *
      * @return Ciudad de Salida
      */
     public String getCiudad_Salida() {
-        return Ciudad_Salida;
+        return this.Ciudad_Salida;
     }
 
     /**
      * Obtener la Ciudad de Llegada
+     *
      * @return Ciudad de Llegada
      */
     public String getCiudad_Llegada() {
-        return Ciudad_Llegada;
+        return this.Ciudad_Llegada;
     }
 
     /**
      * Obtener la Fecha del vuelo
+     *
      * @return Fecha
      */
     public String getFecha() {
-        return Fecha;
+        return this.Fecha;
     }
 
     /**
      * Obtener los asientos libres
+     *
      * @return Asientos Libres
      */
     public int getAsientos() {
-        return Asientos;
+        return this.Asientos;
     }
 
 }
