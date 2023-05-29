@@ -427,6 +427,7 @@ public class InicioUserController implements Initializable {
             final int[] selectedSeat = {-1};
             Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
             Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
+            Image selected = new Image ("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatSelected.png");
 
             final StackPane[] selectedSeatPane = {null};
             final ImageView[] selectedSeatButton = {null};
@@ -461,7 +462,7 @@ public class InicioUserController implements Initializable {
                             selectedSeat[0] = Integer.parseInt(seatButton.getId());
                             selectedSeatPane[0] = stackPane;
                             selectedSeatButton[0] = seatButton;
-                            selectedSeatButton[0].setImage(unable);
+                            selectedSeatButton[0].setImage(selected);
                         });
 
                         stackPane.cursorProperty().set(Cursor.HAND);
