@@ -428,9 +428,9 @@ public class InicioUserController implements Initializable {
             Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
             Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
 
-            for (int row = 1; row <= numRows; row++) {
-                for (int col = 1; col <= numCols; col++) {
-                    int seatNum = (row - 1) * numCols + col;
+            for (int col = 1; col <= numCols; col++) {
+                for (int row = 1; row <= numRows; row++) {
+                    int seatNum = (col - 1) * numRows + row;
                     // Añadir Imagenes
                     ImageView seatButton = new ImageView();
                     seatButton.setId(String.valueOf(seatNum));

@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,12 +339,18 @@
       <option name="project" value="LOCAL" />
       <updated>1685030298828</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="FXML Updates">
+      <created>1685031282247</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1685031282247</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Use ELiminar Vuelo Screen" />
     <MESSAGE value="Reorganización Roadmap, y añaidos apartados nuevos" />
     <MESSAGE value="Reorganizacion del codigo y comentarios" />
     <MESSAGE value="Roadman links Updated" />
@@ -370,6 +375,7 @@
     <MESSAGE value="Roadmap Update" />
     <MESSAGE value="PDF de ejemplo añadido al README.md" />
     <MESSAGE value="README.md javadoc website" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md javadoc website" />
+    <MESSAGE value="FXML Updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="FXML Updates" />
   </component>
 </project>
