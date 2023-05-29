@@ -307,6 +307,7 @@ public class Getter {
         return em;
     }
 
+
     /**
      * Obtener el nombre de un usuario en base a si ID
      *
@@ -322,6 +323,27 @@ public class Getter {
         ResultSet rs = checkStatement.executeQuery();
         if (rs.next()) {
             em = rs.getString(1);
+        }
+
+        return em;
+    }
+
+    /**
+     * Obtener el nombre y los apellidos de un usuario en base a su ID
+     *
+     * @param IDUser ID del usuario
+     * @return Nombre del usuario
+     */
+    public static String getNombreAndApellidos(int IDUser) throws SQLException {
+
+        String em = "";
+        String query = "SELECT Nombre, Apellidos FROM Usuarios WHERE ID_Usuario = ?";
+        PreparedStatement checkStatement = App.con.prepareStatement(query);
+        checkStatement.setInt(1, IDUser);
+        ResultSet rs = checkStatement.executeQuery();
+        if (rs.next()) {
+            em = rs.getString(1) + " ";
+            em += rs.getString(2);
         }
 
         return em;
@@ -368,7 +390,7 @@ public class Getter {
             Asiento = rs.getInt("Asiento");
         }
         em += "Numero de la Reserva: " + ID_Reserva + "\n";
-        em += "Nombre de Usuario: " + getUsernameNombre(ID_Usuario) + "\n";
+        em += "Nombre y Apellidos: " + getNombreAndApellidos(ID_Usuario) + "\n";
         em += "Asiento asignado: " + Asiento + "\n";
         em += getVueloInfo(ID_Vuelo);
         return em;
