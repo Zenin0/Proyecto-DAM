@@ -605,8 +605,7 @@ public class InicioUserController implements Initializable {
     public void descargarJustificante() throws SQLException {
         Reserva selectedReserva = reservasDisponiblesTable.getSelectionModel().getSelectedItem();
         if (selectedReserva != null) {
-            int selectedID = selectedReserva.getID();
-        Gestioner.createPDF(Getter.getReservaInfo(selectedReserva.getID()));
+            Gestioner.createPDF(Getter.getReservaInfo(selectedReserva.getID()));
         }
     }
 
