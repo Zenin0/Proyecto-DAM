@@ -12,7 +12,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -307,9 +309,38 @@ public class InicioUserController implements Initializable {
         }
 
 
+        HBox legendBox = new HBox(10);
+
+
+        ImageView ableImage = new ImageView(able);
+        ImageView unableImage = new ImageView(unable);
+        ImageView selectedImage = new ImageView(selected);
+        ImageView beforeImage = new ImageView(before);
+
+        Label ableLabel = new Label("Disponible");
+        Label unableLabel = new Label("No Disponible");
+        Label selectedLabel = new Label("Selecionado");
+        Label beforeLabel = new Label("Actual");
+
+        ableImage.setFitWidth(20);
+        ableImage.setFitHeight(20);
+        unableImage.setFitWidth(20);
+        unableImage.setFitHeight(20);
+        selectedImage.setFitWidth(20);
+        selectedImage.setFitHeight(20);
+        beforeImage.setFitWidth(20);
+        beforeImage.setFitHeight(20);
+
+        legendBox.getChildren().addAll(ableImage, ableLabel, unableImage, unableLabel, selectedImage, selectedLabel, beforeImage, beforeLabel);
+
         Dialog<Integer> dialog = new Dialog<>();
-        dialog.setTitle("Seleccion de  Asiento");
-        dialog.getDialogPane().setContent(gridPane);
+        dialog.setTitle("Seleccion de Asiento");
+
+
+        VBox contentBox = new VBox(10);
+        contentBox.getChildren().addAll(gridPane, legendBox);
+
+        dialog.getDialogPane().setContent(contentBox);
 
         ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
         ButtonType reservar = new ButtonType("Reservar", ButtonBar.ButtonData.OK_DONE);
@@ -393,8 +424,9 @@ public class InicioUserController implements Initializable {
         if (vuelos.size() < 1) {
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("No Encontrado");
-            dialog.setHeaderText("Ningún vuelo encontrado con esos parámetros");
+            dialog.setHeaderText("Ningún vuelo encontrado");
             dialog.show();
+            this.vuelosDisponiblesTable.getItems().clear();
         } else {
             this.IDVueloColumn.setStyle("-fx-alignment: CENTER");
             this.vuelosDisponiblesTable.setStyle("-fx-alignment: CENTER");
@@ -424,8 +456,9 @@ public class InicioUserController implements Initializable {
         if (reservas.size() < 1) {
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("No Encontrado");
-            dialog.setHeaderText("Ningún vuelo encontrado con esos parámetros");
+            dialog.setHeaderText("Ningúna reserva encontrada");
             dialog.show();
+            this.reservasDisponiblesTable.getItems().clear();
         } else {
             this.IDReservaColum.setStyle("-fx-alignment: CENTER");
             this.nameReservaColum.setStyle("-fx-alignment: CENTER");
@@ -531,10 +564,38 @@ public class InicioUserController implements Initializable {
                 }
             }
 
+            HBox legendBox = new HBox(10);
+
+
+            ImageView ableImage = new ImageView(able);
+            ImageView unableImage = new ImageView(unable);
+            ImageView selectedImage = new ImageView(selected);
+
+
+            Label ableLabel = new Label("Disponible");
+            Label unableLabel = new Label("No Disponible");
+            Label selectedLabel = new Label("Seleccionado");
+
+
+            ableImage.setFitWidth(20);
+            ableImage.setFitHeight(20);
+            unableImage.setFitWidth(20);
+            unableImage.setFitHeight(20);
+            selectedImage.setFitWidth(20);
+            selectedImage.setFitHeight(20);
+
+
+            legendBox.getChildren().addAll(ableImage, ableLabel, unableImage, unableLabel, selectedImage, selectedLabel);
+
 
             Dialog<Integer> dialog = new Dialog<>();
             dialog.setTitle("Seleccion de Asiento");
-            dialog.getDialogPane().setContent(gridPane);
+
+
+            VBox contentBox = new VBox(10);
+            contentBox.getChildren().addAll(gridPane, legendBox);
+
+            dialog.getDialogPane().setContent(contentBox);
 
             ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
             ButtonType reservar = new ButtonType("Reservar", ButtonBar.ButtonData.OK_DONE);
@@ -710,6 +771,8 @@ public class InicioUserController implements Initializable {
         this.menuciudadSalida.setVisible(false);
         this.ciudadesDestinoLabel.setVisible(false);
         this.ciudadesSalidaLabel.setVisible(false);
+        this.menuciudadSalida.setText("Cualquiera");
+        this.menuciudadDestino.setText("Cualquiera");
         loadReservas();
     }
 
