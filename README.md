@@ -169,6 +169,7 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
           - [X] Mostrar ruta donde descargar el fichero PDF
     - [X] Mis Reservas
       - [X] Listar vuelos de los usuarios normales con una tabla
+        - [ ] Habilitar Filtrado por Ciudades
         - [X] [Mostrar información de cada uno de esos vuelos](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Getter.java)
           - [X] [Descargar PDF con la información del vuelo seleccionado](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)
             - [X] [Mostrar ruta donde descargar el fichero PDF](https://github.com/Zenin0/Proyecto-DAM/blob/main/App/src/main/java/app/Gestioner.java)

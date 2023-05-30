@@ -430,12 +430,25 @@
       <option name="project" value="LOCAL" />
       <updated>1685458016452</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Readme Update">
+      <created>1685458062394</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1685458062394</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Readme Update">
+      <created>1685458120229</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1685458120229</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Image Update" />
     <MESSAGE value="Seat Deleted" />
     <MESSAGE value="Asientos Seleccionables con imagenes" />
     <MESSAGE value="Modificacion de Asientos con seleccion de asientos por imagenes" />
@@ -460,6 +473,7 @@
     <MESSAGE value="Nombre y Apellidos usados" />
     <MESSAGE value="Leyenda en la seleccion de Asientos" />
     <MESSAGE value="Imagenes ReadmeUpdate" />
-    <option name="LAST_COMMIT_MESSAGE" value="Imagenes ReadmeUpdate" />
+    <MESSAGE value="Readme Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Readme Update" />
   </component>
 </project>
