@@ -252,6 +252,7 @@ public class InicioUserController implements Initializable {
         Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
         Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
         Image selected = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatSelected.png");
+        Image before = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatBefore.png");
 
         final StackPane[] selectedSeatPane = {null};
         final ImageView[] selectedSeatImage = {null};
@@ -293,7 +294,7 @@ public class InicioUserController implements Initializable {
 
                 } else {
                     if (seatNum == selectedReserva.getAsiento()) {
-                        seatButton.setImage(selected);
+                        seatButton.setImage(before);
                     } else {
                         seatButton.setImage(unable);
                     }

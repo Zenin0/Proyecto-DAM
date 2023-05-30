@@ -4,50 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Header Delete">
-      <change afterPath="$PROJECT_DIR$/App/javadoc/app/app/Reserva.html" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/allpackages-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/App.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/App.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/Gestioner.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/Gestioner.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/Getter.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/Getter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/GlobalData.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/GlobalData.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/InicioAdminController.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/InicioAdminController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/InicioUserController.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/InicioUserController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/LoginController.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/LoginController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/MD5Hasher.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/MD5Hasher.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/PassDialog.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/PassDialog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/RegisterController.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/RegisterController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/Vuelo.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/Vuelo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/app/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/app/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/app/module-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/app/module-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-11.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-12.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-13.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index-files/index-9.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/member-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/javadoc/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/App/javadoc/type-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Reserva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Vuelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Vuelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/headerPDF.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/seatAble.png" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/seatAble.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/seatUnable.png" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/seatUnable.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -437,12 +398,18 @@
       <option name="project" value="LOCAL" />
       <updated>1685384682976</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Seat Images Updates">
+      <created>1685454145567</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1685454145567</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo" />
     <MESSAGE value="POM config" />
     <MESSAGE value="Gitignore .pdf files" />
     <MESSAGE value="Roadna update" />
@@ -467,6 +434,7 @@
     <MESSAGE value="PDF generator cambiado, añadido el nombre y apellidos del Usuario" />
     <MESSAGE value="Reservas con una TableView" />
     <MESSAGE value="Corrections unused code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrections unused code" />
+    <MESSAGE value="Seat Images Updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Seat Images Updates" />
   </component>
 </project>
