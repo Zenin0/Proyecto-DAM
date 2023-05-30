@@ -70,7 +70,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("login"), 1080, 700);
         stage.setTitle("Manolo Airlines");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("css/logoMA.png"))));
-        stage.setScene(scene);
+        scene.getStylesheets().add("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/28d03d7794367bb80edfc1ccf2ac03c6a29c6420/App/src/main/resources/app/css/home_ad.css");
         stage.setScene(scene);
         stage.show();
         // Shutdown hook

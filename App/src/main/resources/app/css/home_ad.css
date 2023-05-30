@@ -22,6 +22,34 @@
 .v-box {
     -fx-background-color: #ffffff;
 }
-#vuelosTable {
+
+.menu-button {
+    /* Your MenuButton styles here */
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 5px 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+.menu-button:hover {
+    -fx-background-color: #dddddd;
+}
+
+.table-view {
+    /* Your TableView styles here */
+    -fx-background-color: #f0f0f0;
+}
+
+#vuelosDisponiblesTable,
+#reservasDisponiblesTable {
+    /* Your specific table styles here */
+    -fx-background-color: #ffffff;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+#vuelosDisponiblesTable .table-column,
+#reservasDisponiblesTable .table-column {
+    /* Styles for table columns */
     -fx-alignment: CENTER;
 }
