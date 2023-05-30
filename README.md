@@ -129,6 +129,12 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
     <img src="./images/MisReservasScreen.png" alt="Login Screen">
   </p>
 
+### Modificacin de Reserva Screen
+
+  <p align="center">
+    <img src="./images/ModificarReservaAsientoScreen.png" alt="Login Screen">
+  </p>
+
 
 <!-- ROADMAP -->
 ## Roadmap

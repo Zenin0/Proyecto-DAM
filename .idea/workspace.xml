@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -422,13 +416,25 @@
       <option name="project" value="LOCAL" />
       <updated>1685456406691</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Leyenda en la seleccion de Asientos">
+      <created>1685457808376</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1685457808376</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Imagenes ReadmeUpdate">
+      <created>1685458016452</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1685458016452</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Roadna update" />
-    <MESSAGE value="Cosas sjsjjs" />
     <MESSAGE value="Image Update" />
     <MESSAGE value="Seat Deleted" />
     <MESSAGE value="Asientos Seleccionables con imagenes" />
@@ -452,6 +458,8 @@
     <MESSAGE value="Seat Images Updates" />
     <MESSAGE value="Images Updated" />
     <MESSAGE value="Nombre y Apellidos usados" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nombre y Apellidos usados" />
+    <MESSAGE value="Leyenda en la seleccion de Asientos" />
+    <MESSAGE value="Imagenes ReadmeUpdate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Imagenes ReadmeUpdate" />
   </component>
 </project>
