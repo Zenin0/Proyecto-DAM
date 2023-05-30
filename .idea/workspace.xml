@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" afterDir="false" />
-    </list>
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +24,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -113,27 +106,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683735129827</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Reorganización Roadmap, y añaidos apartados nuevos">
-      <created>1683819906983</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1683819906983</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Reorganizacion del codigo y comentarios">
-      <created>1683826977803</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1683826977803</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Roadman links Updated">
-      <created>1683827032678</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1683827032678</updated>
     </task>
     <task id="LOCAL-00007" summary="Roadman links Updated">
       <created>1683827083869</created>
@@ -457,15 +429,34 @@
       <option name="project" value="LOCAL" />
       <updated>1685462237186</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="JavaDoc">
+      <created>1685463307535</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1685463307535</updated>
+    </task>
+    <task id="LOCAL-00054" summary="JavaDoc Generado">
+      <created>1685463350959</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1685463350959</updated>
+    </task>
+    <task id="LOCAL-00055" summary="JavaDoc Generado">
+      <created>1685463564410</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1685463564410</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modificacion de Asientos con seleccion de asientos por imagenes" />
     <MESSAGE value="Updates" />
     <MESSAGE value="Fultrar Vuelos" />
-    <MESSAGE value="JavaDoc" />
     <MESSAGE value="Esconder texto ciudades al cambio" />
     <MESSAGE value="Readme images Update" />
     <MESSAGE value="PDF de ejemplo añadido al README.md" />
@@ -487,6 +478,8 @@
     <MESSAGE value="Roadmap Organizado" />
     <MESSAGE value="Reservas Filtrables por Ciudades" />
     <MESSAGE value="Roadmap Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Roadmap Update" />
+    <MESSAGE value="JavaDoc" />
+    <MESSAGE value="JavaDoc Generado" />
+    <option name="LAST_COMMIT_MESSAGE" value="JavaDoc Generado" />
   </component>
 </project>
