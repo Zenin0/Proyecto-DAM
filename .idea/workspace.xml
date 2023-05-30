@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/seatAble.png" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/seatAble.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/seatUnable.png" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/seatUnable.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/bdd.sql" beforeDir="false" afterPath="$PROJECT_DIR$/App/bdd.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -405,12 +407,18 @@
       <option name="project" value="LOCAL" />
       <updated>1685454145567</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Images Updated">
+      <created>1685454987523</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1685454987523</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="POM config" />
     <MESSAGE value="Gitignore .pdf files" />
     <MESSAGE value="Roadna update" />
     <MESSAGE value="Cosas sjsjjs" />
@@ -435,6 +443,7 @@
     <MESSAGE value="Reservas con una TableView" />
     <MESSAGE value="Corrections unused code" />
     <MESSAGE value="Seat Images Updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Seat Images Updates" />
+    <MESSAGE value="Images Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Images Updated" />
   </component>
 </project>

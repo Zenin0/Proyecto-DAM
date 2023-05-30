@@ -145,7 +145,7 @@ public class Gestioner {
      * @return si se ha creado o si no true|false
      * @see MD5Hasher#getMd5()
      */
-    public static boolean registrar(String Usuario, String Pass1, String Pass2, boolean admin) {
+    public static boolean registrar(String Usuario,String nombre, String apellidos, String Pass1, String Pass2, boolean admin) {
         int id;
         try {
 
@@ -194,12 +194,14 @@ public class Gestioner {
                         id = resulttest.getInt(1);
 
                         // Insert the new record into the database
-                        String consulta = "INSERT INTO Usuarios (ID_Usuario, Nombre_Usuario, Pass, is_Admin) VALUES (? , ?, ?, ?)";
+                        String consulta = "INSERT INTO Usuarios (ID_Usuario, Nombre_Usuario, Nombre, Apellidos, Pass, is_Admin) VALUES (?, ?, ?, ?, ?, ?)";
                         PreparedStatement insertStatement = App.con.prepareStatement(consulta);
                         insertStatement.setInt(1, id + 1);
                         insertStatement.setString(2, Usuario);
-                        insertStatement.setString(3, md5.getMd5());
-                        insertStatement.setBoolean(4, admin);
+                        insertStatement.setString(3, nombre);
+                        insertStatement.setString(4, apellidos);
+                        insertStatement.setString(5, md5.getMd5());
+                        insertStatement.setBoolean(6, admin);
                         insertStatement.executeUpdate();
 
                         Alert dialog = new Alert(AlertType.CONFIRMATION);

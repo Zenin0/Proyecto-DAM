@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
  * Controlador del FXML register
  */
 public class RegisterController implements Initializable {
+
     // Items
     @FXML
     private CheckBox adminCheckBox;
@@ -28,6 +29,12 @@ public class RegisterController implements Initializable {
 
     @FXML
     private PasswordField passReg2;
+
+    @FXML
+    private TextField usuApellidos;
+
+    @FXML
+    private TextField usuNombre;
 
     @FXML
     private TextField usuReg;
@@ -65,11 +72,11 @@ public class RegisterController implements Initializable {
     /**
      * Funcion para registrar un usuario
      *
-     * @see Gestioner#registrar(String, String, String, boolean)
+     * @see Gestioner#registrar(String,String,String, String, String, boolean)
      */
     private void registrar() {
 
-        if (Gestioner.registrar(this.usuReg.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
+        if (Gestioner.registrar(this.usuReg.getText(), this.usuNombre.getText(), this.usuApellidos.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
             this.usuReg.setText("");
             this.passReg1.setText("");
             this.passReg2.setText("");

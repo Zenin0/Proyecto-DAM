@@ -61,7 +61,7 @@ public class App extends Application {
     }
 
 
-    
+
     /** 
      * @param stage Programa
      */
@@ -73,6 +73,17 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
+        // Shutdown hook
+        stage.setOnCloseRequest(event -> {
+            try {
+                App.con.close();
+            } catch (SQLException e) {
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
+            }
+        });
 
     }
 

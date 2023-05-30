@@ -6,6 +6,8 @@ USE `Manolo_Airlines`;
 CREATE TABLE `Usuarios`(
     ID_Usuario INT NOT NULL PRIMARY KEY,
     Nombre_Usuario VARCHAR(255) NOT NULL,
+    Nombre VARCHAR(255),
+    Apellidos VARCHAR(255),
     Pass VARCHAR(255) NOT NULL,
     Is_Admin BOOLEAN NOT NULL
 

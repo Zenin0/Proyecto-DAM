@@ -22,32 +22,34 @@
             <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="ALWAYS" maxWidth="501.0" minWidth="0.0" prefWidth="501.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="82.0" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="88.0" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="70.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="82.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="88.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="70.0" valignment="CENTER" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="Usuario" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-            <TextField fx:id="usuReg" promptText="Usuario" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+            <TextField fx:id="usuReg" promptText="Usuario" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets right="15.0" />
+                  <Insets />
                </GridPane.margin>
             </TextField>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="97.0" text="Repite la Contraseña" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <PasswordField fx:id="passReg1" promptText="Contraseña" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="97.0" text="Repite la Contraseña" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <PasswordField fx:id="passReg1" promptText="Contraseña" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets right="15.0" />
+                  <Insets />
                </GridPane.margin>
             </PasswordField>
-            <PasswordField fx:id="passReg2" prefHeight="30.0" prefWidth="168.0" promptText="Repita Contraseña" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <PasswordField fx:id="passReg2" prefHeight="30.0" prefWidth="168.0" promptText="Repita Contraseña" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets right="15.0" />
+                  <Insets />
                </GridPane.margin>
             </PasswordField>
-            <ImageView fitHeight="386.0" fitWidth="402.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.rowSpan="2">
+            <ImageView fitHeight="386.0" fitWidth="402.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" GridPane.rowSpan="2">
                <image>
                   <Image url="@css/logo.png" />
                </image>
@@ -55,14 +57,18 @@
                   <Insets left="60.0" />
                </GridPane.margin>
             </ImageView>
-            <Button fx:id="buttonReg" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Registrar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-            <Button fx:id="buttonlogCh" mnemonicParsing="false" text="Ya tienes una cuenta?" GridPane.rowIndex="4" />
-            <CheckBox fx:id="adminCheckBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="122.0" text="Administrador" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Button fx:id="buttonReg" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Registrar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+            <Button fx:id="buttonlogCh" mnemonicParsing="false" text="Ya tienes una cuenta?" GridPane.rowIndex="6" />
+            <CheckBox fx:id="adminCheckBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="122.0" text="Administrador" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </CheckBox>
             <Label style="-fx-font-size: 30px;" styleClass="h1" text="Registro de Usuario" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="3" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Nombre" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Apelldios" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="usuNombre" promptText="Nombre" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <TextField fx:id="usuApellidos" promptText="Apellidos" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
