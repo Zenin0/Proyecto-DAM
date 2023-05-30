@@ -187,6 +187,7 @@ public class InicioAdminController implements Initializable {
      * Terminar la sesión del usuario
      */
     private void endSession() throws IOException {
+        GlobalData.userName = "";
         App.setRoot("login");
         Alert dialog = new Alert(AlertType.CONFIRMATION);
         dialog.setTitle("Session Terminada");
@@ -197,6 +198,7 @@ public class InicioAdminController implements Initializable {
 
     /**
      * Funcion para listar los vuelos y meterlos en la lista
+     *
      * @see Getter
      */
     private void listarVuelos() throws SQLException {
@@ -210,6 +212,7 @@ public class InicioAdminController implements Initializable {
 
     /**
      * Funcion para añadir una Ciudad
+     *
      * @see Gestioner#registrarCiudad(String, String)
      */
     private void addCiudad() {
@@ -225,7 +228,8 @@ public class InicioAdminController implements Initializable {
 
     /**
      * Funcion para añadir un Avion
-     * @see Gestioner#registrarAvion(String, int) 
+     *
+     * @see Gestioner#registrarAvion(String, int)
      */
     private void addAvion() {
         if (Integer.parseInt(this.capacidadField.getText()) > 200) {
@@ -248,7 +252,8 @@ public class InicioAdminController implements Initializable {
 
     /**
      * Funcion para añadir un vuelo
-     * @see Gestioner#registrarVuelo(String, String, int, String) 
+     *
+     * @see Gestioner#registrarVuelo(String, String, int, String)
      */
     private void addVuelo() throws ParseException, SQLException {
         String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
@@ -265,7 +270,8 @@ public class InicioAdminController implements Initializable {
 
     /**
      * Funcion para eliminar un Vuelo
-     * @see Gestioner#eliminarVuelo(int) 
+     *
+     * @see Gestioner#eliminarVuelo(int)
      */
     public void delVuelo() throws SQLException {
         String[] vueloParts = this.vuelosList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
@@ -284,7 +290,7 @@ public class InicioAdminController implements Initializable {
     }
 
     /**
-     * Cambiar al modo Borrar un vuelo
+     * Cambiar al modo a Borrar un vuelo
      */
     private void menuDelVuelo() throws SQLException {
         listarVuelos();
@@ -321,7 +327,8 @@ public class InicioAdminController implements Initializable {
     }
 
     /**
-     * Cambiar al modo Añadir un Vuelo
+     * Cambiar al modo a añadir un Vuelo
+     *
      * @see Getter
      */
     private void menuAddVuelo() throws SQLException {
@@ -385,7 +392,7 @@ public class InicioAdminController implements Initializable {
     }
 
     /**
-     * Cambiar al modo Añadir Ciudad
+     * Cambiar al modo a añadir Ciudad
      */
     private void menuAddCiudad() throws IOException {
         this.delVuelo.setDisable(false);

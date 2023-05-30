@@ -19,20 +19,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
- * Gestionar las interaccciones de insercion/eliminacion de datos de la BDD
+ * Gestionar las interaccciones de cambios de datos de la BDD
  */
 public class Gestioner {
 
     /**
-     * Constructor de la clase
-     */
-    public Gestioner() {
-    }
-
-    /**
-     * Generar un justificante del vuelo
+     * Generar un justificante del vuelo con formato PDF
      *
-     * @param pdfText texto de la reserva
+     * @param pdfText Texto del PDF
      */
     public static void createPDF(String pdfText) {
         // Generar Objecto Documento
@@ -46,6 +40,7 @@ public class Gestioner {
             // Informacion del Archivo
             PdfWriter.getInstance(PDFdocument, new FileOutputStream(selectedFile.getAbsolutePath()));
 
+            // Entramos en edicion
             PDFdocument.open();
 
             // Titulo
@@ -53,7 +48,7 @@ public class Gestioner {
             paragraph.setAlignment(Paragraph.ALIGN_CENTER);
             PDFdocument.add(paragraph);
 
-            // Insertar el Logo
+            // Insertar el Logo en la parte superior
             Image image = Image.getInstance("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/logoT.png");
             image.setAlignment(Image.MIDDLE);
             image.scaleAbsolute(300, 300);
@@ -64,7 +59,7 @@ public class Gestioner {
             paragraph.setAlignment(Paragraph.ALIGN_CENTER);
             PDFdocument.add(paragraph);
 
-            // Generar el QR
+            // Generar el QR con un enlace
             String qrCodeUrl = "https://github.com/Zenin0/Proyecto-DAM";
             Image qrCodeImage = Image.getInstance("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrCodeUrl);
             qrCodeImage.setAbsolutePosition((PDFdocument.getPageSize().getWidth() - qrCodeImage.getScaledWidth()) / 2, 50);
@@ -81,7 +76,7 @@ public class Gestioner {
 
 
     /**
-     * Gestionar el login de los usuarios
+     * Login de los usuarios
      *
      * @param usuario Nombre del usuario introducido
      * @param pass    Contraseña introducida
@@ -91,9 +86,10 @@ public class Gestioner {
     public static int login(String usuario, String pass) {
         try {
 
+            // Objecto de encriptacion
             MD5Hasher md5 = new MD5Hasher(pass);
 
-            // Comprobar si el usuario y la contraseña ya existen en la base de datos
+            // Si el usuario y la contraseña ya existen en la base de datos
             String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
             PreparedStatement checkStatement = App.con.prepareStatement(query);
             checkStatement.setString(1, usuario);
@@ -103,7 +99,7 @@ public class Gestioner {
             int count = resultSet.getInt(1);
 
             if (count > 0) {
-                // Comprobar si el usuario es admin o no
+                // Si el usuario es admin o no
                 query = "SELECT Is_Admin FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
                 checkStatement = App.con.prepareStatement(query);
                 checkStatement.setString(1, usuario);
@@ -119,6 +115,7 @@ public class Gestioner {
                     GlobalData.userName = usuario;
                     return 0;
                 } else {
+                    // Return error de login
                     return -1;
                 }
 
@@ -127,11 +124,11 @@ public class Gestioner {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
 
-
+        // Return error de login
         return -1;
     }
 
@@ -142,14 +139,14 @@ public class Gestioner {
      * @param Pass1   Contraseña 1
      * @param Pass2   Contraseña 2
      * @param admin   Checkbox de Administrador
-     * @return si se ha creado o si no true|false
+     * @return Si se ha creado o si no
      * @see MD5Hasher#getMd5()
      */
-    public static boolean registrar(String Usuario,String nombre, String apellidos, String Pass1, String Pass2, boolean admin) {
+    public static boolean registrar(String Usuario, String nombre, String apellidos, String Pass1, String Pass2, boolean admin) {
         int id;
         try {
 
-            // Comprobar que las contraseñas coincidan
+            // Comprobar que las dos contraseñas coincidan
             if (!Pass1.equals(Pass2)) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
@@ -177,6 +174,8 @@ public class Gestioner {
 
                 } else {
 
+                    // Al marcar la casilla de crear un usuario administrador
+                    // Comprobar que la contraseña admin este bien
                     if (admin) {
                         if (!new MD5Hasher(new PassDialog().showAndWait().get()).getMd5().equals(new MD5Hasher("root").getMd5())) {
                             Alert dialog = new Alert(AlertType.ERROR);
@@ -193,7 +192,6 @@ public class Gestioner {
                     if (resulttest.next()) {
                         id = resulttest.getInt(1);
 
-                        // Insert the new record into the database
                         String consulta = "INSERT INTO Usuarios (ID_Usuario, Nombre_Usuario, Nombre, Apellidos, Pass, is_Admin) VALUES (?, ?, ?, ?, ?, ?)";
                         PreparedStatement insertStatement = App.con.prepareStatement(consulta);
                         insertStatement.setInt(1, id + 1);
@@ -217,7 +215,7 @@ public class Gestioner {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
 
@@ -229,7 +227,7 @@ public class Gestioner {
      *
      * @param nombreAvion Nombre del avión
      * @param capacidad   Capacidad del avión
-     * @return si se ha creado o si no true|false
+     * @return Si se ha creado o si no
      */
     public static boolean registrarAvion(String nombreAvion, int capacidad) {
         try {
@@ -271,7 +269,7 @@ public class Gestioner {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
 
@@ -283,7 +281,7 @@ public class Gestioner {
      *
      * @param Ciudad Nombre de la ciudad
      * @param Pais   País al que pertenece
-     * @return si se ha creado o si no true|false
+     * @return Si se ha creado o si no
      */
     public static boolean registrarCiudad(String Ciudad, String Pais) {
         int id;
@@ -332,7 +330,7 @@ public class Gestioner {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
 
@@ -346,7 +344,7 @@ public class Gestioner {
      * @param CiudadDestino Nombre de la ciuada de Destino
      * @param idAvion       ID del avión
      * @param fecha         Fecha de salida
-     * @return si se ha creado o si no true|false
+     * @return Si se ha creado o si no
      */
     public static boolean registrarVuelo(String CiudadSalida, String CiudadDestino, int idAvion, String fecha) throws ParseException {
 
@@ -379,7 +377,7 @@ public class Gestioner {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
 
@@ -402,7 +400,7 @@ public class Gestioner {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
 
@@ -441,7 +439,7 @@ public class Gestioner {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
         return 0;
@@ -461,7 +459,7 @@ public class Gestioner {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
 
@@ -484,7 +482,7 @@ public class Gestioner {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
         return 0;

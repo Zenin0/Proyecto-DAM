@@ -19,8 +19,6 @@ import java.util.Objects;
  */
 public class App extends Application {
 
-    /**
-     */
     public static Connection con;
     private static Scene scene;
 
@@ -40,15 +38,16 @@ public class App extends Application {
 
     /**
      * Seleccionar el FXML de inicio
-     * @param fxml nombre del archivo FXML
+     * @param fxml Nombre del fichero FXML
      */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
     
-    /** 
-     * @param fxml Nombre del FXML
+    /**
+     * Cargar el FXML
+     * @param fxml Nombre del Fichero
      * @return Parent
      */
     private static Parent loadFXML(String fxml) throws IOException {
@@ -62,8 +61,9 @@ public class App extends Application {
 
 
 
-    /** 
-     * @param stage Programa
+    /**
+     * Comenzar el programa
+     * @param stage Ventana
      */
     @Override
     public void start(Stage stage) throws IOException {

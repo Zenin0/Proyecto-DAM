@@ -11,26 +11,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * Obtener datos de la BD
+ * Gestionar los select de la BDD
  */
 public class Getter {
 
     /**
-     * Construcor de la clase
-     */
-    Getter() {
-    }
-
-    /**
-     * Obtener una lista de ciuades
+     * Obtener una lista de Strings de ciudades
      *
      * @return una ArrayList de las ciudades
      */
     public static ArrayList<String> getlistaCiudadesStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
-
-        // Comprobar si el usuario y la contraseña ya existen en la base de datos
         String query = "SELECT Nombre_Ciudad FROM Ciudades";
         PreparedStatement checkStatement = App.con.prepareStatement(query);
         ResultSet rs = checkStatement.executeQuery();
@@ -44,14 +36,13 @@ public class Getter {
     }
 
     /**
-     * Obtener una lista de aviones
+     * Obtener una lista de Strings de aviones
      *
      * @return una ArrayList de los Aviones
      */
     public static ArrayList<String> getlistaAvionesStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
-        // Comprobar si el usuario y la contraseña ya existen en la base de datos
         String query = "SELECT ID_Avion,Nombre_Avion,Capacidad FROM Aviones";
         PreparedStatement checkStatement = App.con.prepareStatement(query);
         ResultSet rs = checkStatement.executeQuery();
@@ -63,15 +54,13 @@ public class Getter {
     }
 
     /**
-     * Obtener una lista de los vuelos
+     * Obtener una lista de Strings de los vuelos
      *
      * @return una ArrayList de los vuelos
      */
     public static ArrayList<String> getlistaVuelosStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
-
-        // Comprobar si el usuario y la contraseña ya existen en la base de datos
         String query = "SELECT * FROM Vuelos";
         PreparedStatement checkStatement = App.con.prepareStatement(query);
         ResultSet rs = checkStatement.executeQuery();
@@ -123,7 +112,7 @@ public class Getter {
     }
 
     /**
-     * Obtener la ID de la ciudad en base a su nombre
+     * Obtener la ID de un vuelo en base a la ID de una Reserva
      *
      * @param IDReserva ID de la reserva
      * @return ID del vuelo
@@ -180,7 +169,7 @@ public class Getter {
     }
 
     /**
-     * Obtener cantidad de los asientos libres de un Vuelo
+     * Obtener la cantidad de los asientos libres de un Vuelo
      *
      * @param IDAvion ID del avión
      * @param IDVuelo ID del vuelo
@@ -209,7 +198,7 @@ public class Getter {
     }
 
     /**
-     * Obtener asientos libres
+     * Obtener asientos libres en una ararylist the numeros
      *
      * @param IDAvion ID del avión
      * @param IDVuelo ID del vuelo
@@ -306,7 +295,7 @@ public class Getter {
     }
 
     /**
-     * Obtener una String de la informacion del vuelo
+     * Obtener una String con la informacion del vuelo
      *
      * @param IDVuelo ID del Vuelo
      * @return Informacion del Vuelo
@@ -327,7 +316,7 @@ public class Getter {
     }
 
     /**
-     * Obtener informacion de la reserva
+     * Obtener una String con la informacion de una reserva
      *
      * @param IDReserva ID de la reserva
      * @return Informacion de la reserva
@@ -416,12 +405,12 @@ public class Getter {
         String query = queryBuilder.toString();
         PreparedStatement checkStatement = App.con.prepareStatement(query);
 
-        int indiceParametro = 1;
+        int index = 1;
         if (ciudadSalida > 0) {
-            checkStatement.setInt(indiceParametro++, ciudadSalida);
+            checkStatement.setInt(index++, ciudadSalida);
         }
         if (ciudadLlegada > 0) {
-            checkStatement.setInt(indiceParametro++, ciudadLlegada);
+            checkStatement.setInt(index++, ciudadLlegada);
         }
 
 

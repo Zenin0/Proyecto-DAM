@@ -28,17 +28,35 @@ import java.util.ResourceBundle;
  */
 public class InicioUserController implements Initializable {
 
+    // Tablas
+    //// Tabla de Vuelos
     @FXML
-    private TableColumn<Reserva, String> IDReservaColum;
+    private TableView<Vuelo> vuelosDisponiblesTable;
 
     @FXML
     private TableColumn<Vuelo, String> IDVueloColumn;
 
     @FXML
-    private TableColumn<Reserva, String> asientoReservaColum;
+    private TableColumn<Vuelo, String> asientosVueloColumn;
 
     @FXML
-    private TableColumn<Vuelo, String> asientosVueloColumn;
+    private TableColumn<Vuelo, String> fechaVueloColumn;
+
+    @FXML
+    private TableColumn<Vuelo, String> llegadaVueloColum;
+
+    @FXML
+    private TableColumn<Vuelo, String> salidaVueloColum;
+
+    //// Tabla de Reservas
+    @FXML
+    private TableView<Reserva> reservasDisponiblesTable;
+
+    @FXML
+    private TableColumn<Reserva, String> IDReservaColum;
+
+    @FXML
+    private TableColumn<Reserva, String> asientoReservaColum;
 
     @FXML
     private TableColumn<Reserva, String> avionReservaColumn;
@@ -50,19 +68,16 @@ public class InicioUserController implements Initializable {
     private TableColumn<Reserva, String> ciudadSaludaReservaColumn;
 
     @FXML
+    private TableColumn<Reserva, String> fechaReservaColum;
+
+    @FXML
+    private TableColumn<Reserva, String> nameReservaColum;
+
+    @FXML
     private Button downloadJustificanteButton;
 
     @FXML
     private Button endSession;
-
-    @FXML
-    private TableColumn<Reserva, String> fechaReservaColum;
-
-    @FXML
-    private TableColumn<Vuelo, String> fechaVueloColumn;
-
-    @FXML
-    private TableColumn<Vuelo, String> llegadaVueloColum;
 
     @FXML
     private MenuButton menuciudadDestinoReservas;
@@ -83,9 +98,6 @@ public class InicioUserController implements Initializable {
     private Button modificarReservaButton;
 
     @FXML
-    private TableColumn<Reserva, String> nameReservaColum;
-
-    @FXML
     private Button removeReservaButton;
 
     @FXML
@@ -95,19 +107,7 @@ public class InicioUserController implements Initializable {
     private Button reservarMeuItem;
 
     @FXML
-    private TableView<Reserva> reservasDisponiblesTable;
-
-    @FXML
-    private TableColumn<Vuelo, String> salidaVueloColum;
-
-    @FXML
     private Label tittleLabel;
-
-    @FXML
-    private TableView<Vuelo> vuelosDisponiblesTable;
-
-    public InicioUserController() {
-    }
 
     /**
      * Inicializar la ventana
@@ -115,6 +115,7 @@ public class InicioUserController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
+        // Cargar el menu de los vuelos al iniciar la ventana
         try {
             menuReservar();
         } catch (SQLException e) {
@@ -123,6 +124,7 @@ public class InicioUserController implements Initializable {
             dialog.setHeaderText(e.getMessage());
             dialog.show();
         }
+        // Cargar menu reservar
         this.reservarMeuItem.setOnAction(event -> {
             try {
                 menuReservar();
@@ -133,6 +135,7 @@ public class InicioUserController implements Initializable {
                 dialog.show();
             }
         });
+        // Cargar mis Reservas
         this.misReservasMenuItem.setOnAction(event -> {
             try {
                 menuMisReservas();
@@ -143,6 +146,7 @@ public class InicioUserController implements Initializable {
                 dialog.show();
             }
         });
+        // Terminar la session
         this.endSession.setOnAction((event) -> {
             try {
                 endSession();
@@ -479,6 +483,7 @@ public class InicioUserController implements Initializable {
      * Cerrar la sesión
      */
     private void endSession() throws IOException {
+        GlobalData.userName = "";
         App.setRoot("login");
         Alert dialog = new Alert(AlertType.CONFIRMATION);
         dialog.setTitle("Session Terminada");
@@ -660,7 +665,7 @@ public class InicioUserController implements Initializable {
 
 
     /**
-     * Descargar un justufucante del vuelo
+     * Descargar un justufucante del vuelo con formato PDF
      *
      * @see Gestioner#createPDF(String)
      */

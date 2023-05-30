@@ -78,6 +78,8 @@ public class RegisterController implements Initializable {
 
         if (Gestioner.registrar(this.usuReg.getText(), this.usuNombre.getText(), this.usuApellidos.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
             this.usuReg.setText("");
+            this.usuApellidos.setText("");
+            this.usuApellidos.setText("");
             this.passReg1.setText("");
             this.passReg2.setText("");
         }
