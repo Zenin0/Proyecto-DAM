@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="JavadocGenerationManager">
-    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/App/javadoc" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/App/Manolo-Airlines-JavaDoc.github.io" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
