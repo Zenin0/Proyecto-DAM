@@ -276,6 +276,7 @@ public class InicioUserController implements Initializable {
 
                 // Asignar que ID hemos pulsado, y cambiar opacidades
                 if (asientosLibres.contains(seatNum)) {
+
                     seatButton.setImage(able);
                     stackPane.setOnMouseClicked(event -> {
                         if (selectedSeatPane[0] != null) {
@@ -289,12 +290,16 @@ public class InicioUserController implements Initializable {
                     stackPane.setOnMouseEntered(event -> stackPane.setOpacity(0.5));
                     stackPane.setOnMouseExited(event -> stackPane.setOpacity(1));
                     stackPane.cursorProperty().set(Cursor.HAND);
+
                 } else {
-                    seatButton.setImage(unable);
+                    if (seatNum == selectedReserva.getAsiento()) {
+                        seatButton.setImage(selected);
+                    } else {
+                        seatButton.setImage(unable);
+                    }
                     stackPane.setOpacity(0.5);
                     stackPane.setDisable(true);
                 }
-
                 gridPane.add(stackPane, col, row);
             }
 

@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * Obtener datos de la Base de Datos
+ * Obtener datos de la BD
  */
 public class Getter {
 
@@ -390,6 +390,12 @@ public class Getter {
         return numRows;
     }
 
+    /**
+     * Obtener una lista Observable para añadirla a la tabla
+     * @param ciudadSalida ID de la ciudad de Salida para el filtro
+     * @param ciudadLlegada ID de la ciudad de destino para el filtro
+     * @return lista Observable
+     */
     public static ObservableList<Vuelo> getVuelosObservableList(int ciudadSalida, int ciudadLlegada) throws SQLException {
         ObservableList<Vuelo> out = FXCollections.observableArrayList();
 
@@ -441,35 +447,49 @@ public class Getter {
         return out;
     }
 
+    /**
+     * Obtener una lista Observable para añadirla a la tabla
+     * @param IDUsuario ID del propietario de las reservas
+     * @return Una lista Observable
+     */
     public static ObservableList<Reserva> getReservasObservableList(int IDUsuario) throws SQLException {
         ObservableList<Reserva> out = FXCollections.observableArrayList();
-        String query1 = "SELECT ID_Reserva, ID_Usuario, ID_Vuelo, Asiento FROM Reservas WHERE ID_Usuario = ?";
-        PreparedStatement checkStatement1 = App.con.prepareStatement(query1);
-        checkStatement1.setInt(1, IDUsuario);
-        ResultSet rs1 = checkStatement1.executeQuery();
-        while (rs1.next()) {
-            String query2 = "SELECT * FROM Vuelos WHERE ID_Vuelo = ?";
-            PreparedStatement checkStatement2 = App.con.prepareStatement(query2);
-            checkStatement2.setInt(1, rs1.getInt(3));
-            ResultSet rs2 = checkStatement2.executeQuery();
-            if (rs2.next()) {
-                java.sql.Date fechaSalida = rs2.getDate("Fecha_Salida");
-                String fechaSalidaStr = null;
 
-                if (fechaSalida != null) {
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                    fechaSalidaStr = dateFormat.format(fechaSalida);
+        String query = "SELECT R.ID_Reserva, R.ID_Usuario, R.ID_Vuelo, R.Asiento, V.Fecha_Salida, V.Ciudad_Salida, V.Ciudad_Destino, V.ID_Avion " +
+                "FROM Reservas R " +
+                "JOIN Vuelos V ON R.ID_Vuelo = V.ID_Vuelo " +
+                "WHERE R.ID_Usuario = ?";
+
+        try (PreparedStatement statement = App.con.prepareStatement(query)) {
+            statement.setInt(1, IDUsuario);
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    int reservaID = rs.getInt("ID_Reserva");
+                    int usuarioID = rs.getInt("ID_Usuario");
+                    int asiento = rs.getInt("Asiento");
+                    java.sql.Date fechaSalida = rs.getDate("Fecha_Salida");
+                    int ciudadSalidaID = rs.getInt("Ciudad_Salida");
+                    int ciudadDestinoID = rs.getInt("Ciudad_Destino");
+                    int avionID = rs.getInt("ID_Avion");
+
+                    String fechaSalidaStr = null;
+                    if (fechaSalida != null) {
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                        fechaSalidaStr = dateFormat.format(fechaSalida);
+                    }
+
+                    out.add(new Reserva(
+                            reservaID,
+                            getNombreAndApellidos(usuarioID),
+                            asiento,
+                            getNombreCiudad(ciudadSalidaID),
+                            getNombreCiudad(ciudadDestinoID),
+                            getNombreAvion(avionID),
+                            fechaSalidaStr));
                 }
-                out.add(new Reserva(
-                        rs1.getInt(1),
-                        getNombreAndApellidos(rs1.getInt(2)),
-                        rs1.getInt(4),
-                        getNombreCiudad(rs2.getInt("Ciudad_Salida")),
-                        getNombreCiudad(rs2.getInt("Ciudad_Destino")),
-                        getNombreAvion(rs2.getInt("ID_Avion")),
-                        fechaSalidaStr));
             }
         }
+
         return out;
     }
 

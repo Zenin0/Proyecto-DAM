@@ -17,6 +17,7 @@ public class Vuelo {
      * @param Ciudad_Llegada Ciudad de Llegada del vuelo
      * @param Fecha          Fecha de salida del vuelo
      * @param Asientos       Asientos libres del vuelo
+     * @see InicioUserController#loadVuelos()
      */
     public Vuelo(int id, String Ciudad_Salida, String Ciudad_Llegada, String Fecha, int Asientos) {
         this.id = id;
