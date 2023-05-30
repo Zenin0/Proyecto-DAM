@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="app:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/app_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Proyecto-DAM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Proyecto-DAM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_5_23_16_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_5_23_16_05__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_5_23_15_20__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_5_23_15_20__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_5_23_16_45__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_5_23_16_45__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/home_ad.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/home_ad.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +43,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="ROOT_SYNC" value="SYNC" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -67,15 +83,31 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/dam/Escritorio/DAM/PRM/Proyecto-DAM&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.1150748&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -108,6 +140,72 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683735129827</updated>
+      <workItem from="1685443784776" duration="105000" />
+      <workItem from="1685465996920" duration="2646000" />
+      <workItem from="1685470759590" duration="93000" />
+    </task>
+    <task id="LOCAL-00001" summary="Roadmap Updated">
+      <created>1683740890243</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683740890243</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Roadmap Updated">
+      <created>1683740998221</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683740998221</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Use ELiminar Vuelo Screen">
+      <created>1683807835741</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683807835741</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Reorganización Roadmap, y añaidos apartados nuevos">
+      <created>1683819906983</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683819906983</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Reorganizacion del codigo y comentarios">
+      <created>1683826977803</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683826977803</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Roadman links Updated">
+      <created>1683827032678</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683827032678</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Roadman links Updated">
+      <created>1683827083869</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683827083869</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Roadman links Updated">
+      <created>1683827122974</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683827122974</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Resaltado algun texto importante">
+      <created>1683827409551</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683827409551</updated>
     </task>
     <task id="LOCAL-00010" summary="FXMLs updates">
       <created>1683828650540</created>
@@ -326,139 +424,30 @@
       <option name="project" value="LOCAL" />
       <updated>1685384643054</updated>
     </task>
-    <task id="LOCAL-00041" summary="Corrections unused code">
-      <created>1685384682976</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1685384682976</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Seat Images Updates">
-      <created>1685454145567</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1685454145567</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Images Updated">
-      <created>1685454987523</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1685454987523</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Nombre y Apellidos usados">
-      <created>1685456406691</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1685456406691</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Leyenda en la seleccion de Asientos">
-      <created>1685457808376</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1685457808376</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Imagenes ReadmeUpdate">
-      <created>1685458016452</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1685458016452</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Readme Update">
-      <created>1685458062394</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1685458062394</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Readme Update">
-      <created>1685458120229</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1685458120229</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Readme Update">
-      <created>1685458195485</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1685458195485</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Roadmap Organizado">
-      <created>1685460504976</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1685460504977</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Reservas Filtrables por Ciudades">
-      <created>1685462219389</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1685462219389</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Roadmap Update">
-      <created>1685462237185</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1685462237186</updated>
-    </task>
-    <task id="LOCAL-00053" summary="JavaDoc">
-      <created>1685463307535</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1685463307535</updated>
-    </task>
-    <task id="LOCAL-00054" summary="JavaDoc Generado">
-      <created>1685463350959</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1685463350959</updated>
-    </task>
-    <task id="LOCAL-00055" summary="JavaDoc Generado">
-      <created>1685463564410</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1685463564410</updated>
-    </task>
-    <task id="LOCAL-00056" summary="PDF removed">
-      <created>1685463872659</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1685463872659</updated>
-    </task>
-    <task id="LOCAL-00057" summary="CSS changes">
-      <created>1685465000803</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1685465000803</updated>
-    </task>
-    <task id="LOCAL-00058" summary="CSS changes">
-      <created>1685465282799</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1685465282799</updated>
-    </task>
-    <option name="localTasksCounter" value="59" />
+    <option name="localTasksCounter" value="41" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Compression del codigo" />
+    <MESSAGE value="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo" />
+    <MESSAGE value="POM config" />
+    <MESSAGE value="Gitignore .pdf files" />
+    <MESSAGE value="Roadna update" />
+    <MESSAGE value="Cosas sjsjjs" />
+    <MESSAGE value="Image Update" />
+    <MESSAGE value="Seat Deleted" />
+    <MESSAGE value="Asientos Seleccionables con imagenes" />
+    <MESSAGE value="Modificacion de Asientos con seleccion de asientos por imagenes" />
+    <MESSAGE value="Updates" />
+    <MESSAGE value="Fultrar Vuelos" />
+    <MESSAGE value="JavaDoc" />
     <MESSAGE value="Esconder texto ciudades al cambio" />
     <MESSAGE value="Readme images Update" />
+    <MESSAGE value="Roadmap Update" />
     <MESSAGE value="PDF de ejemplo añadido al README.md" />
     <MESSAGE value="README.md javadoc website" />
     <MESSAGE value="FXML Updates" />
@@ -468,20 +457,6 @@
     <MESSAGE value="Mouse Hover cambiando la opacidad" />
     <MESSAGE value="PDF generator cambiado, añadido el nombre y apellidos del Usuario" />
     <MESSAGE value="Reservas con una TableView" />
-    <MESSAGE value="Corrections unused code" />
-    <MESSAGE value="Seat Images Updates" />
-    <MESSAGE value="Images Updated" />
-    <MESSAGE value="Nombre y Apellidos usados" />
-    <MESSAGE value="Leyenda en la seleccion de Asientos" />
-    <MESSAGE value="Imagenes ReadmeUpdate" />
-    <MESSAGE value="Readme Update" />
-    <MESSAGE value="Roadmap Organizado" />
-    <MESSAGE value="Reservas Filtrables por Ciudades" />
-    <MESSAGE value="Roadmap Update" />
-    <MESSAGE value="JavaDoc" />
-    <MESSAGE value="JavaDoc Generado" />
-    <MESSAGE value="PDF removed" />
-    <MESSAGE value="CSS changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSS changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reservas con una TableView" />
   </component>
 </project>
