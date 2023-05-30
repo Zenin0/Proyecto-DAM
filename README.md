@@ -140,7 +140,7 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
 ## Roadmap
 
 - [X] Crear y configurar la BDD
-- [ ] Código App
+- [X] Código App
   - [X] Login / Registro 
     - [X] Creación de Usuarios
       - [X] Administradores y no Administradores
@@ -154,15 +154,15 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
       - [X] Mostrar las ciudades con un desplegable
       - [X] Mostrar Aviones con un desplegable
       - [X] Añadir fecha con un calendario
-  - [ ] Usuarios
+  - [X] Usuarios
     - [X] Reservar vuelos
       - [X] Mostrar los vuelos con una tabla
         - [X] Filtrar los vuelos por ciudad de salida y de destino
       - [X] Asientos seleccionables
       - [X] Generar PDF con los datos de la reserva
-    - [ ] Mis Reservas
+    - [X] Mis Reservas
       - [X] Mostrar las Reservas con una tabla
-      - [ ] Filtrar Reservas por Ciudad de Destino y Ciudad de Salida
+      - [X] Filtrar Reservas por Ciudad de Destino y Ciudad de Salida
          - [X] Eliminar una Reserva
          - [X] Modificar una Reserva
            - [X] Asientos seleccionables
