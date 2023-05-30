@@ -29,20 +29,47 @@
           <RowConstraints maxHeight="144.0" minHeight="0.0" prefHeight="144.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <VBox.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </VBox.margin>
          <children>
-            <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="4" />
-            <Label fx:id="reservarLabel" style="-fx-font-weight: bold;" text="Vuelos Disponibles" textAlignment="CENTER" visible="false" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="tittleLabel" style="-fx-font-weight: bold;" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <Label fx:id="misReservasLabel" style="-fx-font-weight: bold;" text="Mis Reservas" textAlignment="CENTER" visible="false" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label text="Ciudades De Destino" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
-                  <Font size="30.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
+            <Label text="Ciudades De Salida" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TableView fx:id="vuelosDisponiblesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="4" GridPane.valignment="CENTER">
+              <columns>
+                <TableColumn fx:id="IDVueloColumn" prefWidth="75.0" sortable="false" text="ID" />
+                <TableColumn fx:id="salidaVueloColum" prefWidth="194.0" sortable="false" text="Ciudad de Salida" />
+                  <TableColumn fx:id="llegadaVueloColum" prefWidth="167.0" sortable="false" text="Ciudad de Llegada" />
+                  <TableColumn fx:id="fechaVueloColumn" prefWidth="205.0" sortable="false" text="Fecha de Salida" />
+                  <TableColumn fx:id="asientosVueloColumn" prefWidth="165.0" sortable="false" text="Asientos libres" />
+              </columns>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </TableView>
+            <TableView fx:id="reservasDisponiblesTable" prefHeight="562.0" prefWidth="717.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="4" GridPane.valignment="CENTER">
+              <columns>
+                <TableColumn fx:id="IDReservaColum" prefWidth="37.0" text="ID" />
+                  <TableColumn fx:id="nameReservaColum" prefWidth="152.0" text="Nombre y Apellidos" />
+                  <TableColumn fx:id="asientoReservaColum" text="Asiento" />
+                  <TableColumn fx:id="ciudadSaludaReservaColumn" prefWidth="147.0" text="Ciudad de Salida" />
+                  <TableColumn fx:id="ciudadDestinoReservaColumn" prefWidth="147.0" text="Ciudad de Destino" />
+                  <TableColumn fx:id="avionReservaColumn" prefWidth="132.0" text="Avión" />
+                  <TableColumn fx:id="fechaReservaColum" prefWidth="109.0" text="Fecha" />
+              </columns>
+            </TableView>
             <Button fx:id="reservarButton" mnemonicParsing="false" text="Reservar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <Button fx:id="removeReservaButton" mnemonicParsing="false" text="Eliminar Reserva" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button fx:id="modificarReservaButton" layoutX="169.0" layoutY="304.0" mnemonicParsing="false" text="Modificar Reserva" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
@@ -57,41 +84,11 @@
                   <Insets />
                </GridPane.margin>
             </Button>
-            <TableView fx:id="vuelosDisponiblesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="4" GridPane.valignment="CENTER">
-              <columns>
-                <TableColumn fx:id="IDVueloColumn" prefWidth="75.0" sortable="false" text="ID" />
-                <TableColumn fx:id="salidaVueloColum" prefWidth="194.0" sortable="false" text="Ciudad de Salida" />
-                  <TableColumn fx:id="llegadaVueloColum" prefWidth="167.0" sortable="false" text="Ciudad de Llegada" />
-                  <TableColumn fx:id="fechaVueloColumn" prefWidth="205.0" sortable="false" text="Fecha de Salida" />
-                  <TableColumn fx:id="asientosVueloColumn" prefWidth="156.0" sortable="false" text="Asientos libres" />
-              </columns>
-               <GridPane.margin>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </GridPane.margin>
-            </TableView>
-            <MenuButton fx:id="menuciudadDestino" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <MenuButton fx:id="menuciudadSalida" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Label fx:id="ciudadesDestinoLabel" text="Ciudades De Destino" visible="false" GridPane.rowIndex="2">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="ciudadesSalidaLabel" text="Ciudades De Salida" visible="false" GridPane.rowIndex="1">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <TableView fx:id="reservasDisponiblesTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowSpan="4">
-              <columns>
-                <TableColumn fx:id="IDReservaColum" prefWidth="37.0" text="ID" />
-                  <TableColumn fx:id="nameReservaColum" prefWidth="152.0" text="Nombre y Apellidos" />
-                  <TableColumn fx:id="asientoReservaColum" text="Asiento" />
-                  <TableColumn fx:id="ciudadSaludaReservaColumn" prefWidth="147.0" text="Ciudad de Salida" />
-                  <TableColumn fx:id="ciudadDestinoReservaColumn" prefWidth="147.0" text="Ciudad de Destino" />
-                  <TableColumn fx:id="avionReservaColumn" prefWidth="132.0" text="Avión" />
-                  <TableColumn fx:id="fechaReservaColum" prefWidth="142.0" text="Fecha" />
-              </columns>
-            </TableView>
+            <MenuButton fx:id="menuciudadDestinoVuelos" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <MenuButton fx:id="menuciudadSalidaVuelos" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <MenuButton fx:id="menuciudadDestinoReservas" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <MenuButton fx:id="menuciudadSalidaReservas" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

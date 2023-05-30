@@ -28,34 +28,17 @@ import java.util.ResourceBundle;
  */
 public class InicioUserController implements Initializable {
 
-    // Tabla Vuelos
     @FXML
-    private TableView<Vuelo> vuelosDisponiblesTable;
+    private TableColumn<Reserva, String> IDReservaColum;
 
     @FXML
     private TableColumn<Vuelo, String> IDVueloColumn;
 
     @FXML
-    private TableColumn<Vuelo, String> salidaVueloColum;
+    private TableColumn<Reserva, String> asientoReservaColum;
 
     @FXML
     private TableColumn<Vuelo, String> asientosVueloColumn;
-
-    @FXML
-    private TableColumn<Vuelo, String> fechaVueloColumn;
-
-    @FXML
-    private TableColumn<Vuelo, String> llegadaVueloColum;
-
-    // Tabla Reservas
-    @FXML
-    private TableView<Reserva> reservasDisponiblesTable;
-
-    @FXML
-    private TableColumn<Reserva, String> IDReservaColum;
-
-    @FXML
-    private TableColumn<Reserva, String> asientoReservaColum;
 
     @FXML
     private TableColumn<Reserva, String> avionReservaColumn;
@@ -67,31 +50,31 @@ public class InicioUserController implements Initializable {
     private TableColumn<Reserva, String> ciudadSaludaReservaColumn;
 
     @FXML
-    private TableColumn<Reserva, String> fechaReservaColum;
-
-    @FXML
-    private TableColumn<Reserva, String> nameReservaColum;
-
-    @FXML
-    private Label ciudadesDestinoLabel;
-
-    @FXML
-    private Label ciudadesSalidaLabel;
-
-    @FXML
     private Button downloadJustificanteButton;
 
     @FXML
     private Button endSession;
 
     @FXML
-    private MenuButton menuciudadDestino;
+    private TableColumn<Reserva, String> fechaReservaColum;
 
     @FXML
-    private MenuButton menuciudadSalida;
+    private TableColumn<Vuelo, String> fechaVueloColumn;
 
     @FXML
-    private Label misReservasLabel;
+    private TableColumn<Vuelo, String> llegadaVueloColum;
+
+    @FXML
+    private MenuButton menuciudadDestinoReservas;
+
+    @FXML
+    private MenuButton menuciudadDestinoVuelos;
+
+    @FXML
+    private MenuButton menuciudadSalidaReservas;
+
+    @FXML
+    private MenuButton menuciudadSalidaVuelos;
 
     @FXML
     private Button misReservasMenuItem;
@@ -100,16 +83,28 @@ public class InicioUserController implements Initializable {
     private Button modificarReservaButton;
 
     @FXML
+    private TableColumn<Reserva, String> nameReservaColum;
+
+    @FXML
     private Button removeReservaButton;
 
     @FXML
     private Button reservarButton;
 
     @FXML
-    private Label reservarLabel;
+    private Button reservarMeuItem;
 
     @FXML
-    private Button reservarMeuItem;
+    private TableView<Reserva> reservasDisponiblesTable;
+
+    @FXML
+    private TableColumn<Vuelo, String> salidaVueloColum;
+
+    @FXML
+    private Label tittleLabel;
+
+    @FXML
+    private TableView<Vuelo> vuelosDisponiblesTable;
 
     public InicioUserController() {
     }
@@ -420,7 +415,7 @@ public class InicioUserController implements Initializable {
      * @see #loadReservas()
      */
     public void loadVuelos() throws SQLException {
-        ObservableList<Vuelo> vuelos = Getter.getVuelosObservableList(Getter.getIDCiudad(this.menuciudadSalida.getText()), Getter.getIDCiudad(this.menuciudadDestino.getText()));
+        ObservableList<Vuelo> vuelos = Getter.getVuelosObservableList(Getter.getIDCiudad(this.menuciudadSalidaVuelos.getText()), Getter.getIDCiudad(this.menuciudadDestinoVuelos.getText()));
         if (vuelos.size() < 1) {
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("No Encontrado");
@@ -452,7 +447,7 @@ public class InicioUserController implements Initializable {
      */
     public void loadReservas() throws SQLException {
 
-        ObservableList<Reserva> reservas = Getter.getReservasObservableList(Getter.getUsernameID(GlobalData.userName));
+        ObservableList<Reserva> reservas = Getter.getReservasObservableList(Getter.getUsernameID(GlobalData.userName), Getter.getIDCiudad(this.menuciudadSalidaReservas.getText()), Getter.getIDCiudad(this.menuciudadDestinoReservas.getText()));
         if (reservas.size() < 1) {
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("No Encontrado");
@@ -679,74 +674,77 @@ public class InicioUserController implements Initializable {
 
     /**
      * Modificar la vista para reservar un vueloi
+     *
+     * @see #menuMisReservas()
      */
     public void menuReservar() throws SQLException {
 
+        this.menuciudadSalidaVuelos.getItems().clear();
+        this.menuciudadDestinoVuelos.getItems().clear();
+        this.menuciudadSalidaVuelos.setText("Cualquiera");
+        this.menuciudadDestinoVuelos.setText("Cualquiera");
 
         MenuItem emptyItem = new MenuItem("Cualquiera");
         emptyItem.setOnAction(event -> {
-            menuciudadDestino.setText("Cualquiera");
+            menuciudadDestinoVuelos.setText("Cualquiera");
             try {
                 loadVuelos();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         });
-        menuciudadDestino.getItems().add(emptyItem);
+        menuciudadDestinoVuelos.getItems().add(emptyItem);
 
         for (String ciudad : Getter.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> {
-                menuciudadDestino.setText(item.getText());
+                menuciudadDestinoVuelos.setText(item.getText());
                 try {
                     loadVuelos();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             });
-            menuciudadDestino.getItems().add(item);
+            menuciudadDestinoVuelos.getItems().add(item);
         }
-        menuciudadDestino.setPopupSide(Side.BOTTOM);
+        menuciudadDestinoVuelos.setPopupSide(Side.BOTTOM);
 
 
         emptyItem = new MenuItem("Cualquiera");
         emptyItem.setOnAction(event -> {
-            menuciudadSalida.setText("Cualquiera");
+            menuciudadSalidaVuelos.setText("Cualquiera");
             try {
                 loadVuelos();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         });
-        menuciudadSalida.getItems().add(emptyItem);
+        menuciudadSalidaVuelos.getItems().add(emptyItem);
 
         for (String ciudad : Getter.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> {
-                menuciudadSalida.setText(item.getText());
+                menuciudadSalidaVuelos.setText(item.getText());
                 try {
                     loadVuelos();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             });
-            menuciudadSalida.getItems().add(item);
+            menuciudadSalidaVuelos.getItems().add(item);
         }
 
-        menuciudadSalida.setPopupSide(Side.BOTTOM);
-        this.ciudadesDestinoLabel.setVisible(true);
-        this.ciudadesSalidaLabel.setVisible(true);
-        this.menuciudadDestino.setVisible(true);
-        this.menuciudadSalida.setVisible(true);
+        menuciudadSalidaVuelos.setPopupSide(Side.BOTTOM);
+        this.tittleLabel.setText("Vuelos");
+        this.menuciudadDestinoVuelos.setVisible(true);
+        this.menuciudadSalidaVuelos.setVisible(true);
         this.misReservasMenuItem.setVisible(true);
         this.vuelosDisponiblesTable.setVisible(true);
         this.reservarButton.setVisible(true);
-        this.reservarLabel.setVisible(true);
         this.reservasDisponiblesTable.setVisible(false);
         this.removeReservaButton.setVisible(false);
         this.modificarReservaButton.setVisible(false);
         this.downloadJustificanteButton.setVisible(false);
-        this.misReservasLabel.setVisible(false);
         this.reservarMeuItem.setVisible(false);
         loadVuelos();
     }
@@ -755,24 +753,76 @@ public class InicioUserController implements Initializable {
      * Modificar la vista para ver mis reservas
      */
     public void menuMisReservas() throws SQLException {
-        this.menuciudadSalida.getItems().clear();
-        this.menuciudadDestino.getItems().clear();
+
+        this.menuciudadDestinoReservas.getItems().clear();
+        this.menuciudadSalidaReservas.getItems().clear();
+        this.menuciudadDestinoReservas.setText("Cualquiera");
+        this.menuciudadSalidaReservas.setText("Cualquiera");
+
+        MenuItem emptyItem = new MenuItem("Cualquiera");
+        emptyItem.setOnAction(event -> {
+            menuciudadDestinoReservas.setText("Cualquiera");
+            try {
+                loadReservas();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        menuciudadDestinoReservas.getItems().add(emptyItem);
+
+        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+            MenuItem item = new MenuItem(ciudad);
+            item.setOnAction(event -> {
+                menuciudadDestinoReservas.setText(item.getText());
+                try {
+                    loadReservas();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            menuciudadDestinoReservas.getItems().add(item);
+        }
+        menuciudadDestinoReservas.setPopupSide(Side.BOTTOM);
+
+
+        emptyItem = new MenuItem("Cualquiera");
+        emptyItem.setOnAction(event -> {
+            menuciudadSalidaReservas.setText("Cualquiera");
+            try {
+                loadReservas();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        menuciudadSalidaReservas.getItems().add(emptyItem);
+
+        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+            MenuItem item = new MenuItem(ciudad);
+            item.setOnAction(event -> {
+                menuciudadSalidaReservas.setText(item.getText());
+                try {
+                    loadReservas();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            menuciudadSalidaReservas.getItems().add(item);
+        }
+        this.tittleLabel.setText("Mis Reservas");
+        this.menuciudadSalidaReservas.setVisible(true);
+        this.menuciudadDestinoReservas.setVisible(true);
+        this.menuciudadSalidaVuelos.getItems().clear();
+        this.menuciudadDestinoVuelos.getItems().clear();
         this.reservarMeuItem.setVisible(true);
         this.reservasDisponiblesTable.setVisible(true);
-        this.misReservasLabel.setVisible(true);
         this.removeReservaButton.setVisible(true);
         this.modificarReservaButton.setVisible(true);
         this.downloadJustificanteButton.setVisible(true);
         this.vuelosDisponiblesTable.setVisible(false);
         this.reservarButton.setVisible(false);
-        this.reservarLabel.setVisible(false);
         this.misReservasMenuItem.setVisible(false);
-        this.menuciudadDestino.setVisible(false);
-        this.menuciudadSalida.setVisible(false);
-        this.ciudadesDestinoLabel.setVisible(false);
-        this.ciudadesSalidaLabel.setVisible(false);
-        this.menuciudadSalida.setText("Cualquiera");
-        this.menuciudadDestino.setText("Cualquiera");
+        this.menuciudadDestinoVuelos.setVisible(false);
+        this.menuciudadSalidaVuelos.setVisible(false);
         loadReservas();
     }
 

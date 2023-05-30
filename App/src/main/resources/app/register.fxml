@@ -32,33 +32,7 @@
             <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="70.0" valignment="CENTER" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Nombre De Usuario" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <font>
-                  <Font size="17.0" />
-               </font></Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
-               <font>
-                  <Font size="17.0" />
-               </font></Label>
-            <TextField fx:id="usuReg" promptText="Usuario" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </TextField>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="137.0" text="Repite la Contraseña" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <font>
-                  <Font size="17.0" />
-               </font></Label>
-            <PasswordField fx:id="passReg1" promptText="Contraseña" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </PasswordField>
-            <PasswordField fx:id="passReg2" prefHeight="30.0" prefWidth="168.0" promptText="Repita Contraseña" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </PasswordField>
+            <Label style="-fx-font-size: 30px;" styleClass="h1" text="Registro de Usuario" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="3" />
             <ImageView fitHeight="386.0" fitWidth="402.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" GridPane.rowSpan="2">
                <image>
                   <Image url="@css/logo.png" />
@@ -67,14 +41,10 @@
                   <Insets left="60.0" />
                </GridPane.margin>
             </ImageView>
-            <Button fx:id="buttonReg" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Registrar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-            <Button fx:id="buttonlogCh" mnemonicParsing="false" text="Ya tienes una cuenta?" GridPane.rowIndex="6" />
-            <CheckBox fx:id="adminCheckBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="122.0" text="Administrador" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="15.0" />
-               </GridPane.margin>
-            </CheckBox>
-            <Label style="-fx-font-size: 30px;" styleClass="h1" text="Registro de Usuario" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="3" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Nombre De Usuario" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
             <Label alignment="CENTER" contentDisplay="CENTER" text="Nombre" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="17.0" />
@@ -85,8 +55,38 @@
                   <Font size="17.0" />
                </font>
             </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="137.0" text="Repite la Contraseña" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <TextField fx:id="usuReg" promptText="Usuario" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </TextField>
             <TextField fx:id="usuNombre" promptText="Nombre" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <TextField fx:id="usuApellidos" promptText="Apellidos" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <PasswordField fx:id="passReg1" promptText="Contraseña" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </PasswordField>
+            <PasswordField fx:id="passReg2" prefHeight="30.0" prefWidth="168.0" promptText="Repita Contraseña" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </PasswordField>
+            <Button fx:id="buttonReg" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Registrar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+            <CheckBox fx:id="adminCheckBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="122.0" text="Administrador" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="15.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <Button fx:id="buttonlogCh" mnemonicParsing="false" text="Ya tienes una cuenta?" GridPane.rowIndex="6" />
          </children>
          <VBox.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

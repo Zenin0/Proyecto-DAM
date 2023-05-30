@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,13 +112,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683735129827</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Roadmap Updated">
-      <created>1683740890243</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1683740890243</updated>
     </task>
     <task id="LOCAL-00002" summary="Roadmap Updated">
       <created>1683740998221</created>
@@ -444,12 +442,25 @@
       <option name="project" value="LOCAL" />
       <updated>1685458120229</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Readme Update">
+      <created>1685458195485</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1685458195485</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Roadmap Organizado">
+      <created>1685460504976</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1685460504977</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Seat Deleted" />
     <MESSAGE value="Asientos Seleccionables con imagenes" />
     <MESSAGE value="Modificacion de Asientos con seleccion de asientos por imagenes" />
     <MESSAGE value="Updates" />
@@ -474,6 +485,7 @@
     <MESSAGE value="Leyenda en la seleccion de Asientos" />
     <MESSAGE value="Imagenes ReadmeUpdate" />
     <MESSAGE value="Readme Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme Update" />
+    <MESSAGE value="Roadmap Organizado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Roadmap Organizado" />
   </component>
 </project>

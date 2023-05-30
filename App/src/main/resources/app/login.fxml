@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox minHeight="600.0" minWidth="1080.0" stylesheets="@css/login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.LoginController">
+<VBox minHeight="700.0" minWidth="1080.0" stylesheets="@css/login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.LoginController">
    <children>
       <GridPane alignment="CENTER" minHeight="600.0" minWidth="1080.0" styleClass="login-grid" VBox.vgrow="ALWAYS">
          <columnConstraints>
@@ -27,6 +27,15 @@
             <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="98.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
+            <ImageView fitHeight="394.0" fitWidth="393.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.rowSpan="2">
+               <image>
+                  <Image url="@css/logo.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </ImageView>
+            <Label style="-fx-font-size: 30px;" styleClass="h1" text="Inicio de Sesión" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="3" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="Usuario" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
             <TextField fx:id="usuLog" promptText="Usuario" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -40,20 +49,11 @@
                </GridPane.margin>
             </PasswordField>
             <Button fx:id="buttonLog" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Login" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-            <ImageView fitHeight="394.0" fitWidth="393.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.rowSpan="2">
-               <image>
-                  <Image url="@css/logo.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="30.0" />
-               </GridPane.margin>
-            </ImageView>
             <Button fx:id="buttonRegCh" mnemonicParsing="false" text="Aún no tienes una cuenta?" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </Button>
-            <Label style="-fx-font-size: 30px;" styleClass="h1" text="Inicio de Sesión" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="3" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

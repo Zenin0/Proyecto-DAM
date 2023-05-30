@@ -450,18 +450,40 @@ public class Getter {
     /**
      * Obtener una lista Observable para añadirla a la tabla
      * @param IDUsuario ID del propietario de las reservas
+     * @param ciudadSalida ID de la ciudad de salida para el filtro
+     * @param ciudadDestino ID de la ciudad de destino para el filtro
      * @return Una lista Observable
      */
-    public static ObservableList<Reserva> getReservasObservableList(int IDUsuario) throws SQLException {
+    public static ObservableList<Reserva> getReservasObservableList(int IDUsuario, int ciudadSalida, int ciudadDestino) throws SQLException {
         ObservableList<Reserva> out = FXCollections.observableArrayList();
 
-        String query = "SELECT R.ID_Reserva, R.ID_Usuario, R.ID_Vuelo, R.Asiento, V.Fecha_Salida, V.Ciudad_Salida, V.Ciudad_Destino, V.ID_Avion " +
-                "FROM Reservas R " +
-                "JOIN Vuelos V ON R.ID_Vuelo = V.ID_Vuelo " +
-                "WHERE R.ID_Usuario = ?";
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("SELECT R.ID_Reserva, R.ID_Usuario, R.ID_Vuelo, R.Asiento, V.Fecha_Salida, V.Ciudad_Salida, V.Ciudad_Destino, V.ID_Avion ");
+        queryBuilder.append("FROM Reservas R ");
+        queryBuilder.append("JOIN Vuelos V ON R.ID_Vuelo = V.ID_Vuelo ");
+        queryBuilder.append("WHERE R.ID_Usuario = ?");
+
+        if (ciudadSalida > 0) {
+            queryBuilder.append(" AND V.Ciudad_Salida = ?");
+        }
+        if (ciudadDestino > 0) {
+            queryBuilder.append(" AND V.Ciudad_Destino = ?");
+        }
+        queryBuilder.append(" ORDER BY R.ID_Reserva");
+
+        String query = queryBuilder.toString();
 
         try (PreparedStatement statement = App.con.prepareStatement(query)) {
             statement.setInt(1, IDUsuario);
+            int index = 2;
+
+            if (ciudadSalida > 0) {
+                statement.setInt(index++, ciudadSalida);
+            }
+            if (ciudadDestino > 0) {
+                statement.setInt(index++, ciudadDestino);
+            }
+
             try (ResultSet rs = statement.executeQuery()) {
                 while (rs.next()) {
                     int reservaID = rs.getInt("ID_Reserva");
@@ -492,6 +514,7 @@ public class Getter {
 
         return out;
     }
+
 
 
 }
