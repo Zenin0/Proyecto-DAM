@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="PDF Updates, Scene Builder Corrections, login con enter">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Columnas de las Tablas ajustables">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/bdd.sql" beforeDir="false" afterPath="$PROJECT_DIR$/App/bdd.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/register.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +148,7 @@
       <workItem from="1685465996920" duration="2646000" />
       <workItem from="1685470759590" duration="337000" />
       <workItem from="1685480462674" duration="304000" />
-      <workItem from="1685565631681" duration="5232000" />
+      <workItem from="1685565631681" duration="6196000" />
     </task>
     <task id="LOCAL-00001" summary="Roadmap Updated">
       <created>1683740890243</created>
@@ -466,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685569832803</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Columnas de las Tablas ajustables">
+      <created>1685571019005</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1685571019005</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Gitignore .pdf files" />
     <MESSAGE value="Roadna update" />
     <MESSAGE value="Cosas sjsjjs" />
     <MESSAGE value="Image Update" />
@@ -516,6 +521,7 @@
     <MESSAGE value="CSS updates" />
     <MESSAGE value="Header to PDF" />
     <MESSAGE value="PDF Updates, Scene Builder Corrections, login con enter" />
-    <option name="LAST_COMMIT_MESSAGE" value="PDF Updates, Scene Builder Corrections, login con enter" />
+    <MESSAGE value="Columnas de las Tablas ajustables" />
+    <option name="LAST_COMMIT_MESSAGE" value="Columnas de las Tablas ajustables" />
   </component>
 </project>

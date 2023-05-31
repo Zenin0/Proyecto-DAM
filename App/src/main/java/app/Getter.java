@@ -371,7 +371,7 @@ public class Getter {
      * @see #getNumCols(int)
      */
     public static int getNumRows(int numSeats, int numCols) {
-        int maxRows = 8; // Maximum number of rows
+        int maxRows = 8;
         int numRows = (int) Math.ceil((double) numSeats / numCols);
         if (numRows > maxRows) {
             numRows = maxRows;
