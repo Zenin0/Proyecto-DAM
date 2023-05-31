@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
@@ -39,7 +40,7 @@ public class LoginController implements Initializable {
         buttonLog.setOnMouseClicked((event) -> {
             try {
                 login();
-            } catch (IOException e) {
+            } catch (IOException | SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText(e.getMessage());
@@ -72,12 +73,12 @@ public class LoginController implements Initializable {
      * Login de los usuarios
      * @see Gestioner#login(String, String) 
      */
-    private void login() throws IOException {
+    private void login() throws IOException, SQLException {
 
         Alert dialog = new Alert(AlertType.CONFIRMATION);
         if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 1) {
             dialog.setTitle("¡Login correcto!");
-            dialog.setHeaderText("¡Bienvenido " + this.usuLog.getText() + "!");
+            dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
             dialog.show();
             App.setRoot("inicio_admin");
         } else if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 0) {
