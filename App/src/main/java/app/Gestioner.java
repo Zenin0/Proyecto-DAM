@@ -1,10 +1,7 @@
 package app;
 
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -29,40 +26,52 @@ public class Gestioner {
      * @param pdfText Texto del PDF
      */
     public static void createPDF(String pdfText) {
-        // Generar Objecto Documento
+        // Generar objeto Documento
         Document PDFdocument = new Document();
         try {
-
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Justificante de Vuelo");
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
             File selectedFile = fileChooser.showSaveDialog(null);
+
             // Informacion del Archivo
             PdfWriter.getInstance(PDFdocument, new FileOutputStream(selectedFile.getAbsolutePath()));
 
             // Entramos en edicion
             PDFdocument.open();
 
+            // Insertar el Header Image
+            Image headerImage = Image.getInstance("path/to/header/image.jpg");
+            headerImage.setAlignment(Element.ALIGN_CENTER);
+            headerImage.scaleAbsolute(PDFdocument.getPageSize().getWidth(), 150);
+            PDFdocument.add(headerImage);
+
             // Titulo
-            Paragraph paragraph = new Paragraph("Justificante de Vuelo", new Font(Font.FontFamily.TIMES_ROMAN, 25));
-            paragraph.setAlignment(Paragraph.ALIGN_CENTER);
-            PDFdocument.add(paragraph);
+            Font titleFont = new Font(Font.FontFamily.HELVETICA, 25, Font.BOLD);
+            Paragraph titleParagraph = new Paragraph("Justificante de Vuelo", titleFont);
+            titleParagraph.setAlignment(Element.ALIGN_CENTER);
+            PDFdocument.add(titleParagraph);
 
             // Insertar el Logo en la parte superior
-            Image image = Image.getInstance("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/logoT.png");
-            image.setAlignment(Image.MIDDLE);
-            image.scaleAbsolute(300, 300);
-            PDFdocument.add(image);
+            Image logoImage = Image.getInstance("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/logoT.png");
+            logoImage.setAlignment(Element.ALIGN_CENTER);
+            logoImage.scaleAbsolute(200, 200);
+            PDFdocument.add(logoImage);
 
-            // Insertar la informacion de el vuelo
-            paragraph = new Paragraph(pdfText, new Font(Font.FontFamily.TIMES_ROMAN, 18));
-            paragraph.setAlignment(Paragraph.ALIGN_CENTER);
-            PDFdocument.add(paragraph);
+            // Insertar la informacion del vuelo
+            Font infoFont = new Font(Font.FontFamily.HELVETICA, 18);
+            Paragraph infoParagraph = new Paragraph(pdfText, infoFont);
+            infoParagraph.setAlignment(Element.ALIGN_CENTER);
+            infoParagraph.setSpacingAfter(20);
+            PDFdocument.add(infoParagraph);
 
             // Generar el QR con un enlace
             String qrCodeUrl = "https://github.com/Zenin0/Proyecto-DAM";
             Image qrCodeImage = Image.getInstance("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrCodeUrl);
-            qrCodeImage.setAbsolutePosition((PDFdocument.getPageSize().getWidth() - qrCodeImage.getScaledWidth()) / 2, 50);
+            qrCodeImage.setAlignment(Element.ALIGN_CENTER);
+            qrCodeImage.scaleAbsolute(150, 150);
+            float qrCodeX = (PDFdocument.getPageSize().getWidth() - qrCodeImage.getScaledWidth()) / 2;
+            qrCodeImage.setAbsolutePosition(qrCodeX, 50);
             PDFdocument.add(qrCodeImage);
 
             PDFdocument.close();
