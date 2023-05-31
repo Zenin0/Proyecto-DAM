@@ -112,7 +112,7 @@ INSERT INTO `Vuelos` (ID_Vuelo, Ciudad_Salida, Ciudad_Destino, ID_Avion, Fecha_S
 
 
 */
-INSERT INTO `Usuarios` (ID_Usuario, Nombre_Usuario, Pass, is_Admin) VALUES (1, "root", "63a9f0ea7bb98050796b649e85481845", true);
+INSERT INTO `Usuarios` (ID_Usuario, Nombre, Apellidos, Nombre_Usuario, Pass, is_Admin) VALUES (1, NULL, NULL, "root", "63a9f0ea7bb98050796b649e85481845", true);
 
 
 
