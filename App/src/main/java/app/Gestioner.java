@@ -5,9 +5,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.FileChooser;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,39 +22,24 @@ public class Gestioner {
      * Generar un justificante del vuelo con formato PDF
      *
      * @param pdfText Texto del PDF
+     * @param savePath Ruta donde se guarda el PDF
+     * @return True si el PDF se ha guardado exitosamente, False de lo contrario
      */
-    public static void createPDF(String pdfText) {
+    public static boolean createPDF(String pdfText, String savePath) {
         // Generar objeto Documento
         Document PDFdocument = new Document();
         try {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Justificante de Vuelo");
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
-            File selectedFile = fileChooser.showSaveDialog(null);
-
             // Informacion del Archivo
-            PdfWriter.getInstance(PDFdocument, new FileOutputStream(selectedFile.getAbsolutePath()));
+            PdfWriter.getInstance(PDFdocument, new FileOutputStream(savePath));
 
             // Entramos en edicion
             PDFdocument.open();
-
-            // Insertar el Header Image
-            Image headerImage = Image.getInstance("path/to/header/image.jpg");
-            headerImage.setAlignment(Element.ALIGN_CENTER);
-            headerImage.scaleAbsolute(PDFdocument.getPageSize().getWidth(), 150);
-            PDFdocument.add(headerImage);
 
             // Titulo
             Font titleFont = new Font(Font.FontFamily.HELVETICA, 25, Font.BOLD);
             Paragraph titleParagraph = new Paragraph("Justificante de Vuelo", titleFont);
             titleParagraph.setAlignment(Element.ALIGN_CENTER);
             PDFdocument.add(titleParagraph);
-
-            // Insertar el Logo en la parte superior
-            Image logoImage = Image.getInstance("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/logoT.png");
-            logoImage.setAlignment(Element.ALIGN_CENTER);
-            logoImage.scaleAbsolute(200, 200);
-            PDFdocument.add(logoImage);
 
             // Insertar la informacion del vuelo
             Font infoFont = new Font(Font.FontFamily.HELVETICA, 18);
@@ -75,11 +58,11 @@ public class Gestioner {
             PDFdocument.add(qrCodeImage);
 
             PDFdocument.close();
+
+            return true;
         } catch (Exception e) {
-            Alert dialog = new Alert(AlertType.ERROR);
-            dialog.setTitle("ERROR");
-            dialog.setContentText(e.getMessage());
-            dialog.show();
+            e.printStackTrace();
+            return false;
         }
     }
 

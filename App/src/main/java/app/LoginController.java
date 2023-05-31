@@ -7,6 +7,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,6 +57,58 @@ public class LoginController implements Initializable {
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText(e.getMessage());
                 dialog.show();
+            }
+        });
+        // Admitir pulsaciones a la tecla enter
+        passLog.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                try {
+                    login();
+                } catch (IOException | SQLException e) {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText(e.getMessage());
+                    dialog.show();
+                }
+            }
+        });
+
+        usuLog.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                try {
+                    login();
+                } catch (IOException | SQLException e) {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText(e.getMessage());
+                    dialog.show();
+                }
+            }
+        });
+
+        // Boton que inicia la comprobacion del login
+        buttonLog.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                try {
+                    login();
+                } catch (IOException | SQLException e) {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText(e.getMessage());
+                    dialog.show();
+                }
+            }
+        });
+        buttonRegCh.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                try {
+                    registerChange();
+                } catch (IOException e) {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText(e.getMessage());
+                    dialog.show();
+                }
             }
         });
 

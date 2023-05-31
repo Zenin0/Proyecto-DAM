@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="600.0" maxWidth="900.0" minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.InicioUserController">
+<VBox maxHeight="600.0" maxWidth="900.0" minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.InicioUserController">
    <children>
       <GridPane VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -49,11 +49,11 @@
             </Label>
             <TableView fx:id="vuelosDisponiblesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="4" GridPane.valignment="CENTER">
               <columns>
-                <TableColumn fx:id="IDVueloColumn" prefWidth="75.0" sortable="false" text="ID" />
-                <TableColumn fx:id="salidaVueloColum" prefWidth="194.0" sortable="false" text="Ciudad de Salida" />
-                  <TableColumn fx:id="llegadaVueloColum" prefWidth="167.0" sortable="false" text="Ciudad de Llegada" />
-                  <TableColumn fx:id="fechaVueloColumn" prefWidth="205.0" sortable="false" text="Fecha de Salida" />
-                  <TableColumn fx:id="asientosVueloColumn" prefWidth="165.0" sortable="false" text="Asientos libres" />
+                <TableColumn fx:id="IDVueloColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="salidaVueloColum" prefWidth="194.0" text="Ciudad de Salida" />
+                  <TableColumn fx:id="llegadaVueloColum" prefWidth="167.0" text="Ciudad de Llegada" />
+                  <TableColumn fx:id="fechaVueloColumn" prefWidth="205.0" text="Fecha de Salida" />
+                  <TableColumn fx:id="asientosVueloColumn" prefWidth="165.0" text="Asientos libres" />
               </columns>
                <GridPane.margin>
                   <Insets />

@@ -15,13 +15,17 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import static app.Gestioner.createPDF;
 
 /**
  * Controlador del FXML iniciouser
@@ -178,9 +182,10 @@ public class InicioUserController implements Initializable {
 
         this.downloadJustificanteButton.setOnAction(event -> {
             try {
-                if (!reservasDisponiblesTable.getSelectionModel().isEmpty())
-                    descargarJustificante();
-                else {
+                if (!reservasDisponiblesTable.getSelectionModel().isEmpty()) {
+                    Reserva selectedReserva = reservasDisponiblesTable.getSelectionModel().getSelectedItem();
+                    descargarJustificante(Getter.getReservaInfo(selectedReserva.getID()));
+                } else {
                     Alert dialog = new Alert(AlertType.ERROR);
                     dialog.setTitle("ERROR");
                     dialog.setHeaderText("Seleccione una reserva antes de poder descargar un justificante");
@@ -358,7 +363,7 @@ public class InicioUserController implements Initializable {
                             // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                             alert.setTitle("Vuelo Reservado");
-                            alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
+                            alert.setHeaderText("¡Vuelo Modificado Exitosamente!");
                             alert.setResizable(false);
                             alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
                             ButtonType noThanksButton = new ButtonType("No, Gracias");
@@ -368,11 +373,7 @@ public class InicioUserController implements Initializable {
                             ButtonType button = alertResult.orElse(ButtonType.CANCEL);
                             if (button == downloadButton) { // Aceptado
                                 // Crear y descargar el PDF
-                                Gestioner.createPDF(Getter.getReservaInfo(outReserva));
-                                Alert fin = new Alert(AlertType.CONFIRMATION);
-                                fin.setTitle("PDF");
-                                fin.setHeaderText("PDF descargado con exito");
-                                fin.show();
+                                descargarJustificante(Getter.getReservaInfo(outReserva));
                             }
                             loadVuelos();
                         } else { // No reservado
@@ -597,7 +598,7 @@ public class InicioUserController implements Initializable {
 
             dialog.getDialogPane().setContent(contentBox);
 
-            ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
+            ButtonType noReservar = new ButtonType("Cancelar Modificación", ButtonBar.ButtonData.CANCEL_CLOSE);
             ButtonType reservar = new ButtonType("Reservar", ButtonBar.ButtonData.OK_DONE);
 
             dialog.getDialogPane().getButtonTypes().add(noReservar);
@@ -624,11 +625,7 @@ public class InicioUserController implements Initializable {
                                 ButtonType button = alertResult.orElse(ButtonType.CANCEL);
                                 if (button == downloadButton) { // Aceptado
                                     // Crear y descargar el PDF
-                                    Gestioner.createPDF(Getter.getReservaInfo(outReserva));
-                                    Alert fin = new Alert(AlertType.CONFIRMATION);
-                                    fin.setTitle("PDF");
-                                    fin.setHeaderText("PDF descargado con exito");
-                                    fin.show();
+                                    descargarJustificante(Getter.getReservaInfo(outReserva));
                                 }
                                 loadVuelos();
                             } else { // No reservado
@@ -667,12 +664,29 @@ public class InicioUserController implements Initializable {
     /**
      * Descargar un justufucante del vuelo con formato PDF
      *
-     * @see Gestioner#createPDF(String)
+     * @see Gestioner#createPDF(String, String)
      */
-    public void descargarJustificante() throws SQLException {
-        Reserva selectedReserva = reservasDisponiblesTable.getSelectionModel().getSelectedItem();
-        if (selectedReserva != null) {
-            Gestioner.createPDF(Getter.getReservaInfo(selectedReserva.getID()));
+    public static void descargarJustificante(String PDFString) throws SQLException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Justificante de Vuelo");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+        File selectedFile = fileChooser.showSaveDialog(null);
+
+        if (selectedFile != null) {
+
+            if (createPDF(PDFString, selectedFile.getAbsolutePath())) {
+                Alert fin = new Alert(AlertType.CONFIRMATION);
+                fin.setTitle("PDF");
+                fin.setHeaderText("PDF descargado con éxito");
+                fin.setContentText("El pdf se descargó exitosamente en " + selectedFile.getAbsolutePath() + ".");
+                fin.show();
+            } else {
+                Alert error = new Alert(AlertType.ERROR);
+                error.setTitle("Error");
+                error.setHeaderText("No se pudo guardar el PDF");
+                error.setContentText("Hubo un error al guardar el PDF. Por favor, inténtelo de nuevo.");
+                error.show();
+            }
         }
     }
 
@@ -751,6 +765,8 @@ public class InicioUserController implements Initializable {
         this.modificarReservaButton.setVisible(false);
         this.downloadJustificanteButton.setVisible(false);
         this.reservarMeuItem.setVisible(false);
+        this.menuciudadSalidaReservas.setVisible(false);
+        this.menuciudadDestinoReservas.setVisible(false);
         loadVuelos();
     }
 

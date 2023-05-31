@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
 
 import java.io.IOException;
 import java.net.URL;
@@ -60,6 +61,36 @@ public class RegisterController implements Initializable {
             }
         });
 
+        // Event handler para el Enter key en los campos de texto
+        usuReg.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                registrar();
+            }
+        });
+
+        usuNombre.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                registrar();
+            }
+        });
+
+        usuApellidos.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                registrar();
+            }
+        });
+
+        passReg1.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                registrar();
+            }
+        });
+
+        passReg2.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                registrar();
+            }
+        });
     }
 
     /**
@@ -73,16 +104,22 @@ public class RegisterController implements Initializable {
     /**
      * Funcion para registrar un usuario
      *
-     * @see Gestioner#registrar(String,String,String, String, String, boolean)
+     * @see Gestioner#registrar(String, String, String, String, String, boolean)
      */
     private void registrar() {
-
-        if (Gestioner.registrar(this.usuReg.getText(), this.usuNombre.getText(), this.usuApellidos.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
-            this.usuReg.setText("");
-            this.usuApellidos.setText("");
-            this.usuApellidos.setText("");
-            this.passReg1.setText("");
-            this.passReg2.setText("");
+        if (!this.usuReg.getText().isEmpty() || !this.usuNombre.getText().isEmpty() || !this.usuApellidos.getText().isEmpty() || !this.passReg1.getText().isEmpty() || !this.passReg2.getText().isEmpty()) {
+            if (Gestioner.registrar(this.usuReg.getText(), this.usuNombre.getText(), this.usuApellidos.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
+                this.usuReg.setText("");
+                this.usuNombre.setText("");
+                this.usuApellidos.setText("");
+                this.passReg1.setText("");
+                this.passReg2.setText("");
+            }
+        } else {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setHeaderText("Rellene todos los campos");
+            dialog.show();
         }
     }
 
