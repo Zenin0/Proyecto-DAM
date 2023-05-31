@@ -9,18 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Header to PDF">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="PDF Updates, Scene Builder Corrections, login con enter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/target/classes/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/register.fxml" afterDir="false" />
     </list>
@@ -157,7 +149,7 @@
       <workItem from="1685465996920" duration="2646000" />
       <workItem from="1685470759590" duration="337000" />
       <workItem from="1685480462674" duration="304000" />
-      <workItem from="1685565631681" duration="4165000" />
+      <workItem from="1685565631681" duration="5232000" />
     </task>
     <task id="LOCAL-00001" summary="Roadmap Updated">
       <created>1683740890243</created>
@@ -467,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685566499818</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="PDF Updates, Scene Builder Corrections, login con enter">
+      <created>1685569832803</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1685569832803</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="POM config" />
     <MESSAGE value="Gitignore .pdf files" />
     <MESSAGE value="Roadna update" />
     <MESSAGE value="Cosas sjsjjs" />
@@ -517,6 +515,7 @@
     <MESSAGE value="Reservas con una TableView" />
     <MESSAGE value="CSS updates" />
     <MESSAGE value="Header to PDF" />
-    <option name="LAST_COMMIT_MESSAGE" value="Header to PDF" />
+    <MESSAGE value="PDF Updates, Scene Builder Corrections, login con enter" />
+    <option name="LAST_COMMIT_MESSAGE" value="PDF Updates, Scene Builder Corrections, login con enter" />
   </component>
 </project>

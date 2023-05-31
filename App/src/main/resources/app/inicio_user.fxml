@@ -47,7 +47,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TableView fx:id="vuelosDisponiblesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="4" GridPane.valignment="CENTER">
+            <TableView fx:id="vuelosDisponiblesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowSpan="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="IDVueloColumn" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="salidaVueloColum" prefWidth="194.0" text="Ciudad de Salida" />
@@ -58,8 +58,11 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
-            <TableView fx:id="reservasDisponiblesTable" prefHeight="562.0" prefWidth="717.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="4" GridPane.valignment="CENTER">
+            <TableView fx:id="reservasDisponiblesTable" prefHeight="562.0" prefWidth="717.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowSpan="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="IDReservaColum" prefWidth="37.0" text="ID" />
                   <TableColumn fx:id="nameReservaColum" prefWidth="152.0" text="Nombre y Apellidos" />
@@ -69,6 +72,9 @@
                   <TableColumn fx:id="avionReservaColumn" prefWidth="132.0" text="Avión" />
                   <TableColumn fx:id="fechaReservaColum" prefWidth="109.0" text="Fecha" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
             <Button fx:id="reservarButton" mnemonicParsing="false" text="Reservar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <Button fx:id="removeReservaButton" mnemonicParsing="false" text="Eliminar Reserva" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
