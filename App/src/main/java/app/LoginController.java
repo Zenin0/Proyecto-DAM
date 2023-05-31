@@ -58,6 +58,7 @@ public class LoginController implements Initializable {
                 dialog.show();
             }
         });
+
     }
 
     /**
@@ -68,10 +69,11 @@ public class LoginController implements Initializable {
         App.setRoot("register");
     }
 
-    
-    /** 
+
+    /**
      * Login de los usuarios
-     * @see Gestioner#login(String, String) 
+     *
+     * @see Gestioner#login(String, String)
      */
     private void login() throws IOException, SQLException {
 
@@ -83,7 +85,7 @@ public class LoginController implements Initializable {
             App.setRoot("inicio_admin");
         } else if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 0) {
             dialog.setTitle("¡Login correcto!");
-            dialog.setHeaderText("¡Bienvenido " + this.usuLog.getText() + "!");
+            dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
             dialog.show();
             App.setRoot("inicio_user");
         } else {
@@ -92,5 +94,6 @@ public class LoginController implements Initializable {
             dialog.show();
         }
     }
+
 
 }

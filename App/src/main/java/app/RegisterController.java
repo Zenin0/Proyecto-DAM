@@ -59,6 +59,7 @@ public class RegisterController implements Initializable {
                 dialog.show();
             }
         });
+
     }
 
     /**

@@ -10,10 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/home_ad.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/css/home_ad.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/home_ad.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/home_ad.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -421,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685551929188</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="DB IP change">
+      <created>1685552220319</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1685552220319</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +438,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo" />
     <MESSAGE value="POM config" />
     <MESSAGE value="Gitignore .pdf files" />
     <MESSAGE value="Roadna update" />
@@ -454,6 +462,7 @@
     <MESSAGE value="PDF generator cambiado, añadido el nombre y apellidos del Usuario" />
     <MESSAGE value="Reservas con una TableView" />
     <MESSAGE value="Proyect Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Proyect Fix" />
+    <MESSAGE value="DB IP change" />
+    <option name="LAST_COMMIT_MESSAGE" value="DB IP change" />
   </component>
 </project>
