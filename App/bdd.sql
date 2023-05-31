@@ -52,7 +52,7 @@ CREATE TABLE `Reservas`(
     CONSTRAINT FK_Vuelos FOREIGN KEY (ID_Vuelo) REFERENCES Vuelos(ID_Vuelo) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Inserts de unas Ciudades
+/* Destomentar para hacer inserts
 INSERT INTO `Ciudades` (ID_Ciudad, Nombre_Ciudad, Pais) VALUES
                                                             (1, 'Madrid', 'España'),
                                                             (2, 'Barcelona', 'España'),
@@ -111,7 +111,7 @@ INSERT INTO `Vuelos` (ID_Vuelo, Ciudad_Salida, Ciudad_Destino, ID_Avion, Fecha_S
                                                                                                    (30, 10, 2, 10, '2023-10-30', '2023-06-03 16:45:00');
 
 
-
+*/
 INSERT INTO `Usuarios` (ID_Usuario, Nombre_Usuario, Pass, is_Admin) VALUES (1, "root", "63a9f0ea7bb98050796b649e85481845", true);
 
 
