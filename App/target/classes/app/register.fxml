@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.RegisterController">
+   <children>
+      <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="1080.0" styleClass="login-grid" VBox.vgrow="ALWAYS">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="256.0" minWidth="0.0" prefWidth="232.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="722.0" minWidth="10.0" prefWidth="323.0" />
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="ALWAYS" maxWidth="501.0" minWidth="0.0" prefWidth="501.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="86.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="82.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="88.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="70.0" valignment="CENTER" vgrow="ALWAYS" />
+         </rowConstraints>
+         <children>
+            <Label style="-fx-font-size: 30px;" styleClass="h1" text="Registro de Usuario" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="3" />
+            <ImageView fitHeight="386.0" fitWidth="402.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" GridPane.rowSpan="2">
+               <image>
+                  <Image url="@css/logo.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="60.0" />
+               </GridPane.margin>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Nombre De Usuario" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Nombre" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Apellidos" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="108.0" text="Contraseña" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="137.0" text="Repite la Contraseña" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <TextField fx:id="usuReg" promptText="Usuario" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="usuNombre" promptText="Nombre" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <TextField fx:id="usuApellidos" promptText="Apellidos" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <PasswordField fx:id="passReg1" promptText="Contraseña" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </PasswordField>
+            <PasswordField fx:id="passReg2" prefHeight="30.0" prefWidth="168.0" promptText="Repita Contraseña" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </PasswordField>
+            <Button fx:id="buttonReg" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0" text="Registrar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+            <CheckBox fx:id="adminCheckBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="122.0" text="Administrador" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="15.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <Button fx:id="buttonlogCh" mnemonicParsing="false" text="Ya tienes una cuenta?" GridPane.rowIndex="6" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </VBox.margin>
+      </GridPane>
+   </children>
+</VBox>

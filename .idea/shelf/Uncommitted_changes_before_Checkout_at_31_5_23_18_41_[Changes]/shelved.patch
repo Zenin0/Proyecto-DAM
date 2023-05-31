@@ -1,0 +1,98 @@
+Index: App/src/main/java/app/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package app;\n\nimport javafx.application.Application;\nimport javafx.fxml.FXMLLoader;\nimport javafx.scene.Parent;\nimport javafx.scene.Scene;\nimport javafx.scene.control.Alert;\nimport javafx.scene.image.Image;\nimport javafx.stage.Stage;\n\nimport java.io.IOException;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.SQLException;\nimport java.util.Objects;\n\n/**\n * Inicio del Programa\n */\npublic class App extends Application {\n\n    public static Connection con;\n    private static Scene scene;\n\n    static {\n        try {\n            con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);\n        } catch (SQLException e) {\n            Alert dialog = new Alert(Alert.AlertType.ERROR);\n            dialog.setTitle(\"ERROR\");\n            dialog.setHeaderText(e.getMessage());\n            dialog.show();\n        }\n    }\n\n    public App() {\n    }\n\n    /**\n     * Seleccionar el FXML de inicio\n     * @param fxml Nombre del fichero FXML\n     */\n    static void setRoot(String fxml) throws IOException {\n        scene.setRoot(loadFXML(fxml));\n    }\n\n    \n    /**\n     * Cargar el FXML\n     * @param fxml Nombre del Fichero\n     * @return Parent\n     */\n    private static Parent loadFXML(String fxml) throws IOException {\n        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + \".fxml\"));\n        return fxmlLoader.load();\n    }\n\n    public static void main(String[] args) {\n        launch();\n    }\n\n\n\n    /**\n     * Comenzar el programa\n     * @param stage Ventana\n     */\n    @Override\n    public void start(Stage stage) throws IOException {\n        scene = new Scene(loadFXML(\"login\"), 1080, 700);\n        stage.setTitle(\"Manolo Airlines\");\n        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream(\"css/logoMA.png\"))));\n        scene.getStylesheets().add(\"https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/28d03d7794367bb80edfc1ccf2ac03c6a29c6420/App/src/main/resources/app/css/home_ad.css\");\n        stage.setScene(scene);\n        stage.show();\n        // Shutdown hook\n        stage.setOnCloseRequest(event -> {\n            try {\n                App.con.close();\n            } catch (SQLException e) {\n                Alert dialog = new Alert(Alert.AlertType.ERROR);\n                dialog.setTitle(\"ERROR\");\n                dialog.setHeaderText(e.getMessage());\n                dialog.show();\n            }\n        });\n\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/App/src/main/java/app/App.java b/App/src/main/java/app/App.java
+--- a/App/src/main/java/app/App.java	(revision c9328a9c19265a824f7cdb51079f8d914218962a)
++++ b/App/src/main/java/app/App.java	(date 1685551229076)
+@@ -1,6 +1,7 @@
+ package app;
+ 
+ import javafx.application.Application;
++import javafx.application.Platform;
+ import javafx.fxml.FXMLLoader;
+ import javafx.scene.Parent;
+ import javafx.scene.Scene;
+@@ -68,23 +69,24 @@
+     @Override
+     public void start(Stage stage) throws IOException {
+         scene = new Scene(loadFXML("login"), 1080, 700);
+-        stage.setTitle("Manolo Airlines");
+-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("css/logoMA.png"))));
+-        scene.getStylesheets().add("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/28d03d7794367bb80edfc1ccf2ac03c6a29c6420/App/src/main/resources/app/css/home_ad.css");
+-        stage.setScene(scene);
+-        stage.show();
+-        // Shutdown hook
+-        stage.setOnCloseRequest(event -> {
+-            try {
+-                App.con.close();
+-            } catch (SQLException e) {
+-                Alert dialog = new Alert(Alert.AlertType.ERROR);
+-                dialog.setTitle("ERROR");
+-                dialog.setHeaderText(e.getMessage());
+-                dialog.show();
+-            }
++        Platform.runLater(() -> {
++            stage.setTitle("Manolo Airlines");
++            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("css/logoMA.png"))));
++            scene.getStylesheets().add("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/28d03d7794367bb80edfc1ccf2ac03c6a29c6420/App/src/main/resources/app/css/home_ad.css");
++            stage.setScene(scene);
++            stage.show();
++            // Shutdown hook
++            stage.setOnCloseRequest(event -> {
++                try {
++                    App.con.close();
++                } catch (SQLException e) {
++                    Alert dialog = new Alert(Alert.AlertType.ERROR);
++                    dialog.setTitle("ERROR");
++                    dialog.setHeaderText(e.getMessage());
++                    dialog.show();
++                }
++            });
+         });
+-
+     }
+ 
+ }
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"JavadocGenerationManager\">\n    <option name=\"OUTPUT_DIRECTORY\" value=\"$PROJECT_DIR$/App/Manolo-Airlines-JavaDoc.github.io\" />\n  </component>\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/App/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_19\" default=\"true\" project-jdk-name=\"19\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision c9328a9c19265a824f7cdb51079f8d914218962a)
++++ b/.idea/misc.xml	(date 1685551234460)
+@@ -11,7 +11,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="19" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="19" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"VcsDirectoryMappings\">\n    <mapping directory=\"\" vcs=\"Git\" />\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision c9328a9c19265a824f7cdb51079f8d914218962a)
++++ b/.idea/vcs.xml	(date 1685551230712)
+@@ -2,6 +2,5 @@
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+     <mapping directory="" vcs="Git" />
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
