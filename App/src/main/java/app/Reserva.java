@@ -15,16 +15,17 @@ public class Reserva {
 
     /**
      * Constructor de Reservas
-     * @param ID ID de la reserva
-     * @param nameSubname Nomber y apellidos del propietario de la Reserva
-     * @param Asiento Asiento de la Reserva
-     * @param CiudadSalida Ciudad de Salida de la Reserva
+     *
+     * @param ID            ID de la reserva
+     * @param nameSubname   Nomber y apellidos del propietario de la Reserva
+     * @param Asiento       Asiento de la Reserva
+     * @param CiudadSalida  Ciudad de Salida de la Reserva
      * @param CiudadDestino Ciudad de Destino de la Reserva
-     * @param Avion Avion del vuelo de la Reserva
-     * @param fecha Fecha de salida del avion de la Reserva
+     * @param Avion         Avion del vuelo de la Reserva
+     * @param fecha         Fecha de salida del avion de la Reserva
      * @see InicioUserController#loadReservas()
      */
-    public Reserva(int ID, String nameSubname, int Asiento, String CiudadSalida, String CiudadDestino, String Avion, String fecha){
+    public Reserva(int ID, String nameSubname, int Asiento, String CiudadSalida, String CiudadDestino, String Avion, String fecha) {
         this.ID = ID;
         this.nameSubname = nameSubname;
         this.Asiento = Asiento;

@@ -21,7 +21,7 @@ public class Gestioner {
     /**
      * Generar un justificante del vuelo con formato PDF
      *
-     * @param pdfText Texto del PDF
+     * @param pdfText  Texto del PDF
      * @param savePath Ruta donde se guarda el PDF
      * @return True si el PDF se ha guardado exitosamente, False de lo contrario
      */

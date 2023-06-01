@@ -38,15 +38,17 @@ public class App extends Application {
 
     /**
      * Seleccionar el FXML de inicio
+     *
      * @param fxml Nombre del fichero FXML
      */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
-    
+
     /**
      * Cargar el FXML
+     *
      * @param fxml Nombre del Fichero
      * @return Parent
      */
@@ -60,9 +62,9 @@ public class App extends Application {
     }
 
 
-
     /**
      * Comenzar el programa
+     *
      * @param stage Ventana
      */
     @Override

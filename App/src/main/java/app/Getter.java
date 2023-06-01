@@ -381,7 +381,8 @@ public class Getter {
 
     /**
      * Obtener una lista Observable para añadirla a la tabla
-     * @param ciudadSalida ID de la ciudad de Salida para el filtro
+     *
+     * @param ciudadSalida  ID de la ciudad de Salida para el filtro
      * @param ciudadLlegada ID de la ciudad de destino para el filtro
      * @return lista Observable
      */
@@ -438,8 +439,9 @@ public class Getter {
 
     /**
      * Obtener una lista Observable para añadirla a la tabla
-     * @param IDUsuario ID del propietario de las reservas
-     * @param ciudadSalida ID de la ciudad de salida para el filtro
+     *
+     * @param IDUsuario     ID del propietario de las reservas
+     * @param ciudadSalida  ID de la ciudad de salida para el filtro
      * @param ciudadDestino ID de la ciudad de destino para el filtro
      * @return Una lista Observable
      */
@@ -503,7 +505,6 @@ public class Getter {
 
         return out;
     }
-
 
 
 }

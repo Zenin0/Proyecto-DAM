@@ -9,17 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="SQL inserts">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_5_23_16_05_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_5_23_16_05__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_5_23_15_20_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_5_23_15_20__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_5_23_16_45_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_5_23_16_45__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Reserva.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +48,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -155,20 +151,6 @@
       <workItem from="1685470759590" duration="337000" />
       <workItem from="1685480462674" duration="304000" />
       <workItem from="1685565631681" duration="6437000" />
-    </task>
-    <task id="LOCAL-00001" summary="Roadmap Updated">
-      <created>1683740890243</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1683740890243</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Roadmap Updated">
-      <created>1683740998221</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1683740998221</updated>
     </task>
     <task id="LOCAL-00003" summary="Use ELiminar Vuelo Screen">
       <created>1683807835741</created>
@@ -492,7 +474,28 @@
       <option name="project" value="LOCAL" />
       <updated>1685572137929</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Correcciones de Texti">
+      <created>1685622868184</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1685622868184</updated>
+    </task>
+    <task id="LOCAL-00050" summary="JavaDoc">
+      <created>1685622914551</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1685622914551</updated>
+    </task>
+    <task id="LOCAL-00051" summary="SQL">
+      <created>1685622978004</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1685622978005</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -517,13 +520,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Image Update" />
-    <MESSAGE value="Seat Deleted" />
     <MESSAGE value="Asientos Seleccionables con imagenes" />
     <MESSAGE value="Modificacion de Asientos con seleccion de asientos por imagenes" />
     <MESSAGE value="Updates" />
     <MESSAGE value="Fultrar Vuelos" />
-    <MESSAGE value="JavaDoc" />
     <MESSAGE value="Esconder texto ciudades al cambio" />
     <MESSAGE value="Readme images Update" />
     <MESSAGE value="Roadmap Update" />
@@ -542,6 +542,9 @@
     <MESSAGE value="Columnas de las Tablas ajustables" />
     <MESSAGE value="IP change and SQL inserts" />
     <MESSAGE value="SQL inserts" />
-    <option name="LAST_COMMIT_MESSAGE" value="SQL inserts" />
+    <MESSAGE value="Correcciones de Texti" />
+    <MESSAGE value="JavaDoc" />
+    <MESSAGE value="SQL" />
+    <option name="LAST_COMMIT_MESSAGE" value="SQL" />
   </component>
 </project>

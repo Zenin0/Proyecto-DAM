@@ -22,6 +22,7 @@ public class MD5Hasher {
 
     /**
      * Devolver una String encriptada con MD5
+     *
      * @return String encriptada con MD5
      */
     public String getMd5() {

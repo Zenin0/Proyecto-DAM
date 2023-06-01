@@ -114,6 +114,35 @@ public class InicioUserController implements Initializable {
     private Label tittleLabel;
 
     /**
+     * Descargar un justufucante del vuelo con formato PDF
+     *
+     * @see Gestioner#createPDF(String, String)
+     */
+    public static void descargarJustificante(String PDFString) throws SQLException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Justificante de Vuelo");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+        File selectedFile = fileChooser.showSaveDialog(null);
+
+        if (selectedFile != null) {
+
+            if (createPDF(PDFString, selectedFile.getAbsolutePath())) {
+                Alert fin = new Alert(AlertType.CONFIRMATION);
+                fin.setTitle("PDF");
+                fin.setHeaderText("PDF descargado con éxito");
+                fin.setContentText("El pdf se descargó exitosamente en: " + selectedFile.getAbsolutePath());
+                fin.show();
+            } else {
+                Alert error = new Alert(AlertType.ERROR);
+                error.setTitle("Error");
+                error.setHeaderText("No se pudo guardar el PDF");
+                error.setContentText("Hubo un error al guardar el PDF. Por favor, inténtelo de nuevo.");
+                error.show();
+            }
+        }
+    }
+
+    /**
      * Inicializar la ventana
      */
     @Override
@@ -401,7 +430,6 @@ public class InicioUserController implements Initializable {
         dialog.showAndWait();
     }
 
-
     /**
      * Elimina una reserva seleccionada
      *
@@ -412,7 +440,6 @@ public class InicioUserController implements Initializable {
         Gestioner.eliminarReserva(selectedReserva.getID());
         loadReservas();
     }
-
 
     /**
      * Cargar los vuelos en la lista
@@ -659,37 +686,6 @@ public class InicioUserController implements Initializable {
         }
 
     }
-
-
-    /**
-     * Descargar un justufucante del vuelo con formato PDF
-     *
-     * @see Gestioner#createPDF(String, String)
-     */
-    public static void descargarJustificante(String PDFString) throws SQLException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Justificante de Vuelo");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
-        File selectedFile = fileChooser.showSaveDialog(null);
-
-        if (selectedFile != null) {
-
-            if (createPDF(PDFString, selectedFile.getAbsolutePath())) {
-                Alert fin = new Alert(AlertType.CONFIRMATION);
-                fin.setTitle("PDF");
-                fin.setHeaderText("PDF descargado con éxito");
-                fin.setContentText("El pdf se descargó exitosamente en: " + selectedFile.getAbsolutePath());
-                fin.show();
-            } else {
-                Alert error = new Alert(AlertType.ERROR);
-                error.setTitle("Error");
-                error.setHeaderText("No se pudo guardar el PDF");
-                error.setContentText("Hubo un error al guardar el PDF. Por favor, inténtelo de nuevo.");
-                error.show();
-            }
-        }
-    }
-
 
     /**
      * Modificar la vista para reservar un vueloi
