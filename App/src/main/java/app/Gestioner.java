@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 import java.io.FileOutputStream;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,15 +31,25 @@ public class Gestioner {
         Document PDFdocument = new Document();
         try {
             // Informacion del Archivo
+            if (!savePath.contains(".pdf"))
+                savePath += ".pdf";
             PdfWriter.getInstance(PDFdocument, new FileOutputStream(savePath));
 
             // Entramos en edicion
             PDFdocument.open();
 
+            // Imagen en la parte superior
+            Image topImage = Image.getInstance(new URL("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/header.png"));
+            topImage.setAlignment(Element.ALIGN_CENTER);
+            topImage.scaleToFit(500, 300);
+            PDFdocument.add(topImage);
+
             // Titulo
             Font titleFont = new Font(Font.FontFamily.HELVETICA, 25, Font.BOLD);
             Paragraph titleParagraph = new Paragraph("Justificante de Vuelo", titleFont);
             titleParagraph.setAlignment(Element.ALIGN_CENTER);
+            titleParagraph.setSpacingBefore(60);
+            titleParagraph.setSpacingAfter(60);
             PDFdocument.add(titleParagraph);
 
             // Insertar la informacion del vuelo
@@ -385,6 +396,29 @@ public class Gestioner {
     public static boolean eliminarVuelo(int ID) {
         try {
             String query = "DELETE FROM Vuelos WHERE ID_Vuelo = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
+            checkStatement.setInt(1, ID);
+            checkStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+
+        return false;
+    }
+
+    /**
+     * Eliminar un avion
+     *
+     * @param ID ID del avion
+     * @return si se ha creado o si no true|false
+     */
+    public static boolean eliminarAvion(int ID) {
+        try {
+            String query = "DELETE FROM Aviones WHERE ID_Avion = ?";
             PreparedStatement checkStatement = App.con.prepareStatement(query);
             checkStatement.setInt(1, ID);
             checkStatement.executeUpdate();

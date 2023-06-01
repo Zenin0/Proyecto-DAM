@@ -43,12 +43,12 @@ public class Getter {
     public static ArrayList<String> getlistaAvionesStrings() throws SQLException {
 
         ArrayList<String> out = new ArrayList<>();
-        String query = "SELECT ID_Avion,Nombre_Avion,Capacidad FROM Aviones";
+        String query = "SELECT * FROM Aviones";
         PreparedStatement checkStatement = App.con.prepareStatement(query);
         ResultSet rs = checkStatement.executeQuery();
         while (rs.next()) {
             out.add(rs.getString("ID_Avion") + " - " + rs.getString("Nombre_Avion") + " - "
-                    + rs.getString("Capacidad"));
+                    + rs.getInt("Capacidad"));
         }
         return out;
     }

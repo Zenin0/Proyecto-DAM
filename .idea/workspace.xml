@@ -11,10 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Reserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,13 +152,6 @@
       <workItem from="1685470759590" duration="337000" />
       <workItem from="1685480462674" duration="304000" />
       <workItem from="1685565631681" duration="6437000" />
-    </task>
-    <task id="LOCAL-00003" summary="Use ELiminar Vuelo Screen">
-      <created>1683807835741</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1683807835741</updated>
     </task>
     <task id="LOCAL-00004" summary="Reorganización Roadmap, y añaidos apartados nuevos">
       <created>1683819906983</created>
@@ -495,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685622978005</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Code Formatting">
+      <created>1685623096710</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1685623096710</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,7 +521,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Asientos Seleccionables con imagenes" />
     <MESSAGE value="Modificacion de Asientos con seleccion de asientos por imagenes" />
     <MESSAGE value="Updates" />
     <MESSAGE value="Fultrar Vuelos" />
@@ -545,6 +545,7 @@
     <MESSAGE value="Correcciones de Texti" />
     <MESSAGE value="JavaDoc" />
     <MESSAGE value="SQL" />
-    <option name="LAST_COMMIT_MESSAGE" value="SQL" />
+    <MESSAGE value="Code Formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code Formatting" />
   </component>
 </project>

@@ -41,6 +41,9 @@ public class InicioAdminController implements Initializable {
     private Label avionVuelo;
 
     @FXML
+    private ListView<String> avionesList;
+
+    @FXML
     private Label capacidad;
 
     @FXML
@@ -53,10 +56,16 @@ public class InicioAdminController implements Initializable {
     private Label ciudadSalidaVuelo;
 
     @FXML
+    private Button delAvion;
+
+    @FXML
     private Button delVuelo;
 
     @FXML
-    private Button deleteButton;
+    private Button deleteAvionButton;
+
+    @FXML
+    private Button deleteVueloButton;
 
     @FXML
     private Button endSession;
@@ -97,6 +106,7 @@ public class InicioAdminController implements Initializable {
     @FXML
     private ListView<String> vuelosList;
 
+
     /**
      * Inicializar la ventana
      */
@@ -110,7 +120,6 @@ public class InicioAdminController implements Initializable {
             dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
-        // Cambiar a la funcion de Añadir una Ciudad
         this.addCiudad.setOnAction((event) -> {
             try {
                 menuAddCiudad();
@@ -121,7 +130,6 @@ public class InicioAdminController implements Initializable {
                 dialog.show();
             }
         });
-        // Cambiar  la funcion de Añadir un Vuelo
         this.addVuelo.setOnAction((event) -> {
             try {
                 menuAddVuelo();
@@ -134,7 +142,6 @@ public class InicioAdminController implements Initializable {
 
         });
         this.addAvion.setOnAction((event) -> menuAddAvion());
-        // Cambiar a la funcion de eliminar un Vuelo
         this.delVuelo.setOnAction(event -> {
             try {
                 menuDelVuelo();
@@ -145,8 +152,17 @@ public class InicioAdminController implements Initializable {
                 dialog.show();
             }
         });
-        // Boton para ejecutar el borrado de un vuelo seleccionado
-        this.deleteButton.setOnAction(event -> {
+        this.deleteAvionButton.setOnAction(event -> {
+            try {
+                delAvion();
+            } catch (SQLException e) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+                dialog.show();
+            }
+        });
+        this.deleteVueloButton.setOnAction(event -> {
             try {
                 delVuelo();
             } catch (SQLException e) {
@@ -156,7 +172,6 @@ public class InicioAdminController implements Initializable {
                 dialog.show();
             }
         });
-        // Botones para ejecutar el añadido de sus correspondientes
         this.aceptarButtonCiudad.setOnAction((event) -> addCiudad());
         this.aceptarButtonAvion.setOnAction((event) -> addAvion());
         this.aceptarButtonVuelo.setOnAction(event -> {
@@ -169,7 +184,16 @@ public class InicioAdminController implements Initializable {
                 dialog.show();
             }
         });
-        // Boton para terminar la sesion
+        this.delAvion.setOnAction((event) -> {
+            try {
+                menuDelAvion();
+            } catch (SQLException e) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
+            }
+        });
         this.endSession.setOnAction((event) -> {
             try {
                 endSession();
@@ -207,6 +231,19 @@ public class InicioAdminController implements Initializable {
             String[] vueloParts = vuelo.replaceAll(" ", "").split("-");
 
             this.vuelosList.getItems().add(vueloParts[0] + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[1])) + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[2])) + " - " + vueloParts[4] + "/" + vueloParts[5] + "/" + vueloParts[3]);
+        }
+    }
+
+    /**
+     * Funcion para listar los vuelos y meterlos en la lista
+     *
+     * @see Getter
+     */
+    private void listarAviones() throws SQLException {
+        this.avionesList.getItems().clear();
+        for (String avion : Getter.getlistaAvionesStrings()) {
+            String[] avionParts = avion.replaceAll(" ", "").split("-");
+            this.avionesList.getItems().add(avionParts[0] + " - " + avionParts[1] + " - " +avionParts[2]);
         }
     }
 
@@ -266,6 +303,7 @@ public class InicioAdminController implements Initializable {
             dialog.show();
         }
 
+
     }
 
     /**
@@ -290,17 +328,76 @@ public class InicioAdminController implements Initializable {
     }
 
     /**
+     * Funcion para eliminar un avión
+     *
+     * @see Gestioner#eliminarAvion(int)
+     */
+    public void delAvion() throws SQLException {
+        String[] vueloParts = this.avionesList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
+        if (Gestioner.eliminarAvion(Integer.parseInt(vueloParts[0]))) {
+            Alert dialog = new Alert(AlertType.CONFIRMATION);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Vuelo eliminado correctamente");
+            dialog.show();
+        } else {
+            Alert dialog = new Alert(AlertType.WARNING);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Algo ha fallado");
+            dialog.show();
+        }
+        listarAviones();
+    }
+
+    /**
      * Cambiar al modo a Borrar un vuelo
      */
     private void menuDelVuelo() throws SQLException {
         listarVuelos();
+        this.avionesList.setVisible(false);
+        this.delAvion.setDisable(false);
         this.delVuelo.setDisable(true);
+        this.addVuelo.setDisable(false);
+        this.addCiudad.setDisable(false);
+        this.addAvion.setDisable(false);
+        this.vuelosList.setVisible(true);
+        this.deleteVueloButton.setVisible(true);
+        this.menuCiudadesDestino.setVisible(false);
+        this.menuCiudadesSalida.setVisible(false);
+        this.ciudadSalidaVuelo.setVisible(false);
+        this.ciudadDestinoVuelo.setVisible(false);
+        this.menuAviones.setVisible(false);
+        this.avionVuelo.setVisible(false);
+        this.aceptarButtonVuelo.setVisible(false);
+        this.fechaLabel.setVisible(false);
+        this.fechaSelect.setVisible(false);
+        this.nombreAvion.setVisible(false);
+        this.nombreAvionField.setVisible(false);
+        this.aceptarButtonAvion.setVisible(false);
+        this.capacidad.setVisible(false);
+        this.capacidadField.setVisible(false);
+        this.nombreCiudad.setVisible(false);
+        this.nombreCiudadField.setVisible(false);
+        this.nombrePais.setVisible(false);
+        this.nombrePaisField.setVisible(false);
+        this.aceptarButtonCiudad.setVisible(false);
+        this.deleteAvionButton.setVisible(false);
+
+    }
+
+    /**
+     * Cambiar al modo a Borrar un vuelo
+     */
+    private void menuDelAvion() throws SQLException {
+        listarAviones();
+        this.avionesList.setVisible(true);
+        this.delAvion.setDisable(true);
+        this.delVuelo.setDisable(false);
         this.addVuelo.setDisable(false);
         this.addCiudad.setDisable(false);
         this.addAvion.setDisable(false);
         // Mostrar delVuelos
         this.vuelosList.setVisible(true);
-        this.deleteButton.setVisible(true);
+        this.deleteVueloButton.setVisible(true);
         // Esconder Vuelo
         this.menuCiudadesDestino.setVisible(false);
         this.menuCiudadesSalida.setVisible(false);
@@ -323,6 +420,7 @@ public class InicioAdminController implements Initializable {
         this.nombrePais.setVisible(false);
         this.nombrePaisField.setVisible(false);
         this.aceptarButtonCiudad.setVisible(false);
+        this.deleteAvionButton.setVisible(true);
 
     }
 
@@ -332,6 +430,9 @@ public class InicioAdminController implements Initializable {
      * @see Getter
      */
     private void menuAddVuelo() throws SQLException {
+        this.avionesList.setVisible(false);
+        this.delAvion.setDisable(false);
+        this.delVuelo.setDisable(false);
         this.delVuelo.setDisable(false);
         this.addVuelo.setDisable(true);
         this.addCiudad.setDisable(false);
@@ -387,7 +488,8 @@ public class InicioAdminController implements Initializable {
         this.aceptarButtonCiudad.setVisible(false);
         // Esconder delVuelo
         this.vuelosList.setVisible(false);
-        this.deleteButton.setVisible(false);
+        this.deleteVueloButton.setVisible(false);
+        this.deleteAvionButton.setVisible(false);
 
     }
 
@@ -395,6 +497,8 @@ public class InicioAdminController implements Initializable {
      * Cambiar al modo a añadir Ciudad
      */
     private void menuAddCiudad() throws IOException {
+        this.avionesList.setVisible(false);
+        this.delAvion.setDisable(false);
         this.delVuelo.setDisable(false);
         this.addVuelo.setDisable(false);
         this.addCiudad.setDisable(true);
@@ -423,14 +527,17 @@ public class InicioAdminController implements Initializable {
         this.fechaSelect.setVisible(false);
         // Esconder delVuelo
         this.vuelosList.setVisible(false);
-        this.deleteButton.setVisible(false);
+        this.deleteVueloButton.setVisible(false);
+        this.deleteAvionButton.setVisible(false);
     }
 
     /**
      * Cambiar al modo Añadir un avion
      */
     private void menuAddAvion() {
+        this.avionesList.setVisible(false);
         this.delVuelo.setDisable(false);
+        this.delAvion.setDisable(false);
         this.addVuelo.setDisable(false);
         this.addCiudad.setDisable(false);
         this.addAvion.setDisable(true);
@@ -459,7 +566,8 @@ public class InicioAdminController implements Initializable {
         this.fechaSelect.setVisible(false);
         // Esconder delVuelo
         this.vuelosList.setVisible(false);
-        this.deleteButton.setVisible(false);
+        this.deleteVueloButton.setVisible(false);
+        this.deleteAvionButton.setVisible(false);
 
     }
 

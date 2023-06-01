@@ -375,8 +375,8 @@ public class InicioUserController implements Initializable {
 
         dialog.getDialogPane().setContent(contentBox);
 
-        ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
-        ButtonType reservar = new ButtonType("Reservar", ButtonBar.ButtonData.OK_DONE);
+        ButtonType noReservar = new ButtonType("Cancelar Modificación", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType reservar = new ButtonType("Modifcar", ButtonBar.ButtonData.OK_DONE);
 
         dialog.getDialogPane().getButtonTypes().add(noReservar);
         dialog.getDialogPane().getButtonTypes().add(reservar);
@@ -522,7 +522,7 @@ public class InicioUserController implements Initializable {
     /**
      * Reservar un vuelo seleccionado
      *
-     * @see #reservar()
+     * @see #modificarReserva()
      * @see Getter
      * @see Gestioner
      */
