@@ -362,12 +362,12 @@ public class InicioUserController implements Initializable {
                         if (outReserva != 0) {
                             // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                            alert.setTitle("Vuelo Reservado");
-                            alert.setHeaderText("¡Vuelo Modificado Exitosamente!");
+                            alert.setTitle("Reserva Modificada");
+                            alert.setHeaderText("¡Reserva Modificada Exitosamente!");
                             alert.setResizable(false);
                             alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
-                            ButtonType noThanksButton = new ButtonType("No, Gracias");
                             ButtonType downloadButton = new ButtonType("Descargar");
+                            ButtonType noThanksButton = new ButtonType("No, Gracias");
                             alert.getButtonTypes().setAll(noThanksButton, downloadButton);
                             Optional<ButtonType> alertResult = alert.showAndWait();
                             ButtonType button = alertResult.orElse(ButtonType.CANCEL);
@@ -598,7 +598,7 @@ public class InicioUserController implements Initializable {
 
             dialog.getDialogPane().setContent(contentBox);
 
-            ButtonType noReservar = new ButtonType("Cancelar Modificación", ButtonBar.ButtonData.CANCEL_CLOSE);
+            ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
             ButtonType reservar = new ButtonType("Reservar", ButtonBar.ButtonData.OK_DONE);
 
             dialog.getDialogPane().getButtonTypes().add(noReservar);
@@ -678,7 +678,7 @@ public class InicioUserController implements Initializable {
                 Alert fin = new Alert(AlertType.CONFIRMATION);
                 fin.setTitle("PDF");
                 fin.setHeaderText("PDF descargado con éxito");
-                fin.setContentText("El pdf se descargó exitosamente en " + selectedFile.getAbsolutePath() + ".");
+                fin.setContentText("El pdf se descargó exitosamente en: " + selectedFile.getAbsolutePath());
                 fin.show();
             } else {
                 Alert error = new Alert(AlertType.ERROR);
