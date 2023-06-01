@@ -148,7 +148,6 @@ public class InicioUserController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
-        // Cargar el menu de los vuelos al iniciar la ventana
         try {
             menuReservar();
         } catch (SQLException e) {
@@ -157,7 +156,7 @@ public class InicioUserController implements Initializable {
             dialog.setHeaderText(e.getMessage());
             dialog.show();
         }
-        // Cargar menu reservar
+
         this.reservarMeuItem.setOnAction(event -> {
             try {
                 menuReservar();
@@ -168,7 +167,7 @@ public class InicioUserController implements Initializable {
                 dialog.show();
             }
         });
-        // Cargar mis Reservas
+
         this.misReservasMenuItem.setOnAction(event -> {
             try {
                 menuMisReservas();
@@ -179,7 +178,7 @@ public class InicioUserController implements Initializable {
                 dialog.show();
             }
         });
-        // Terminar la session
+
         this.endSession.setOnAction((event) -> {
             try {
                 endSession();
@@ -295,13 +294,11 @@ public class InicioUserController implements Initializable {
         for (int col = 1; col <= numCols; col++) {
             for (int row = 1; row <= numRows; row++) {
                 int seatNum = (col - 1) * numRows + row;
-                // Añadir Imagenes
                 ImageView seatButton = new ImageView();
                 seatButton.setId(String.valueOf(seatNum));
                 seatButton.setFitWidth(50);
                 seatButton.setFitHeight(50);
 
-                // Añadir el numero de asiento (ID)
                 Label seatLabel = new Label(String.valueOf(seatNum));
                 seatLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #000000; -fx-alignment: center;");
                 seatLabel.setTranslateX(-6);
@@ -309,8 +306,6 @@ public class InicioUserController implements Initializable {
                 stackPane.getChildren().addAll(seatButton, seatLabel);
                 StackPane.setAlignment(seatLabel, Pos.CENTER);
 
-
-                // Asignar que ID hemos pulsado, y cambiar opacidades
                 if (asientosLibres.contains(seatNum)) {
 
                     seatButton.setImage(able);
@@ -384,12 +379,12 @@ public class InicioUserController implements Initializable {
         dialog.setResultConverter(buttonType -> {
             if (buttonType == reservar) {
                 int selectedAsiento = selectedSeat[0];
-                // Hacemos la reserva
+
                 if (selectedAsiento != -1) {
                     try {
                         int outReserva = Gestioner.modificarReserva(idreserva, selectedAsiento);
                         if (outReserva != 0) {
-                            // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
+
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                             alert.setTitle("Reserva Modificada");
                             alert.setHeaderText("¡Reserva Modificada Exitosamente!");
@@ -400,12 +395,12 @@ public class InicioUserController implements Initializable {
                             alert.getButtonTypes().setAll(noThanksButton, downloadButton);
                             Optional<ButtonType> alertResult = alert.showAndWait();
                             ButtonType button = alertResult.orElse(ButtonType.CANCEL);
-                            if (button == downloadButton) { // Aceptado
-                                // Crear y descargar el PDF
+                            if (button == downloadButton) {
+
                                 descargarJustificante(Getter.getReservaInfo(outReserva));
                             }
                             loadVuelos();
-                        } else { // No reservado
+                        } else {
                             Alert fin = new Alert(AlertType.ERROR);
                             fin.setTitle("PDF");
                             fin.setHeaderText("Operacion Cancelada");
@@ -552,13 +547,12 @@ public class InicioUserController implements Initializable {
             for (int col = 1; col <= numCols; col++) {
                 for (int row = 1; row <= numRows; row++) {
                     int seatNum = (col - 1) * numRows + row;
-                    // Añadir Imagenes
+
                     ImageView seatButton = new ImageView();
                     seatButton.setId(String.valueOf(seatNum));
                     seatButton.setFitWidth(50);
                     seatButton.setFitHeight(50);
 
-                    // Añadir el numero de asiento (ID)
                     Label seatLabel = new Label(String.valueOf(seatNum));
                     seatLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #000000; -fx-alignment: center;");
                     seatLabel.setTranslateX(-6);
@@ -566,8 +560,6 @@ public class InicioUserController implements Initializable {
                     stackPane.getChildren().addAll(seatButton, seatLabel);
                     StackPane.setAlignment(seatLabel, Pos.CENTER);
 
-
-                    // Asignar que ID hemos pulsado, y cambiar opacidades
                     if (asientosLibres.contains(seatNum)) {
                         seatButton.setImage(able);
                         stackPane.setOnMouseClicked(event -> {
@@ -634,12 +626,12 @@ public class InicioUserController implements Initializable {
             dialog.setResultConverter(buttonType -> {
                 if (buttonType == reservar) {
                     int selectedAsiento = selectedSeat[0];
-                    // Hacemos la reserva
+
                     if (selectedAsiento != -1) {
                         try {
                             int outReserva = Gestioner.reservarVuelo(Getter.getUsernameID(GlobalData.userName), vueloID, selectedAsiento);
                             if (outReserva != 0) {
-                                // Alerta de la confirmacion con opciones para descargar un PDF con al informaicion del vuelo
+
                                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                 alert.setTitle("Vuelo Reservado");
                                 alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
@@ -650,12 +642,12 @@ public class InicioUserController implements Initializable {
                                 alert.getButtonTypes().setAll(noThanksButton, downloadButton);
                                 Optional<ButtonType> alertResult = alert.showAndWait();
                                 ButtonType button = alertResult.orElse(ButtonType.CANCEL);
-                                if (button == downloadButton) { // Aceptado
-                                    // Crear y descargar el PDF
+                                if (button == downloadButton) {
+
                                     descargarJustificante(Getter.getReservaInfo(outReserva));
                                 }
                                 loadVuelos();
-                            } else { // No reservado
+                            } else {
                                 Alert fin = new Alert(AlertType.ERROR);
                                 fin.setTitle("PDF");
                                 fin.setHeaderText("Operación Cancelada");

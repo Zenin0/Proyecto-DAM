@@ -9,13 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Delete Aviones">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MD5Hasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/MD5Hasher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Reserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Vuelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Vuelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,13 +159,6 @@
       <workItem from="1685470759590" duration="337000" />
       <workItem from="1685480462674" duration="304000" />
       <workItem from="1685565631681" duration="6437000" />
-    </task>
-    <task id="LOCAL-00004" summary="Reorganización Roadmap, y añaidos apartados nuevos">
-      <created>1683819906983</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1683819906983</updated>
     </task>
     <task id="LOCAL-00005" summary="Reorganizacion del codigo y comentarios">
       <created>1683826977803</created>
@@ -496,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685623096710</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Delete Aviones">
+      <created>1685626173852</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1685626173852</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,7 +528,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modificacion de Asientos con seleccion de asientos por imagenes" />
     <MESSAGE value="Updates" />
     <MESSAGE value="Fultrar Vuelos" />
     <MESSAGE value="Esconder texto ciudades al cambio" />
@@ -546,6 +552,7 @@
     <MESSAGE value="JavaDoc" />
     <MESSAGE value="SQL" />
     <MESSAGE value="Code Formatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code Formatting" />
+    <MESSAGE value="Delete Aviones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete Aviones" />
   </component>
 </project>

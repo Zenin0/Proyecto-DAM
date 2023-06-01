@@ -205,23 +205,17 @@ public class Getter {
      * @return Arraylist de numeros con los asientos libres
      */
     public static ArrayList<Integer> getAsientosLibres(int IDAvion, int IDVuelo) throws SQLException {
-        ArrayList<Integer> asientosOcupados = new ArrayList<>();
 
-        // Retrieve the occupied seats for the specified flight and avion
+        ArrayList<Integer> asientosOcupados = new ArrayList<>();
         String query = "SELECT Asiento FROM Reservas WHERE ID_Vuelo = ?";
         PreparedStatement checkStatement = App.con.prepareStatement(query);
         checkStatement.setInt(1, IDVuelo);
         ResultSet rs = checkStatement.executeQuery();
-
         while (rs.next()) {
             int asientoOcupado = rs.getInt("Asiento");
             asientosOcupados.add(asientoOcupado);
         }
-
-        // Retrieve the total capacity of the plane
         int asientosTotales = getCapacidadAvion(IDAvion);
-
-        // Calculate the available seats
         ArrayList<Integer> asientosLibres = new ArrayList<>();
         for (int i = 1; i <= asientosTotales; i++) {
             if (!asientosOcupados.contains(i)) {
@@ -239,8 +233,8 @@ public class Getter {
      * @return Capaciad del avion
      */
     public static int getCapacidadAvion(int IDAvion) throws SQLException {
-        int capacidad = 0;
 
+        int capacidad = 0;
         String query = "SELECT Capacidad FROM Aviones WHERE ID_Avion = ?";
         PreparedStatement statement = App.con.prepareStatement(query);
         statement.setInt(1, IDAvion);
@@ -350,16 +344,16 @@ public class Getter {
      * @see #getNumRows(int, int)
      */
     public static int getNumCols(int numSeats) {
-        int maxCols = 40; // Maximum number of columns
-        int numCols = 4; // Default number of columns
+        int maxCols = 40;
+        int numCols = 2;
         while (numCols <= maxCols) {
             int numRows = (int) Math.ceil((double) numSeats / numCols);
-            if (numRows <= 8) { // Maximum number of rows
+            if (numRows <= 8) {
                 return numCols;
             }
             numCols++;
         }
-        return maxCols; // Return maximum number of columns if no suitable number is found
+        return maxCols;
     }
 
     /**

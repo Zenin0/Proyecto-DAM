@@ -37,7 +37,6 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // Boton que inicia la comprobacion del login
         buttonLog.setOnMouseClicked((event) -> {
             try {
                 login();
@@ -48,7 +47,7 @@ public class LoginController implements Initializable {
                 dialog.show();
             }
         });
-        // Boton para cambiar al modo de registro
+
         buttonRegCh.setOnMouseClicked((event) -> {
             try {
                 registerChange();
@@ -59,7 +58,7 @@ public class LoginController implements Initializable {
                 dialog.show();
             }
         });
-        // Admitir pulsaciones a la tecla enter
+
         passLog.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 try {
@@ -86,7 +85,6 @@ public class LoginController implements Initializable {
             }
         });
 
-        // Boton que inicia la comprobacion del login
         buttonLog.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 try {

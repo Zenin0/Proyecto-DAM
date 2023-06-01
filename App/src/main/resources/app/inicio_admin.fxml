@@ -31,48 +31,48 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="401.0" fitWidth="382.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
-               <image>
-                  <Image url="@css/logo.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="nombreCiudad" contentDisplay="CENTER" text="Nombre Ciudad" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="nombrePais" contentDisplay="CENTER" text="Nombre Pais" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button fx:id="aceptarButtonCiudad" mnemonicParsing="false" text="Aceptar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <TextField fx:id="nombreCiudadField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField fx:id="nombrePaisField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button fx:id="aceptarButtonAvion" mnemonicParsing="false" text="Aceptar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <TextField fx:id="nombreAvionField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label fx:id="nombreAvion" contentDisplay="CENTER" text="Nombre del Avion" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="ciudadSalidaVuelo" contentDisplay="CENTER" text="Ciudad Salida" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="ciudadDestinoVuelo" contentDisplay="CENTER" text="Ciudad Destino" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="avionVuelo" contentDisplay="CENTER" text="Avion" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <MenuButton fx:id="menuCiudadesSalida" mnemonicParsing="false" text="Ciudades Salida" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <MenuButton fx:id="menuCiudadesDestino" mnemonicParsing="false" text="Ciudades Destino" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <MenuButton fx:id="menuAviones" mnemonicParsing="false" text="Aviones" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button fx:id="aceptarButtonVuelo" mnemonicParsing="false" text="Aceptar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Label fx:id="capacidad" contentDisplay="CENTER" text="Capacidad" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="capacidadField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <DatePicker fx:id="fechaSelect" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label fx:id="fechaLabel" contentDisplay="CENTER" text="Fecha Salida" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ListView fx:id="vuelosList" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="4">
-               <GridPane.margin>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </GridPane.margin>
-            </ListView>
             <ListView fx:id="avionesList" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="4">
                <GridPane.margin>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </ListView>
+            <ListView fx:id="vuelosList" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="4">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </ListView>
+            <ImageView fitHeight="401.0" fitWidth="382.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@css/logo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nombreCiudadLabel" contentDisplay="CENTER" text="Nombre Ciudad" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="nombrePaisLabel" contentDisplay="CENTER" text="Nombre Pais" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="aceptarButtonCiudad" mnemonicParsing="false" text="Aceptar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextField fx:id="nombreCiudadField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="nombrePaisField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="aceptarButtonAvion" mnemonicParsing="false" text="Aceptar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextField fx:id="nombreAvionField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="nombreAvionLabel" contentDisplay="CENTER" text="Nombre del Avion" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="ciudadSalidaVueloLabel" contentDisplay="CENTER" text="Ciudad Salida" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="ciudadDestinoVueloLabel" contentDisplay="CENTER" text="Ciudad Destino" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="avionVueloLabel" contentDisplay="CENTER" text="Avion" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <MenuButton fx:id="menuCiudadesSalida" mnemonicParsing="false" text="Ciudades Salida" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <MenuButton fx:id="menuCiudadesDestino" mnemonicParsing="false" text="Ciudades Destino" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <MenuButton fx:id="menuAviones" mnemonicParsing="false" text="Aviones" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="aceptarButtonVuelo" mnemonicParsing="false" text="Aceptar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label fx:id="capacidadLabel" contentDisplay="CENTER" text="Capacidad" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="capacidadField" alignment="CENTER" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <DatePicker fx:id="fechaDatePicker" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="fechaLabel" contentDisplay="CENTER" text="Fecha Salida" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button fx:id="deleteVueloButton" mnemonicParsing="false" text="Eliminar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <Label styleClass="h1" text="Gestion Administrativa" wrapText="true" GridPane.columnIndex="1" />
-            <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="5" />
-            <Button fx:id="addVuelo" mnemonicParsing="false" text="Añadir Vuelo" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-            <Button fx:id="delVuelo" mnemonicParsing="false" text="Eliminar Vuelo" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
-            <Button fx:id="addCiudad" mnemonicParsing="false" text="Añadir Ciudad" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <Button fx:id="addAvion" mnemonicParsing="false" text="Añadir Avión" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-            <Button fx:id="delAvion" mnemonicParsing="false" text="Eliminar Avion" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+            <Button fx:id="endSessionButton" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="5" />
+            <Button fx:id="addVueloButton" mnemonicParsing="false" text="Añadir Vuelo" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Button fx:id="delVueloButton" mnemonicParsing="false" text="Eliminar Vuelo" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+            <Button fx:id="addCiudadButton" mnemonicParsing="false" text="Añadir Ciudad" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+            <Button fx:id="addAvionButton" mnemonicParsing="false" text="Añadir Avión" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+            <Button fx:id="delAvionButton" mnemonicParsing="false" text="Eliminar Avion" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
             <Button fx:id="deleteAvionButton" mnemonicParsing="false" text="Eliminar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
          </children>
          <VBox.margin>

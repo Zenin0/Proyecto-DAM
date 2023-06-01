@@ -1,7 +1,7 @@
 package app;
 
 /**
- * Objecto que respresenta los vuelos, para usarlo en una TableView
+ * Objeto que representa los vuelos, para usarlo en una TableView.
  */
 public class Vuelo {
 
@@ -12,9 +12,11 @@ public class Vuelo {
     private final int Asientos;
 
     /**
-     * @param id             I del vuelo
-     * @param Ciudad_Salida  Ciudad de Salida del vuelo
-     * @param Ciudad_Llegada Ciudad de Llegada del vuelo
+     * Constructor de Vuelo.
+     *
+     * @param id             ID del vuelo
+     * @param Ciudad_Salida  Ciudad de salida del vuelo
+     * @param Ciudad_Llegada Ciudad de llegada del vuelo
      * @param Fecha          Fecha de salida del vuelo
      * @param Asientos       Asientos libres del vuelo
      * @see InicioUserController#loadVuelos()
@@ -25,53 +27,50 @@ public class Vuelo {
         this.Ciudad_Llegada = Ciudad_Llegada;
         this.Fecha = Fecha;
         this.Asientos = Asientos;
-
     }
 
-
     /**
-     * Obtener la ID
+     * Obtiene el ID del vuelo.
      *
-     * @return ID del vuelo
+     * @return El ID del vuelo
      */
     public int getId() {
         return this.id;
     }
 
     /**
-     * Obtener la ciudad de Salida
+     * Obtiene la ciudad de salida del vuelo.
      *
-     * @return Ciudad de Salida
+     * @return La ciudad de salida del vuelo
      */
     public String getCiudad_Salida() {
         return this.Ciudad_Salida;
     }
 
     /**
-     * Obtener la Ciudad de Llegada
+     * Obtiene la ciudad de llegada del vuelo.
      *
-     * @return Ciudad de Llegada
+     * @return La ciudad de llegada del vuelo
      */
     public String getCiudad_Llegada() {
         return this.Ciudad_Llegada;
     }
 
     /**
-     * Obtener la Fecha del vuelo
+     * Obtiene la fecha de salida del vuelo.
      *
-     * @return Fecha
+     * @return La fecha de salida del vuelo
      */
     public String getFecha() {
         return this.Fecha;
     }
 
     /**
-     * Obtener los asientos libres
+     * Obtiene la cantidad de asientos libres en el vuelo.
      *
-     * @return Asientos Libres
+     * @return La cantidad de asientos libres en el vuelo
      */
     public int getAsientos() {
         return this.Asientos;
     }
-
 }

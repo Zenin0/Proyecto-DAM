@@ -47,9 +47,9 @@ public class RegisterController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // Boton que inicia la funcion de registro
+
         buttonReg.setOnMouseClicked((event) -> registrar());
-        // Boton para cambiar a la ventana de login
+
         buttonlogCh.setOnMouseClicked((event) -> {
             try {
                 loginChange();
@@ -61,7 +61,7 @@ public class RegisterController implements Initializable {
             }
         });
 
-        // Event handler para el Enter key en los campos de texto
+
         usuReg.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 registrar();
