@@ -77,44 +77,49 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
 ### Añadir Vuelo Screen
 
   <p align="center">
-    <img src="./images/AddVuelo.png" alt="Login Screen">
+    <img src="./images/Add-Vuelo.png" alt="Login Screen">
   </p>
 
 ### Eliminar Vuelo Screen
 
   <p align="center">
-    <img src="./images/DelVuelo.png" alt="Login Screen">
+    <img src="./images/Del-Vuelo.png" alt="Login Screen">
   </p>
 
 ### Añadir Ciudad Screen
 
   <p align="center">
-    <img src="./images/AddCiudad.png" alt="Login Screen">
+    <img src="./images/Add-Ciudad.png" alt="Login Screen">
   </p>
 
 ### Añadir Avion Screen
 
   <p align="center">
-    <img src="./images/AddAvion.png" alt="Login Screen">
+    <img src="./images/Add-Avion.png" alt="Login Screen">
   </p>
 
+### Eliminar Avion Screen
+
+  <p align="center">
+    <img src="./images/Del-Avion.png" alt="Login Screen">
+  </p>
 
 ### Reservar Screen
 
   <p align="center">
-    <img src="./images/ReservarScreen.png" alt="Login Screen">
+    <img src="./images/Reservar-Screen.png" alt="Login Screen">
   </p>
 
 ### Seleccion de Asientos Screen
 
   <p align="center">
-    <img src="./images/AsientoReservaSeleccion.png" alt="Login Screen">
+    <img src="./images/Asiento-Reserva-Seleccion.png" alt="Login Screen">
   </p>
 
   ### PDF Descarga Screen
 
   <p align="center">
-    <img src="./images/PDFDownloadScreeb.png" alt="Login Screen">
+    <img src="./images/PDF-Download-Screen.png" alt="Login Screen">
   </p>
 
 ### Ejemplo PDF
@@ -126,13 +131,13 @@ Este código estará creado con `Java` para el desarrollo principal de la aplica
   ### Mis Reservas Screen
 
   <p align="center">
-    <img src="./images/MisReservasScreen.png" alt="Login Screen">
+    <img src="./images/Mis-Reservas-Screen.png" alt="Login Screen">
   </p>
 
 ### Modificación de Reserva Screen
 
   <p align="center">
-    <img src="./images/ModificarReservaAsientoScreen.png" alt="Login Screen">
+    <img src="./images/Modificar-Reserva-Asiento-Screen.png" alt="Login Screen">
   </p>
 
 

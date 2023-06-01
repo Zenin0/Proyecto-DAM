@@ -402,7 +402,7 @@ public class InicioAdminController implements Initializable {
         this.addVueloButton.setDisable(false);
         this.addCiudadButton.setDisable(false);
         this.addAvionButton.setDisable(false);
-        this.vuelosList.setVisible(true);
+        this.vuelosList.setVisible(false);
         this.deleteVueloButton.setVisible(true);
         this.menuCiudadesDestino.setVisible(false);
         this.menuCiudadesSalida.setVisible(false);
