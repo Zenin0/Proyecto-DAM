@@ -74,11 +74,178 @@ de datos, y `JavaFX` para el apartado de GUI.
 Apartado donde se hara el `inicio de sesión`, en el que en funcion de el tipo de usuario que hace login se redirigira al
 apartado de los administradores o al apartado de usuarios normales
 
+#### Parte del controlador
+``` java
+    /**
+     * Login de los usuarios
+     *
+     * @see Gestioner#login(String, String)
+     */
+    private void login() throws IOException, SQLException {
+
+        Alert dialog = new Alert(AlertType.CONFIRMATION);
+        // Login de un usuario Administrador
+        if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 1) {
+            dialog.setTitle("¡Login correcto!");
+            dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
+            dialog.show();
+            App.setRoot("inicio_admin");
+        // Login de un usuario Normal
+        } else if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 0) {
+            dialog.setTitle("¡Login correcto!");
+            dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
+            dialog.show();
+            App.setRoot("inicio_user");
+        // Fallo del Login
+        } else {
+            dialog.setTitle("Login Incorrecto");
+            dialog.setHeaderText("Inicio de sesión incorrecto");
+            dialog.show();
+        }
+    }
+```
+
+#### Parte logica del login
+``` java
+    /**
+     * Login de los usuarios
+     *
+     * @param usuario Nombre del usuario introducido
+     * @param pass    Contraseña introducida
+     * @return 1 Acceso de un usuario admin   0 Acceso de un usuario no admin -1  Error en el login
+     * @see MD5Hasher#getMd5()
+     */
+    public static int login(String usuario, String pass) {
+        try {
+
+            MD5Hasher md5 = new MD5Hasher(pass);
+            String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
+            checkStatement.setString(1, usuario);
+            checkStatement.setString(2, md5.getMd5());
+            ResultSet resultSet = checkStatement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+            if (count > 0) {
+                query = "SELECT Is_Admin FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
+                checkStatement = App.con.prepareStatement(query);
+                checkStatement.setString(1, usuario);
+                checkStatement.setString(2, md5.getMd5());
+                resultSet = checkStatement.executeQuery();
+                resultSet.next();
+                if (resultSet.getInt(1) == 1) {
+                    GlobalData.userName = usuario;
+                    return 1;
+                } else if (resultSet.getInt(1) == 0) {
+                    GlobalData.userName = usuario;
+                    return 0;
+                } else {
+                    return -1;
+                }
+            }
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+        return -1;
+    }
+```
 ### Register Screen
 
   <p align="center">
     <img src="./images/Register-Screen.png" alt="Login Screen">
   </p>
+
+
+
+``` java
+    /**
+     * Registrar un usuario
+     *
+     * @param Usuario Nombre de usuario
+     * @param Pass1   Contraseña 1
+     * @param Pass2   Contraseña 2
+     * @param admin   Checkbox de Administrador
+     * @return Si se ha creado o si no
+     * @see MD5Hasher#getMd5()
+     */
+    public static boolean registrar(String Usuario, String nombre, String apellidos, String Pass1, String Pass2, boolean admin) {
+        int id;
+        try {
+            if (!Pass1.equals(Pass2)) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText("Las contraseñas no coinciden");
+                dialog.show();
+                return false;
+            } else {
+                MD5Hasher md5 = new MD5Hasher(Pass1);
+                String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
+                PreparedStatement checkStatement = App.con.prepareStatement(query);
+                checkStatement.setString(1, Usuario);
+                checkStatement.setString(2, md5.getMd5());
+                ResultSet resultSet = checkStatement.executeQuery();
+                resultSet.next();
+                int count = resultSet.getInt(1);
+
+                if (count > 0) {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText("Este Usuario y esta contraseña ya existen");
+                    dialog.show();
+                    return false;
+
+                } else {
+
+                    if (admin) {
+                        if (!new MD5Hasher(new PassDialog().showAndWait().get()).getMd5().equals(new MD5Hasher("root").getMd5())) {
+                            Alert dialog = new Alert(AlertType.ERROR);
+                            dialog.setTitle("ERROR");
+                            dialog.setHeaderText("Contraseña de administrador incorrecta");
+                            dialog.show();
+                            return false;
+                        }
+                    }
+
+                    String test = "SELECT max(ID_Usuario) FROM Usuarios";
+                    PreparedStatement prst = App.con.prepareStatement(test);
+                    ResultSet resulttest = prst.executeQuery();
+                    if (resulttest.next()) {
+                        id = resulttest.getInt(1);
+
+                        String consulta = "INSERT INTO Usuarios (ID_Usuario, Nombre_Usuario, Nombre, Apellidos, Pass, is_Admin) VALUES (?, ?, ?, ?, ?, ?)";
+                        PreparedStatement insertStatement = App.con.prepareStatement(consulta);
+                        insertStatement.setInt(1, id + 1);
+                        insertStatement.setString(2, Usuario);
+                        insertStatement.setString(3, nombre);
+                        insertStatement.setString(4, apellidos);
+                        insertStatement.setString(5, md5.getMd5());
+                        insertStatement.setBoolean(6, admin);
+                        insertStatement.executeUpdate();
+
+                        Alert dialog = new Alert(AlertType.CONFIRMATION);
+                        dialog.setTitle("Usuario");
+                        dialog.setHeaderText("Usuario creado correctamente");
+                        dialog.show();
+                        return true;
+                    }
+
+                }
+            }
+
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+
+        return false;
+    }
+
+```
 
 Apartado donde se hará el `registro de un usuario`, marcando o no la casilla de admnistrador, lo que hará que salte un
 prompt que pedira la contraseña de administrador de la aplicacion (`root`)
@@ -88,6 +255,7 @@ prompt que pedira la contraseña de administrador de la aplicacion (`root`)
   <p align="center">
     <img src="./images/Add-Vuelo.png" alt="Login Screen">
   </p>
+
 
 Apartado donde `crearemos un nuevo vuelo`, en base a la `ciudad de salida`
 la `ciudad de destino` un `Avion` y una `fecha`

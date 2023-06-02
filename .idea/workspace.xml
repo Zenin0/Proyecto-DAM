@@ -149,20 +149,6 @@
       <workItem from="1685480462674" duration="304000" />
       <workItem from="1685565631681" duration="6437000" />
     </task>
-    <task id="LOCAL-00008" summary="Roadman links Updated">
-      <created>1683827122974</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1683827122974</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Resaltado algun texto importante">
-      <created>1683827409551</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1683827409551</updated>
-    </task>
     <task id="LOCAL-00010" summary="FXMLs updates">
       <created>1683828650540</created>
       <option name="number" value="00010" />
@@ -492,7 +478,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685629065784</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="README.md update">
+      <created>1685630653162</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1685630653162</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Images Update">
+      <created>1685630670320</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1685630670320</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -517,8 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Readme images Update" />
-    <MESSAGE value="Roadmap Update" />
     <MESSAGE value="PDF de ejemplo añadido al README.md" />
     <MESSAGE value="README.md javadoc website" />
     <MESSAGE value="FXML Updates" />
@@ -542,6 +540,8 @@
     <MESSAGE value="Comentarios JavaDoc y reorganizacion del codifo" />
     <MESSAGE value="JavaDoc Generated" />
     <MESSAGE value="Images README.md update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Images README.md update" />
+    <MESSAGE value="README.md update" />
+    <MESSAGE value="Images Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Images Update" />
   </component>
 </project>
