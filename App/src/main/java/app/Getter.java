@@ -499,5 +499,18 @@ public class Getter {
         return out;
     }
 
+    public static boolean getDispnibilidad(String fecha, int IDAvion, int newCity) throws SQLException {
+        String query = "SELECT Ciudad_Destino  FROM Vuelos WHERE ID_Avion = ? ORDER BY Fecha_Salida LIMIT 1";
+        PreparedStatement checkStatement = App.con.prepareStatement(query);
+        checkStatement.setInt(1, IDAvion);
+        ResultSet rs = checkStatement.executeQuery();
+        if (rs.next()) {
+            if (rs.getInt(1) == newCity)
+                return true;
+            else
+                return false;
+        }
+        return false;
+    }
 
 }

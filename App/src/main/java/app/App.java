@@ -22,16 +22,23 @@ public class App extends Application {
     public static Connection con;
     private static Scene scene;
 
+    private static boolean isConnected = false;
+
     static {
         try {
             con = DriverManager.getConnection(GlobalData.DB_URL, GlobalData.DBUSER, GlobalData.DBPASS);
+
+            if (con.isValid(5)) {
+                System.out.println("\u001B[32m Test de conexion correcto \u001B[0m");
+                isConnected = true;
+            }
         } catch (SQLException e) {
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setTitle("ERROR");
-            dialog.setHeaderText(e.getMessage());
-            dialog.show();
+            System.err.println("Error al conectarse a la BDD: " + e.getMessage());
+            System.exit(1);
         }
     }
+
+
 
     public App() {
     }
@@ -72,20 +79,24 @@ public class App extends Application {
         scene = new Scene(loadFXML("login"), 1080, 700);
         stage.setTitle("Manolo Airlines");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("css/logoMA.png"))));
-        scene.getStylesheets().add(getClass().getResource("css/style.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("css/style.css")).toExternalForm());
         stage.setScene(scene);
         stage.show();
         // Shutdown hook
         stage.setOnCloseRequest(event -> {
-            try {
-                App.con.close();
-            } catch (SQLException e) {
-                Alert dialog = new Alert(Alert.AlertType.ERROR);
-                dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
-                dialog.show();
+            if (isConnected) {
+                try {
+                    App.con.close();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText(e.getMessage());
+                    dialog.show();
+                }
             }
         });
+
+
 
     }
 

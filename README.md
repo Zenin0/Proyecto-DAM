@@ -296,7 +296,7 @@ login se redirigirá al `apartado de los administradores` o al `apartado de usua
     }
 ```
 
-### Añadir Vuelo Screen
+### Ventana de añadir un vuelo
 
 Apartado donde se gestionará el `añadido de nuevos vuelos`.
 
@@ -376,7 +376,7 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
      * @see Gestioner#registrarVuelo(String, String, int, String)
      */
     private void addVuelo() throws ParseException, SQLException {
-        // Todos los campos llenos?
+        // Estan los campos llenos?
         if (this.menuCiudadesSalida.getText().equals("Ciudades Salida") || this.menuCiudadesDestino.getText().equals("Ciudades Destino") || this.menuAviones.getText().equals("Aviones") || this.fechaDatePicker.getValue() == null) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("Vuelo");
@@ -384,22 +384,32 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
             dialog.show();
         } else {
             String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
-            int numero = Integer.parseInt(tokens[0]);
+            int IDAvion = Integer.parseInt(tokens[0]);
             LocalDate localDate = fechaDatePicker.getValue();
-            // Se ha creado el usuario?
-            if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), numero, String.valueOf(localDate))) {
-                Alert dialog = new Alert(AlertType.CONFIRMATION);
-                dialog.setTitle("Vuelo");
-                dialog.setHeaderText("Vuelo creada correctamente");
-                dialog.show();
+            // Esta el avión disponible para el vuelo?
+            if (Getter.getDispnibilidad(String.valueOf(localDate), IDAvion, Getter.getIDCiudad(this.menuCiudadesSalida.getText()))) {
+                // Se ha registrado el vuelo?
+                if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), IDAvion, String.valueOf(localDate))) {
+                    Alert dialog = new Alert(AlertType.CONFIRMATION);
+                    dialog.setTitle("Vuelo");
+                    dialog.setHeaderText("Vuelo creada correctamente");
+                    dialog.show();
+                } else {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("Vuelo");
+                    dialog.setHeaderText("Algo ha fallado");
+                    dialog.show();
+                }
             } else {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("Vuelo");
-                dialog.setHeaderText("Algo ha fallado");
+                dialog.setHeaderText("Este avión no estará disponible en esa ciudad de salida (" + this.menuCiudadesSalida.getText() + ") en esa fecha");
                 dialog.show();
             }
+
         }
     }
+
 ```
 
 #### Parte logica
