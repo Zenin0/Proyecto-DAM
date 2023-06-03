@@ -652,8 +652,6 @@ Apartado donde se gestionará el `añadido de nuevas ciudades`.
 ```
 
 
-Apartado donde `crearemos una ciudad` para la aplicación
-
 ### Añadir Avion Screen
 
   <p align="center">
