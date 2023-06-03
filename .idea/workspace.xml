@@ -9,16 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="gitignore update">
-      <change afterPath="$PROJECT_DIR$/App/target/app-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/app_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -160,14 +152,7 @@
       <workItem from="1685565631681" duration="6474000" />
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
-      <workItem from="1685784718983" duration="13969000" />
-    </task>
-    <task id="LOCAL-00012" summary="Compression del codigo">
-      <created>1683829052935</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1683829052935</updated>
+      <workItem from="1685784718983" duration="14491000" />
     </task>
     <task id="LOCAL-00013" summary="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo">
       <created>1683898680840</created>
@@ -505,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685796147985</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo">
+      <created>1685833146349</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1685833146349</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -530,7 +522,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Updates" />
     <MESSAGE value="Fultrar Vuelos" />
     <MESSAGE value="JavaDoc" />
     <MESSAGE value="Esconder texto ciudades al cambio" />
@@ -555,6 +546,7 @@
     <MESSAGE value="JavaDoc update" />
     <MESSAGE value="README.md update" />
     <MESSAGE value="gitignore update" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore update" />
+    <MESSAGE value="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo" />
   </component>
 </project>

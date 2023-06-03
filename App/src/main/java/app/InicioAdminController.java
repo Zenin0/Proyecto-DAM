@@ -468,7 +468,6 @@ public class InicioAdminController implements Initializable {
         this.nombrePaisField.setVisible(false);
         this.aceptarButtonCiudad.setVisible(false);
         this.deleteAvionButton.setVisible(true);
-
     }
 
     /**

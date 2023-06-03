@@ -459,7 +459,7 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
     }
 ```
 
-### Eliminar Vuelo Screen
+### Ventana para elminar un vuelo
 
 Apartado donde se gestionará el `borrado de vuelos`.
 
@@ -585,7 +585,7 @@ Apartado donde se gestionará el `borrado de vuelos`.
     }
 ```
 
-### Añadir Ciudad Screen
+### Ventana para añadir una ciudad
 
 Apartado donde se gestionará el `añadido de nuevas ciudades`.
 
@@ -715,7 +715,7 @@ Apartado donde se gestionará el `añadido de nuevas ciudades`.
     }
 ```
 
-### Añadir Avion Screen
+### Ventana para añadir un avión
 
 Apartado donde se gestionará el `añadido de nueva avion`.
 
@@ -851,7 +851,7 @@ Apartado donde se gestionará el `añadido de nueva avion`.
     }
 ```
 
-### Eliminar Avion Screen
+### Ventana para elminar un avión
 
 Apartado donde se gestionará el `eliminado de un avión`.
 
@@ -859,7 +859,107 @@ Apartado donde se gestionará el `eliminado de un avión`.
     <img src="./images/Del-Avion.png" alt="Login Screen">
   </p>
 
-### Reservar Screen
+#### Apartado del controlador para cambiar a eliminar un avión
+
+``` java
+    /**
+     * Cambiar al modo a Borrar un vuelo
+     */
+    private void menuDelAvion() throws SQLException {
+        listarAviones();
+        this.avionesList.setVisible(true);
+        this.delAvionButton.setDisable(true);
+        this.delVueloButton.setDisable(false);
+        this.addVueloButton.setDisable(false);
+        this.addCiudadButton.setDisable(false);
+        this.addAvionButton.setDisable(false);
+        this.vuelosList.setVisible(false);
+        this.deleteVueloButton.setVisible(true);
+        this.menuCiudadesDestino.setVisible(false);
+        this.menuCiudadesSalida.setVisible(false);
+        this.ciudadSalidaVueloLabel.setVisible(false);
+        this.ciudadDestinoVueloLabel.setVisible(false);
+        this.menuAviones.setVisible(false);
+        this.avionVueloLabel.setVisible(false);
+        this.aceptarButtonVuelo.setVisible(false);
+        this.fechaLabel.setVisible(false);
+        this.fechaDatePicker.setVisible(false);
+        this.nombreAvionLabel.setVisible(false);
+        this.nombreAvionField.setVisible(false);
+        this.aceptarButtonAvion.setVisible(false);
+        this.capacidadLabel.setVisible(false);
+        this.capacidadField.setVisible(false);
+        this.nombreCiudadLabel.setVisible(false);
+        this.nombreCiudadField.setVisible(false);
+        this.nombrePaisLabel.setVisible(false);
+        this.nombrePaisField.setVisible(false);
+        this.aceptarButtonCiudad.setVisible(false);
+        this.deleteAvionButton.setVisible(true);
+    }
+```
+
+#### Apartado donde se ejecuta la opcion del borrado
+
+``` java
+    /**
+     * Funcion para eliminar un avión
+     *
+     * @see Gestioner#eliminarAvion(int)
+     */
+    public void delAvion() throws SQLException {
+        // Hay algun avión selecionado?
+        if (this.avionesList.getSelectionModel().isEmpty()) {
+            Alert dialog = new Alert(AlertType.WARNING);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Rellene todos los campos");
+            dialog.show();
+        } else {
+            String[] vueloParts = this.avionesList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
+            // Se ha borrado el avion?
+            if (Gestioner.eliminarAvion(Integer.parseInt(vueloParts[0]))) {
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Vuelo eliminado correctamente");
+                dialog.show();
+            } else {
+                Alert dialog = new Alert(AlertType.WARNING);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Algo ha fallado");
+                dialog.show();
+            }
+            listarAviones();
+        }
+    }
+```
+
+#### Parte logica
+
+``` java
+    /**
+     * Eliminar un avion
+     *
+     * @param ID ID del avion
+     * @return si se ha creado o si no true|false
+     */
+    public static boolean eliminarAvion(int ID) {
+        try {
+            String query = "DELETE FROM Aviones WHERE ID_Avion = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
+            checkStatement.setInt(1, ID);
+            checkStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+
+        return false;
+    }
+```
+
+### Ventana para reservar
 
 Apartado donde se gestionará el `la reserva de un vuelo`.
 
@@ -867,31 +967,368 @@ Apartado donde se gestionará el `la reserva de un vuelo`.
     <img src="./images/Reservar-Screen.png" alt="Login Screen">
   </p>
 
+#### Cambiar a el apartado para reservar
 
-### Seleccion de Asientos Screen
+``` java
+    /**
+     * Modificar la vista para reservar un vueloi
+     *
+     * @see #menuMisReservas()
+     */
+    public void menuReservar() throws SQLException {
 
-  <p align="center">
+        this.menuciudadSalidaVuelos.getItems().clear();
+        this.menuciudadDestinoVuelos.getItems().clear();
+        this.menuciudadSalidaVuelos.setText("Cualquiera");
+        this.menuciudadDestinoVuelos.setText("Cualquiera");
+
+        MenuItem emptyItem = new MenuItem("Cualquiera");
+        emptyItem.setOnAction(event -> {
+            menuciudadDestinoVuelos.setText("Cualquiera");
+            try {
+                loadVuelos();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        menuciudadDestinoVuelos.getItems().add(emptyItem);
+
+        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+            MenuItem item = new MenuItem(ciudad);
+            item.setOnAction(event -> {
+                menuciudadDestinoVuelos.setText(item.getText());
+                try {
+                    loadVuelos();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            menuciudadDestinoVuelos.getItems().add(item);
+        }
+        menuciudadDestinoVuelos.setPopupSide(Side.BOTTOM);
+
+
+        emptyItem = new MenuItem("Cualquiera");
+        emptyItem.setOnAction(event -> {
+            menuciudadSalidaVuelos.setText("Cualquiera");
+            try {
+                loadVuelos();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        menuciudadSalidaVuelos.getItems().add(emptyItem);
+
+        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+            MenuItem item = new MenuItem(ciudad);
+            item.setOnAction(event -> {
+                menuciudadSalidaVuelos.setText(item.getText());
+                try {
+                    loadVuelos();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            menuciudadSalidaVuelos.getItems().add(item);
+        }
+
+        menuciudadSalidaVuelos.setPopupSide(Side.BOTTOM);
+        this.tittleLabel.setText("Vuelos");
+        this.menuciudadDestinoVuelos.setVisible(true);
+        this.menuciudadSalidaVuelos.setVisible(true);
+        this.misReservasMenuItem.setVisible(true);
+        this.vuelosDisponiblesTable.setVisible(true);
+        this.reservarButton.setVisible(true);
+        this.reservasDisponiblesTable.setVisible(false);
+        this.removeReservaButton.setVisible(false);
+        this.modificarReservaButton.setVisible(false);
+        this.downloadJustificanteButton.setVisible(false);
+        this.reservarMeuItem.setVisible(false);
+        this.menuciudadSalidaReservas.setVisible(false);
+        this.menuciudadDestinoReservas.setVisible(false);
+        loadVuelos();
+    }
+```
+
+#### Cargar los vuelos disponibles para reservarlos
+
+``` java
+    /**
+     * Cargar las reservas de un usuario
+     *
+     * @see #loadVuelos()
+     */
+    public void loadReservas() throws SQLException {
+
+        ObservableList<Reserva> reservas = Getter.getReservasObservableList(Getter.getUsernameID(GlobalData.userName), Getter.getIDCiudad(this.menuciudadSalidaReservas.getText()), Getter.getIDCiudad(this.menuciudadDestinoReservas.getText()));
+        // Hay objectos en la lista?
+        if (reservas.size() < 1) {
+            Alert dialog = new Alert(AlertType.INFORMATION);
+            dialog.setTitle("No Encontrado");
+            dialog.setHeaderText("Ningúna reserva encontrada");
+            dialog.show();
+            this.reservasDisponiblesTable.getItems().clear();
+        } else {
+            this.IDReservaColum.setStyle("-fx-alignment: CENTER");
+            this.nameReservaColum.setStyle("-fx-alignment: CENTER");
+            this.asientoReservaColum.setStyle("-fx-alignment: CENTER");
+            this.ciudadSaludaReservaColumn.setStyle("-fx-alignment: CENTER");
+            this.ciudadDestinoReservaColumn.setStyle("-fx-alignment: CENTER");
+            this.avionReservaColumn.setStyle("-fx-alignment: CENTER");
+            this.fechaReservaColum.setStyle("-fx-alignment: CENTER");
+
+            this.IDReservaColum.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            this.nameReservaColum.setCellValueFactory(new PropertyValueFactory<>("nameSubname"));
+            this.asientoReservaColum.setCellValueFactory(new PropertyValueFactory<>("Asiento"));
+            this.ciudadSaludaReservaColumn.setCellValueFactory(new PropertyValueFactory<>("CiudadSalida"));
+            this.ciudadDestinoReservaColumn.setCellValueFactory(new PropertyValueFactory<>("CiudadDestino"));
+            this.avionReservaColumn.setCellValueFactory(new PropertyValueFactory<>("Avion"));
+            this.fechaReservaColum.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
+            this.reservasDisponiblesTable.setItems(reservas);
+        }
+
+    }
+```
+
+#### Parte logica
+
+``` java
+    /**
+     * Reservar un vuelo seleccionado
+     *
+     * @see #modificarReserva()
+     * @see Getter
+     * @see Gestioner
+     */
+    private void reservar() throws SQLException {
+
+        Vuelo selectedVuelo = vuelosDisponiblesTable.getSelectionModel().getSelectedItem();
+        // Hay algun vuelo selecionado?
+        if (selectedVuelo != null) {
+            int vueloID = selectedVuelo.getId();
+            int numAsientos = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID).size();
+            int numCols = Getter.getNumCols(numAsientos);
+            int numRows = Getter.getNumRows(numAsientos, numCols);
+
+            ArrayList<Integer> asientosLibres = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID);
+            GridPane gridPane = new GridPane();
+            gridPane.setHgap(10);
+            gridPane.setVgap(10);
+
+            final int[] selectedSeat = {-1};
+            Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
+            Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
+            Image selected = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatSelected.png");
+
+            final StackPane[] selectedSeatPane = {null};
+            final ImageView[] selectedSeatImage = {null};
+            
+            // Cargar la ventana de la seleccion de asientos
+            for (int col = 1; col <= numCols; col++) {
+                for (int row = 1; row <= numRows; row++) {
+                    int seatNum = (col - 1) * numRows + row;
+
+                    ImageView seatButton = new ImageView();
+                    seatButton.setId(String.valueOf(seatNum));
+                    seatButton.setFitWidth(50);
+                    seatButton.setFitHeight(50);
+
+                    Label seatLabel = new Label(String.valueOf(seatNum));
+                    seatLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #000000; -fx-alignment: center;");
+                    seatLabel.setTranslateX(-6);
+                    StackPane stackPane = new StackPane();
+                    stackPane.getChildren().addAll(seatButton, seatLabel);
+                    StackPane.setAlignment(seatLabel, Pos.CENTER);
+
+                    // El asiento esta libre?
+                    if (asientosLibres.contains(seatNum)) {
+                        seatButton.setImage(able);
+                        stackPane.setOnMouseClicked(event -> {
+                            if (selectedSeatPane[0] != null) {
+                                selectedSeatImage[0].setImage(able);
+                            }
+                            selectedSeat[0] = Integer.parseInt(seatButton.getId());
+                            selectedSeatPane[0] = stackPane;
+                            selectedSeatImage[0] = seatButton;
+                            selectedSeatImage[0].setImage(selected);
+                        });
+                        stackPane.setOnMouseEntered(event -> stackPane.setOpacity(0.5));
+                        stackPane.setOnMouseExited(event -> stackPane.setOpacity(1));
+                        stackPane.cursorProperty().set(Cursor.HAND);
+                    } else {
+                        seatButton.setImage(unable);
+                        stackPane.setOpacity(0.5);
+                        stackPane.setDisable(true);
+                    }
+
+                    gridPane.add(stackPane, col, row);
+                }
+            }
+
+            HBox legendBox = new HBox(10);
+
+
+            ImageView ableImage = new ImageView(able);
+            ImageView unableImage = new ImageView(unable);
+            ImageView selectedImage = new ImageView(selected);
+
+
+            Label ableLabel = new Label("Disponible");
+            Label unableLabel = new Label("No Disponible");
+            Label selectedLabel = new Label("Seleccionado");
+
+
+            ableImage.setFitWidth(20);
+            ableImage.setFitHeight(20);
+            unableImage.setFitWidth(20);
+            unableImage.setFitHeight(20);
+            selectedImage.setFitWidth(20);
+            selectedImage.setFitHeight(20);
+
+
+            legendBox.getChildren().addAll(ableImage, ableLabel, unableImage, unableLabel, selectedImage, selectedLabel);
+
+
+            Dialog<Integer> dialog = new Dialog<>();
+            dialog.setTitle("Seleccion de Asiento");
+
+
+            VBox contentBox = new VBox(10);
+            contentBox.getChildren().addAll(gridPane, legendBox);
+
+            dialog.getDialogPane().setContent(contentBox);
+
+            ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
+            ButtonType reservar = new ButtonType("Reservar", ButtonBar.ButtonData.OK_DONE);
+
+            dialog.getDialogPane().getButtonTypes().add(noReservar);
+            dialog.getDialogPane().getButtonTypes().add(reservar);
+```
+
+  <p align="center"> <br>
     <img src="./images/Asiento-Reserva-Seleccion.png" alt="Login Screen">
-  </p>
+  </p> <br>
 
-Apartado que aparecera al hacer una reserva para `seleccionar nuestro asiento` preferido del avion, incluyendo
-una leyenda que indica el significado de los Iconos
-
-### PDF Descarga Screen
+``` java
+            dialog.setResultConverter(buttonType -> {
+                // Han aceptado la reserva?
+                if (buttonType == reservar) {
+                    int selectedAsiento = selectedSeat[0];
+                    
+                    // Han seleccionado un asiento?
+                    if (selectedAsiento != -1) {
+                        try {
+                            int outReserva = Gestioner.reservarVuelo(Getter.getUsernameID(GlobalData.userName), vueloID, selectedAsiento);
+                            // Se ha reservado?
+                            if (outReserva != 0) {
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setTitle("Vuelo Reservado");
+                                alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
+                                alert.setResizable(false);
+                                alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
+                                ButtonType noThanksButton = new ButtonType("No, Gracias");
+                                ButtonType downloadButton = new ButtonType("Descargar");
+                                alert.getButtonTypes().setAll(noThanksButton, downloadButton);
+                                Optional<ButtonType> alertResult = alert.showAndWait();
+                                ButtonType button = alertResult.orElse(ButtonType.CANCEL);
+                                // Quieren descargar el PDF?
+                                if (button == downloadButton) {
+                                    descargarJustificante(Getter.getReservaInfo(outReserva));
+                                }
+```
 
   <p align="center">
     <img src="./images/PDF-Download-Screen.png" alt="Login Screen">
   </p>
 
-Ventana de alerta que nos preguntara si queremos `descargar un PDF como justificante`
+``` java
+                                loadVuelos();
+                            } else {
+                                Alert fin = new Alert(AlertType.ERROR);
+                                fin.setTitle("PDF");
+                                fin.setHeaderText("Operación Cancelada");
+                                fin.show();
+                            }
+                            return outReserva;
+                        } catch (SQLException e) {
+                            Alert sqlerror = new Alert(AlertType.ERROR);
+                            sqlerror.setTitle("ERROR");
+                            sqlerror.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+                            sqlerror.show();
+                        }
+                    } else {
+                        Alert fin = new Alert(AlertType.ERROR);
+                        fin.setTitle("Selección de Asiento");
+                        fin.setHeaderText("Operación Cancelada");
+                        fin.show();
+                    }
+                }
+                return null;
+            });
+            dialog.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No se ha seleccionado ningún vuelo.");
+            alert.show();
+        }
 
-### Ejemplo PDF
+    }
+```
+
+
+#### Generar el PDF
+
+``` java
+    /**
+     * Generar un justificante del vuelo con formato PDF
+     *
+     * @param pdfText  Texto del PDF
+     * @param savePath Ruta donde se guarda el PDF
+     * @return True si el PDF se ha guardado exitosamente, False de lo contrario
+     */
+    public static boolean createPDF(String pdfText, String savePath) {
+        Document PDFdocument = new Document();
+        try {
+            if (!savePath.contains(".pdf"))
+                savePath += ".pdf";
+            PdfWriter.getInstance(PDFdocument, new FileOutputStream(savePath));
+            PDFdocument.open();
+            Image topImage = Image.getInstance(new URL("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/header.png"));
+            topImage.setAlignment(Element.ALIGN_CENTER);
+            topImage.scaleToFit(500, 300);
+            PDFdocument.add(topImage);
+            Font titleFont = new Font(Font.FontFamily.HELVETICA, 25, Font.BOLD);
+            Paragraph titleParagraph = new Paragraph("Justificante de Vuelo", titleFont);
+            titleParagraph.setAlignment(Element.ALIGN_CENTER);
+            titleParagraph.setSpacingBefore(60);
+            titleParagraph.setSpacingAfter(60);
+            PDFdocument.add(titleParagraph);
+            Font infoFont = new Font(Font.FontFamily.HELVETICA, 18);
+            Paragraph infoParagraph = new Paragraph(pdfText, infoFont);
+            infoParagraph.setAlignment(Element.ALIGN_CENTER);
+            infoParagraph.setSpacingAfter(20);
+            PDFdocument.add(infoParagraph);
+            String qrCodeUrl = "https://github.com/Zenin0/Proyecto-DAM";
+            Image qrCodeImage = Image.getInstance("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrCodeUrl);
+            qrCodeImage.setAlignment(Element.ALIGN_CENTER);
+            qrCodeImage.scaleAbsolute(150, 150);
+            float qrCodeX = (PDFdocument.getPageSize().getWidth() - qrCodeImage.getScaledWidth()) / 2;
+            qrCodeImage.setAbsolutePosition(qrCodeX, 50);
+            PDFdocument.add(qrCodeImage);
+            PDFdocument.close();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+```
 
   <p align="center">
     <img src="./images/PDF-Example.png" alt="Login Screen">
   </p>
-
-`PDF` de ejemplo generado a partir de una reserva
 
 ### Mis Reservas Screen
 
