@@ -61,6 +61,8 @@ de datos, y `JavaFX` para el apartado de GUI.
 * [![JavaFX](https://img.shields.io/badge/javafx-ED8B00?style=for-the-badge)](https://openjfx.io/)
 * [![MySql](https://img.shields.io/badge/MYsql-3670A0?style=for-the-badge)](https://www.mysql.com/)
 
+Ademas de `JavaDoc` con explicaciones del codigo y sus funciones
+
 <!-- Ejemplos de uso -->
 
 ## Uso
