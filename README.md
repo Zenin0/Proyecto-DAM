@@ -65,16 +65,148 @@ de datos, y `JavaFX` para el apartado de GUI.
 
 ## Uso
 
-### Login Screen
+
+### Ventana de Registro
+
+Apartado de la App donde se gestionará el `registro de nuevos usuarios`, tanto `usuarios normales`
+como `usuarios administradores` (Marcando la casilla administrador) haciendo que pida la contraseña de 
+administradores (root).
+
+  <p align="center">
+    <img src="./images/Register-Screen.png" alt="Login Screen">
+  </p>
+
+#### Parte del controlador
+
+``` java
+    /**
+     * Funcion para registrar un usuario
+     *
+     * @see Gestioner#registrar(String, String, String, String, String, boolean)
+     */
+    private void registrar() {
+        // Todo los campos llenos?
+        if (!this.usuReg.getText().isEmpty() || !this.usuNombre.getText().isEmpty() || !this.usuApellidos.getText().isEmpty() || !this.passReg1.getText().isEmpty() || !this.passReg2.getText().isEmpty()) {
+            // Se ha registrado?
+            if (Gestioner.registrar(this.usuReg.getText(), this.usuNombre.getText(), this.usuApellidos.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
+                Vaciar los inputs
+                this.usuReg.setText("");
+                this.usuNombre.setText("");
+                this.usuApellidos.setText("");
+                this.passReg1.setText("");
+                this.passReg2.setText("");
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Usuario");
+                dialog.setHeaderText("Usuario creado correctamente");
+                dialog.show();
+            } else {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText("Este Usuario y esta contraseña ya existen");
+                dialog.show();
+            }
+        } else {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setHeaderText("Rellene todos los campos");
+            dialog.show();
+        }
+    }
+```
+
+#### Parte logica del registro
+
+``` java
+    /**
+     * Registrar un usuario
+     *
+     * @param Usuario Nombre de usuario
+     * @param Pass1   Contraseña 1
+     * @param Pass2   Contraseña 2
+     * @param admin   Checkbox de Administrador
+     * @return Si se ha creado o si no
+     * @see MD5Hasher#getMd5()
+     */
+    public static boolean registrar(String Usuario, String nombre, String apellidos, String Pass1, String Pass2, boolean admin) {
+        int id;
+        try {
+            // Contraseñas iguales?
+            if (!Pass1.equals(Pass2)) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText("Las contraseñas no coinciden");
+                dialog.show();
+                return false;
+            } else {
+                // Existe ya el usuario?
+                MD5Hasher md5 = new MD5Hasher(Pass1);
+                String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
+                PreparedStatement checkStatement = App.con.prepareStatement(query);
+                checkStatement.setString(1, Usuario);
+                checkStatement.setString(2, md5.getMd5());
+                ResultSet resultSet = checkStatement.executeQuery();
+                resultSet.next();
+                int count = resultSet.getInt(1);
+
+                if (count > 0) {
+                    return false;
+                } else {
+                    // Ha marcado la casilla Administrador?
+                    if (admin) {
+                        // La contraseña introducida == root?
+                        if (!new MD5Hasher(new PassDialog().showAndWait().get()).getMd5().equals(new MD5Hasher("root").getMd5())) {
+                            Alert dialog = new Alert(AlertType.ERROR);
+                            dialog.setTitle("ERROR");
+                            dialog.setHeaderText("Contraseña de administrador incorrecta");
+                            dialog.show();
+                            return false;
+                        }
+                    }
+
+                    String test = "SELECT max(ID_Usuario) FROM Usuarios";
+                    PreparedStatement prst = App.con.prepareStatement(test);
+                    ResultSet resulttest = prst.executeQuery();
+                    if (resulttest.next()) {
+                        id = resulttest.getInt(1);
+                        String consulta = "INSERT INTO Usuarios (ID_Usuario, Nombre_Usuario, Nombre, Apellidos, Pass, is_Admin) VALUES (?, ?, ?, ?, ?, ?)";
+                        PreparedStatement insertStatement = App.con.prepareStatement(consulta);
+                        insertStatement.setInt(1, id + 1);
+                        insertStatement.setString(2, Usuario);
+                        insertStatement.setString(3, nombre);
+                        insertStatement.setString(4, apellidos);
+                        insertStatement.setString(5, md5.getMd5());
+                        insertStatement.setBoolean(6, admin);
+                        insertStatement.executeUpdate();
+                        return true;
+                    }
+
+                }
+            }
+
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+
+        return false;
+    }
+
+```
+
+
+### Ventana de Login
+
+Apartado de la App donde se hará y gestionará el `inicio de sesión`, en el que en función de el `tipo de usuario` que hace
+login se redirigirá al `apartado de los administradores` o al `apartado de usuarios normales`.
 
   <p align="center">
     <img src="./images/Login-Screen.png" alt="Login Screen">
   </p>
 
-Apartado donde se hara el `inicio de sesión`, en el que en funcion de el tipo de usuario que hace login se redirigira al
-apartado de los administradores o al apartado de usuarios normales
-
 #### Parte del controlador
+
 ``` java
     /**
      * Login de los usuarios
@@ -84,28 +216,30 @@ apartado de los administradores o al apartado de usuarios normales
     private void login() throws IOException, SQLException {
 
         Alert dialog = new Alert(AlertType.CONFIRMATION);
-        // Login de un usuario Administrador
-        if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 1) {
+        int res = Gestioner.login(this.usuLog.getText(), this.passLog.getText());
+        // Es administrador o usuario normal?
+        if (res == 1) {
             dialog.setTitle("¡Login correcto!");
             dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
             dialog.show();
             App.setRoot("inicio_admin");
-        // Login de un usuario Normal
-        } else if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 0) {
+        } else if (res == 0) {
             dialog.setTitle("¡Login correcto!");
             dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
             dialog.show();
             App.setRoot("inicio_user");
-        // Fallo del Login
+        // Error de Login
         } else {
-            dialog.setTitle("Login Incorrecto");
-            dialog.setHeaderText("Inicio de sesión incorrecto");
-            dialog.show();
+            Alert error = new Alert(AlertType.ERROR);
+            error.setTitle("Login Incorrecto");
+            error.setHeaderText("Inicio de sesión incorrecto");
+            error.show();
         }
     }
 ```
 
 #### Parte logica del login
+
 ``` java
     /**
      * Login de los usuarios
@@ -117,7 +251,8 @@ apartado de los administradores o al apartado de usuarios normales
      */
     public static int login(String usuario, String pass) {
         try {
-
+            
+            // Existe el usuario?
             MD5Hasher md5 = new MD5Hasher(pass);
             String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
             PreparedStatement checkStatement = App.con.prepareStatement(query);
@@ -133,6 +268,7 @@ apartado de los administradores o al apartado de usuarios normales
                 checkStatement.setString(2, md5.getMd5());
                 resultSet = checkStatement.executeQuery();
                 resultSet.next();
+                // Es administrador o usuario normal?
                 if (resultSet.getInt(1) == 1) {
                     GlobalData.userName = usuario;
                     return 1;
@@ -152,89 +288,144 @@ apartado de los administradores o al apartado de usuarios normales
         return -1;
     }
 ```
-### Register Screen
+
+### Añadir Vuelo Screen
+
+Apartado donde se gestionará el `añadido de nuevos vuelos`.
 
   <p align="center">
-    <img src="./images/Register-Screen.png" alt="Login Screen">
+    <img src="./images/Add-Vuelo.png" alt="Login Screen">
   </p>
 
+#### Cambiar la ventana para añadir un vuelo
+```java 
+    /**
+     * Cambiar al modo a añadir un Vuelo
+     *
+     * @see Getter
+     */
+    private void menuAddVuelo() throws SQLException {
+        this.avionesList.setVisible(false);
+        this.delAvionButton.setDisable(false);
+        this.delVueloButton.setDisable(false);
+        this.delVueloButton.setDisable(false);
+        this.addVueloButton.setDisable(true);
+        this.addCiudadButton.setDisable(false);
+        this.addAvionButton.setDisable(false);
+        this.menuCiudadesSalida.getItems().clear();
+        this.menuCiudadesDestino.getItems().clear();
+        this.menuAviones.getItems().clear();
+        // Cargar las ciudades en el menu Ciudad Destino
+        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+            MenuItem item = new MenuItem(ciudad);
+            item.setOnAction(event -> menuCiudadesDestino.setText(item.getText()));
+            menuCiudadesDestino.getItems().add(item);
+        }
+        // Cargar las ciudades en el menu Ciudad Salida
+        menuCiudadesDestino.setPopupSide(Side.BOTTOM);
+        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+            MenuItem item = new MenuItem(ciudad);
+            item.setOnAction(event -> menuCiudadesSalida.setText(item.getText()));
+            menuCiudadesSalida.getItems().add(item);
+        }
+        // Cargar las aviones en el menu Aviones
+        menuCiudadesSalida.setPopupSide(Side.BOTTOM);
+        for (String avion : Getter.getlistaAvionesStrings()) {
+            MenuItem item = new MenuItem(avion);
+            item.setOnAction(event -> menuAviones.setText(item.getText()));
+            menuAviones.getItems().add(item);
+        }
+        menuAviones.setPopupSide(Side.BOTTOM);
+        this.menuCiudadesDestino.setVisible(true);
+        this.menuCiudadesSalida.setVisible(true);
+        this.ciudadSalidaVueloLabel.setVisible(true);
+        this.ciudadDestinoVueloLabel.setVisible(true);
+        this.menuAviones.setVisible(true);
+        this.avionVueloLabel.setVisible(true);
+        this.aceptarButtonVuelo.setVisible(true);
+        this.fechaLabel.setVisible(true);
+        this.fechaDatePicker.setVisible(true);
+        this.nombreAvionLabel.setVisible(false);
+        this.nombreAvionField.setVisible(false);
+        this.aceptarButtonAvion.setVisible(false);
+        this.capacidadLabel.setVisible(false);
+        this.capacidadField.setVisible(false);
+        this.nombreCiudadLabel.setVisible(false);
+        this.nombreCiudadField.setVisible(false);
+        this.nombrePaisLabel.setVisible(false);
+        this.nombrePaisField.setVisible(false);
+        this.aceptarButtonCiudad.setVisible(false);
+        this.vuelosList.setVisible(false);
+        this.deleteVueloButton.setVisible(false);
+        this.deleteAvionButton.setVisible(false);
 
+    }
+
+```
+#### Parte del controlador donde ejecutamos el login
 
 ``` java
     /**
-     * Registrar un usuario
+     * Funcion para añadir un vuelo
      *
-     * @param Usuario Nombre de usuario
-     * @param Pass1   Contraseña 1
-     * @param Pass2   Contraseña 2
-     * @param admin   Checkbox de Administrador
-     * @return Si se ha creado o si no
-     * @see MD5Hasher#getMd5()
+     * @see Gestioner#registrarVuelo(String, String, int, String)
      */
-    public static boolean registrar(String Usuario, String nombre, String apellidos, String Pass1, String Pass2, boolean admin) {
+    private void addVuelo() throws ParseException, SQLException {
+        // ID del avion
+        String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
+        int numero = Integer.parseInt(tokens[0]);
+        LocalDate localDate = fechaDatePicker.getValue();
+        // Se ha creado el vuelo?
+        if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), numero, String.valueOf(localDate))) {
+            Alert dialog = new Alert(AlertType.CONFIRMATION);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Vuelo creada correctamente");
+            dialog.show();
+        } else {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Algo ha fallado");
+            dialog.show();
+        }
+    }
+```
+
+#### Parte logica
+
+```java
+    /**
+     * Registrar un vuelo
+     *
+     * @param CiudadSalida  Nombre de la ciudad de Salida
+     * @param CiudadDestino Nombre de la ciuada de Destino
+     * @param idAvion       ID del avión
+     * @param fecha         Fecha de salida
+     * @return Si se ha creado o si no
+     */
+    public static boolean registrarVuelo(String CiudadSalida, String CiudadDestino, int idAvion, String fecha) throws ParseException {
+
+        int idAvionInt;
         int id;
         try {
-            if (!Pass1.equals(Pass2)) {
-                Alert dialog = new Alert(AlertType.ERROR);
-                dialog.setTitle("ERROR");
-                dialog.setHeaderText("Las contraseñas no coinciden");
-                dialog.show();
-                return false;
-            } else {
-                MD5Hasher md5 = new MD5Hasher(Pass1);
-                String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
-                PreparedStatement checkStatement = App.con.prepareStatement(query);
-                checkStatement.setString(1, Usuario);
-                checkStatement.setString(2, md5.getMd5());
-                ResultSet resultSet = checkStatement.executeQuery();
-                resultSet.next();
-                int count = resultSet.getInt(1);
-
-                if (count > 0) {
-                    Alert dialog = new Alert(AlertType.ERROR);
-                    dialog.setTitle("ERROR");
-                    dialog.setHeaderText("Este Usuario y esta contraseña ya existen");
-                    dialog.show();
-                    return false;
-
-                } else {
-
-                    if (admin) {
-                        if (!new MD5Hasher(new PassDialog().showAndWait().get()).getMd5().equals(new MD5Hasher("root").getMd5())) {
-                            Alert dialog = new Alert(AlertType.ERROR);
-                            dialog.setTitle("ERROR");
-                            dialog.setHeaderText("Contraseña de administrador incorrecta");
-                            dialog.show();
-                            return false;
-                        }
-                    }
-
-                    String test = "SELECT max(ID_Usuario) FROM Usuarios";
-                    PreparedStatement prst = App.con.prepareStatement(test);
-                    ResultSet resulttest = prst.executeQuery();
-                    if (resulttest.next()) {
-                        id = resulttest.getInt(1);
-
-                        String consulta = "INSERT INTO Usuarios (ID_Usuario, Nombre_Usuario, Nombre, Apellidos, Pass, is_Admin) VALUES (?, ?, ?, ?, ?, ?)";
-                        PreparedStatement insertStatement = App.con.prepareStatement(consulta);
-                        insertStatement.setInt(1, id + 1);
-                        insertStatement.setString(2, Usuario);
-                        insertStatement.setString(3, nombre);
-                        insertStatement.setString(4, apellidos);
-                        insertStatement.setString(5, md5.getMd5());
-                        insertStatement.setBoolean(6, admin);
-                        insertStatement.executeUpdate();
-
-                        Alert dialog = new Alert(AlertType.CONFIRMATION);
-                        dialog.setTitle("Usuario");
-                        dialog.setHeaderText("Usuario creado correctamente");
-                        dialog.show();
-                        return true;
-                    }
-
-                }
+            idAvionInt = idAvion;
+            String test = "SELECT max(ID_Vuelo) FROM Vuelos";
+            PreparedStatement prst = App.con.prepareStatement(test);
+            ResultSet resulttest = prst.executeQuery();
+            if (resulttest.next()) {
+                id = resulttest.getInt(1);
+                String consulta = "INSERT INTO Vuelos (ID_Vuelo, Ciudad_Salida, Ciudad_Destino, ID_Avion, Fecha_Salida, Creada) VALUES (? , ?, ?, ?, ?, ?)";
+                PreparedStatement insertStatement = App.con.prepareStatement(consulta);
+                insertStatement.setInt(1, id + 1);
+                insertStatement.setInt(2, Getter.getIDCiudad(CiudadSalida));
+                insertStatement.setInt(3, Getter.getIDCiudad(CiudadDestino));
+                insertStatement.setInt(4, idAvionInt);
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date date = dateFormat.parse(fecha);
+                insertStatement.setDate(5, new java.sql.Date(date.getTime()));
+                insertStatement.setString(6, GlobalData.userName);
+                insertStatement.executeUpdate();
+                return true;
             }
-
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
@@ -244,29 +435,123 @@ apartado de los administradores o al apartado de usuarios normales
 
         return false;
     }
-
 ```
 
-Apartado donde se hará el `registro de un usuario`, marcando o no la casilla de admnistrador, lo que hará que salte un
-prompt que pedira la contraseña de administrador de la aplicacion (`root`)
-
-### Añadir Vuelo Screen
-
-  <p align="center">
-    <img src="./images/Add-Vuelo.png" alt="Login Screen">
-  </p>
-
-
-Apartado donde `crearemos un nuevo vuelo`, en base a la `ciudad de salida`
-la `ciudad de destino` un `Avion` y una `fecha`
-
 ### Eliminar Vuelo Screen
+
+Apartado donde se gestionará el `borrado de vuelos`.
 
   <p align="center">
     <img src="./images/Del-Vuelo.png" alt="Login Screen">
   </p>
 
-Apartado donde podremos `borrar un vuelo` de la aplicación
+#### Cambiar la ventana para borrar el vuelo
+
+```java
+    /**
+     * Cambiar al modo a Borrar un vuelo
+     */
+    private void menuDelVuelo() throws SQLException {
+        listarVuelos();
+        this.avionesList.setVisible(false);
+        this.delAvionButton.setDisable(false);
+        this.delVueloButton.setDisable(true);
+        this.addVueloButton.setDisable(false);
+        this.addCiudadButton.setDisable(false);
+        this.addAvionButton.setDisable(false);
+        this.vuelosList.setVisible(true);
+        this.deleteVueloButton.setVisible(true);
+        this.menuCiudadesDestino.setVisible(false);
+        this.menuCiudadesSalida.setVisible(false);
+        this.ciudadSalidaVueloLabel.setVisible(false);
+        this.ciudadDestinoVueloLabel.setVisible(false);
+        this.menuAviones.setVisible(false);
+        this.avionVueloLabel.setVisible(false);
+        this.aceptarButtonVuelo.setVisible(false);
+        this.fechaLabel.setVisible(false);
+        this.fechaDatePicker.setVisible(false);
+        this.nombreAvionLabel.setVisible(false);
+        this.nombreAvionField.setVisible(false);
+        this.aceptarButtonAvion.setVisible(false);
+        this.capacidadLabel.setVisible(false);
+        this.capacidadField.setVisible(false);
+        this.nombreCiudadLabel.setVisible(false);
+        this.nombreCiudadField.setVisible(false);
+        this.nombrePaisLabel.setVisible(false);
+        this.nombrePaisField.setVisible(false);
+        this.aceptarButtonCiudad.setVisible(false);
+        this.deleteAvionButton.setVisible(false);
+
+    }
+```
+
+#### Parte necesaria para cargar los vuelos
+
+```java
+    /**
+     * Funcion para listar los vuelos y meterlos en la lista
+     *
+     * @see Getter
+     */
+    private void listarAviones() throws SQLException {
+        this.avionesList.getItems().clear();
+        for (String avion : Getter.getlistaAvionesStrings()) {
+            String[] avionParts = avion.replaceAll(" ", "").split("-");
+            this.avionesList.getItems().add(avionParts[0] + " - " + avionParts[1] + " - " + avionParts[2]);
+        }
+    }
+```
+
+#### Parte del controlador que ejecuta el borrado
+```java
+    /**
+     * Funcion para eliminar un avión
+     *
+     * @see Gestioner#eliminarAvion(int)
+     */
+    public void delAvion() throws SQLException {
+        String[] vueloParts = this.avionesList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
+        // Se ha borrado el vuelo?
+        if (Gestioner.eliminarAvion(Integer.parseInt(vueloParts[0]))) {
+            Alert dialog = new Alert(AlertType.CONFIRMATION);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Vuelo eliminado correctamente");
+            dialog.show();
+        } else {
+            Alert dialog = new Alert(AlertType.WARNING);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Algo ha fallado");
+            dialog.show();
+        }
+        listarAviones();
+    }
+```
+
+#### Parte logica
+```java
+    /**
+     * Eliminar un vuelo
+     *
+     * @param ID ID del vuelo
+     * @return si se ha creado o si no true|false
+     */
+    public static boolean eliminarVuelo(int ID) {
+        try {
+            String query = "DELETE FROM Vuelos WHERE ID_Vuelo = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
+            checkStatement.setInt(1, ID);
+            checkStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+
+        return false;
+    }
+```
 
 ### Añadir Ciudad Screen
 

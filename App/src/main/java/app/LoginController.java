@@ -129,20 +129,22 @@ public class LoginController implements Initializable {
     private void login() throws IOException, SQLException {
 
         Alert dialog = new Alert(AlertType.CONFIRMATION);
-        if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 1) {
+        int res = Gestioner.login(this.usuLog.getText(), this.passLog.getText());
+        if (res == 1) {
             dialog.setTitle("¡Login correcto!");
             dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
             dialog.show();
             App.setRoot("inicio_admin");
-        } else if (Gestioner.login(this.usuLog.getText(), this.passLog.getText()) == 0) {
+        } else if (res == 0) {
             dialog.setTitle("¡Login correcto!");
             dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
             dialog.show();
             App.setRoot("inicio_user");
         } else {
-            dialog.setTitle("Login Incorrecto");
-            dialog.setHeaderText("Inicio de sesión incorrecto");
-            dialog.show();
+            Alert error = new Alert(AlertType.ERROR);
+            error.setTitle("Login Incorrecto");
+            error.setHeaderText("Inicio de sesión incorrecto");
+            error.show();
         }
     }
 

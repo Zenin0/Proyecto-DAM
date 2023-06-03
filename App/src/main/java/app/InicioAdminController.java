@@ -238,7 +238,7 @@ public class InicioAdminController implements Initializable {
         this.avionesList.getItems().clear();
         for (String avion : Getter.getlistaAvionesStrings()) {
             String[] avionParts = avion.replaceAll(" ", "").split("-");
-            this.avionesList.getItems().add(avionParts[0] + " - " + avionParts[1] + " - " +avionParts[2]);
+            this.avionesList.getItems().add(avionParts[0] + " - " + avionParts[1] + " - " + avionParts[2]);
         }
     }
 
@@ -295,6 +295,11 @@ public class InicioAdminController implements Initializable {
             Alert dialog = new Alert(AlertType.CONFIRMATION);
             dialog.setTitle("Vuelo");
             dialog.setHeaderText("Vuelo creada correctamente");
+            dialog.show();
+        } else {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Algo ha fallado");
             dialog.show();
         }
 

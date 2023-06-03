@@ -140,10 +140,6 @@ public class Gestioner {
                 int count = resultSet.getInt(1);
 
                 if (count > 0) {
-                    Alert dialog = new Alert(AlertType.ERROR);
-                    dialog.setTitle("ERROR");
-                    dialog.setHeaderText("Este Usuario y esta contraseña ya existen");
-                    dialog.show();
                     return false;
 
                 } else {
@@ -173,11 +169,6 @@ public class Gestioner {
                         insertStatement.setString(5, md5.getMd5());
                         insertStatement.setBoolean(6, admin);
                         insertStatement.executeUpdate();
-
-                        Alert dialog = new Alert(AlertType.CONFIRMATION);
-                        dialog.setTitle("Usuario");
-                        dialog.setHeaderText("Usuario creado correctamente");
-                        dialog.show();
                         return true;
                     }
 

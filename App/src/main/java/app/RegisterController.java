@@ -114,6 +114,15 @@ public class RegisterController implements Initializable {
                 this.usuApellidos.setText("");
                 this.passReg1.setText("");
                 this.passReg2.setText("");
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Usuario");
+                dialog.setHeaderText("Usuario creado correctamente");
+                dialog.show();
+            } else {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText("Este Usuario y esta contraseña ya existen");
+                dialog.show();
             }
         } else {
             Alert dialog = new Alert(AlertType.ERROR);
