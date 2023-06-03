@@ -260,7 +260,6 @@ public class Gestioner {
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText("Esta ciudad ya esta registrada");
                 dialog.show();
-                return false;
 
             } else {
                 String test = "SELECT max(ID_Ciudad) FROM Ciudades";

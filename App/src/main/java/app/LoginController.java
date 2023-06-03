@@ -127,24 +127,30 @@ public class LoginController implements Initializable {
      * @see Gestioner#login(String, String)
      */
     private void login() throws IOException, SQLException {
-
-        Alert dialog = new Alert(AlertType.CONFIRMATION);
-        int res = Gestioner.login(this.usuLog.getText(), this.passLog.getText());
-        if (res == 1) {
-            dialog.setTitle("¡Login correcto!");
-            dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
-            dialog.show();
-            App.setRoot("inicio_admin");
-        } else if (res == 0) {
-            dialog.setTitle("¡Login correcto!");
-            dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
-            dialog.show();
-            App.setRoot("inicio_user");
-        } else {
+        if (this.usuLog.getText().isEmpty() || this.passLog.getText().isEmpty()) {
             Alert error = new Alert(AlertType.ERROR);
-            error.setTitle("Login Incorrecto");
-            error.setHeaderText("Inicio de sesión incorrecto");
+            error.setTitle("Login");
+            error.setHeaderText("Rellene todos los campost");
             error.show();
+        } else {
+            Alert dialog = new Alert(AlertType.CONFIRMATION);
+            int res = Gestioner.login(this.usuLog.getText(), this.passLog.getText());
+            if (res == 1) {
+                dialog.setTitle("¡Login correcto!");
+                dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
+                dialog.show();
+                App.setRoot("inicio_admin");
+            } else if (res == 0) {
+                dialog.setTitle("¡Login correcto!");
+                dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
+                dialog.show();
+                App.setRoot("inicio_user");
+            } else {
+                Alert error = new Alert(AlertType.ERROR);
+                error.setTitle("Login Incorrecto");
+                error.setHeaderText("Inicio de sesión incorrecto");
+                error.show();
+            }
         }
     }
 

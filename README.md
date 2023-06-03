@@ -195,7 +195,6 @@ administradores (root).
 
 ```
 
-
 ### Ventana de Login
 
 Apartado de la App donde se hará y gestionará el `inicio de sesión`, en el que en función de el `tipo de usuario` que hace
@@ -214,26 +213,32 @@ login se redirigirá al `apartado de los administradores` o al `apartado de usua
      * @see Gestioner#login(String, String)
      */
     private void login() throws IOException, SQLException {
-
-        Alert dialog = new Alert(AlertType.CONFIRMATION);
-        int res = Gestioner.login(this.usuLog.getText(), this.passLog.getText());
-        // Es administrador o usuario normal?
-        if (res == 1) {
-            dialog.setTitle("¡Login correcto!");
-            dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
-            dialog.show();
-            App.setRoot("inicio_admin");
-        } else if (res == 0) {
-            dialog.setTitle("¡Login correcto!");
-            dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
-            dialog.show();
-            App.setRoot("inicio_user");
-        // Error de Login
-        } else {
+        // Estan todos los campos llenos?
+        if (this.usuLog.getText().isEmpty() || this.passLog.getText().isEmpty()) {
             Alert error = new Alert(AlertType.ERROR);
-            error.setTitle("Login Incorrecto");
-            error.setHeaderText("Inicio de sesión incorrecto");
+            error.setTitle("Login");
+            error.setHeaderText("Rellene todos los campost");
             error.show();
+        } else {
+            Alert dialog = new Alert(AlertType.CONFIRMATION);
+            int res = Gestioner.login(this.usuLog.getText(), this.passLog.getText());
+            // Es Administrador, o Usuario normal?
+            if (res == 1) {
+                dialog.setTitle("¡Login correcto!");
+                dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
+                dialog.show();
+                App.setRoot("inicio_admin");
+            } else if (res == 0) {
+                dialog.setTitle("¡Login correcto!");
+                dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
+                dialog.show();
+                App.setRoot("inicio_user");
+            } else {
+                Alert error = new Alert(AlertType.ERROR);
+                error.setTitle("Login Incorrecto");
+                error.setHeaderText("Inicio de sesión incorrecto");
+                error.show();
+            }
         }
     }
 ```
@@ -298,6 +303,7 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
   </p>
 
 #### Cambiar la ventana para añadir un vuelo
+
 ```java 
     /**
      * Cambiar al modo a añadir un Vuelo
@@ -360,9 +366,9 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
         this.deleteAvionButton.setVisible(false);
 
     }
-
 ```
-#### Parte del controlador donde ejecutamos el login
+
+#### Parte del controlador donde ejecutamos el añadido del vuelo
 
 ``` java
     /**
@@ -371,21 +377,28 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
      * @see Gestioner#registrarVuelo(String, String, int, String)
      */
     private void addVuelo() throws ParseException, SQLException {
-        // ID del avion
-        String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
-        int numero = Integer.parseInt(tokens[0]);
-        LocalDate localDate = fechaDatePicker.getValue();
-        // Se ha creado el vuelo?
-        if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), numero, String.valueOf(localDate))) {
-            Alert dialog = new Alert(AlertType.CONFIRMATION);
-            dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Vuelo creada correctamente");
-            dialog.show();
-        } else {
+        // Todos los campos llenos?
+        if (this.menuCiudadesSalida.getText().equals("Ciudades Salida") || this.menuCiudadesDestino.getText().equals("Ciudades Destino") || this.menuAviones.getText().equals("Aviones") || this.fechaDatePicker.getValue() == null) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Algo ha fallado");
+            dialog.setHeaderText("Rellene todos los campos");
             dialog.show();
+        } else {
+            String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
+            int numero = Integer.parseInt(tokens[0]);
+            LocalDate localDate = fechaDatePicker.getValue();
+            // Se ha creado el usuario
+            if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), numero, String.valueOf(localDate))) {
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Vuelo creada correctamente");
+                dialog.show();
+            } else {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Algo ha fallado");
+                dialog.show();
+            }
         }
     }
 ```
@@ -403,7 +416,6 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
      * @return Si se ha creado o si no
      */
     public static boolean registrarVuelo(String CiudadSalida, String CiudadDestino, int idAvion, String fecha) throws ParseException {
-
         int idAvionInt;
         int id;
         try {
@@ -503,6 +515,7 @@ Apartado donde se gestionará el `borrado de vuelos`.
 ```
 
 #### Parte del controlador que ejecuta el borrado
+
 ```java
     /**
      * Funcion para eliminar un avión
@@ -510,24 +523,34 @@ Apartado donde se gestionará el `borrado de vuelos`.
      * @see Gestioner#eliminarAvion(int)
      */
     public void delAvion() throws SQLException {
-        String[] vueloParts = this.avionesList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
-        // Se ha borrado el vuelo?
-        if (Gestioner.eliminarAvion(Integer.parseInt(vueloParts[0]))) {
-            Alert dialog = new Alert(AlertType.CONFIRMATION);
-            dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Vuelo eliminado correctamente");
-            dialog.show();
-        } else {
+        // Todos los campos llenos?
+        if (this.avionesList.getSelectionModel().isEmpty()) {
             Alert dialog = new Alert(AlertType.WARNING);
             dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Algo ha fallado");
+            dialog.setHeaderText("Rellene todos los campos");
             dialog.show();
+        } else {
+            String[] vueloParts = this.avionesList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
+            // Se ha borrado el vuelo?
+            if (Gestioner.eliminarAvion(Integer.parseInt(vueloParts[0]))) {
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Vuelo eliminado correctamente");
+                dialog.show();
+            } else {
+                Alert dialog = new Alert(AlertType.WARNING);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Algo ha fallado");
+                dialog.show();
+            }
+            // Cargar los nuevos aviones
+            listarAviones();
         }
-        listarAviones();
     }
 ```
 
 #### Parte logica
+
 ```java
     /**
      * Eliminar un vuelo
@@ -555,9 +578,79 @@ Apartado donde se gestionará el `borrado de vuelos`.
 
 ### Añadir Ciudad Screen
 
+Apartado donde se gestionará el `añadido de nuevas ciudades`.
+
   <p align="center">
     <img src="./images/Add-Ciudad.png" alt="Login Screen">
   </p>
+
+#### Cambiar la ventana para añadir la ciudad
+
+```java
+    /**
+     * Cambiar al modo a añadir Ciudad
+     */
+    private void menuAddCiudad() throws IOException {
+        this.avionesList.setVisible(false);
+        this.delAvionButton.setDisable(false);
+        this.delVueloButton.setDisable(false);
+        this.addVueloButton.setDisable(false);
+        this.addCiudadButton.setDisable(true);
+        this.addAvionButton.setDisable(false);
+        this.nombreCiudadLabel.setVisible(true);
+        this.nombreCiudadField.setVisible(true);
+        this.nombrePaisLabel.setVisible(true);
+        this.nombrePaisField.setVisible(true);
+        this.aceptarButtonCiudad.setVisible(true);
+        this.nombreAvionLabel.setVisible(false);
+        this.nombreAvionField.setVisible(false);
+        this.aceptarButtonAvion.setVisible(false);
+        this.capacidadLabel.setVisible(false);
+        this.capacidadField.setVisible(false);
+        this.menuCiudadesDestino.setVisible(false);
+        this.menuCiudadesSalida.setVisible(false);
+        this.ciudadSalidaVueloLabel.setVisible(false);
+        this.ciudadDestinoVueloLabel.setVisible(false);
+        this.menuAviones.setVisible(false);
+        this.avionVueloLabel.setVisible(false);
+        this.aceptarButtonVuelo.setVisible(false);
+        this.fechaLabel.setVisible(false);
+        this.fechaDatePicker.setVisible(false);
+        this.vuelosList.setVisible(false);
+        this.deleteVueloButton.setVisible(false);
+        this.deleteAvionButton.setVisible(false);
+    }
+```
+
+#### Parte del controlador donde ejecutamos el añadido de ciudad
+
+```java
+    /**
+     * Funcion para añadir una Ciudad
+     *
+     * @see Gestioner#registrarCiudad(String, String)
+     */
+    private void addCiudad() {
+        // Todos los campos llenos?
+        if (this.nombreCiudadField.getText().isEmpty() || this.nombrePaisField.getText().isEmpty()) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("Ciudad");
+            dialog.setHeaderText("Rellene toos los campos");
+            dialog.show();
+        } else {
+            // Se ha registrado?
+            if (Gestioner.registrarCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText())) {
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Ciudad");
+                dialog.setHeaderText("Ciudad creada correctamente");
+                dialog.show();
+                this.nombreCiudadField.setText("");
+            }
+        }
+
+    }
+```
+
 
 Apartado donde `crearemos una ciudad` para la aplicación
 

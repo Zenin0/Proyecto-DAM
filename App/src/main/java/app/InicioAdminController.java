@@ -248,14 +248,20 @@ public class InicioAdminController implements Initializable {
      * @see Gestioner#registrarCiudad(String, String)
      */
     private void addCiudad() {
-        if (Gestioner.registrarCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText())) {
-            Alert dialog = new Alert(AlertType.CONFIRMATION);
+        if (this.nombreCiudadField.getText().isEmpty() || this.nombrePaisField.getText().isEmpty()) {
+            Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("Ciudad");
-            dialog.setHeaderText("Ciudad creada correctamente");
+            dialog.setHeaderText("Rellene toos los campos");
             dialog.show();
-            this.nombreCiudadField.setText("");
+        } else {
+            if (Gestioner.registrarCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText())) {
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Ciudad");
+                dialog.setHeaderText("Ciudad creada correctamente");
+                dialog.show();
+                this.nombreCiudadField.setText("");
+            }
         }
-
     }
 
     /**
@@ -288,22 +294,27 @@ public class InicioAdminController implements Initializable {
      * @see Gestioner#registrarVuelo(String, String, int, String)
      */
     private void addVuelo() throws ParseException, SQLException {
-        String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
-        int numero = Integer.parseInt(tokens[0]);
-        LocalDate localDate = fechaDatePicker.getValue();
-        if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), numero, String.valueOf(localDate))) {
-            Alert dialog = new Alert(AlertType.CONFIRMATION);
-            dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Vuelo creada correctamente");
-            dialog.show();
-        } else {
+        if (this.menuCiudadesSalida.getText().equals("Ciudades Salida") || this.menuCiudadesDestino.getText().equals("Ciudades Destino") || this.menuAviones.getText().equals("Aviones") || this.fechaDatePicker.getValue() == null) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Algo ha fallado");
+            dialog.setHeaderText("Rellene todos los campos");
             dialog.show();
+        } else {
+            String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
+            int numero = Integer.parseInt(tokens[0]);
+            LocalDate localDate = fechaDatePicker.getValue();
+            if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), numero, String.valueOf(localDate))) {
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Vuelo creada correctamente");
+                dialog.show();
+            } else {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Algo ha fallado");
+                dialog.show();
+            }
         }
-
-
     }
 
     /**
@@ -333,19 +344,26 @@ public class InicioAdminController implements Initializable {
      * @see Gestioner#eliminarAvion(int)
      */
     public void delAvion() throws SQLException {
-        String[] vueloParts = this.avionesList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
-        if (Gestioner.eliminarAvion(Integer.parseInt(vueloParts[0]))) {
-            Alert dialog = new Alert(AlertType.CONFIRMATION);
-            dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Vuelo eliminado correctamente");
-            dialog.show();
-        } else {
+        if (this.avionesList.getSelectionModel().isEmpty()) {
             Alert dialog = new Alert(AlertType.WARNING);
             dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Algo ha fallado");
+            dialog.setHeaderText("Rellene todos los campos");
             dialog.show();
+        } else {
+            String[] vueloParts = this.avionesList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
+            if (Gestioner.eliminarAvion(Integer.parseInt(vueloParts[0]))) {
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Vuelo eliminado correctamente");
+                dialog.show();
+            } else {
+                Alert dialog = new Alert(AlertType.WARNING);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Algo ha fallado");
+                dialog.show();
+            }
+            listarAviones();
         }
-        listarAviones();
     }
 
     /**
