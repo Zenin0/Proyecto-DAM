@@ -149,14 +149,7 @@
       <workItem from="1685565631681" duration="6474000" />
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
-      <workItem from="1685784718983" duration="8931000" />
-    </task>
-    <task id="LOCAL-00010" summary="FXMLs updates">
-      <created>1683828650540</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1683828650540</updated>
+      <workItem from="1685784718983" duration="9003000" />
     </task>
     <task id="LOCAL-00011" summary="Updated">
       <created>1683828663706</created>
@@ -494,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685796028861</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="gitignore update">
+      <created>1685796074563</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1685796074564</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
