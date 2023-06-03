@@ -270,21 +270,27 @@ public class InicioAdminController implements Initializable {
      * @see Gestioner#registrarAvion(String, int)
      */
     private void addAvion() {
-        if (Integer.parseInt(this.capacidadField.getText()) > 200) {
+
+        if (this.nombreAvionField.getText().isEmpty() || this.capacidadField.getText().isEmpty()) {
             Alert dialog = new Alert(AlertType.ERROR);
-            dialog.setTitle("Capacidad");
-            dialog.setHeaderText("Lo siento, nuestras aerolienas no pueden disponer de aviones de mas de 200 pasajeros,");
+            dialog.setTitle("Avion");
+            dialog.setHeaderText("Rellene todos los campos.");
             dialog.show();
         } else {
-            if (Gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.capacidadField.getText()))) {
-                Alert dialog = new Alert(AlertType.CONFIRMATION);
-                dialog.setTitle("Avión");
-                dialog.setHeaderText("Avión creada correctamente");
+            if (Integer.parseInt(this.capacidadField.getText()) > 200) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("Capacidad");
+                dialog.setHeaderText("Lo siento, nuestras aerolienas no pueden disponer de aviones de mas de 200 pasajeros,");
                 dialog.show();
-
+            } else {
+                if (Gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.capacidadField.getText()))) {
+                    Alert dialog = new Alert(AlertType.CONFIRMATION);
+                    dialog.setTitle("Avión");
+                    dialog.setHeaderText("Avión creada correctamente");
+                    dialog.show();
+                }
             }
         }
-
     }
 
 

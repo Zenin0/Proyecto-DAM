@@ -21,7 +21,6 @@ public class Getter {
      * @return una ArrayList de las ciudades
      */
     public static ArrayList<String> getlistaCiudadesStrings() throws SQLException {
-
         ArrayList<String> out = new ArrayList<>();
         String query = "SELECT Nombre_Ciudad FROM Ciudades";
         PreparedStatement checkStatement = App.con.prepareStatement(query);

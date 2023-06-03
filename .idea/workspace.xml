@@ -9,14 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="README.md update">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="JavaDoc update">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,28 +153,7 @@
       <workItem from="1685565631681" duration="6474000" />
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
-      <workItem from="1685784718983" duration="5120000" />
-    </task>
-    <task id="LOCAL-00002" summary="Roadmap Updated">
-      <created>1683740998221</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1683740998221</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Use ELiminar Vuelo Screen">
-      <created>1683807835741</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1683807835741</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Reorganización Roadmap, y añaidos apartados nuevos">
-      <created>1683819906983</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1683819906983</updated>
+      <workItem from="1685784718983" duration="7645000" />
     </task>
     <task id="LOCAL-00005" summary="Reorganizacion del codigo y comentarios">
       <created>1683826977803</created>
@@ -500,7 +477,28 @@
       <option name="project" value="LOCAL" />
       <updated>1685786805036</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="README.md update &amp; algunas comprobaciones de campos vacíos">
+      <created>1685789905256</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1685789905256</updated>
+    </task>
+    <task id="LOCAL-00052" summary="README.md update">
+      <created>1685789944865</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1685789944865</updated>
+    </task>
+    <task id="LOCAL-00053" summary="JavaDoc update">
+      <created>1685790137685</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1685790137685</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,8 +523,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Seat Deleted" />
-    <MESSAGE value="Asientos Seleccionables con imagenes" />
     <MESSAGE value="Modificacion de Asientos con seleccion de asientos por imagenes" />
     <MESSAGE value="Updates" />
     <MESSAGE value="Fultrar Vuelos" />
@@ -549,7 +545,9 @@
     <MESSAGE value="Columnas de las Tablas ajustables" />
     <MESSAGE value="IP change and SQL inserts" />
     <MESSAGE value="SQL inserts" />
+    <MESSAGE value="README.md update &amp; algunas comprobaciones de campos vacíos" />
     <MESSAGE value="README.md update" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md update" />
+    <MESSAGE value="JavaDoc update" />
+    <option name="LAST_COMMIT_MESSAGE" value="JavaDoc update" />
   </component>
 </project>

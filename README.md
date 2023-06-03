@@ -65,11 +65,10 @@ de datos, y `JavaFX` para el apartado de GUI.
 
 ## Uso
 
-
 ### Ventana de Registro
 
 Apartado de la App donde se gestionará el `registro de nuevos usuarios`, tanto `usuarios normales`
-como `usuarios administradores` (Marcando la casilla administrador) haciendo que pida la contraseña de 
+como `usuarios administradores` (Marcando la casilla administrador) haciendo que pida la contraseña de
 administradores (root).
 
   <p align="center">
@@ -197,7 +196,8 @@ administradores (root).
 
 ### Ventana de Login
 
-Apartado de la App donde se hará y gestionará el `inicio de sesión`, en el que en función de el `tipo de usuario` que hace
+Apartado de la App donde se hará y gestionará el `inicio de sesión`, en el que en función de el `tipo de usuario` que
+hace
 login se redirigirá al `apartado de los administradores` o al `apartado de usuarios normales`.
 
   <p align="center">
@@ -304,7 +304,7 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
 
 #### Cambiar la ventana para añadir un vuelo
 
-```java 
+``` java 
     /**
      * Cambiar al modo a añadir un Vuelo
      *
@@ -321,20 +321,17 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
         this.menuCiudadesSalida.getItems().clear();
         this.menuCiudadesDestino.getItems().clear();
         this.menuAviones.getItems().clear();
-        // Cargar las ciudades en el menu Ciudad Destino
         for (String ciudad : Getter.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> menuCiudadesDestino.setText(item.getText()));
             menuCiudadesDestino.getItems().add(item);
         }
-        // Cargar las ciudades en el menu Ciudad Salida
         menuCiudadesDestino.setPopupSide(Side.BOTTOM);
         for (String ciudad : Getter.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> menuCiudadesSalida.setText(item.getText()));
             menuCiudadesSalida.getItems().add(item);
         }
-        // Cargar las aviones en el menu Aviones
         menuCiudadesSalida.setPopupSide(Side.BOTTOM);
         for (String avion : Getter.getlistaAvionesStrings()) {
             MenuItem item = new MenuItem(avion);
@@ -405,7 +402,7 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
 
 #### Parte logica
 
-```java
+``` java
     /**
      * Registrar un vuelo
      *
@@ -416,6 +413,7 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
      * @return Si se ha creado o si no
      */
     public static boolean registrarVuelo(String CiudadSalida, String CiudadDestino, int idAvion, String fecha) throws ParseException {
+
         int idAvionInt;
         int id;
         try {
@@ -460,18 +458,24 @@ Apartado donde se gestionará el `borrado de vuelos`.
 #### Cambiar la ventana para borrar el vuelo
 
 ```java
+
+```
+
+#### Parte necesaria para cargar los vuelos
+
+``` java
     /**
      * Cambiar al modo a Borrar un vuelo
      */
-    private void menuDelVuelo() throws SQLException {
-        listarVuelos();
-        this.avionesList.setVisible(false);
-        this.delAvionButton.setDisable(false);
-        this.delVueloButton.setDisable(true);
+    private void menuDelAvion() throws SQLException {
+        listarAviones();
+        this.avionesList.setVisible(true);
+        this.delAvionButton.setDisable(true);
+        this.delVueloButton.setDisable(false);
         this.addVueloButton.setDisable(false);
         this.addCiudadButton.setDisable(false);
         this.addAvionButton.setDisable(false);
-        this.vuelosList.setVisible(true);
+        this.vuelosList.setVisible(false);
         this.deleteVueloButton.setVisible(true);
         this.menuCiudadesDestino.setVisible(false);
         this.menuCiudadesSalida.setVisible(false);
@@ -492,66 +496,32 @@ Apartado donde se gestionará el `borrado de vuelos`.
         this.nombrePaisLabel.setVisible(false);
         this.nombrePaisField.setVisible(false);
         this.aceptarButtonCiudad.setVisible(false);
-        this.deleteAvionButton.setVisible(false);
+        this.deleteAvionButton.setVisible(true);
 
-    }
-```
-
-#### Parte necesaria para cargar los vuelos
-
-```java
-    /**
-     * Funcion para listar los vuelos y meterlos en la lista
-     *
-     * @see Getter
-     */
-    private void listarAviones() throws SQLException {
-        this.avionesList.getItems().clear();
-        for (String avion : Getter.getlistaAvionesStrings()) {
-            String[] avionParts = avion.replaceAll(" ", "").split("-");
-            this.avionesList.getItems().add(avionParts[0] + " - " + avionParts[1] + " - " + avionParts[2]);
-        }
     }
 ```
 
 #### Parte del controlador que ejecuta el borrado
 
-```java
+``` java
     /**
-     * Funcion para eliminar un avión
+     * Funcion para listar los vuelos y meterlos en la lista
      *
-     * @see Gestioner#eliminarAvion(int)
+     * @see Getter
      */
-    public void delAvion() throws SQLException {
-        // Todos los campos llenos?
-        if (this.avionesList.getSelectionModel().isEmpty()) {
-            Alert dialog = new Alert(AlertType.WARNING);
-            dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Rellene todos los campos");
-            dialog.show();
-        } else {
-            String[] vueloParts = this.avionesList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
-            // Se ha borrado el vuelo?
-            if (Gestioner.eliminarAvion(Integer.parseInt(vueloParts[0]))) {
-                Alert dialog = new Alert(AlertType.CONFIRMATION);
-                dialog.setTitle("Vuelo");
-                dialog.setHeaderText("Vuelo eliminado correctamente");
-                dialog.show();
-            } else {
-                Alert dialog = new Alert(AlertType.WARNING);
-                dialog.setTitle("Vuelo");
-                dialog.setHeaderText("Algo ha fallado");
-                dialog.show();
-            }
-            // Cargar los nuevos aviones
-            listarAviones();
+    private void listarVuelos() throws SQLException {
+        this.vuelosList.getItems().clear();
+        for (String vuelo : Getter.getlistaVuelosStrings()) {
+            String[] vueloParts = vuelo.replaceAll(" ", "").split("-");
+
+            this.vuelosList.getItems().add(vueloParts[0] + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[1])) + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[2])) + " - " + vueloParts[4] + "/" + vueloParts[5] + "/" + vueloParts[3]);
         }
     }
 ```
 
 #### Parte logica
 
-```java
+``` java
     /**
      * Eliminar un vuelo
      *
@@ -586,7 +556,7 @@ Apartado donde se gestionará el `añadido de nuevas ciudades`.
 
 #### Cambiar la ventana para añadir la ciudad
 
-```java
+``` java
     /**
      * Cambiar al modo a añadir Ciudad
      */
@@ -624,21 +594,19 @@ Apartado donde se gestionará el `añadido de nuevas ciudades`.
 
 #### Parte del controlador donde ejecutamos el añadido de ciudad
 
-```java
+``` java
     /**
      * Funcion para añadir una Ciudad
      *
      * @see Gestioner#registrarCiudad(String, String)
      */
     private void addCiudad() {
-        // Todos los campos llenos?
         if (this.nombreCiudadField.getText().isEmpty() || this.nombrePaisField.getText().isEmpty()) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("Ciudad");
             dialog.setHeaderText("Rellene toos los campos");
             dialog.show();
         } else {
-            // Se ha registrado?
             if (Gestioner.registrarCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText())) {
                 Alert dialog = new Alert(AlertType.CONFIRMATION);
                 dialog.setTitle("Ciudad");
@@ -647,34 +615,215 @@ Apartado donde se gestionará el `añadido de nuevas ciudades`.
                 this.nombreCiudadField.setText("");
             }
         }
-
     }
 ```
 
+#### Parte logica
+
+``` java
+    /**
+     * Crear una nueva ciudad
+     *
+     * @param Ciudad Nombre de la ciudad
+     * @param Pais   País al que pertenece
+     * @return Si se ha creado o si no
+     */
+    public static boolean registrarCiudad(String Ciudad, String Pais) {
+        int id;
+        String ciudad = Ciudad.substring(0, 1).toUpperCase() + Ciudad.substring(1).toLowerCase();
+        String pais = Pais.substring(0, 1).toUpperCase() + Pais.substring(1).toLowerCase();
+        try {
+
+            String query = "SELECT COUNT(*) FROM Ciudades WHERE Nombre_Ciudad = ? AND Pais = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
+            checkStatement.setString(1, ciudad);
+            checkStatement.setString(2, pais);
+            ResultSet resultSet = checkStatement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+            if (count > 0) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText("Esta ciudad ya esta registrada");
+                dialog.show();
+
+            } else {
+                String test = "SELECT max(ID_Ciudad) FROM Ciudades";
+                PreparedStatement prst = App.con.prepareStatement(test);
+                ResultSet resulttest = prst.executeQuery();
+                if (resulttest.next()) {
+                    id = resulttest.getInt(1);
+                    String consulta = "INSERT INTO Ciudades (ID_Ciudad, Nombre_Ciudad, Pais) VALUES (? , ?, ?)";
+                    PreparedStatement insertStatement = App.con.prepareStatement(consulta);
+                    insertStatement.setInt(1, id + 1);
+                    insertStatement.setString(2, ciudad);
+                    insertStatement.setString(3, pais);
+                    insertStatement.executeUpdate();
+                    return true;
+                }
+
+            }
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+
+        return false;
+    }
+```
 
 ### Añadir Avion Screen
+
+Apartado donde se gestionará el `añadido de nueva avion`.
 
   <p align="center">
     <img src="./images/Add-Avion.png" alt="Login Screen">
   </p>
 
-Apartado donde `crearemos un avion` para la app
+#### Cambiar la ventana para añadir el avión
+
+``` java
+    /**
+     * Cambiar al modo Añadir un avion
+     */
+    private void menuAddAvion() {
+        this.avionesList.setVisible(false);
+        this.delVueloButton.setDisable(false);
+        this.delAvionButton.setDisable(false);
+        this.addVueloButton.setDisable(false);
+        this.addCiudadButton.setDisable(false);
+        this.addAvionButton.setDisable(true);
+        this.nombreAvionLabel.setVisible(true);
+        this.nombreAvionField.setVisible(true);
+        this.aceptarButtonAvion.setVisible(true);
+        this.capacidadLabel.setVisible(true);
+        this.capacidadField.setVisible(true);
+        this.nombreCiudadLabel.setVisible(false);
+        this.nombreCiudadField.setVisible(false);
+        this.nombrePaisLabel.setVisible(false);
+        this.nombrePaisField.setVisible(false);
+        this.aceptarButtonCiudad.setVisible(false);
+        this.menuCiudadesDestino.setVisible(false);
+        this.menuCiudadesSalida.setVisible(false);
+        this.ciudadSalidaVueloLabel.setVisible(false);
+        this.ciudadDestinoVueloLabel.setVisible(false);
+        this.menuAviones.setVisible(false);
+        this.avionVueloLabel.setVisible(false);
+        this.aceptarButtonVuelo.setVisible(false);
+        this.fechaLabel.setVisible(false);
+        this.fechaDatePicker.setVisible(false);
+        this.vuelosList.setVisible(false);
+        this.deleteVueloButton.setVisible(false);
+        this.deleteAvionButton.setVisible(false);
+
+    }
+```
+
+#### Parte del controlador donde ejecutamos el añadido del avion
+
+``` java
+    /**
+     * Funcion para añadir un Avion
+     *
+     * @see Gestioner#registrarAvion(String, int)
+     */
+    private void addAvion() {
+
+        if (this.nombreAvionField.getText().isEmpty() || this.capacidadField.getText().isEmpty()) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("Avion");
+            dialog.setHeaderText("Rellene todos los campos.");
+            dialog.show();
+        } else {
+            if (Integer.parseInt(this.capacidadField.getText()) > 200) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("Capacidad");
+                dialog.setHeaderText("Lo siento, nuestras aerolienas no pueden disponer de aviones de mas de 200 pasajeros,");
+                dialog.show();
+            } else {
+                if (Gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.capacidadField.getText()))) {
+                    Alert dialog = new Alert(AlertType.CONFIRMATION);
+                    dialog.setTitle("Avión");
+                    dialog.setHeaderText("Avión creada correctamente");
+                    dialog.show();
+                }
+            }
+        }
+    }
+```
+
+#### Parte logico
+
+``` java
+    /**
+     * Registrar un avión nuevo
+     *
+     * @param nombreAvion Nombre del avión
+     * @param capacidad   Capacidad del avión
+     * @return Si se ha creado o si no
+     */
+    public static boolean registrarAvion(String nombreAvion, int capacidad) {
+        try {
+            int id;
+            String query = "SELECT COUNT(*) FROM Aviones WHERE Nombre_Avion = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
+            checkStatement.setString(1, nombreAvion);
+            ResultSet resultSet = checkStatement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+            if (count > 0) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText("Este avión ya esta registrado");
+                dialog.show();
+                return false;
+
+            } else {
+                String test = "SELECT max(ID_Avion) FROM Aviones";
+                PreparedStatement prst = App.con.prepareStatement(test);
+                ResultSet resulttest = prst.executeQuery();
+                if (resulttest.next()) {
+                    id = resulttest.getInt(1);
+                    String consulta = "INSERT INTO Aviones (ID_Avion, Nombre_Avion, capacidad) VALUES (? , ?, ?)";
+                    PreparedStatement insertStatement = App.con.prepareStatement(consulta);
+                    insertStatement.setInt(1, id + 1);
+                    insertStatement.setString(2, nombreAvion);
+                    insertStatement.setInt(3, capacidad);
+                    insertStatement.executeUpdate();
+                    return true;
+                }
+
+            }
+
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+
+        return false;
+    }
+```
 
 ### Eliminar Avion Screen
+
+Apartado donde se gestionará el `eliminado de un avión`.
 
   <p align="center">
     <img src="./images/Del-Avion.png" alt="Login Screen">
   </p>
 
-Apartado donde podremos `borrar un avion` de la aplicación
-
 ### Reservar Screen
+
+Apartado donde se gestionará el `la reserva de un vuelo`.
 
   <p align="center">
     <img src="./images/Reservar-Screen.png" alt="Login Screen">
   </p>
 
-Apartado donde como un usuario podremos `reservar un vuelo` de los listados lo que conllevara la siguiente imagen
 
 ### Seleccion de Asientos Screen
 
