@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="JavaDoc update">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="README.md update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -153,14 +150,7 @@
       <workItem from="1685565631681" duration="6474000" />
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
-      <workItem from="1685784718983" duration="7645000" />
-    </task>
-    <task id="LOCAL-00005" summary="Reorganizacion del codigo y comentarios">
-      <created>1683826977803</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1683826977803</updated>
+      <workItem from="1685784718983" duration="8168000" />
     </task>
     <task id="LOCAL-00006" summary="Roadman links Updated">
       <created>1683827032678</created>
@@ -498,7 +488,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685790137685</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="README.md update">
+      <created>1685794887613</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1685794887613</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,8 +543,8 @@
     <MESSAGE value="IP change and SQL inserts" />
     <MESSAGE value="SQL inserts" />
     <MESSAGE value="README.md update &amp; algunas comprobaciones de campos vacíos" />
-    <MESSAGE value="README.md update" />
     <MESSAGE value="JavaDoc update" />
-    <option name="LAST_COMMIT_MESSAGE" value="JavaDoc update" />
+    <MESSAGE value="README.md update" />
+    <option name="LAST_COMMIT_MESSAGE" value="README.md update" />
   </component>
 </project>

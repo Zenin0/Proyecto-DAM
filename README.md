@@ -384,7 +384,7 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
             String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
             int numero = Integer.parseInt(tokens[0]);
             LocalDate localDate = fechaDatePicker.getValue();
-            // Se ha creado el usuario
+            // Se ha creado el usuario?
             if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), numero, String.valueOf(localDate))) {
                 Alert dialog = new Alert(AlertType.CONFIRMATION);
                 dialog.setTitle("Vuelo");
@@ -457,12 +457,6 @@ Apartado donde se gestionará el `borrado de vuelos`.
 
 #### Cambiar la ventana para borrar el vuelo
 
-```java
-
-```
-
-#### Parte necesaria para cargar los vuelos
-
 ``` java
     /**
      * Cambiar al modo a Borrar un vuelo
@@ -497,11 +491,10 @@ Apartado donde se gestionará el `borrado de vuelos`.
         this.nombrePaisField.setVisible(false);
         this.aceptarButtonCiudad.setVisible(false);
         this.deleteAvionButton.setVisible(true);
-
     }
 ```
 
-#### Parte del controlador que ejecuta el borrado
+#### Parte necesaria para cargar los vuelos
 
 ``` java
     /**
@@ -515,6 +508,40 @@ Apartado donde se gestionará el `borrado de vuelos`.
             String[] vueloParts = vuelo.replaceAll(" ", "").split("-");
 
             this.vuelosList.getItems().add(vueloParts[0] + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[1])) + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[2])) + " - " + vueloParts[4] + "/" + vueloParts[5] + "/" + vueloParts[3]);
+        }
+    }
+```
+
+#### Parte del controlador que ejecuta el borrado
+
+``` java
+    /**
+     * Funcion para eliminar un Vuelo
+     *
+     * @see Gestioner#eliminarVuelo(int)
+     */
+    public void delVuelo() throws SQLException {
+        // Vuelo seleccionado?
+        if (this.vuelosList.getSelectionModel().isEmpty()) {
+            Alert dialog = new Alert(AlertType.WARNING);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Seleccione un vuelo");
+            dialog.show();
+        } else {
+            String[] vueloParts = this.vuelosList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
+            // Se ha borrado?
+            if (Gestioner.eliminarVuelo(Integer.parseInt(vueloParts[0]))) {
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Vuelo eliminado correctamente");
+                dialog.show();
+            } else {
+                Alert dialog = new Alert(AlertType.WARNING);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Algo ha fallado");
+                dialog.show();
+            }
+            listarVuelos();
         }
     }
 ```
@@ -601,12 +628,14 @@ Apartado donde se gestionará el `añadido de nuevas ciudades`.
      * @see Gestioner#registrarCiudad(String, String)
      */
     private void addCiudad() {
+        // Estan los campos llenos?
         if (this.nombreCiudadField.getText().isEmpty() || this.nombrePaisField.getText().isEmpty()) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("Ciudad");
             dialog.setHeaderText("Rellene toos los campos");
             dialog.show();
         } else {
+            // Se ha creado?
             if (Gestioner.registrarCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText())) {
                 Alert dialog = new Alert(AlertType.CONFIRMATION);
                 dialog.setTitle("Ciudad");
@@ -730,19 +759,21 @@ Apartado donde se gestionará el `añadido de nueva avion`.
      * @see Gestioner#registrarAvion(String, int)
      */
     private void addAvion() {
-
+        // Estan los campos llenos?
         if (this.nombreAvionField.getText().isEmpty() || this.capacidadField.getText().isEmpty()) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("Avion");
             dialog.setHeaderText("Rellene todos los campos.");
             dialog.show();
         } else {
+            // Manolo airlines no puede tener aviones con capacodad > 200
             if (Integer.parseInt(this.capacidadField.getText()) > 200) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("Capacidad");
                 dialog.setHeaderText("Lo siento, nuestras aerolienas no pueden disponer de aviones de mas de 200 pasajeros,");
                 dialog.show();
             } else {
+                // Se ha creado el avión?
                 if (Gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.capacidadField.getText()))) {
                     Alert dialog = new Alert(AlertType.CONFIRMATION);
                     dialog.setTitle("Avión");

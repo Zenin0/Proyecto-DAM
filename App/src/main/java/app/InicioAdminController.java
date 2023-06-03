@@ -329,19 +329,26 @@ public class InicioAdminController implements Initializable {
      * @see Gestioner#eliminarVuelo(int)
      */
     public void delVuelo() throws SQLException {
-        String[] vueloParts = this.vuelosList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
-        if (Gestioner.eliminarVuelo(Integer.parseInt(vueloParts[0]))) {
-            Alert dialog = new Alert(AlertType.CONFIRMATION);
-            dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Vuelo eliminado correctamente");
-            dialog.show();
-        } else {
+        if (this.vuelosList.getSelectionModel().isEmpty()) {
             Alert dialog = new Alert(AlertType.WARNING);
             dialog.setTitle("Vuelo");
-            dialog.setHeaderText("Algo ha fallado");
+            dialog.setHeaderText("Seleccione un vuelo");
             dialog.show();
+        } else {
+            String[] vueloParts = this.vuelosList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
+            if (Gestioner.eliminarVuelo(Integer.parseInt(vueloParts[0]))) {
+                Alert dialog = new Alert(AlertType.CONFIRMATION);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Vuelo eliminado correctamente");
+                dialog.show();
+            } else {
+                Alert dialog = new Alert(AlertType.WARNING);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("Algo ha fallado");
+                dialog.show();
+            }
+            listarVuelos();
         }
-        listarVuelos();
     }
 
     /**
