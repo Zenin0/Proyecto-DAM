@@ -39,10 +39,6 @@ public class App extends Application {
     }
 
 
-
-    public App() {
-    }
-
     /**
      * Seleccionar el FXML de inicio
      *
