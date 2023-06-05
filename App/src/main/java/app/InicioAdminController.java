@@ -213,32 +213,32 @@ public class InicioAdminController implements Initializable {
             }
         });
 
-        nombreCiudadField.setOnKeyPressed((event) -> {
+        this.nombreCiudadField.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 addCiudad();
             }
         });
 
-        nombrePaisField.setOnKeyPressed((event) -> {
+        this.nombrePaisField.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 addCiudad();
             }
         });
 
-        nombreAvionField.setOnKeyPressed((event) -> {
+        this.nombreAvionField.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 addAvion();
             }
         });
 
-        capacidadField.setOnKeyPressed((event) -> {
+        this.capacidadField.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 addAvion();
             }
         });
 
 
-        vuelosList.setOnKeyPressed((event) -> {
+        this.vuelosList.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 try {
                     delVuelo();
@@ -251,7 +251,7 @@ public class InicioAdminController implements Initializable {
             }
         });
 
-        avionesList.setOnKeyPressed((event) -> {
+        this.avionesList.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 try {
                     delAvion();

@@ -48,8 +48,7 @@ public class Gestioner {
             infoParagraph.setAlignment(Element.ALIGN_CENTER);
             infoParagraph.setSpacingAfter(20);
             PDFdocument.add(infoParagraph);
-            String qrCodeUrl = "https://github.com/Zenin0/Proyecto-DAM";
-            Image qrCodeImage = Image.getInstance("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrCodeUrl);
+            Image qrCodeImage = Image.getInstance("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/Zenin0/Proyecto-DAM");
             qrCodeImage.setAlignment(Element.ALIGN_CENTER);
             qrCodeImage.scaleAbsolute(150, 150);
             float qrCodeX = (PDFdocument.getPageSize().getWidth() - qrCodeImage.getScaledWidth()) / 2;
