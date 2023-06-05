@@ -117,18 +117,16 @@ public class Gestioner {
      * @param Pass1   Contraseña 1
      * @param Pass2   Contraseña 2
      * @param admin   Checkbox de Administrador
-     * @return Si se ha creado o si no
      * @see MD5Hasher#getMd5()
      */
-    public static boolean registrar(String Usuario, String nombre, String apellidos, String Pass1, String Pass2, boolean admin) {
+    public static void registrar(String Usuario, String nombre, String apellidos, String Pass1, String Pass2, boolean admin) {
         int id;
         try {
             if (!Pass1.equals(Pass2)) {
                 Alert dialog = new Alert(AlertType.ERROR);
-                dialog.setTitle("ERROR");
+                dialog.setHeaderText("ERROR");
                 dialog.setHeaderText("Las contraseñas no coinciden");
                 dialog.show();
-                return false;
             } else {
                 MD5Hasher md5 = new MD5Hasher(Pass1);
                 String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
@@ -140,7 +138,10 @@ public class Gestioner {
                 int count = resultSet.getInt(1);
 
                 if (count > 0) {
-                    return false;
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setHeaderText("ERROR");
+                    dialog.setHeaderText("Este usuario ya existe");
+                    dialog.show();
 
                 } else {
 
@@ -150,7 +151,7 @@ public class Gestioner {
                             dialog.setTitle("ERROR");
                             dialog.setHeaderText("Contraseña de administrador incorrecta");
                             dialog.show();
-                            return false;
+                            return;
                         }
                     }
 
@@ -169,7 +170,10 @@ public class Gestioner {
                         insertStatement.setString(5, md5.getMd5());
                         insertStatement.setBoolean(6, admin);
                         insertStatement.executeUpdate();
-                        return true;
+                        Alert dialog = new Alert(AlertType.CONFIRMATION);
+                        dialog.setTitle("Usuario");
+                        dialog.setHeaderText("Usuario creado correctamente");
+                        dialog.show();
                     }
 
                 }
@@ -181,8 +185,6 @@ public class Gestioner {
             dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
-
-        return false;
     }
 
     /**

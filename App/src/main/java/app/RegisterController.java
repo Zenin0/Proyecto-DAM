@@ -108,22 +108,13 @@ public class RegisterController implements Initializable {
      */
     private void registrar() {
         if (!this.usuReg.getText().isEmpty() || !this.usuNombre.getText().isEmpty() || !this.usuApellidos.getText().isEmpty() || !this.passReg1.getText().isEmpty() || !this.passReg2.getText().isEmpty()) {
-            if (Gestioner.registrar(this.usuReg.getText(), this.usuNombre.getText(), this.usuApellidos.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected())) {
-                this.usuReg.setText("");
-                this.usuNombre.setText("");
-                this.usuApellidos.setText("");
-                this.passReg1.setText("");
-                this.passReg2.setText("");
-                Alert dialog = new Alert(AlertType.CONFIRMATION);
-                dialog.setTitle("Usuario");
-                dialog.setHeaderText("Usuario creado correctamente");
-                dialog.show();
-            } else {
-                Alert dialog = new Alert(AlertType.ERROR);
-                dialog.setTitle("ERROR");
-                dialog.setHeaderText("Este Usuario y esta contraseña ya existen");
-                dialog.show();
-            }
+            Gestioner.registrar(this.usuReg.getText(), this.usuNombre.getText(), this.usuApellidos.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected());
+            this.usuReg.setText("");
+            this.usuNombre.setText("");
+            this.usuApellidos.setText("");
+            this.passReg1.setText("");
+            this.passReg2.setText("");
+
         } else {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");

@@ -11,10 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,13 +154,6 @@
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
       <workItem from="1685784718983" duration="14491000" />
-    </task>
-    <task id="LOCAL-00016" summary="Roadna update">
-      <created>1684420952549</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1684420952549</updated>
     </task>
     <task id="LOCAL-00017" summary="Cosas sjsjjs">
       <created>1684937623715</created>
@@ -499,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685975822494</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Cuando carga las listas de Aviones, y Vuelos, selecciona el primero">
+      <created>1685979672239</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1685979672239</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,7 +523,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Readme images Update" />
     <MESSAGE value="Roadmap Update" />
     <MESSAGE value="PDF de ejemplo añadido al README.md" />
     <MESSAGE value="README.md javadoc website" />
@@ -549,6 +547,7 @@
     <MESSAGE value="Comprobar si el avión ha tenido algun vuelo primero" />
     <MESSAGE value="Comprobar que el avión no tiene ningun vuelo mas tarde, que requiera estarn en otra ciudad de salida" />
     <MESSAGE value="SQL corrections" />
-    <option name="LAST_COMMIT_MESSAGE" value="SQL corrections" />
+    <MESSAGE value="Cuando carga las listas de Aviones, y Vuelos, selecciona el primero" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cuando carga las listas de Aviones, y Vuelos, selecciona el primero" />
   </component>
 </project>

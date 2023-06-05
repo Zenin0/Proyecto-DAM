@@ -33,12 +33,12 @@
          <children>
             <ListView fx:id="avionesList" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="4">
                <GridPane.margin>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </GridPane.margin>
             </ListView>
             <ListView fx:id="vuelosList" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="4">
                <GridPane.margin>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </GridPane.margin>
             </ListView>
             <ImageView fitHeight="401.0" fitWidth="382.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
