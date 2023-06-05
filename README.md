@@ -77,7 +77,7 @@ administradores (root).
     <img src="./images/Register-Screen.png" alt="Login Screen">
   </p>
 
-#### Parte del controlador
+#### Parte del controlador donde ejecutamos el registro
 
 ``` java
     /**
@@ -126,7 +126,7 @@ login se redirigirá al `apartado de los administradores` o al `apartado de usua
     <img src="./images/Login-Screen.png" alt="Login Screen">
   </p>
 
-#### Parte del controlador
+#### Parte del controlador donde ejecutamos el login
 
 ``` java
     /**
@@ -808,6 +808,7 @@ Apartado simiplar al de reservar un vuelo, pero para listar `nuestras reservas` 
     }
 ```
 
+#### PDF de ejemplo
 
   <p align="center">
     <img src="./images/PDF-Example.png" alt="Login Screen">
