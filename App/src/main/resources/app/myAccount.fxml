@@ -94,14 +94,6 @@
                   <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                </GridPane.margin>
             </PasswordField>
-            <ImageView disable="true" fitHeight="43.0" fitWidth="47.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
-               <image>
-                  <Image url="@css/edit.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </ImageView>
          </children>
          <VBox.margin>
             <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
