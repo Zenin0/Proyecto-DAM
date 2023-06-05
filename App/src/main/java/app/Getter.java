@@ -504,13 +504,10 @@ public class Getter {
         PreparedStatement checkStatement = App.con.prepareStatement(query);
         checkStatement.setInt(1, IDAvion);
         ResultSet rs = checkStatement.executeQuery();
-        if (rs.next()) {
-            if (rs.getInt(1) == newCity)
-                return true;
-            else
-                return false;
-        }
-        return false;
+        if (rs.next())
+            return rs.getInt(1) == newCity;
+        else
+            return true;
     }
 
 }
