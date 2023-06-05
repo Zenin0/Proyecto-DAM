@@ -500,7 +500,7 @@ public class Getter {
     }
 
     public static boolean getDispnibilidad(String fecha, int IDAvion, int CiudadSalida) throws SQLException {
-        String query = "SELECT COUNT(*) AS count FROM Vuelos WHERE Fecha_Salida >= ? AND ID_Avion = ? AND Ciudad_Salida = ?";
+        String query = "SELECT COUNT(*) FROM Vuelos WHERE Fecha_Salida >= ? AND ID_Avion = ? AND Ciudad_Salida = ?";
         PreparedStatement stmt = App.con.prepareStatement(query);
         stmt.setString(1, fecha);
         stmt.setInt(2, IDAvion);
