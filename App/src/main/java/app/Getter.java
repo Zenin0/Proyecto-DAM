@@ -499,14 +499,16 @@ public class Getter {
         return out;
     }
 
-    public static boolean getDispnibilidad(String fecha, int IDAvion, int newCity) throws SQLException {
-        String query = "SELECT Ciudad_Destino  FROM Vuelos WHERE ID_Avion = ? ORDER BY Fecha_Salida LIMIT 1";
-        PreparedStatement checkStatement = App.con.prepareStatement(query);
-        checkStatement.setInt(1, IDAvion);
-        ResultSet rs = checkStatement.executeQuery();
-        if (rs.next())
-            return rs.getInt(1) == newCity;
-        else
+    public static boolean getDispnibilidad(String fecha, int IDAvion, int CiudadSalida) throws SQLException {
+        String query = "SELECT COUNT(*) AS count FROM Vuelos WHERE Fecha_Salida >= ? AND ID_Avion = ? AND Ciudad_Salida = ?";
+        PreparedStatement stmt = App.con.prepareStatement(query);
+        stmt.setString(1, fecha);
+        stmt.setInt(2, IDAvion);
+        stmt.setInt(3, CiudadSalida);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return rs.getInt(1) < 1;
+        } else
             return true;
     }
 

@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,13 +152,6 @@
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
       <workItem from="1685784718983" duration="14491000" />
-    </task>
-    <task id="LOCAL-00013" summary="Creador PDF terminado, y añadido al MAVEN para poder dar al cliente un ticket del vuelo">
-      <created>1683898680840</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1683898680840</updated>
     </task>
     <task id="LOCAL-00014" summary="POM config">
       <created>1683899030333</created>
@@ -497,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685833146349</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Comprobar si el avión ha tenido algun vuelo primero">
+      <created>1685974748782</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1685974748783</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,7 +521,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fultrar Vuelos" />
     <MESSAGE value="JavaDoc" />
     <MESSAGE value="Esconder texto ciudades al cambio" />
     <MESSAGE value="Readme images Update" />
@@ -547,6 +545,7 @@
     <MESSAGE value="README.md update" />
     <MESSAGE value="gitignore update" />
     <MESSAGE value="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo" />
+    <MESSAGE value="Comprobar si el avión ha tenido algun vuelo primero" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comprobar si el avión ha tenido algun vuelo primero" />
   </component>
 </project>
