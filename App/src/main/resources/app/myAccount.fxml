@@ -37,7 +37,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -85,26 +84,6 @@
                   <Font size="18.0" />
                </font></Label>
             <Button fx:id="actualizarButton" mnemonicParsing="false" text="Actualizar" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ToggleButton fx:id="hidePass1Button" mnemonicParsing="false" text="👁" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </ToggleButton>
-            <ToggleButton fx:id="hidePass2Button" mnemonicParsing="false" text="👁" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </ToggleButton>
-            <TextField fx:id="textField2" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="textField1" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
-               </GridPane.margin>
-            </TextField>
             <PasswordField fx:id="newPass1Field" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />

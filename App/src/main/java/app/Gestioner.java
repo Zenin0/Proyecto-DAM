@@ -110,6 +110,62 @@ public class Gestioner {
     }
 
     /**
+     * Actualizar los datos de un usuario
+     *
+     * @param username Nombre de Usuario viejo
+     * @param newUsername Nuevo nombre de usuario
+     * @param pass1 Contraseña 1
+     * @param pass2 Contraseña 2
+     */
+    public static boolean actualizar(String username, String newUsername, String pass1, String pass2) {
+        try {
+            if (!pass1.equals(pass2)) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setHeaderText("ERROR");
+                dialog.setContentText("Las contraseñas no coinciden");
+                dialog.show();
+            } else {
+                MD5Hasher md5 = new MD5Hasher(pass1);
+                String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ?";
+                PreparedStatement checkStatement = App.con.prepareStatement(query);
+                checkStatement.setString(1, username);
+                ResultSet resultSet = checkStatement.executeQuery();
+                resultSet.next();
+                int count = resultSet.getInt(1);
+
+                if (count > 0) {
+                    String updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Pass = ? WHERE Nombre_Usuario = ?";
+                    PreparedStatement updateStatement = App.con.prepareStatement(updateQuery);
+                    updateStatement.setString(1, newUsername);
+                    updateStatement.setString(2, md5.getMd5());
+                    updateStatement.setString(3, username);
+                    updateStatement.executeUpdate();
+
+                    Alert dialog = new Alert(AlertType.CONFIRMATION);
+                    dialog.setTitle("Usuario");
+                    dialog.setHeaderText("Usuario actualizado correctamente");
+                    dialog.show();
+                    return true;
+                } else {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setHeaderText("ERROR");
+                    dialog.setHeaderText("Este usuario no existe");
+                    dialog.show();
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+        return false;
+    }
+
+
+
+    /**
      * Registrar un usuario
      *
      * @param Usuario Nombre de usuario

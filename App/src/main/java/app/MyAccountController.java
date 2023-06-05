@@ -2,7 +2,9 @@ package app;
 
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,12 +13,6 @@ public class MyAccountController implements Initializable {
 
     @FXML
     private Button actualizarButton;
-
-    @FXML
-    private ToggleButton hidePass1Button;
-
-    @FXML
-    private ToggleButton hidePass2Button;
 
     @FXML
     private PasswordField newPass1Field;
@@ -28,45 +24,93 @@ public class MyAccountController implements Initializable {
     private TextField newUserNameField;
 
     @FXML
-    private TextField textField1;
-
-    @FXML
-    private TextField textField2;
-
-    @FXML
     private Button volverButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.newUserNameField.setText(GlobalData.userName);
-        this.hidePass1Button.setOnAction(event -> {
-            if (hidePass1Button.isSelected()) {
-                this.textField1.setText(this.newPass1Field.getText());
-                this.newPass1Field.setVisible(false);
-                this.textField1.setVisible(true);
-
-            }
-            else{
-                this.newPass1Field.setText(this.textField1.getText());
-                this.newPass1Field.setVisible(true);
-                this.textField1.setVisible(false);
-
+        this.volverButton.setOnAction(event -> {
+            try {
+                App.setRoot("inicio_user");
+            } catch (IOException e) {
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
             }
         });
-        this.hidePass2Button.setOnAction(event -> {
-            if (hidePass2Button.isSelected()) {
-                this.textField2.setText(this.newPass2Field.getText());
-                this.newPass2Field.setVisible(false);
-                this.textField2.setVisible(true);
-
+        this.actualizarButton.setOnAction(event -> {
+            if (!this.newUserNameField.getText().isEmpty() || !this.newPass2Field.getText().isEmpty() || !this.newPass1Field.getText().isEmpty()) {
+                actualizar();
+            } else {
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText("Por favor rellene todos los campos");
+                dialog.show();
             }
-            else{
-                this.newPass2Field.setText(this.textField2.getText());
-                this.newPass2Field.setVisible(true);
-                this.textField2.setVisible(false);
 
+        });
+        newUserNameField.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                if (!this.newUserNameField.getText().isEmpty() || !this.newPass2Field.getText().isEmpty() || !this.newPass1Field.getText().isEmpty()) {
+                    actualizar();
+                } else {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText("Por favor rellene todos los campos");
+                    dialog.show();
+                }
             }
         });
+        newPass1Field.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                if (!this.newUserNameField.getText().isEmpty() || !this.newPass2Field.getText().isEmpty() || !this.newPass1Field.getText().isEmpty()) {
+                    actualizar();
+                } else {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText("Por favor rellene todos los campos");
+                    dialog.show();
+                }
+            }
+        });
+        newPass2Field.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                if (!this.newUserNameField.getText().isEmpty() || !this.newPass2Field.getText().isEmpty() || !this.newPass1Field.getText().isEmpty()) {
+                    actualizar();
+                } else {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText("Por favor rellene todos los campos");
+                    dialog.show();
+                }
+            }
+        });
+        actualizarButton.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                if (!this.newUserNameField.getText().isEmpty() || !this.newPass2Field.getText().isEmpty() || !this.newPass1Field.getText().isEmpty()) {
+                    actualizar();
+                } else {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText("Por favor rellene todos los campos");
+                    dialog.show();
+                }
+            }
+        });
+    }
+
+    public void actualizar(){
+        if (Gestioner.actualizar(GlobalData.userName, this.newUserNameField.getText(), this.newPass1Field.getText(), this.newPass2Field.getText())) {
+            try {
+                App.setRoot("inicio_user");
+            } catch (IOException e) {
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
+            }
+        }
     }
 
 }
