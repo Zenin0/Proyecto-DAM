@@ -1276,7 +1276,6 @@ Apartado donde se gestionará el `la reserva de un vuelo`.
     }
 ```
 
-
 #### Generar el PDF
 
 ``` java
@@ -1330,24 +1329,258 @@ Apartado donde se gestionará el `la reserva de un vuelo`.
     <img src="./images/PDF-Example.png" alt="Login Screen">
   </p>
 
+
+#### Parte logica
+
+``` java
+    /**
+     * Reservar un vuelo
+     *
+     * @param IDUSU           ID del usuario
+     * @param IDVUELO         ID del vuelo
+     * @param selectedAsiento asiento seleccionado
+     * @return ID de la reserva
+     */
+    public static int reservarVuelo(int IDUSU, int IDVUELO, int selectedAsiento) {
+        try {
+            int id;
+            String test = "SELECT max(ID_Reserva) FROM Reservas";
+            PreparedStatement prst = App.con.prepareStatement(test);
+            ResultSet resulttest = prst.executeQuery();
+            if (resulttest.next()) {
+                id = resulttest.getInt(1);
+                String consulta = "INSERT INTO Reservas (ID_Reserva, ID_Usuario, ID_Vuelo, Asiento) VALUES (? , ?, ?, ?)";
+                PreparedStatement insertStatement = App.con.prepareStatement(consulta);
+                insertStatement.setInt(1, id + 1);
+                insertStatement.setInt(2, IDUSU);
+                insertStatement.setInt(3, IDVUELO);
+                insertStatement.setInt(4, selectedAsiento);
+                insertStatement.executeUpdate();
+                return id + 1;
+
+            }
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+        return 0;
+    }
+```
+
 ### Mis Reservas Screen
+
+Apartado simiplar al de reservar un vuelo, pero para listar `nuestras reservas` y asi poder `eliminar una reserva`
+`Modificar una Reserva` o `Desarcar un justificante`
 
   <p align="center">
     <img src="./images/Mis-Reservas-Screen.png" alt="Login Screen">
   </p>
 
-Apartado simiplar al de reservar un vuelo, pero para listar `nuestras reservas` y asi poder `eliminar una reserva`
-`Modificar una Reserva` o `Desarcar un justificante`
+#### Apartado donde se ejecuta la opcion de modificar una reserva
 
-### Modificación de Reserva Screen
+``` java
+    /**
+     * Modificar una Reserva
+     */
+    private void modificarReserva() throws SQLException {
+        Reserva selectedReserva = this.reservasDisponiblesTable.getSelectionModel().getSelectedItem();
+        int idreserva = selectedReserva.getID();
+
+        int vueloID = Getter.getIDVueloFromIDReserva(idreserva);
+        int numAsientos = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID).size();
+        int numCols = Getter.getNumCols(numAsientos);
+        int numRows = Getter.getNumRows(numAsientos, numCols);
+
+        ArrayList<Integer> asientosLibres = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID);
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+
+
+        final int[] selectedSeat = {-1};
+        Image able = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatAble.png");
+        Image unable = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatUnable.png");
+        Image selected = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatSelected.png");
+        Image before = new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/seatBefore.png");
+
+        final StackPane[] selectedSeatPane = {null};
+        final ImageView[] selectedSeatImage = {null};
+
+        for (int col = 1; col <= numCols; col++) {
+            for (int row = 1; row <= numRows; row++) {
+                int seatNum = (col - 1) * numRows + row;
+                ImageView seatButton = new ImageView();
+                seatButton.setId(String.valueOf(seatNum));
+                seatButton.setFitWidth(50);
+                seatButton.setFitHeight(50);
+
+                Label seatLabel = new Label(String.valueOf(seatNum));
+                seatLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #000000; -fx-alignment: center;");
+                seatLabel.setTranslateX(-6);
+                StackPane stackPane = new StackPane();
+                stackPane.getChildren().addAll(seatButton, seatLabel);
+                StackPane.setAlignment(seatLabel, Pos.CENTER);
+
+                if (asientosLibres.contains(seatNum)) {
+
+                    seatButton.setImage(able);
+                    stackPane.setOnMouseClicked(event -> {
+                        if (selectedSeatPane[0] != null) {
+                            selectedSeatImage[0].setImage(able);
+                        }
+                        selectedSeat[0] = Integer.parseInt(seatButton.getId());
+                        selectedSeatPane[0] = stackPane;
+                        selectedSeatImage[0] = seatButton;
+                        selectedSeatImage[0].setImage(selected);
+                    });
+                    stackPane.setOnMouseEntered(event -> stackPane.setOpacity(0.5));
+                    stackPane.setOnMouseExited(event -> stackPane.setOpacity(1));
+                    stackPane.cursorProperty().set(Cursor.HAND);
+
+                } else {
+                    if (seatNum == selectedReserva.getAsiento()) {
+                        seatButton.setImage(before);
+                    } else {
+                        seatButton.setImage(unable);
+                    }
+                    stackPane.setOpacity(0.5);
+                    stackPane.setDisable(true);
+                }
+                gridPane.add(stackPane, col, row);
+            }
+
+        }
+
+
+        HBox legendBox = new HBox(10);
+
+
+        ImageView ableImage = new ImageView(able);
+        ImageView unableImage = new ImageView(unable);
+        ImageView selectedImage = new ImageView(selected);
+        ImageView beforeImage = new ImageView(before);
+
+        Label ableLabel = new Label("Disponible");
+        Label unableLabel = new Label("No Disponible");
+        Label selectedLabel = new Label("Selecionado");
+        Label beforeLabel = new Label("Actual");
+
+        ableImage.setFitWidth(20);
+        ableImage.setFitHeight(20);
+        unableImage.setFitWidth(20);
+        unableImage.setFitHeight(20);
+        selectedImage.setFitWidth(20);
+        selectedImage.setFitHeight(20);
+        beforeImage.setFitWidth(20);
+        beforeImage.setFitHeight(20);
+
+        legendBox.getChildren().addAll(ableImage, ableLabel, unableImage, unableLabel, selectedImage, selectedLabel, beforeImage, beforeLabel);
+
+        Dialog<Integer> dialog = new Dialog<>();
+        dialog.setTitle("Seleccion de Asiento");
+
+
+        VBox contentBox = new VBox(10);
+        contentBox.getChildren().addAll(gridPane, legendBox);
+
+        dialog.getDialogPane().setContent(contentBox);
+
+        ButtonType noReservar = new ButtonType("Cancelar Modificación", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType reservar = new ButtonType("Modifcar", ButtonBar.ButtonData.OK_DONE);
+
+        dialog.getDialogPane().getButtonTypes().add(noReservar);
+        dialog.getDialogPane().getButtonTypes().add(reservar);
+        
+```
+
+<p align="center">
+    <img src="./images/Modificar-Reserva-Asiento-Screen.png" alt="Login Screen">
+</p>
+
+``` java
+
+        dialog.setResultConverter(buttonType -> {
+            if (buttonType == reservar) {
+                int selectedAsiento = selectedSeat[0];
+
+                if (selectedAsiento != -1) {
+                    try {
+                        int outReserva = Gestioner.modificarReserva(idreserva, selectedAsiento);
+                        if (outReserva != 0) {
+
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Reserva Modificada");
+                            alert.setHeaderText("¡Reserva Modificada Exitosamente!");
+                            alert.setResizable(false);
+                            alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
+                            ButtonType downloadButton = new ButtonType("Descargar");
+                            ButtonType noThanksButton = new ButtonType("No, Gracias");
+                            alert.getButtonTypes().setAll(noThanksButton, downloadButton);
+                            Optional<ButtonType> alertResult = alert.showAndWait();
+                            ButtonType button = alertResult.orElse(ButtonType.CANCEL);
+                            if (button == downloadButton) {
+
+                                descargarJustificante(Getter.getReservaInfo(outReserva));
+                            }
+                            loadVuelos();
+                        } else {
+                            Alert fin = new Alert(AlertType.ERROR);
+                            fin.setTitle("PDF");
+                            fin.setHeaderText("Operacion Cancelada");
+                            fin.show();
+                        }
+                        return outReserva;
+                    } catch (SQLException e) {
+                        Alert sqlerror = new Alert(AlertType.ERROR);
+                        sqlerror.setTitle("ERROR");
+                        sqlerror.setHeaderText(e.getMessage());
+                        sqlerror.show();
+                    }
+                } else {
+                    Alert fin = new Alert(AlertType.ERROR);
+                    fin.setTitle("Selección de Asiento");
+                    fin.setHeaderText("Operación Cancelada");
+                    fin.show();
+                }
+            }
+            return null;
+        });
+        dialog.showAndWait();
+    }
+```
 
   <p align="center">
-    <img src="./images/Modificar-Reserva-Asiento-Screen.png" alt="Login Screen">
+    <img src="./images/PDF-Example.png" alt="Login Screen">
   </p>
 
-Apartado que aparecera al modificar una reserva para `seleccionar nuestro asiento` preferido del avion, incluyendo
-una leyenda que indica el significado de los Iconos
+#### Parte Logica
 
+``` java
+    /**
+     * Modificar una reserva
+     *
+     * @param IDReserva  ID de la reserva
+     * @param AsientoNew Nuevo asiento seleccionado
+     */
+    public static int modificarReserva(int IDReserva, int AsientoNew) {
+        try {
+            String query = "UPDATE Reservas SET Asiento = ? WHERE ID_Reserva = ?";
+            PreparedStatement updateStatement = App.con.prepareStatement(query);
+            updateStatement.setInt(1, AsientoNew);
+            updateStatement.setInt(2, IDReserva);
+            updateStatement.executeUpdate();
+            return 1;
+        } catch (SQLException e) {
+            Alert dialog = new Alert(AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        }
+        return 0;
+    }
+```
 
 <!-- ROADMAP -->
 

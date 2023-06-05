@@ -433,7 +433,7 @@ public class Gestioner {
     }
 
     /**
-     * Eliminar una reserva
+     * Modificar una reserva
      *
      * @param IDReserva  ID de la reserva
      * @param AsientoNew Nuevo asiento seleccionado

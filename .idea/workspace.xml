@@ -12,7 +12,7 @@
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,13 +153,6 @@
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
       <workItem from="1685784718983" duration="14491000" />
-    </task>
-    <task id="LOCAL-00019" summary="Image Update">
-      <created>1684942325995</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1684942325995</updated>
     </task>
     <task id="LOCAL-00020" summary="Seat Deleted">
       <created>1684942442999</created>
@@ -497,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685980702183</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Creador de PDF QR">
+      <created>1685981422811</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1685981422811</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,7 +522,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="README.md javadoc website" />
     <MESSAGE value="FXML Updates" />
     <MESSAGE value="Generar los asientos por columnas en vez de por filas" />
     <MESSAGE value="Seats Selecable" />
@@ -547,6 +546,7 @@
     <MESSAGE value="Cuando carga las listas de Aviones, y Vuelos, selecciona el primero" />
     <MESSAGE value="Mensaje de errror de Gestioner#registrar" />
     <MESSAGE value="Quitado el contructor de app" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quitado el contructor de app" />
+    <MESSAGE value="Creador de PDF QR" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creador de PDF QR" />
   </component>
 </project>
