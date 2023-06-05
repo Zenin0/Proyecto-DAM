@@ -130,7 +130,7 @@ public class LoginController implements Initializable {
         if (this.usuLog.getText().isEmpty() || this.passLog.getText().isEmpty()) {
             Alert error = new Alert(AlertType.ERROR);
             error.setTitle("Login");
-            error.setHeaderText("Rellene todos los campost");
+            error.setHeaderText("Rellene todos los campos");
             error.show();
         } else {
             Alert dialog = new Alert(AlertType.CONFIRMATION);

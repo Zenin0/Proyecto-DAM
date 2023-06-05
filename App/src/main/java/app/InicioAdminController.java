@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
 
 import java.io.IOException;
 import java.net.URL;
@@ -212,6 +213,57 @@ public class InicioAdminController implements Initializable {
             }
         });
 
+        nombreCiudadField.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                addCiudad();
+            }
+        });
+
+        nombrePaisField.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                addCiudad();
+            }
+        });
+
+        nombreAvionField.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                addAvion();
+            }
+        });
+
+        capacidadField.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                addAvion();
+            }
+        });
+
+
+        vuelosList.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                try {
+                    delVuelo();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText(e.getMessage());
+                    dialog.show();
+                }
+            }
+        });
+
+        avionesList.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                try {
+                    delAvion();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setHeaderText(e.getMessage());
+                    dialog.show();
+                }
+            }
+        });
+
     }
 
 
@@ -227,6 +279,7 @@ public class InicioAdminController implements Initializable {
 
             this.vuelosList.getItems().add(vueloParts[0] + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[1])) + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[2])) + " - " + vueloParts[4] + "/" + vueloParts[5] + "/" + vueloParts[3]);
         }
+        this.vuelosList.getSelectionModel().selectFirst();
     }
 
     /**
@@ -240,6 +293,7 @@ public class InicioAdminController implements Initializable {
             String[] avionParts = avion.replaceAll(" ", "").split("-");
             this.avionesList.getItems().add(avionParts[0] + " - " + avionParts[1] + " - " + avionParts[2]);
         }
+        this.avionesList.getSelectionModel().selectFirst();
     }
 
     /**

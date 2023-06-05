@@ -11,7 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,20 +155,6 @@
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
       <workItem from="1685784718983" duration="14491000" />
-    </task>
-    <task id="LOCAL-00014" summary="POM config">
-      <created>1683899030333</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1683899030333</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Gitignore .pdf files">
-      <created>1684168977478</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1684168977478</updated>
     </task>
     <task id="LOCAL-00016" summary="Roadna update">
       <created>1684420952549</created>
@@ -496,7 +485,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685974748783</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Comprobar que el avión no tiene ningun vuelo mas tarde, que requiera estarn en otra ciudad de salida">
+      <created>1685975802287</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1685975802287</updated>
+    </task>
+    <task id="LOCAL-00064" summary="SQL corrections">
+      <created>1685975822494</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1685975822494</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,8 +524,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="JavaDoc" />
-    <MESSAGE value="Esconder texto ciudades al cambio" />
     <MESSAGE value="Readme images Update" />
     <MESSAGE value="Roadmap Update" />
     <MESSAGE value="PDF de ejemplo añadido al README.md" />
@@ -546,6 +547,8 @@
     <MESSAGE value="gitignore update" />
     <MESSAGE value="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo" />
     <MESSAGE value="Comprobar si el avión ha tenido algun vuelo primero" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comprobar si el avión ha tenido algun vuelo primero" />
+    <MESSAGE value="Comprobar que el avión no tiene ningun vuelo mas tarde, que requiera estarn en otra ciudad de salida" />
+    <MESSAGE value="SQL corrections" />
+    <option name="LAST_COMMIT_MESSAGE" value="SQL corrections" />
   </component>
 </project>
