@@ -70,7 +70,7 @@ public class MyAccountController implements Initializable {
             }
         });
         this.actualizarButton.setOnAction(event -> {
-            if (!this.newUserNameField.getText().isEmpty() || !this.newPass2Field.getText().isEmpty() || !this.newPass1Field.getText().isEmpty()) {
+            if (!this.newUserNameField.getText().isEmpty() && !this.newPass2Field.getText().isEmpty() && !this.newPass1Field.getText().isEmpty()) {
                 actualizar();
             } else {
                 Alert dialog = new Alert(Alert.AlertType.ERROR);
@@ -81,7 +81,7 @@ public class MyAccountController implements Initializable {
         });
         newUserNameField.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                if (!this.newUserNameField.getText().isEmpty() || !this.newPass2Field.getText().isEmpty() || !this.newPass1Field.getText().isEmpty()) {
+                if (!this.newUserNameField.getText().isEmpty() && !this.newPass2Field.getText().isEmpty() && !this.newPass1Field.getText().isEmpty()) {
                     actualizar();
                 } else {
                     Alert dialog = new Alert(Alert.AlertType.ERROR);
@@ -93,7 +93,7 @@ public class MyAccountController implements Initializable {
         });
         newPass1Field.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                if (!this.newUserNameField.getText().isEmpty() || !this.newPass2Field.getText().isEmpty() || !this.newPass1Field.getText().isEmpty()) {
+                if (!this.newUserNameField.getText().isEmpty() && !this.newPass2Field.getText().isEmpty() && !this.newPass1Field.getText().isEmpty()) {
                     actualizar();
                 } else {
                     Alert dialog = new Alert(Alert.AlertType.ERROR);
@@ -105,7 +105,7 @@ public class MyAccountController implements Initializable {
         });
         newPass2Field.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                if (!this.newUserNameField.getText().isEmpty() || !this.newPass2Field.getText().isEmpty() || !this.newPass1Field.getText().isEmpty()) {
+                if (!this.newUserNameField.getText().isEmpty() && !this.newPass2Field.getText().isEmpty() && !this.newPass1Field.getText().isEmpty()) {
                     actualizar();
                 } else {
                     Alert dialog = new Alert(Alert.AlertType.ERROR);
@@ -146,13 +146,18 @@ public class MyAccountController implements Initializable {
         PreparedStatement statement = App.con.prepareStatement(query);
         statement.setString(1, GlobalData.userName);
         ResultSet rs = statement.executeQuery();
-        while (rs.next()) {
-            InputStream imageFile = rs.getBinaryStream(1);
-            imagenUsuario.setImage(new Image(imageFile));
-            applyCircularMask(imagenUsuario);
-        }
 
+        if (rs.next()) {
+            InputStream imageFile = rs.getBinaryStream("Image");
+            if (imageFile != null) {
+                imagenUsuario.setImage(new Image(imageFile));
+                applyCircularMask(imagenUsuario);
+            } else {
+                imagenUsuario.setImage(new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/user.png"));
+            }
+        }
     }
+
 
 
     public void actualizar() {
