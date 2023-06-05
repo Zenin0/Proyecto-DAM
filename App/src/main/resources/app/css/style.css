@@ -73,3 +73,21 @@
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }
+
+.toggle-button {
+    /* Your Button styles here */
+    -fx-background-color: #606d79;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 5px 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #606d79;
+}
+
+.toggle-button:hover {
+    /* Your Button hover styles here */
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #606d79;
+    -fx-border-color: #606d79;
+}

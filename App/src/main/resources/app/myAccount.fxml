@@ -37,14 +37,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.">
+<VBox minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MyAccountController">
    <children>
       <GridPane VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -60,29 +62,59 @@
         </rowConstraints>
          <children>
             <Button fx:id="volverButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" text="Volver" GridPane.rowIndex="4" />
-            <ImageView fitHeight="120.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="120.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
                <image>
                   <Image url="@css/user.png" />
                </image>
             </ImageView>
-            <TextField fx:id="newUserNameField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="newUserNameField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                </GridPane.margin>
             </TextField>
-            <PasswordField fx:id="newPass2Field" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label text="Nombre de usuario" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label text="Nueva Contraseña" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label text="Repita la Contraseña" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Button fx:id="actualizarButton" mnemonicParsing="false" text="Actualizar" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ToggleButton fx:id="hidePass1Button" mnemonicParsing="false" text="👁" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="hidePass2Button" mnemonicParsing="false" text="👁" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </ToggleButton>
+            <TextField fx:id="textField2" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="textField1" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+               </GridPane.margin>
+            </TextField>
+            <PasswordField fx:id="newPass1Field" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                </GridPane.margin>
             </PasswordField>
-            <PasswordField fx:id="newPass1Field" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <PasswordField fx:id="newPass2Field" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                </GridPane.margin>
             </PasswordField>
-            <Label text="Nombre de usuario" GridPane.rowIndex="1" />
-            <Label text="Nueva Contraseña" GridPane.rowIndex="2" />
-            <Label text="Repita la Contraseña" GridPane.rowIndex="3" />
          </children>
          <VBox.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

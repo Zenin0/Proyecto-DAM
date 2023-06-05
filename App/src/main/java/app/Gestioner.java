@@ -128,10 +128,9 @@ public class Gestioner {
                 dialog.show();
             } else {
                 MD5Hasher md5 = new MD5Hasher(Pass1);
-                String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ? AND Pass = ?";
+                String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ?";
                 PreparedStatement checkStatement = App.con.prepareStatement(query);
                 checkStatement.setString(1, Usuario);
-                checkStatement.setString(2, md5.getMd5());
                 ResultSet resultSet = checkStatement.executeQuery();
                 resultSet.next();
                 int count = resultSet.getInt(1);

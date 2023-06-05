@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="600.0" maxWidth="900.0" minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.InicioUserController">
+<VBox maxHeight="600.0" maxWidth="900.0" minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.InicioUserController">
    <children>
       <GridPane VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -95,6 +95,7 @@
             <MenuButton fx:id="menuciudadDestinoReservas" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
             <MenuButton fx:id="menuciudadSalidaReservas" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
             <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="4" />
+            <Button fx:id="miCuentaButton" mnemonicParsing="false" text="Mi Cuenta" />
          </children>
       </GridPane>
    </children>

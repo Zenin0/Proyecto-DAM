@@ -165,6 +165,17 @@ public class InicioUserController implements Initializable {
             }
         });
 
+        this.miCuentaButton.setOnAction(event -> {
+            try {
+                App.setRoot("myAccount");
+            } catch (IOException e) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
+            }
+        });
+
         this.reservarButton.setOnAction(event -> {
             try {
                 if (!vuelosDisponiblesTable.getSelectionModel().isEmpty())
