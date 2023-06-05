@@ -9,14 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Show/Hide password">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Actualizar Usuario">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/648cff86-d0f4-41c6-87d3-bde96f738588.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/648cff86-d0f4-41c6-87d3-bde96f738588.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/bdd.sql" beforeDir="false" afterPath="$PROJECT_DIR$/App/bdd.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,14 +156,7 @@
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
       <workItem from="1685784718983" duration="14993000" />
-      <workItem from="1685992294090" duration="3788000" />
-    </task>
-    <task id="LOCAL-00015" summary="Gitignore .pdf files">
-      <created>1684168977478</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1684168977478</updated>
+      <workItem from="1685992294090" duration="6600000" />
     </task>
     <task id="LOCAL-00016" summary="Roadna update">
       <created>1684420952549</created>
@@ -501,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685994702750</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Actualizar Usuario">
+      <created>1685996117693</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1685996117693</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +526,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="JavaDoc" />
     <MESSAGE value="Esconder texto ciudades al cambio" />
     <MESSAGE value="Readme images Update" />
     <MESSAGE value="Roadmap Update" />
@@ -551,6 +550,7 @@
     <MESSAGE value="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo" />
     <MESSAGE value="README.md update" />
     <MESSAGE value="Show/Hide password" />
-    <option name="LAST_COMMIT_MESSAGE" value="Show/Hide password" />
+    <MESSAGE value="Actualizar Usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Actualizar Usuario" />
   </component>
 </project>

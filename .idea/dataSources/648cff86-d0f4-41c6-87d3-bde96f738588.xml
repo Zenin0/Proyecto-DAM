@@ -1318,85 +1318,89 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <index id="364" parent="336" name="PRIMARY">
+    <column id="364" parent="336" name="Image">
+      <DasType>blob|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <index id="365" parent="336" name="PRIMARY">
       <ColNames>ID_Usuario</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="365" parent="336" name="PRIMARY">
+    <key id="366" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="366" parent="337" name="ID_Vuelo">
+    <column id="367" parent="337" name="ID_Vuelo">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="367" parent="337" name="Ciudad_Salida">
+    <column id="368" parent="337" name="Ciudad_Salida">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="368" parent="337" name="Ciudad_Destino">
+    <column id="369" parent="337" name="Ciudad_Destino">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="369" parent="337" name="ID_Avion">
+    <column id="370" parent="337" name="ID_Avion">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="370" parent="337" name="Fecha_Salida">
+    <column id="371" parent="337" name="Fecha_Salida">
       <DasType>date|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="371" parent="337" name="Creada">
+    <column id="372" parent="337" name="Creada">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <foreign-key id="372" parent="337" name="FK_Ciudad_Salida">
+    <foreign-key id="373" parent="337" name="FK_Ciudad_Salida">
       <ColNames>Ciudad_Salida</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>ID_Ciudad</RefColNames>
       <RefTableName>ciudades</RefTableName>
     </foreign-key>
-    <foreign-key id="373" parent="337" name="FK_Ciudad_Destino">
+    <foreign-key id="374" parent="337" name="FK_Ciudad_Destino">
       <ColNames>Ciudad_Destino</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>ID_Ciudad</RefColNames>
       <RefTableName>ciudades</RefTableName>
     </foreign-key>
-    <foreign-key id="374" parent="337" name="FK_Avion">
+    <foreign-key id="375" parent="337" name="FK_Avion">
       <ColNames>ID_Avion</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>ID_Avion</RefColNames>
       <RefTableName>aviones</RefTableName>
     </foreign-key>
-    <index id="375" parent="337" name="PRIMARY">
+    <index id="376" parent="337" name="PRIMARY">
       <ColNames>ID_Vuelo</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="376" parent="337" name="FK_Ciudad_Salida">
+    <index id="377" parent="337" name="FK_Ciudad_Salida">
       <ColNames>Ciudad_Salida</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="377" parent="337" name="FK_Ciudad_Destino">
+    <index id="378" parent="337" name="FK_Ciudad_Destino">
       <ColNames>Ciudad_Destino</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="378" parent="337" name="FK_Avion">
+    <index id="379" parent="337" name="FK_Avion">
       <ColNames>ID_Avion</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="379" parent="337" name="PRIMARY">
+    <key id="380" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

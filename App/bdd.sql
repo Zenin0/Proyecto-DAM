@@ -9,7 +9,8 @@ CREATE TABLE `Usuarios`(
     Nombre VARCHAR(255),
     Apellidos VARCHAR(255),
     Pass VARCHAR(255) NOT NULL,
-    Is_Admin BOOLEAN NOT NULL
+    Is_Admin BOOLEAN NOT NULL,
+    Image BLOB
 
 );
 

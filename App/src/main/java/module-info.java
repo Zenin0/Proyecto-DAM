@@ -4,6 +4,7 @@ module app {
     requires java.sql;
     requires itextpdf;
     requires org.json;
+    requires java.desktop;
 
 
     opens app to javafx.fxml;

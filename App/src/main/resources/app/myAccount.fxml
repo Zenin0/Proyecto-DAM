@@ -61,7 +61,7 @@
         </rowConstraints>
          <children>
             <Button fx:id="volverButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" text="Volver" GridPane.rowIndex="4" />
-            <ImageView fitHeight="120.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
+            <ImageView fx:id="imagenUsuario" fitHeight="120.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
                <image>
                   <Image url="@css/user.png" />
                </image>
