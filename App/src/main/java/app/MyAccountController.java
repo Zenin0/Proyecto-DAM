@@ -1,7 +1,11 @@
 package app;
 
-import javafx.fxml.*;
-import javafx.scene.control.*;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -9,16 +13,15 @@ import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.Base64;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 
 public class MyAccountController implements Initializable {
 
@@ -40,9 +43,12 @@ public class MyAccountController implements Initializable {
     @FXML
     private Button volverButton;
 
+    private static File selectedImageFile;
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*
         try {
             loadImagen();
         } catch (SQLException e) {
@@ -51,7 +57,7 @@ public class MyAccountController implements Initializable {
             dialog.setHeaderText(e.getMessage());
             dialog.show();
         }
-        */
+
         this.newUserNameField.setText(GlobalData.userName);
         this.volverButton.setOnAction(event -> {
             try {
@@ -109,64 +115,49 @@ public class MyAccountController implements Initializable {
                 }
             }
         });
-        actualizarButton.setOnKeyPressed((event) -> {
-            if (event.getCode().equals(KeyCode.ENTER)) {
-                if (!this.newUserNameField.getText().isEmpty() || !this.newPass2Field.getText().isEmpty() || !this.newPass1Field.getText().isEmpty()) {
-                    actualizar();
-                } else {
-                    Alert dialog = new Alert(Alert.AlertType.ERROR);
-                    dialog.setTitle("ERROR");
-                    dialog.setHeaderText("Por favor rellene todos los campos");
-                    dialog.show();
-                }
-            }
-        });
         imagenUsuario.setOnMouseClicked(event -> {
             FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Select Image File");
+            fileChooser.setTitle("Selecciona una imagen de perfil");
             fileChooser.getExtensionFilters().add(
                     new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
             );
 
             Stage stage = (Stage) imagenUsuario.getScene().getWindow();
-            File selectedFile = fileChooser.showOpenDialog(stage);
+            selectedImageFile = fileChooser.showOpenDialog(stage);
 
-            if (selectedFile != null) {
+            if (selectedImageFile != null) {
                 try {
-                    Image image = new Image(selectedFile.toURI().toString());
+                    Image image = new Image(selectedImageFile.toURI().toString());
                     imagenUsuario.setImage(image);
                     applyCircularMask(imagenUsuario);
                 } catch (Exception e) {
                     Alert dialog = new Alert(Alert.AlertType.ERROR);
                     dialog.setTitle("ERROR");
-                    dialog.setHeaderText("Failed to load image: " + e.getMessage());
+                    dialog.setHeaderText("Fallo al cargar la imagen: " + e.getMessage());
                     dialog.show();
                 }
             }
         });
+
     }
 
     private void loadImagen() throws SQLException {
         String query = "SELECT Image FROM Usuarios WHERE Nombre_Usuario = ?";
-
         PreparedStatement statement = App.con.prepareStatement(query);
         statement.setString(1, GlobalData.userName);
-        ResultSet resultSet = statement.executeQuery();
-
-        if (resultSet.next()) {
-            byte[] imageBytes = resultSet.getBytes("Image");
-            if (imageBytes != null && imageBytes.length > 0) {
-                ByteArrayInputStream inputStream = new ByteArrayInputStream(imageBytes);
-                Image image = new Image(inputStream);
-                this.imagenUsuario.setImage(image);
-            }
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {
+            InputStream imageFile = rs.getBinaryStream(1);
+            imagenUsuario.setImage(new Image(imageFile));
+            applyCircularMask(imagenUsuario);
         }
+
     }
 
 
-
     public void actualizar() {
-        if (actualizar(GlobalData.userName, this.newUserNameField.getText(), this.newPass1Field.getText(), this.newPass2Field.getText(), this.imagenUsuario.getImage())) {
+
+        if (actualizar(GlobalData.userName, this.newUserNameField.getText(), this.newPass1Field.getText(), this.newPass2Field.getText())) {
             try {
                 App.setRoot("inicio_user");
             } catch (IOException e) {
@@ -186,7 +177,7 @@ public class MyAccountController implements Initializable {
         imageView.setClip(clip);
     }
 
-    public static boolean actualizar(String username, String newUsername, String pass1, String pass2, javafx.scene.image.Image PFP) {
+    public static boolean actualizar(String username, String newUsername, String pass1, String pass2) {
         try {
             if (!pass1.equals(pass2)) {
                 Alert dialog = new Alert(Alert.AlertType.ERROR);
@@ -203,11 +194,17 @@ public class MyAccountController implements Initializable {
                 int count = resultSet.getInt(1);
 
                 if (count > 0) {
+
                     String updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Pass = ?, Image = ? WHERE Nombre_Usuario = ?";
                     PreparedStatement updateStatement = App.con.prepareStatement(updateQuery);
                     updateStatement.setString(1, newUsername);
                     updateStatement.setString(2, md5.getMd5());
-                    updateStatement.setString(3, convertImageToBase64(PFP));
+                    if (selectedImageFile != null) {
+                        FileInputStream fileInputStream = new FileInputStream(selectedImageFile);
+                        updateStatement.setBinaryStream(3, fileInputStream, selectedImageFile.length());
+                    } else {
+                        updateStatement.setBinaryStream(3, null);
+                    }
                     updateStatement.setString(4, username);
                     updateStatement.executeUpdate();
 
@@ -238,18 +235,5 @@ public class MyAccountController implements Initializable {
         return false;
     }
 
-    private static String convertImageToBase64(javafx.scene.image.Image image) throws IOException {
-        BufferedImage bufferedImage = new BufferedImage(
-                (int) image.getWidth(),
-                (int) image.getHeight(),
-                BufferedImage.TYPE_INT_ARGB
-        );
-
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
-        byte[] imageBytes = byteArrayOutputStream.toByteArray();
-
-        return Base64.getEncoder().encodeToString(imageBytes);
-    }
 
 }

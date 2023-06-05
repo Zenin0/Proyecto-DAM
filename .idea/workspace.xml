@@ -9,14 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Actualizar Usuario">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/648cff86-d0f4-41c6-87d3-bde96f738588.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/648cff86-d0f4-41c6-87d3-bde96f738588.xml" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Modificación de Usuario, Intentar poner Imagenes de Perfil">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/App/bdd.sql" beforeDir="false" afterPath="$PROJECT_DIR$/App/bdd.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/app-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/app-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,14 +155,7 @@
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
       <workItem from="1685784718983" duration="14993000" />
-      <workItem from="1685992294090" duration="6600000" />
-    </task>
-    <task id="LOCAL-00016" summary="Roadna update">
-      <created>1684420952549</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1684420952549</updated>
+      <workItem from="1685992294090" duration="10559000" />
     </task>
     <task id="LOCAL-00017" summary="Cosas sjsjjs">
       <created>1684937623715</created>
@@ -501,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685996117693</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Modificación de Usuario, Intentar poner Imagenes de Perfil">
+      <created>1685999085462</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1685999085462</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +525,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Esconder texto ciudades al cambio" />
     <MESSAGE value="Readme images Update" />
     <MESSAGE value="Roadmap Update" />
     <MESSAGE value="PDF de ejemplo añadido al README.md" />
@@ -551,6 +549,7 @@
     <MESSAGE value="README.md update" />
     <MESSAGE value="Show/Hide password" />
     <MESSAGE value="Actualizar Usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="Actualizar Usuario" />
+    <MESSAGE value="Modificación de Usuario, Intentar poner Imagenes de Perfil" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modificación de Usuario, Intentar poner Imagenes de Perfil" />
   </component>
 </project>
