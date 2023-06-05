@@ -114,6 +114,9 @@ public class InicioUserController implements Initializable {
     @FXML
     private Label tittleLabel;
 
+    @FXML
+    private Button miCuentaButton;
+
     /**
      * Inicializar la ventana
      */

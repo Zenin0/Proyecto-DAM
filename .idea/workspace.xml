@@ -9,8 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="README.md update">
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/register.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +99,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ToolWindowRun.ShowToolbar": "false",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
@@ -151,27 +159,6 @@
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
       <workItem from="1685784718983" duration="14491000" />
-    </task>
-    <task id="LOCAL-00024" summary="Updates">
-      <created>1684950952603</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1684950952603</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Fultrar Vuelos">
-      <created>1685022893732</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1685022893732</updated>
-    </task>
-    <task id="LOCAL-00026" summary="JavaDoc">
-      <created>1685025677143</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1685025677144</updated>
     </task>
     <task id="LOCAL-00027" summary="JavaDoc">
       <created>1685025790398</created>
@@ -495,7 +482,28 @@
       <option name="project" value="LOCAL" />
       <updated>1685983601291</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="README.md update">
+      <created>1685984174659</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1685984174659</updated>
+    </task>
+    <task id="LOCAL-00074" summary="README.md update">
+      <created>1685984276349</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1685984276349</updated>
+    </task>
+    <task id="LOCAL-00075" summary="README.md update">
+      <created>1685984352347</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1685984352347</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,7 +540,6 @@
     <MESSAGE value="SQL inserts" />
     <MESSAGE value="README.md update &amp; algunas comprobaciones de campos vacíos" />
     <MESSAGE value="JavaDoc update" />
-    <MESSAGE value="README.md update" />
     <MESSAGE value="gitignore update" />
     <MESSAGE value="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo" />
     <MESSAGE value="Comprobar si el avión ha tenido algun vuelo primero" />
@@ -545,6 +552,7 @@
     <MESSAGE value="README.md updates" />
     <MESSAGE value="KeyCode Enter, Seleccionar el primer item de las tablas al cargarlas" />
     <MESSAGE value="JavaDoc comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="JavaDoc comments" />
+    <MESSAGE value="README.md update" />
+    <option name="LAST_COMMIT_MESSAGE" value="README.md update" />
   </component>
 </project>
