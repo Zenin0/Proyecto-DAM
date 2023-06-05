@@ -234,6 +234,37 @@ public class InicioUserController implements Initializable {
             }
         });
 
+        this.vuelosDisponiblesTable.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                if (vuelosDisponiblesTable.getSelectionModel().getSelectedItem() != null) {
+                    try {
+                        reservar();
+                    } catch (SQLException e) {
+                        Alert dialog = new Alert(AlertType.ERROR);
+                        dialog.setTitle("ERROR");
+                        dialog.setHeaderText(e.getMessage());
+                        dialog.show();
+                    }
+                }
+            }
+        });
+
+        this.reservasDisponiblesTable.setOnKeyPressed((event) -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                if (reservasDisponiblesTable.getSelectionModel().getSelectedItem() != null) {
+                    try {
+                        modificarReserva();
+                    } catch (SQLException e) {
+                        Alert dialog = new Alert(AlertType.ERROR);
+                        dialog.setTitle("ERROR");
+                        dialog.setHeaderText(e.getMessage());
+                        dialog.show();
+                    }
+                }
+            }
+        });
+
+
     }
 
     /**
@@ -400,7 +431,7 @@ public class InicioUserController implements Initializable {
 
                                 descargarJustificante(Getter.getReservaInfo(outReserva));
                             }
-                            loadVuelos();
+                            loadReservas();
                         } else {
                             Alert fin = new Alert(AlertType.ERROR);
                             fin.setTitle("PDF");
@@ -464,6 +495,7 @@ public class InicioUserController implements Initializable {
             this.fechaVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
             this.asientosVueloColumn.setCellValueFactory(new PropertyValueFactory<>("Asientos"));
             this.vuelosDisponiblesTable.setItems(vuelos);
+            this.vuelosDisponiblesTable.getSelectionModel().selectFirst();
         }
 
     }
@@ -499,6 +531,7 @@ public class InicioUserController implements Initializable {
             this.avionReservaColumn.setCellValueFactory(new PropertyValueFactory<>("Avion"));
             this.fechaReservaColum.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
             this.reservasDisponiblesTable.setItems(reservas);
+            this.reservasDisponiblesTable.getSelectionModel().selectFirst();
         }
 
     }
