@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 /**
- * Inicio del Programa
+ * Clase de inicio del programa
  */
 public class App extends Application {
 
