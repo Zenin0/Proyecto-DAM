@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,13 +151,6 @@
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
       <workItem from="1685784718983" duration="14491000" />
-    </task>
-    <task id="LOCAL-00023" summary="Roadmap Update">
-      <created>1684949803026</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1684949803026</updated>
     </task>
     <task id="LOCAL-00024" summary="Updates">
       <created>1684950952603</created>
@@ -493,7 +488,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685983024570</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="JavaDoc comments">
+      <created>1685983601291</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1685983601291</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,7 +520,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Seats Selecable" />
     <MESSAGE value="Images Updates" />
     <MESSAGE value="Mouse Hover cambiando la opacidad" />
     <MESSAGE value="PDF generator cambiado, añadido el nombre y apellidos del Usuario" />
@@ -543,6 +544,7 @@
     <MESSAGE value="Creador de PDF QR" />
     <MESSAGE value="README.md updates" />
     <MESSAGE value="KeyCode Enter, Seleccionar el primer item de las tablas al cargarlas" />
-    <option name="LAST_COMMIT_MESSAGE" value="KeyCode Enter, Seleccionar el primer item de las tablas al cargarlas" />
+    <MESSAGE value="JavaDoc comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="JavaDoc comments" />
   </component>
 </project>
