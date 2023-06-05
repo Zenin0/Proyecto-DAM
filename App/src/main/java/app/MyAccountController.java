@@ -119,7 +119,7 @@ public class MyAccountController implements Initializable {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Selecciona una imagen de perfil");
             fileChooser.getExtensionFilters().add(
-                    new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
+                    new FileChooser.ExtensionFilter("Image Files", "*.png")
             );
 
             Stage stage = (Stage) imagenUsuario.getScene().getWindow();
