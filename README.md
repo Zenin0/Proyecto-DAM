@@ -575,54 +575,6 @@ Apartado donde se gestionará el `la reserva de un vuelo`.
     }
 ```
 
-#### Generar el PDF
-
-``` java
-    /**
-     * Generar un justificante del vuelo con formato PDF
-     *
-     * @param pdfText  Texto del PDF
-     * @param savePath Ruta donde se guarda el PDF
-     * @return True si el PDF se ha guardado exitosamente, False de lo contrario
-     */
-    public static boolean createPDF(String pdfText, String savePath) {
-        Document PDFdocument = new Document();
-        try {
-            if (!savePath.contains(".pdf"))
-                savePath += ".pdf";
-            PdfWriter.getInstance(PDFdocument, new FileOutputStream(savePath));
-            PDFdocument.open();
-            Image topImage = Image.getInstance(new URL("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/header.png"));
-            topImage.setAlignment(Element.ALIGN_CENTER);
-            topImage.scaleToFit(500, 300);
-            PDFdocument.add(topImage);
-            Font titleFont = new Font(Font.FontFamily.HELVETICA, 25, Font.BOLD);
-            Paragraph titleParagraph = new Paragraph("Justificante de Vuelo", titleFont);
-            titleParagraph.setAlignment(Element.ALIGN_CENTER);
-            titleParagraph.setSpacingBefore(60);
-            titleParagraph.setSpacingAfter(60);
-            PDFdocument.add(titleParagraph);
-            Font infoFont = new Font(Font.FontFamily.HELVETICA, 18);
-            Paragraph infoParagraph = new Paragraph(pdfText, infoFont);
-            infoParagraph.setAlignment(Element.ALIGN_CENTER);
-            infoParagraph.setSpacingAfter(20);
-            PDFdocument.add(infoParagraph);
-            String qrCodeUrl = "https://github.com/Zenin0/Proyecto-DAM";
-            Image qrCodeImage = Image.getInstance("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrCodeUrl);
-            qrCodeImage.setAlignment(Element.ALIGN_CENTER);
-            qrCodeImage.scaleAbsolute(150, 150);
-            float qrCodeX = (PDFdocument.getPageSize().getWidth() - qrCodeImage.getScaledWidth()) / 2;
-            qrCodeImage.setAbsolutePosition(qrCodeX, 50);
-            PDFdocument.add(qrCodeImage);
-            PDFdocument.close();
-
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-```
 
 ### Mis Reservas Screen
 
