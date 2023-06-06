@@ -115,5 +115,14 @@ INSERT INTO `Vuelos` (ID_Vuelo, Ciudad_Salida, Ciudad_Destino, ID_Avion, Fecha_S
 */
 INSERT INTO `Usuarios` (ID_Usuario, Nombre, Apellidos, Nombre_Usuario, Pass, is_Admin) VALUES (1, NULL, NULL, "root", "63a9f0ea7bb98050796b649e85481845", true);
 
+SET GLOBAL event_scheduler = ON;
+
+CREATE EVENT borrar_vuelos_pasados
+    ON SCHEDULE
+        EVERY 10 MINUTE
+            STARTS CURRENT_TIMESTAMP + INTERVAL 10 MINUTE
+    DO
+    DELETE FROM Vuelos
+    WHERE Fecha_Salida < CURDATE();
 
 
