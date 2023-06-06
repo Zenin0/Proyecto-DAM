@@ -16,11 +16,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -117,6 +121,10 @@ public class InicioUserController implements Initializable {
     @FXML
     private Button miCuentaButton;
 
+
+    @FXML
+    private ImageView imagenUsuario;
+
     /**
      * Inicializar la ventana
      */
@@ -124,6 +132,7 @@ public class InicioUserController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
 
         try {
+            loadImagen();
             menuReservar();
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
@@ -277,8 +286,48 @@ public class InicioUserController implements Initializable {
                 }
             }
         });
+        this.imagenUsuario.setOnMouseClicked(event ->
+                {
+                    try {
+                        App.setRoot("myAccount");
+                    } catch (IOException e) {
+                        Alert dialog = new Alert(AlertType.ERROR);
+                        dialog.setTitle("ERROR");
+                        dialog.setHeaderText(e.getMessage());
+                        dialog.show();
+                    }
+                }
+        );
 
 
+    }
+
+    /**
+     * Carga imagen del Usuario
+     */
+    private void loadImagen() throws SQLException {
+        String query = "SELECT Image FROM Usuarios WHERE Nombre_Usuario = ?";
+        PreparedStatement statement = App.con.prepareStatement(query);
+        statement.setString(1, GlobalData.userName);
+        ResultSet rs = statement.executeQuery();
+
+        if (rs.next()) {
+            InputStream imageFile = rs.getBinaryStream("Image");
+            if (imageFile != null) {
+                imagenUsuario.setImage(new Image(imageFile));
+                applyCircularMask(imagenUsuario);
+            } else {
+                imagenUsuario.setImage(new Image("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/user.png"));
+            }
+        }
+    }
+
+    private void applyCircularMask(ImageView imageView) {
+        Circle clip = new Circle();
+        clip.setCenterX(imageView.getFitWidth() / 2);
+        clip.setCenterY(imageView.getFitHeight() / 2);
+        clip.setRadius(imageView.getFitWidth() / 2);
+        imageView.setClip(clip);
     }
 
     /**

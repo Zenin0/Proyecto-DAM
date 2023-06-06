@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -16,6 +17,7 @@
    <children>
       <GridPane VBox.vgrow="ALWAYS">
         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="194.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="194.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="900.0" minWidth="10.0" prefWidth="212.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="328.0" minWidth="10.0" prefWidth="227.0" />
@@ -32,22 +34,22 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </VBox.margin>
          <children>
-            <Label fx:id="tittleLabel" style="-fx-font-weight: bold;" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="tittleLabel" style="-fx-font-weight: bold;" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <Label text="Ciudades De Destino" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label text="Ciudades De Destino" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label text="Ciudades De Salida" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label text="Ciudades De Salida" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TableView fx:id="vuelosDisponiblesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowSpan="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <TableView fx:id="vuelosDisponiblesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowSpan="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="IDVueloColumn" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="salidaVueloColum" prefWidth="194.0" text="Ciudad de Salida" />
@@ -62,7 +64,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <TableView fx:id="reservasDisponiblesTable" prefHeight="562.0" prefWidth="717.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowSpan="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <TableView fx:id="reservasDisponiblesTable" prefHeight="562.0" prefWidth="717.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowSpan="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="IDReservaColum" prefWidth="37.0" text="ID" />
                   <TableColumn fx:id="nameReservaColum" prefWidth="152.0" text="Nombre y Apellidos" />
@@ -76,26 +78,31 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="reservarButton" mnemonicParsing="false" text="Reservar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Button fx:id="removeReservaButton" mnemonicParsing="false" text="Eliminar Reserva" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button fx:id="modificarReservaButton" layoutX="169.0" layoutY="304.0" mnemonicParsing="false" text="Modificar Reserva" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button fx:id="downloadJustificanteButton" mnemonicParsing="false" text="Descargar Justificante" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Button fx:id="reservarMeuItem" mnemonicParsing="false" text="Reservar" visible="false" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button fx:id="reservarButton" mnemonicParsing="false" text="Reservar" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Button fx:id="removeReservaButton" mnemonicParsing="false" text="Eliminar Reserva" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="modificarReservaButton" layoutX="169.0" layoutY="304.0" mnemonicParsing="false" text="Modificar Reserva" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button fx:id="downloadJustificanteButton" mnemonicParsing="false" text="Descargar Justificante" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Button fx:id="reservarMeuItem" mnemonicParsing="false" text="Reservar" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button fx:id="misReservasMenuItem" mnemonicParsing="false" text="Mis Reservas" visible="false" GridPane.rowIndex="3">
+            <Button fx:id="misReservasMenuItem" mnemonicParsing="false" text="Mis Reservas" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <MenuButton fx:id="menuciudadDestinoVuelos" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <MenuButton fx:id="menuciudadSalidaVuelos" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <MenuButton fx:id="menuciudadDestinoReservas" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <MenuButton fx:id="menuciudadSalidaReservas" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="4" />
-            <Button fx:id="miCuentaButton" mnemonicParsing="false" text="Mi Cuenta" />
+            <MenuButton fx:id="menuciudadDestinoVuelos" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <MenuButton fx:id="menuciudadSalidaVuelos" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <MenuButton fx:id="menuciudadDestinoReservas" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <MenuButton fx:id="menuciudadSalidaReservas" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="miCuentaButton" mnemonicParsing="false" text="Mi Cuenta" GridPane.rowIndex="4" />
+            <ImageView fx:id="imagenUsuario" fitHeight="147.0" fitWidth="183.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+            </ImageView>
          </children>
       </GridPane>
    </children>

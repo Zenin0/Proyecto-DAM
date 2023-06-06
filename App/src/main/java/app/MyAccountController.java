@@ -141,6 +141,9 @@ public class MyAccountController implements Initializable {
 
     }
 
+    /**
+     * Carga imagen del Usuario
+     */
     private void loadImagen() throws SQLException {
         String query = "SELECT Image FROM Usuarios WHERE Nombre_Usuario = ?";
         PreparedStatement statement = App.con.prepareStatement(query);
