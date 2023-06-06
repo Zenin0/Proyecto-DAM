@@ -808,19 +808,54 @@ Apartado simiplar al de reservar un vuelo, pero para listar `nuestras reservas` 
     }
 ```
 
-#### PDF de ejemplo
+### PDF de ejemplo
 
   <p align="center">
     <img src="./images/PDF-Example.png" alt="Login Screen">
   </p>
 
-#### Ventana de Mi cuenta
+### Ventana de Mi cuenta
 
-    
+Ventana donde podremos `cambiar la información de nuestra cuenta`
 
   <p align="center">
     <img src="./images/My-Account-Screen.png" alt="Login Screen">
   </p>
+
+#### Parte del controlador que actualiza
+
+``` java
+    public void actualizar() {
+        String newUsername = this.newUserNameField.getText();
+        String pass1 = this.newPass1Field.getText();
+        String pass2 = this.newPass2Field.getText();
+
+        if (!newUsername.isEmpty()) {
+            if (pass1.equals(pass2)) {
+                if (Gestioner.actualizar(GlobalData.userName, newUsername, pass1, selectedImageFile)) {
+                    try {
+                        App.setRoot("inicio_user");
+                    } catch (IOException e) {
+                        Alert dialog = new Alert(Alert.AlertType.ERROR);
+                        dialog.setTitle("ERROR");
+                        dialog.setHeaderText(e.getMessage());
+                        dialog.show();
+                    }
+                }
+            } else {
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText("Las contraseñas no coinciden");
+                dialog.show();
+            }
+        } else {
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setHeaderText("Por favor rellene todos los campos");
+            dialog.show();
+        }
+    }
+```
 
 <!-- ROADMAP -->
 
