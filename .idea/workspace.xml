@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Edit symbol in image">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Aceptar solo PNG's">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_user.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/target/classes/app/myAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/myAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +104,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.47241378&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -155,28 +151,9 @@
       <workItem from="1685640679083" duration="289000" />
       <workItem from="1685715230770" duration="22000" />
       <workItem from="1685784718983" duration="14993000" />
-      <workItem from="1685992294090" duration="12637000" />
-    </task>
-    <task id="LOCAL-00020" summary="Seat Deleted">
-      <created>1684942442999</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1684942442999</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Asientos Seleccionables con imagenes">
-      <created>1684948041849</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1684948041849</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Modificacion de Asientos con seleccion de asientos por imagenes">
-      <created>1684949514007</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1684949514007</updated>
+      <workItem from="1685992294090" duration="13225000" />
+      <workItem from="1686048364801" duration="135000" />
+      <workItem from="1686048510778" duration="622000" />
     </task>
     <task id="LOCAL-00023" summary="Roadmap Update">
       <created>1684949803026</created>
@@ -500,7 +477,28 @@
       <option name="project" value="LOCAL" />
       <updated>1686003673488</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Intento de mostrar la imagen de perfil en el inicio_user.fxml">
+      <created>1686005161622</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1686005161623</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Edit imagen borrada">
+      <created>1686005176415</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1686005176415</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Aceptar solo PNG's">
+      <created>1686005297733</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1686005297733</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,9 +523,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="README.md javadoc website" />
-    <MESSAGE value="FXML Updates" />
-    <MESSAGE value="Generar los asientos por columnas en vez de por filas" />
     <MESSAGE value="Seats Selecable" />
     <MESSAGE value="Images Updates" />
     <MESSAGE value="Mouse Hover cambiando la opacidad" />
@@ -550,6 +545,9 @@
     <MESSAGE value="PFP de usuarios" />
     <MESSAGE value="Default PFP" />
     <MESSAGE value="Edit symbol in image" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit symbol in image" />
+    <MESSAGE value="Intento de mostrar la imagen de perfil en el inicio_user.fxml" />
+    <MESSAGE value="Edit imagen borrada" />
+    <MESSAGE value="Aceptar solo PNG's" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aceptar solo PNG's" />
   </component>
 </project>

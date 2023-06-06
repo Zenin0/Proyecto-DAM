@@ -70,7 +70,7 @@ public class MyAccountController implements Initializable {
             }
         });
         this.actualizarButton.setOnAction(event -> {
-            if (!this.newUserNameField.getText().isEmpty() && !this.newPass2Field.getText().isEmpty() && !this.newPass1Field.getText().isEmpty()) {
+            if (!this.newUserNameField.getText().isEmpty()) {
                 actualizar();
             } else {
                 Alert dialog = new Alert(Alert.AlertType.ERROR);
@@ -81,7 +81,7 @@ public class MyAccountController implements Initializable {
         });
         newUserNameField.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                if (!this.newUserNameField.getText().isEmpty() && !this.newPass2Field.getText().isEmpty() && !this.newPass1Field.getText().isEmpty()) {
+                if (!this.newUserNameField.getText().isEmpty()) {
                     actualizar();
                 } else {
                     Alert dialog = new Alert(Alert.AlertType.ERROR);
@@ -93,7 +93,7 @@ public class MyAccountController implements Initializable {
         });
         newPass1Field.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                if (!this.newUserNameField.getText().isEmpty() && !this.newPass2Field.getText().isEmpty() && !this.newPass1Field.getText().isEmpty()) {
+                if (!this.newUserNameField.getText().isEmpty()) {
                     actualizar();
                 } else {
                     Alert dialog = new Alert(Alert.AlertType.ERROR);
@@ -105,7 +105,7 @@ public class MyAccountController implements Initializable {
         });
         newPass2Field.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                if (!this.newUserNameField.getText().isEmpty() && !this.newPass2Field.getText().isEmpty() && !this.newPass1Field.getText().isEmpty()) {
+                if (!this.newUserNameField.getText().isEmpty()) {
                     actualizar();
                 } else {
                     Alert dialog = new Alert(Alert.AlertType.ERROR);
@@ -161,18 +161,37 @@ public class MyAccountController implements Initializable {
 
 
     public void actualizar() {
+        String newUsername = this.newUserNameField.getText();
+        String pass1 = this.newPass1Field.getText();
+        String pass2 = this.newPass2Field.getText();
 
-        if (actualizar(GlobalData.userName, this.newUserNameField.getText(), this.newPass1Field.getText(), this.newPass2Field.getText())) {
-            try {
-                App.setRoot("inicio_user");
-            } catch (IOException e) {
+        if (!newUsername.isEmpty()) {
+            if (pass1.equals(pass2)) {
+                if (actualizar(GlobalData.userName, newUsername, pass1)) {
+                    try {
+                        App.setRoot("inicio_user");
+                    } catch (IOException e) {
+                        Alert dialog = new Alert(Alert.AlertType.ERROR);
+                        dialog.setTitle("ERROR");
+                        dialog.setHeaderText(e.getMessage());
+                        dialog.show();
+                    }
+                }
+            } else {
                 Alert dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
+                dialog.setHeaderText("Las contraseñas no coinciden");
                 dialog.show();
             }
+        } else {
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setHeaderText("Por favor rellene todos los campos");
+            dialog.show();
         }
     }
+
+
 
     private void applyCircularMask(ImageView imageView) {
         Circle clip = new Circle();
@@ -182,49 +201,51 @@ public class MyAccountController implements Initializable {
         imageView.setClip(clip);
     }
 
-    public static boolean actualizar(String username, String newUsername, String pass1, String pass2) {
+    public static boolean actualizar(String username, String newUsername, String password) {
         try {
-            if (!pass1.equals(pass2)) {
+            String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
+            checkStatement.setString(1, username);
+            ResultSet resultSet = checkStatement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+
+            if (count > 0) {
+                String updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Image = ? WHERE Nombre_Usuario = ?";
+                if (!password.isEmpty()) {
+                    updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Pass = ?, Image = ? WHERE Nombre_Usuario = ?";
+                }
+
+                PreparedStatement updateStatement = App.con.prepareStatement(updateQuery);
+                updateStatement.setString(1, newUsername);
+
+                int parameterIndex = 2;
+                if (!password.isEmpty()) {
+                    MD5Hasher md5 = new MD5Hasher(password);
+                    updateStatement.setString(parameterIndex++, md5.getMd5());
+                }
+
+                if (selectedImageFile != null) {
+                    FileInputStream fileInputStream = new FileInputStream(selectedImageFile);
+                    updateStatement.setBinaryStream(parameterIndex++, fileInputStream, selectedImageFile.length());
+                } else {
+                    updateStatement.setBinaryStream(parameterIndex++, null);
+                }
+
+                updateStatement.setString(parameterIndex, username);
+                updateStatement.executeUpdate();
+
+                Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+                dialog.setTitle("Usuario");
+                dialog.setHeaderText("Usuario actualizado correctamente");
+                dialog.show();
+                return true;
+            } else {
                 Alert dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setHeaderText("ERROR");
-                dialog.setContentText("Las contraseñas no coinciden");
+                dialog.setHeaderText("Este usuario no existe");
                 dialog.show();
-            } else {
-                MD5Hasher md5 = new MD5Hasher(pass1);
-                String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ?";
-                PreparedStatement checkStatement = App.con.prepareStatement(query);
-                checkStatement.setString(1, username);
-                ResultSet resultSet = checkStatement.executeQuery();
-                resultSet.next();
-                int count = resultSet.getInt(1);
-
-                if (count > 0) {
-
-                    String updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Pass = ?, Image = ? WHERE Nombre_Usuario = ?";
-                    PreparedStatement updateStatement = App.con.prepareStatement(updateQuery);
-                    updateStatement.setString(1, newUsername);
-                    updateStatement.setString(2, md5.getMd5());
-                    if (selectedImageFile != null) {
-                        FileInputStream fileInputStream = new FileInputStream(selectedImageFile);
-                        updateStatement.setBinaryStream(3, fileInputStream, selectedImageFile.length());
-                    } else {
-                        updateStatement.setBinaryStream(3, null);
-                    }
-                    updateStatement.setString(4, username);
-                    updateStatement.executeUpdate();
-
-                    Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
-                    dialog.setTitle("Usuario");
-                    dialog.setHeaderText("Usuario actualizado correctamente");
-                    dialog.show();
-                    return true;
-                } else {
-                    Alert dialog = new Alert(Alert.AlertType.ERROR);
-                    dialog.setHeaderText("ERROR");
-                    dialog.setHeaderText("Este usuario no existe");
-                    dialog.show();
-                    return false;
-                }
+                return false;
             }
         } catch (SQLException e) {
             Alert dialog = new Alert(Alert.AlertType.ERROR);
@@ -239,6 +260,8 @@ public class MyAccountController implements Initializable {
         }
         return false;
     }
+
+
 
 
 }
