@@ -348,11 +348,6 @@ public class InicioAdminController implements Initializable {
     }
 
 
-    /**
-     * Funcion para añadir un vuelo
-     *
-     * @see Gestioner#registrarVuelo(String, String, int, String)
-     */
     private void addVuelo() throws ParseException, SQLException {
         if (this.menuCiudadesSalida.getText().equals("Ciudades Salida") || this.menuCiudadesDestino.getText().equals("Ciudades Destino") || this.menuAviones.getText().equals("Aviones") || this.fechaDatePicker.getValue() == null) {
             Alert dialog = new Alert(AlertType.ERROR);
@@ -363,27 +358,37 @@ public class InicioAdminController implements Initializable {
             String[] tokens = this.menuAviones.getText().split("\\s*-\\s*");
             int IDAvion = Integer.parseInt(tokens[0]);
             LocalDate localDate = fechaDatePicker.getValue();
-            if (Getter.getDispnibilidad(String.valueOf(localDate), IDAvion, Getter.getIDCiudad(this.menuCiudadesSalida.getText()))) {
-                if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), IDAvion, String.valueOf(localDate))) {
-                    Alert dialog = new Alert(AlertType.CONFIRMATION);
-                    dialog.setTitle("Vuelo");
-                    dialog.setHeaderText("Vuelo creada correctamente");
-                    dialog.show();
+
+            LocalDate currentDate = LocalDate.now();
+            if (localDate.isBefore(currentDate)) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("Vuelo");
+                dialog.setHeaderText("La fecha seleccionada debe ser igual o posterior a la fecha actual");
+                dialog.show();
+            } else {
+
+                if (Getter.getDispnibilidad(String.valueOf(localDate), IDAvion, Getter.getIDCiudad(this.menuCiudadesSalida.getText()))) {
+                    if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), IDAvion, String.valueOf(localDate))) {
+                        Alert dialog = new Alert(AlertType.CONFIRMATION);
+                        dialog.setTitle("Vuelo");
+                        dialog.setHeaderText("Vuelo creada correctamente");
+                        dialog.show();
+                    } else {
+                        Alert dialog = new Alert(AlertType.ERROR);
+                        dialog.setTitle("Vuelo");
+                        dialog.setHeaderText("Algo ha fallado");
+                        dialog.show();
+                    }
                 } else {
                     Alert dialog = new Alert(AlertType.ERROR);
                     dialog.setTitle("Vuelo");
-                    dialog.setHeaderText("Algo ha fallado");
+                    dialog.setHeaderText("Este avión no estará disponible en esa ciudad de salida (" + this.menuCiudadesSalida.getText() + ") en esa fecha");
                     dialog.show();
                 }
-            } else {
-                Alert dialog = new Alert(AlertType.ERROR);
-                dialog.setTitle("Vuelo");
-                dialog.setHeaderText("Este avión no estará disponible en esa ciudad de salida (" + this.menuCiudadesSalida.getText() + ") en esa fecha");
-                dialog.show();
             }
-
         }
     }
+
 
     /**
      * Funcion para eliminar un Vuelo
