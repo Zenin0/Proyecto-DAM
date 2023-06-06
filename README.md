@@ -814,6 +814,14 @@ Apartado simiplar al de reservar un vuelo, pero para listar `nuestras reservas` 
     <img src="./images/PDF-Example.png" alt="Login Screen">
   </p>
 
+#### Ventana de Mi cuenta
+
+    
+
+  <p align="center">
+    <img src="./images/My-Account-Screen.png" alt="Login Screen">
+  </p>
+
 <!-- ROADMAP -->
 
 ## Roadmap

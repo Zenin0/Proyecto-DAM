@@ -53,15 +53,15 @@
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="176.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="115.0" minHeight="10.0" prefHeight="64.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Button fx:id="volverButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" text="Volver" GridPane.rowIndex="4" />
-            <ImageView fx:id="imagenUsuario" fitHeight="188.0" fitWidth="184.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
+            <ImageView fx:id="imagenUsuario" fitHeight="188.0" fitWidth="184.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                <image>
                   <Image url="@css/user.png" />
                </image>
@@ -94,6 +94,11 @@
                   <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                </GridPane.margin>
             </PasswordField>
+            <Label styleClass="h1" text="Ajustes de Cuenta">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
          <VBox.margin>
             <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />

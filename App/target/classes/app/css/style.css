@@ -1,6 +1,7 @@
 .h1 {
-    -fx-font-size: 25px;
+    -fx-font-size: 30px;
     -fx-text-alignment: center;
+    -fx-font-weight: bold;
 }
 
 .button {
