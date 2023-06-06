@@ -890,6 +890,10 @@ Ventana donde podremos `cambiar la información de nuestra cuenta`
                     - [X] Asientos seleccionables
                     - [X] Generar PDF con los datos de la reserva
                 - [X] Descargar justificante de vuelo como PDF
+        - [X] Modificaciónes de mi Cuenta
+          - [X] Añadir/Cambiar imagen de perfil 
+          - [X] Modificar nombre de usuario
+          - [X] Modificar contraseña
 
 Mira los  [problemas abiertos](https://github.com/Zenin0/Proyecto-DAM/issues) para una lista completa de las
 propuestas (y errores conocidos).
