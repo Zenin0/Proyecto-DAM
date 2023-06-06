@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Comprobar que la fecha del nuevo vuelo sea valida">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="README, Ajustes de cuenta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,14 +154,7 @@
       <workItem from="1685784718983" duration="14993000" />
       <workItem from="1685992294090" duration="13225000" />
       <workItem from="1686048364801" duration="135000" />
-      <workItem from="1686048510778" duration="4153000" />
-    </task>
-    <task id="LOCAL-00026" summary="JavaDoc">
-      <created>1685025677143</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1685025677144</updated>
+      <workItem from="1686048510778" duration="4495000" />
     </task>
     <task id="LOCAL-00027" summary="JavaDoc">
       <created>1685025790398</created>
@@ -500,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686060309837</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="README, Ajustes de cuenta">
+      <created>1686081381554</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1686081381554</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,7 +524,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="PDF generator cambiado, añadido el nombre y apellidos del Usuario" />
     <MESSAGE value="Reservas con una TableView" />
     <MESSAGE value="CSS updates" />
     <MESSAGE value="Header to PDF" />
@@ -550,6 +548,7 @@
     <MESSAGE value="Hacer que no sea necesario cambiar la contraseña si solo queremos cambiar el Nombre de Usuario o la imagen" />
     <MESSAGE value="MYSQL borrar vuelos pasados" />
     <MESSAGE value="Comprobar que la fecha del nuevo vuelo sea valida" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comprobar que la fecha del nuevo vuelo sea valida" />
+    <MESSAGE value="README, Ajustes de cuenta" />
+    <option name="LAST_COMMIT_MESSAGE" value="README, Ajustes de cuenta" />
   </component>
 </project>

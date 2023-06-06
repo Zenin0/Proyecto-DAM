@@ -457,4 +457,74 @@ public class Gestioner {
         return 0;
     }
 
+    /**
+     * Modificar nuestro usuario
+     *
+     * @param username Nombre de usuarios
+     * @param newUsername Nuevo nombre de usuario
+     * @param password Nueva contraseña
+     * @param selectedImageFile Nueva Imagen de Perfil
+     * @return
+     */
+    public static boolean actualizar(String username, String newUsername, String password, File selectedImageFile) {
+        try {
+            String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
+            checkStatement.setString(1, username);
+            ResultSet resultSet = checkStatement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+
+            if (count > 0) {
+                String updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Image = ? WHERE Nombre_Usuario = ?";
+                if (!password.isEmpty()) {
+                    updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Pass = ?, Image = ? WHERE Nombre_Usuario = ?";
+                }
+
+                PreparedStatement updateStatement = App.con.prepareStatement(updateQuery);
+                updateStatement.setString(1, newUsername);
+
+                int parameterIndex = 2;
+                if (!password.isEmpty()) {
+                    MD5Hasher md5 = new MD5Hasher(password);
+                    updateStatement.setString(parameterIndex++, md5.getMd5());
+                }
+
+                if (selectedImageFile != null) {
+                    FileInputStream fileInputStream = new FileInputStream(selectedImageFile);
+                    updateStatement.setBinaryStream(parameterIndex++, fileInputStream, selectedImageFile.length());
+                } else {
+                    updateStatement.setBinaryStream(parameterIndex++, null);
+                }
+
+                updateStatement.setString(parameterIndex, username);
+                updateStatement.executeUpdate();
+
+                Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+                dialog.setTitle("Usuario");
+                dialog.setHeaderText("Usuario actualizado correctamente");
+                dialog.show();
+                return true;
+            } else {
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setHeaderText("ERROR");
+                dialog.setHeaderText("Este usuario no existe");
+                dialog.show();
+                return false;
+            }
+        } catch (SQLException e) {
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        } catch (IOException e) {
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setHeaderText(e.getMessage());
+            dialog.show();
+        }
+        return false;
+    }
+
+
 }
