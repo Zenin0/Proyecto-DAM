@@ -9,9 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Unused code">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Code reorg">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +154,7 @@
       <workItem from="1685784718983" duration="14993000" />
       <workItem from="1685992294090" duration="13225000" />
       <workItem from="1686048364801" duration="135000" />
-      <workItem from="1686048510778" duration="15164000" />
-    </task>
-    <task id="LOCAL-00036" summary="Seats Selecable">
-      <created>1685375999146</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1685375999146</updated>
+      <workItem from="1686048510778" duration="16359000" />
     </task>
     <task id="LOCAL-00037" summary="Images Updates">
       <created>1685376441759</created>
@@ -499,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686144409282</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Code reorg">
+      <created>1686144541200</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1686144541200</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,7 +524,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="README.md update &amp; algunas comprobaciones de campos vacíos" />
     <MESSAGE value="JavaDoc update" />
     <MESSAGE value="gitignore update" />
     <MESSAGE value="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo" />
@@ -549,6 +548,7 @@
     <MESSAGE value="Version Update" />
     <MESSAGE value="Code formatting" />
     <MESSAGE value="Unused code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unused code" />
+    <MESSAGE value="Code reorg" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code reorg" />
   </component>
 </project>
