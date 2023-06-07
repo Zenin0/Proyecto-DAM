@@ -14,7 +14,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -23,6 +22,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador FXML de myAccount
+ */
 public class MyAccountController implements Initializable {
 
     @FXML
@@ -46,7 +48,9 @@ public class MyAccountController implements Initializable {
     private static File selectedImageFile;
 
 
-
+    /**
+     * Inicializar la ventana
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -142,7 +146,9 @@ public class MyAccountController implements Initializable {
     }
 
     /**
-     * Carga imagen del Usuario
+     * Cargar la imagen de usuario
+     * @throws SQLException Error al hacer la consulta
+     * @see #applyCircularMask(ImageView)
      */
     private void loadImagen() throws SQLException {
         String query = "SELECT Image FROM Usuarios WHERE Nombre_Usuario = ?";
@@ -162,15 +168,19 @@ public class MyAccountController implements Initializable {
     }
 
 
-
+    /**
+     * Actualizar el usuario
+     */
     public void actualizar() {
         String newUsername = this.newUserNameField.getText();
         String pass1 = this.newPass1Field.getText();
         String pass2 = this.newPass2Field.getText();
 
+        // ? El usuario no esta vacio
         if (!newUsername.isEmpty()) {
+            // ? Las contraseñas coinciden
             if (pass1.equals(pass2)) {
-                if (Gestioner.actualizar(GlobalData.userName, newUsername, pass1, selectedImageFile)) {
+                if (ManoloAirlines.actualizar(GlobalData.userName, newUsername, pass1, selectedImageFile)) {
                     try {
                         App.setRoot("inicio_user");
                     } catch (IOException e) {
@@ -195,7 +205,10 @@ public class MyAccountController implements Initializable {
     }
 
 
-
+    /**
+     * Aplicar una mascara cirucular a la image
+     * @param imageView ImageView
+     */
     private void applyCircularMask(ImageView imageView) {
         Circle clip = new Circle();
         clip.setCenterX(imageView.getFitWidth() / 2);

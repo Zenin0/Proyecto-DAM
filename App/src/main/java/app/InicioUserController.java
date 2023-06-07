@@ -1,5 +1,6 @@
 package app;
 
+import com.itextpdf.text.DocumentException;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static app.Gestioner.createPDF;
+import static app.ManoloAirlines.createPDF;
 
 /**
  * Controlador del FXML iniciouser
@@ -126,6 +127,35 @@ public class InicioUserController implements Initializable {
     private ImageView imagenUsuario;
 
     /**
+     * Descargar un justufucante del vuelo con formato PDF
+     *
+     * @see ManoloAirlines#createPDF(String, String)
+     */
+    public static void descargarJustificante(String PDFString) throws SQLException, DocumentException, IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Justificante de Vuelo");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+        File selectedFile = fileChooser.showSaveDialog(null);
+
+        if (selectedFile != null) {
+
+            if (createPDF(PDFString, selectedFile.getAbsolutePath())) {
+                Alert fin = new Alert(AlertType.CONFIRMATION);
+                fin.setTitle("PDF");
+                fin.setHeaderText("PDF descargado con éxito");
+                fin.setContentText("El pdf se descargó exitosamente en: " + selectedFile.getAbsolutePath());
+                fin.show();
+            } else {
+                Alert error = new Alert(AlertType.ERROR);
+                error.setTitle("Error");
+                error.setHeaderText("No se pudo guardar el PDF");
+                error.setContentText("Hubo un error al guardar el PDF. Por favor, inténtelo de nuevo.");
+                error.show();
+            }
+        }
+    }
+
+    /**
      * Inicializar la ventana
      */
     @Override
@@ -135,9 +165,9 @@ public class InicioUserController implements Initializable {
             loadImagen();
             menuReservar();
         } catch (SQLException e) {
-            Alert dialog = new Alert(AlertType.ERROR);
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setHeaderText(e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
 
@@ -145,9 +175,9 @@ public class InicioUserController implements Initializable {
             try {
                 menuReservar();
             } catch (SQLException e) {
-                Alert dialog = new Alert(AlertType.ERROR);
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
         });
@@ -156,9 +186,9 @@ public class InicioUserController implements Initializable {
             try {
                 menuMisReservas();
             } catch (SQLException e) {
-                Alert dialog = new Alert(AlertType.ERROR);
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
         });
@@ -187,8 +217,7 @@ public class InicioUserController implements Initializable {
 
         this.reservarButton.setOnAction(event -> {
             try {
-                if (!vuelosDisponiblesTable.getSelectionModel().isEmpty())
-                    reservar();
+                if (!vuelosDisponiblesTable.getSelectionModel().isEmpty()) reservar();
                 else {
                     Alert dialog = new Alert(AlertType.ERROR);
                     dialog.setTitle("ERROR");
@@ -196,9 +225,9 @@ public class InicioUserController implements Initializable {
                     dialog.show();
                 }
             } catch (SQLException e) {
-                Alert dialog = new Alert(AlertType.ERROR);
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
         });
@@ -207,7 +236,7 @@ public class InicioUserController implements Initializable {
             try {
                 if (!reservasDisponiblesTable.getSelectionModel().isEmpty()) {
                     Reserva selectedReserva = reservasDisponiblesTable.getSelectionModel().getSelectedItem();
-                    descargarJustificante(Getter.getReservaInfo(selectedReserva.getID()));
+                    descargarJustificante(ManoloAirlines.getReservaInfo(selectedReserva.getID()));
                 } else {
                     Alert dialog = new Alert(AlertType.ERROR);
                     dialog.setTitle("ERROR");
@@ -215,17 +244,22 @@ public class InicioUserController implements Initializable {
                     dialog.show();
                 }
             } catch (SQLException e) {
-                Alert dialog = new Alert(AlertType.ERROR);
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
+            } catch (DocumentException | IOException e) {
+                Alert error = new Alert(AlertType.ERROR);
+                error.setTitle("Error");
+                error.setHeaderText("No se pudo guardar el PDF");
+                error.setContentText("Hubo un error al guardar el PDF. Por favor, inténtelo de nuevo.");
+                error.show();
             }
         });
 
         this.removeReservaButton.setOnAction(event -> {
             try {
-                if (!reservasDisponiblesTable.getSelectionModel().isEmpty())
-                    eliminarReserva();
+                if (!reservasDisponiblesTable.getSelectionModel().isEmpty()) eliminarReserva();
                 else {
                     Alert dialog = new Alert(AlertType.ERROR);
                     dialog.setTitle("ERROR");
@@ -233,9 +267,9 @@ public class InicioUserController implements Initializable {
                     dialog.show();
                 }
             } catch (SQLException e) {
-                Alert dialog = new Alert(AlertType.ERROR);
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
         });
@@ -253,7 +287,10 @@ public class InicioUserController implements Initializable {
                 }
 
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                dialog.show();
             }
         });
 
@@ -263,9 +300,9 @@ public class InicioUserController implements Initializable {
                     try {
                         reservar();
                     } catch (SQLException e) {
-                        Alert dialog = new Alert(AlertType.ERROR);
+                        Alert dialog = new Alert(Alert.AlertType.ERROR);
                         dialog.setTitle("ERROR");
-                        dialog.setHeaderText(e.getMessage());
+                        dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                         dialog.show();
                     }
                 }
@@ -278,32 +315,33 @@ public class InicioUserController implements Initializable {
                     try {
                         modificarReserva();
                     } catch (SQLException e) {
-                        Alert dialog = new Alert(AlertType.ERROR);
+                        Alert dialog = new Alert(Alert.AlertType.ERROR);
                         dialog.setTitle("ERROR");
-                        dialog.setHeaderText(e.getMessage());
+                        dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                         dialog.show();
                     }
                 }
             }
+
         });
-        this.imagenUsuario.setOnMouseClicked(event ->
-                {
-                    try {
-                        App.setRoot("myAccount");
-                    } catch (IOException e) {
-                        Alert dialog = new Alert(AlertType.ERROR);
-                        dialog.setTitle("ERROR");
-                        dialog.setHeaderText(e.getMessage());
-                        dialog.show();
-                    }
-                }
-        );
+        this.imagenUsuario.setOnMouseClicked(event -> {
+            try {
+                App.setRoot("myAccount");
+            } catch (IOException e) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setHeaderText(e.getMessage());
+                dialog.show();
+            }
+        });
 
 
     }
 
     /**
-     * Carga imagen del Usuario
+     * Cargar la imagen del usuario
+     *
+     * @throws SQLException Error en la consulta
      */
     private void loadImagen() throws SQLException {
         String query = "SELECT Image FROM Usuarios WHERE Nombre_Usuario = ?";
@@ -322,6 +360,12 @@ public class InicioUserController implements Initializable {
         }
     }
 
+    /**
+     * Aplicar una mascara de ciruclo a la imagen de perfil
+     *
+     * @param imageView ImageView
+     * @see #loadImagen()
+     */
     private void applyCircularMask(ImageView imageView) {
         Circle clip = new Circle();
         clip.setCenterX(imageView.getFitWidth() / 2);
@@ -331,47 +375,25 @@ public class InicioUserController implements Initializable {
     }
 
     /**
-     * Descargar un justufucante del vuelo con formato PDF
+     * Modificar una reserva
      *
-     * @see Gestioner#createPDF(String, String)
-     */
-    public static void descargarJustificante(String PDFString) throws SQLException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Justificante de Vuelo");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
-        File selectedFile = fileChooser.showSaveDialog(null);
-
-        if (selectedFile != null) {
-
-            if (createPDF(PDFString, selectedFile.getAbsolutePath())) {
-                Alert fin = new Alert(AlertType.CONFIRMATION);
-                fin.setTitle("PDF");
-                fin.setHeaderText("PDF descargado con éxito");
-                fin.setContentText("El pdf se descargó exitosamente en: " + selectedFile.getAbsolutePath());
-                fin.show();
-            } else {
-                Alert error = new Alert(AlertType.ERROR);
-                error.setTitle("Error");
-                error.setHeaderText("No se pudo guardar el PDF");
-                error.setContentText("Hubo un error al guardar el PDF. Por favor, inténtelo de nuevo.");
-                error.show();
-            }
-        }
-    }
-
-    /**
-     * Modificar una Reserva
+     * @throws SQLException Error en la consulta
+     * @see #reservar()
+     * @see #eliminarReserva()
+     * @see Reserva
      */
     private void modificarReserva() throws SQLException {
         Reserva selectedReserva = this.reservasDisponiblesTable.getSelectionModel().getSelectedItem();
+
+        // * Cargar la ventana de seleccion de asiento
         int idreserva = selectedReserva.getID();
 
-        int vueloID = Getter.getIDVueloFromIDReserva(idreserva);
-        int numAsientos = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID).size();
-        int numCols = Getter.getNumCols(numAsientos);
-        int numRows = Getter.getNumRows(numAsientos, numCols);
+        int vueloID = ManoloAirlines.getIDVueloFromIDReserva(idreserva);
+        int numAsientos = ManoloAirlines.getAsientosLibres(ManoloAirlines.getIDAvioFromVuelo(vueloID), vueloID).size();
+        int numCols = ManoloAirlines.getNumCols(numAsientos);
+        int numRows = ManoloAirlines.getNumRows(numAsientos, numCols);
 
-        ArrayList<Integer> asientosLibres = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID);
+        ArrayList<Integer> asientosLibres = ManoloAirlines.getAsientosLibres(ManoloAirlines.getIDAvioFromVuelo(vueloID), vueloID);
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
@@ -431,10 +453,7 @@ public class InicioUserController implements Initializable {
 
         }
 
-
         HBox legendBox = new HBox(10);
-
-
         ImageView ableImage = new ImageView(able);
         ImageView unableImage = new ImageView(unable);
         ImageView selectedImage = new ImageView(selected);
@@ -453,60 +472,56 @@ public class InicioUserController implements Initializable {
         selectedImage.setFitHeight(20);
         beforeImage.setFitWidth(20);
         beforeImage.setFitHeight(20);
-
         legendBox.getChildren().addAll(ableImage, ableLabel, unableImage, unableLabel, selectedImage, selectedLabel, beforeImage, beforeLabel);
-
         Dialog<Integer> dialog = new Dialog<>();
         dialog.setTitle("Seleccion de Asiento");
 
 
         VBox contentBox = new VBox(10);
         contentBox.getChildren().addAll(gridPane, legendBox);
-
         dialog.getDialogPane().setContent(contentBox);
-
         ButtonType noReservar = new ButtonType("Cancelar Modificación", ButtonBar.ButtonData.CANCEL_CLOSE);
         ButtonType reservar = new ButtonType("Modifcar", ButtonBar.ButtonData.OK_DONE);
-
         dialog.getDialogPane().getButtonTypes().add(noReservar);
         dialog.getDialogPane().getButtonTypes().add(reservar);
 
+        // ? Quiere reservar
         dialog.setResultConverter(buttonType -> {
             if (buttonType == reservar) {
                 int selectedAsiento = selectedSeat[0];
 
+                // ? Asiento seleccionado
                 if (selectedAsiento != -1) {
                     try {
-                        int outReserva = Gestioner.modificarReserva(idreserva, selectedAsiento);
-                        if (outReserva != 0) {
+                        // * ID de la reserva
+                        ManoloAirlines.modificarReserva(idreserva, selectedAsiento);
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Reserva Modificada");
+                        alert.setHeaderText("¡Reserva Modificada Exitosamente!");
+                        alert.setResizable(false);
+                        alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
+                        ButtonType downloadButton = new ButtonType("Descargar");
+                        ButtonType noThanksButton = new ButtonType("No, Gracias");
+                        alert.getButtonTypes().setAll(noThanksButton, downloadButton);
+                        Optional<ButtonType> alertResult = alert.showAndWait();
+                        ButtonType button = alertResult.orElse(ButtonType.CANCEL);
+                        if (button == downloadButton) {
 
-                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                            alert.setTitle("Reserva Modificada");
-                            alert.setHeaderText("¡Reserva Modificada Exitosamente!");
-                            alert.setResizable(false);
-                            alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
-                            ButtonType downloadButton = new ButtonType("Descargar");
-                            ButtonType noThanksButton = new ButtonType("No, Gracias");
-                            alert.getButtonTypes().setAll(noThanksButton, downloadButton);
-                            Optional<ButtonType> alertResult = alert.showAndWait();
-                            ButtonType button = alertResult.orElse(ButtonType.CANCEL);
-                            if (button == downloadButton) {
-
-                                descargarJustificante(Getter.getReservaInfo(outReserva));
-                            }
-                            loadReservas();
-                        } else {
-                            Alert fin = new Alert(AlertType.ERROR);
-                            fin.setTitle("PDF");
-                            fin.setHeaderText("Operacion Cancelada");
-                            fin.show();
+                            descargarJustificante(ManoloAirlines.getReservaInfo(idreserva));
                         }
-                        return outReserva;
+                        loadReservas();
+                        return idreserva;
                     } catch (SQLException e) {
-                        Alert sqlerror = new Alert(AlertType.ERROR);
-                        sqlerror.setTitle("ERROR");
-                        sqlerror.setHeaderText(e.getMessage());
-                        sqlerror.show();
+                        Alert error = new Alert(Alert.AlertType.ERROR);
+                        error.setTitle("ERROR");
+                        error.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                        error.show();
+                    } catch (DocumentException | IOException e) {
+                        Alert error = new Alert(AlertType.ERROR);
+                        error.setTitle("Error");
+                        error.setHeaderText("No se pudo guardar el PDF");
+                        error.setContentText("Hubo un error al guardar el PDF. Por favor, inténtelo de nuevo.");
+                        error.show();
                     }
                 } else {
                     Alert fin = new Alert(AlertType.ERROR);
@@ -521,23 +536,27 @@ public class InicioUserController implements Initializable {
     }
 
     /**
-     * Elimina una reserva seleccionada
+     * Eliminar una reserva
      *
-     * @see Gestioner#eliminarReserva(int)
+     * @throws SQLException Error en la eliminacion
+     * @see #modificarReserva()
+     * @see #reservar()
      */
     public void eliminarReserva() throws SQLException {
         Reserva selectedReserva = this.reservasDisponiblesTable.getSelectionModel().getSelectedItem();
-        Gestioner.eliminarReserva(selectedReserva.getID());
+        ManoloAirlines.eliminarReserva(selectedReserva.getID());
         loadReservas();
     }
 
     /**
-     * Cargar los vuelos en la lista
+     * Cargar la lista de los vuelos para reservarlos
      *
+     * @throws SQLException Error en la consulta
      * @see #loadReservas()
      */
     public void loadVuelos() throws SQLException {
-        ObservableList<Vuelo> vuelos = Getter.getVuelosObservableList(Getter.getIDCiudad(this.menuciudadSalidaVuelos.getText()), Getter.getIDCiudad(this.menuciudadDestinoVuelos.getText()));
+        ObservableList<Vuelo> vuelos = ManoloAirlines.getVuelosObservableList(ManoloAirlines.getIDCiudad(this.menuciudadSalidaVuelos.getText()), ManoloAirlines.getIDCiudad(this.menuciudadDestinoVuelos.getText()));
+        // ? Hay vuelos
         if (vuelos.size() < 1) {
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("No Encontrado");
@@ -564,13 +583,15 @@ public class InicioUserController implements Initializable {
     }
 
     /**
-     * Cargar las reservas de un usuario
+     * Cargar la lista de reservas del usuario
      *
+     * @throws SQLException Error en la consulta
      * @see #loadVuelos()
      */
     public void loadReservas() throws SQLException {
 
-        ObservableList<Reserva> reservas = Getter.getReservasObservableList(Getter.getUsernameID(GlobalData.userName), Getter.getIDCiudad(this.menuciudadSalidaReservas.getText()), Getter.getIDCiudad(this.menuciudadDestinoReservas.getText()));
+        ObservableList<Reserva> reservas = ManoloAirlines.getReservasObservableList(ManoloAirlines.getUsernameID(GlobalData.userName), ManoloAirlines.getIDCiudad(this.menuciudadSalidaReservas.getText()), ManoloAirlines.getIDCiudad(this.menuciudadDestinoReservas.getText()));
+        // ? Hay reservas
         if (reservas.size() < 1) {
             Alert dialog = new Alert(AlertType.INFORMATION);
             dialog.setTitle("No Encontrado");
@@ -600,7 +621,8 @@ public class InicioUserController implements Initializable {
     }
 
     /**
-     * Cerrar la sesión
+     * Cerrar la sesion
+     * @throws IOException Error al cambiar de FXML
      */
     private void endSession() throws IOException {
         GlobalData.userName = "";
@@ -612,23 +634,23 @@ public class InicioUserController implements Initializable {
     }
 
     /**
-     * Reservar un vuelo seleccionado
-     *
+     * Reservar un vuelo
+     * @throws SQLException Error en la consulta
      * @see #modificarReserva()
-     * @see Getter
-     * @see Gestioner
+     * @see #eliminarReserva()
+     * @see Reserva
      */
     private void reservar() throws SQLException {
 
         Vuelo selectedVuelo = vuelosDisponiblesTable.getSelectionModel().getSelectedItem();
-
+        // * Cargar la ventana de seleccion de asiento
         if (selectedVuelo != null) {
             int vueloID = selectedVuelo.getId();
-            int numAsientos = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID).size();
-            int numCols = Getter.getNumCols(numAsientos);
-            int numRows = Getter.getNumRows(numAsientos, numCols);
+            int numAsientos = ManoloAirlines.getAsientosLibres(ManoloAirlines.getIDAvioFromVuelo(vueloID), vueloID).size();
+            int numCols = ManoloAirlines.getNumCols(numAsientos);
+            int numRows = ManoloAirlines.getNumRows(numAsientos, numCols);
 
-            ArrayList<Integer> asientosLibres = Getter.getAsientosLibres(Getter.getIDAvioFromVuelo(vueloID), vueloID);
+            ArrayList<Integer> asientosLibres = ManoloAirlines.getAsientosLibres(ManoloAirlines.getIDAvioFromVuelo(vueloID), vueloID);
             GridPane gridPane = new GridPane();
             gridPane.setHgap(10);
             gridPane.setVgap(10);
@@ -700,33 +722,28 @@ public class InicioUserController implements Initializable {
             unableImage.setFitHeight(20);
             selectedImage.setFitWidth(20);
             selectedImage.setFitHeight(20);
-
-
             legendBox.getChildren().addAll(ableImage, ableLabel, unableImage, unableLabel, selectedImage, selectedLabel);
-
-
             Dialog<Integer> dialog = new Dialog<>();
             dialog.setTitle("Seleccion de Asiento");
 
 
             VBox contentBox = new VBox(10);
             contentBox.getChildren().addAll(gridPane, legendBox);
-
             dialog.getDialogPane().setContent(contentBox);
-
             ButtonType noReservar = new ButtonType("Cancelar Reserva", ButtonBar.ButtonData.CANCEL_CLOSE);
             ButtonType reservar = new ButtonType("Reservar", ButtonBar.ButtonData.OK_DONE);
-
             dialog.getDialogPane().getButtonTypes().add(noReservar);
             dialog.getDialogPane().getButtonTypes().add(reservar);
 
+            // ? Quiere reservar
             dialog.setResultConverter(buttonType -> {
                 if (buttonType == reservar) {
                     int selectedAsiento = selectedSeat[0];
 
+                    // ? Ha seleccionado un asiento
                     if (selectedAsiento != -1) {
                         try {
-                            int outReserva = Gestioner.reservarVuelo(Getter.getUsernameID(GlobalData.userName), vueloID, selectedAsiento);
+                            int outReserva = ManoloAirlines.reservarVuelo(ManoloAirlines.getUsernameID(GlobalData.userName), vueloID, selectedAsiento);
                             if (outReserva != 0) {
 
                                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -741,7 +758,7 @@ public class InicioUserController implements Initializable {
                                 ButtonType button = alertResult.orElse(ButtonType.CANCEL);
                                 if (button == downloadButton) {
 
-                                    descargarJustificante(Getter.getReservaInfo(outReserva));
+                                    descargarJustificante(ManoloAirlines.getReservaInfo(outReserva));
                                 }
                                 loadVuelos();
                             } else {
@@ -756,6 +773,12 @@ public class InicioUserController implements Initializable {
                             sqlerror.setTitle("ERROR");
                             sqlerror.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
                             sqlerror.show();
+                        } catch (DocumentException | IOException e) {
+                            Alert error = new Alert(AlertType.ERROR);
+                            error.setTitle("Error");
+                            error.setHeaderText("No se pudo guardar el PDF");
+                            error.setContentText("Hubo un error al guardar el PDF. Por favor, inténtelo de nuevo.");
+                            error.show();
                         }
                     } else {
                         Alert fin = new Alert(AlertType.ERROR);
@@ -777,8 +800,8 @@ public class InicioUserController implements Initializable {
     }
 
     /**
-     * Modificar la vista para reservar un vueloi
-     *
+     * Modificar la vista para reservar un vuelo
+     * @throws SQLException Error en la consutla
      * @see #menuMisReservas()
      */
     public void menuReservar() throws SQLException {
@@ -799,7 +822,7 @@ public class InicioUserController implements Initializable {
         });
         menuciudadDestinoVuelos.getItems().add(emptyItem);
 
-        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+        for (String ciudad : ManoloAirlines.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> {
                 menuciudadDestinoVuelos.setText(item.getText());
@@ -825,7 +848,7 @@ public class InicioUserController implements Initializable {
         });
         menuciudadSalidaVuelos.getItems().add(emptyItem);
 
-        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+        for (String ciudad : ManoloAirlines.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> {
                 menuciudadSalidaVuelos.setText(item.getText());
@@ -856,7 +879,9 @@ public class InicioUserController implements Initializable {
     }
 
     /**
-     * Modificar la vista para ver mis reservas
+     * Modificar la vista para mis reservas
+     * @throws SQLException Error en la consulta
+     * @see #menuReservar()
      */
     public void menuMisReservas() throws SQLException {
 
@@ -876,7 +901,7 @@ public class InicioUserController implements Initializable {
         });
         menuciudadDestinoReservas.getItems().add(emptyItem);
 
-        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+        for (String ciudad : ManoloAirlines.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> {
                 menuciudadDestinoReservas.setText(item.getText());
@@ -902,7 +927,7 @@ public class InicioUserController implements Initializable {
         });
         menuciudadSalidaReservas.getItems().add(emptyItem);
 
-        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+        for (String ciudad : ManoloAirlines.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> {
                 menuciudadSalidaReservas.setText(item.getText());

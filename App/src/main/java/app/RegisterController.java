@@ -8,6 +8,7 @@ import javafx.scene.input.KeyCode;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
@@ -48,7 +49,16 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-        buttonReg.setOnMouseClicked((event) -> registrar());
+        buttonReg.setOnMouseClicked((event) -> {
+            try {
+                registrar();
+            } catch (SQLException e) {
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                dialog.show();
+            }
+        });
 
         buttonlogCh.setOnMouseClicked((event) -> {
             try {
@@ -64,37 +74,73 @@ public class RegisterController implements Initializable {
 
         usuReg.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                registrar();
+                try {
+                    registrar();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                    dialog.show();
+                }
             }
         });
 
         usuNombre.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                registrar();
+                try {
+                    registrar();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                    dialog.show();
+                }
             }
         });
 
         usuApellidos.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                registrar();
+                try {
+                    registrar();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                    dialog.show();
+                }
             }
         });
 
         passReg1.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                registrar();
+                try {
+                    registrar();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                    dialog.show();
+                }
             }
         });
 
         passReg2.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                registrar();
+                try {
+                    registrar();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                    dialog.show();
+                }
             }
         });
     }
 
     /**
-     * Funcion para cambiar a la ventana de login
+     * Cambiar a la ventana de login
+     * @throws IOException Error al cambiar a la ventana de login
      */
     @FXML
     private void loginChange() throws IOException {
@@ -102,13 +148,14 @@ public class RegisterController implements Initializable {
     }
 
     /**
-     * Funcion para registrar un usuario
-     *
-     * @see Gestioner#registrar(String, String, String, String, String, boolean)
+     * Registrar un nuevo usuario
+     * @throws SQLException Error al hacer la consulta
      */
-    private void registrar() {
+
+    private void registrar() throws SQLException {
+        // ? Todos los campos llenos
         if (!this.usuReg.getText().isEmpty() || !this.usuNombre.getText().isEmpty() || !this.usuApellidos.getText().isEmpty() || !this.passReg1.getText().isEmpty() || !this.passReg2.getText().isEmpty()) {
-            Gestioner.registrar(this.usuReg.getText(), this.usuNombre.getText(), this.usuApellidos.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected());
+            ManoloAirlines.registrar(this.usuReg.getText(), this.usuNombre.getText(), this.usuApellidos.getText(), this.passReg1.getText(), this.passReg2.getText(), this.adminCheckBox.isSelected());
             this.usuReg.setText("");
             this.usuNombre.setText("");
             this.usuApellidos.setText("");

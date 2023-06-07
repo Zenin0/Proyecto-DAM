@@ -116,7 +116,7 @@ public class InicioAdminController implements Initializable {
         } catch (SQLException e) {
             Alert dialog = new Alert(AlertType.ERROR);
             dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
             dialog.show();
         }
 
@@ -137,7 +137,7 @@ public class InicioAdminController implements Initializable {
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
 
@@ -149,7 +149,7 @@ public class InicioAdminController implements Initializable {
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
         });
@@ -160,7 +160,7 @@ public class InicioAdminController implements Initializable {
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
         });
@@ -171,7 +171,7 @@ public class InicioAdminController implements Initializable {
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
         });
@@ -182,19 +182,42 @@ public class InicioAdminController implements Initializable {
             } catch (SQLException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
-                dialog.setContentText("Error en la bd: " + e.getErrorCode() + "-" + e.getMessage());
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                 dialog.show();
             }
         });
 
-        this.aceptarButtonCiudad.setOnAction((event) -> addCiudad());
-        this.aceptarButtonAvion.setOnAction((event) -> addAvion());
+        this.aceptarButtonCiudad.setOnAction((event) -> {
+            try {
+                addCiudad();
+            } catch (SQLException e) {
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                dialog.show();
+            }
+        });
+        this.aceptarButtonAvion.setOnAction((event) -> {
+            try {
+                addAvion();
+            } catch (SQLException e) {
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                dialog.show();
+            }
+        });
         this.addAvionButton.setOnAction((event) -> menuAddAvion());
 
         this.aceptarButtonVuelo.setOnAction(event -> {
             try {
                 addVuelo();
-            } catch (NumberFormatException | ParseException | SQLException e) {
+            } catch (SQLException e) {
+                Alert dialog = new Alert(AlertType.ERROR);
+                dialog.setTitle("ERROR");
+                dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                dialog.show();
+            } catch (ParseException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");
                 dialog.setHeaderText(e.getMessage());
@@ -215,25 +238,53 @@ public class InicioAdminController implements Initializable {
 
         this.nombreCiudadField.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                addCiudad();
+                try {
+                    addCiudad();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                    dialog.show();
+                }
             }
         });
 
         this.nombrePaisField.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                addCiudad();
+                try {
+                    addCiudad();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                    dialog.show();
+                }
             }
         });
 
         this.nombreAvionField.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                addAvion();
+                try {
+                    addAvion();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                    dialog.show();
+                }
             }
         });
 
         this.capacidadField.setOnKeyPressed((event) -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                addAvion();
+                try {
+                    addAvion();
+                } catch (SQLException e) {
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
+                    dialog.setTitle("ERROR");
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+                    dialog.show();
+                }
             }
         });
 
@@ -243,9 +294,9 @@ public class InicioAdminController implements Initializable {
                 try {
                     delVuelo();
                 } catch (SQLException e) {
-                    Alert dialog = new Alert(AlertType.ERROR);
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
                     dialog.setTitle("ERROR");
-                    dialog.setHeaderText(e.getMessage());
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                     dialog.show();
                 }
             }
@@ -256,9 +307,9 @@ public class InicioAdminController implements Initializable {
                 try {
                     delAvion();
                 } catch (SQLException e) {
-                    Alert dialog = new Alert(AlertType.ERROR);
+                    Alert dialog = new Alert(Alert.AlertType.ERROR);
                     dialog.setTitle("ERROR");
-                    dialog.setHeaderText(e.getMessage());
+                    dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
                     dialog.show();
                 }
             }
@@ -270,14 +321,14 @@ public class InicioAdminController implements Initializable {
     /**
      * Funcion para listar los vuelos y meterlos en la lista
      *
-     * @see Getter
+     * @see ManoloAirlines
      */
     private void listarVuelos() throws SQLException {
         this.vuelosList.getItems().clear();
-        for (String vuelo : Getter.getlistaVuelosStrings()) {
+        for (String vuelo : ManoloAirlines.getlistaVuelosStrings()) {
             String[] vueloParts = vuelo.replaceAll(" ", "").split("-");
 
-            this.vuelosList.getItems().add(vueloParts[0] + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[1])) + " - " + Getter.getNombreCiudad(Integer.parseInt(vueloParts[2])) + " - " + vueloParts[4] + "/" + vueloParts[5] + "/" + vueloParts[3]);
+            this.vuelosList.getItems().add(vueloParts[0] + " - " + ManoloAirlines.getNombreCiudad(Integer.parseInt(vueloParts[1])) + " - " + ManoloAirlines.getNombreCiudad(Integer.parseInt(vueloParts[2])) + " - " + vueloParts[4] + "/" + vueloParts[5] + "/" + vueloParts[3]);
         }
         this.vuelosList.getSelectionModel().selectFirst();
     }
@@ -285,11 +336,11 @@ public class InicioAdminController implements Initializable {
     /**
      * Funcion para listar los vuelos y meterlos en la lista
      *
-     * @see Getter
+     * @see ManoloAirlines
      */
     private void listarAviones() throws SQLException {
         this.avionesList.getItems().clear();
-        for (String avion : Getter.getlistaAvionesStrings()) {
+        for (String avion : ManoloAirlines.getlistaAvionesStrings()) {
             String[] avionParts = avion.replaceAll(" ", "").split("-");
             this.avionesList.getItems().add(avionParts[0] + " - " + avionParts[1] + " - " + avionParts[2]);
         }
@@ -299,16 +350,16 @@ public class InicioAdminController implements Initializable {
     /**
      * Funcion para añadir una Ciudad
      *
-     * @see Gestioner#registrarCiudad(String, String)
+     * @see ManoloAirlines#registrarCiudad(String, String)
      */
-    private void addCiudad() {
+    private void addCiudad() throws SQLException {
         if (this.nombreCiudadField.getText().isEmpty() || this.nombrePaisField.getText().isEmpty()) {
-            Alert dialog = new Alert(AlertType.ERROR);
+            Alert dialog = new Alert(AlertType.WARNING);
             dialog.setTitle("Ciudad");
-            dialog.setHeaderText("Rellene toos los campos");
+            dialog.setHeaderText("Rellene todos los campos");
             dialog.show();
         } else {
-            if (Gestioner.registrarCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText())) {
+            if (ManoloAirlines.registrarCiudad(this.nombreCiudadField.getText(), this.nombrePaisField.getText())) {
                 Alert dialog = new Alert(AlertType.CONFIRMATION);
                 dialog.setTitle("Ciudad");
                 dialog.setHeaderText("Ciudad creada correctamente");
@@ -321,12 +372,12 @@ public class InicioAdminController implements Initializable {
     /**
      * Funcion para añadir un Avion
      *
-     * @see Gestioner#registrarAvion(String, int)
+     * @see ManoloAirlines#registrarAvion(String, int)
      */
-    private void addAvion() {
+    private void addAvion() throws SQLException {
 
         if (this.nombreAvionField.getText().isEmpty() || this.capacidadField.getText().isEmpty()) {
-            Alert dialog = new Alert(AlertType.ERROR);
+            Alert dialog = new Alert(AlertType.WARNING);
             dialog.setTitle("Avion");
             dialog.setHeaderText("Rellene todos los campos.");
             dialog.show();
@@ -337,7 +388,7 @@ public class InicioAdminController implements Initializable {
                 dialog.setHeaderText("Lo siento, nuestras aerolienas no pueden disponer de aviones de mas de 200 pasajeros,");
                 dialog.show();
             } else {
-                if (Gestioner.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.capacidadField.getText()))) {
+                if (ManoloAirlines.registrarAvion(this.nombreAvionField.getText(), Integer.parseInt(this.capacidadField.getText()))) {
                     Alert dialog = new Alert(AlertType.CONFIRMATION);
                     dialog.setTitle("Avión");
                     dialog.setHeaderText("Avión creada correctamente");
@@ -350,7 +401,7 @@ public class InicioAdminController implements Initializable {
 
     private void addVuelo() throws ParseException, SQLException {
         if (this.menuCiudadesSalida.getText().equals("Ciudades Salida") || this.menuCiudadesDestino.getText().equals("Ciudades Destino") || this.menuAviones.getText().equals("Aviones") || this.fechaDatePicker.getValue() == null) {
-            Alert dialog = new Alert(AlertType.ERROR);
+            Alert dialog = new Alert(AlertType.WARNING);
             dialog.setTitle("Vuelo");
             dialog.setHeaderText("Rellene todos los campos");
             dialog.show();
@@ -361,17 +412,17 @@ public class InicioAdminController implements Initializable {
 
             LocalDate currentDate = LocalDate.now();
             if (localDate.isBefore(currentDate)) {
-                Alert dialog = new Alert(AlertType.ERROR);
+                Alert dialog = new Alert(AlertType.WARNING);
                 dialog.setTitle("Vuelo");
                 dialog.setHeaderText("La fecha seleccionada debe ser igual o posterior a la fecha actual");
                 dialog.show();
             } else {
 
-                if (Getter.getDispnibilidad(String.valueOf(localDate), IDAvion, Getter.getIDCiudad(this.menuCiudadesSalida.getText()))) {
-                    if (Gestioner.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), IDAvion, String.valueOf(localDate))) {
+                if (ManoloAirlines.getDispnibilidad(String.valueOf(localDate), IDAvion, ManoloAirlines.getIDCiudad(this.menuCiudadesSalida.getText()))) {
+                    if (ManoloAirlines.registrarVuelo(this.menuCiudadesSalida.getText(), this.menuCiudadesDestino.getText(), IDAvion, String.valueOf(localDate))) {
                         Alert dialog = new Alert(AlertType.CONFIRMATION);
                         dialog.setTitle("Vuelo");
-                        dialog.setHeaderText("Vuelo creada correctamente");
+                        dialog.setHeaderText("Vuelo creado correctamente");
                         dialog.show();
                     } else {
                         Alert dialog = new Alert(AlertType.ERROR);
@@ -380,9 +431,9 @@ public class InicioAdminController implements Initializable {
                         dialog.show();
                     }
                 } else {
-                    Alert dialog = new Alert(AlertType.ERROR);
+                    Alert dialog = new Alert(AlertType.WARNING);
                     dialog.setTitle("Vuelo");
-                    dialog.setHeaderText("Este avión no estará disponible en esa ciudad de salida (" + this.menuCiudadesSalida.getText() + ") en esa fecha");
+                    dialog.setHeaderText("Este avión no estará disponible en esa ciudad de salida (" + this.menuCiudadesSalida.getText() + ") para esa fecha ");
                     dialog.show();
                 }
             }
@@ -393,7 +444,7 @@ public class InicioAdminController implements Initializable {
     /**
      * Funcion para eliminar un Vuelo
      *
-     * @see Gestioner#eliminarVuelo(int)
+     * @see ManoloAirlines#eliminarVuelo(int)
      */
     public void delVuelo() throws SQLException {
         if (this.vuelosList.getSelectionModel().isEmpty()) {
@@ -403,17 +454,12 @@ public class InicioAdminController implements Initializable {
             dialog.show();
         } else {
             String[] vueloParts = this.vuelosList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
-            if (Gestioner.eliminarVuelo(Integer.parseInt(vueloParts[0]))) {
-                Alert dialog = new Alert(AlertType.CONFIRMATION);
-                dialog.setTitle("Vuelo");
-                dialog.setHeaderText("Vuelo eliminado correctamente");
-                dialog.show();
-            } else {
-                Alert dialog = new Alert(AlertType.WARNING);
-                dialog.setTitle("Vuelo");
-                dialog.setHeaderText("Algo ha fallado");
-                dialog.show();
-            }
+            ManoloAirlines.eliminarVuelo(Integer.parseInt(vueloParts[0]));
+            Alert dialog = new Alert(AlertType.CONFIRMATION);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Vuelo eliminado correctamente");
+            dialog.show();
+
             listarVuelos();
         }
     }
@@ -421,7 +467,7 @@ public class InicioAdminController implements Initializable {
     /**
      * Funcion para eliminar un avión
      *
-     * @see Gestioner#eliminarAvion(int)
+     * @see ManoloAirlines#eliminarAvion(int)
      */
     public void delAvion() throws SQLException {
         if (this.avionesList.getSelectionModel().isEmpty()) {
@@ -431,17 +477,11 @@ public class InicioAdminController implements Initializable {
             dialog.show();
         } else {
             String[] vueloParts = this.avionesList.getSelectionModel().getSelectedItem().replaceAll(" ", "").split("-");
-            if (Gestioner.eliminarAvion(Integer.parseInt(vueloParts[0]))) {
-                Alert dialog = new Alert(AlertType.CONFIRMATION);
-                dialog.setTitle("Vuelo");
-                dialog.setHeaderText("Vuelo eliminado correctamente");
-                dialog.show();
-            } else {
-                Alert dialog = new Alert(AlertType.WARNING);
-                dialog.setTitle("Vuelo");
-                dialog.setHeaderText("Algo ha fallado");
-                dialog.show();
-            }
+            ManoloAirlines.eliminarAvion(Integer.parseInt(vueloParts[0]));
+            Alert dialog = new Alert(AlertType.CONFIRMATION);
+            dialog.setTitle("Vuelo");
+            dialog.setHeaderText("Vuelo eliminado correctamente");
+            dialog.show();
             listarAviones();
         }
     }
@@ -532,7 +572,7 @@ public class InicioAdminController implements Initializable {
     /**
      * Cambiar al modo a añadir un Vuelo
      *
-     * @see Getter
+     * @see ManoloAirlines
      */
     private void menuAddVuelo() throws SQLException {
         this.avionesList.setVisible(false);
@@ -545,19 +585,19 @@ public class InicioAdminController implements Initializable {
         this.menuCiudadesSalida.getItems().clear();
         this.menuCiudadesDestino.getItems().clear();
         this.menuAviones.getItems().clear();
-        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+        for (String ciudad : ManoloAirlines.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> menuCiudadesDestino.setText(item.getText()));
             menuCiudadesDestino.getItems().add(item);
         }
         menuCiudadesDestino.setPopupSide(Side.BOTTOM);
-        for (String ciudad : Getter.getlistaCiudadesStrings()) {
+        for (String ciudad : ManoloAirlines.getlistaCiudadesStrings()) {
             MenuItem item = new MenuItem(ciudad);
             item.setOnAction(event -> menuCiudadesSalida.setText(item.getText()));
             menuCiudadesSalida.getItems().add(item);
         }
         menuCiudadesSalida.setPopupSide(Side.BOTTOM);
-        for (String avion : Getter.getlistaAvionesStrings()) {
+        for (String avion : ManoloAirlines.getlistaAvionesStrings()) {
             MenuItem item = new MenuItem(avion);
             item.setOnAction(event -> menuAviones.setText(item.getText()));
             menuAviones.getItems().add(item);

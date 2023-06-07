@@ -114,6 +114,8 @@ public class LoginController implements Initializable {
 
     /**
      * Cambiar a la ventana de registro
+     *
+     * @throws IOException Error al cargar el FXML
      */
     @FXML
     private void registerChange() throws IOException {
@@ -124,7 +126,8 @@ public class LoginController implements Initializable {
     /**
      * Login de los usuarios
      *
-     * @see Gestioner#login(String, String)
+     * @throws IOException  Error al cargar el FXML
+     * @throws SQLException Error en la consulta
      */
     private void login() throws IOException, SQLException {
         if (this.usuLog.getText().isEmpty() || this.passLog.getText().isEmpty()) {
@@ -134,15 +137,16 @@ public class LoginController implements Initializable {
             error.show();
         } else {
             Alert dialog = new Alert(AlertType.CONFIRMATION);
-            int res = Gestioner.login(this.usuLog.getText(), this.passLog.getText());
+            int res = ManoloAirlines.login(this.usuLog.getText(), this.passLog.getText());
+            // ? Que tipo de usuario ha hecho login
             if (res == 1) {
                 dialog.setTitle("¡Login correcto!");
-                dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
+                dialog.setHeaderText("¡Bienvenido " + ManoloAirlines.getNombreAndApellidos(ManoloAirlines.getUsernameID(this.usuLog.getText())) + "!");
                 dialog.show();
                 App.setRoot("inicio_admin");
             } else if (res == 0) {
                 dialog.setTitle("¡Login correcto!");
-                dialog.setHeaderText("¡Bienvenido " + Getter.getNombreAndApellidos(Getter.getUsernameID(this.usuLog.getText())) + "!");
+                dialog.setHeaderText("¡Bienvenido " + ManoloAirlines.getNombreAndApellidos(ManoloAirlines.getUsernameID(this.usuLog.getText())) + "!");
                 dialog.show();
                 App.setRoot("inicio_user");
             } else {
