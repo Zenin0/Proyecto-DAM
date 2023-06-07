@@ -746,29 +746,21 @@ public class InicioUserController implements Initializable {
                     if (selectedAsiento != -1) {
                         try {
                             int outReserva = ManoloAirlines.reservarVuelo(ManoloAirlines.getUsernameID(GlobalData.userName), vueloID, selectedAsiento);
-                            if (outReserva != 0) {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Vuelo Reservado");
+                            alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
+                            alert.setResizable(false);
+                            alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
+                            ButtonType noThanksButton = new ButtonType("No, Gracias");
+                            ButtonType downloadButton = new ButtonType("Descargar");
+                            alert.getButtonTypes().setAll(noThanksButton, downloadButton);
+                            Optional<ButtonType> alertResult = alert.showAndWait();
+                            ButtonType button = alertResult.orElse(ButtonType.CANCEL);
+                            if (button == downloadButton) {
 
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                alert.setTitle("Vuelo Reservado");
-                                alert.setHeaderText("¡Vuelo Reservado Exitosamente!");
-                                alert.setResizable(false);
-                                alert.setContentText("¿Quiere descargar un justificante del vuelo ahora?\n\nPodrá descargarlo siempre en el apartado de sus reservas.");
-                                ButtonType noThanksButton = new ButtonType("No, Gracias");
-                                ButtonType downloadButton = new ButtonType("Descargar");
-                                alert.getButtonTypes().setAll(noThanksButton, downloadButton);
-                                Optional<ButtonType> alertResult = alert.showAndWait();
-                                ButtonType button = alertResult.orElse(ButtonType.CANCEL);
-                                if (button == downloadButton) {
-
-                                    descargarJustificante(ManoloAirlines.getReservaInfo(outReserva));
-                                }
-                                loadVuelos();
-                            } else {
-                                Alert fin = new Alert(AlertType.ERROR);
-                                fin.setTitle("PDF");
-                                fin.setHeaderText("Operación Cancelada");
-                                fin.show();
+                                descargarJustificante(ManoloAirlines.getReservaInfo(outReserva));
                             }
+                            loadVuelos();
                             return outReserva;
                         } catch (SQLException e) {
                             Alert sqlerror = new Alert(AlertType.ERROR);
