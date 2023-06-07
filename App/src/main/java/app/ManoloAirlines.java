@@ -531,17 +531,20 @@ public class ManoloAirlines {
      * @throws SQLException Error en la conulsta
      */
     public static boolean getDispnibilidad(String fecha, int IDAvion, int CiudadSalida) throws SQLException {
-        String query = "SELECT COUNT(*) FROM Vuelos WHERE Fecha_Salida >= ? AND ID_Avion = ? AND Ciudad_Salida = ?";
+        String query = "SELECT COUNT(*) FROM Vuelos WHERE Fecha_Salida >= ? AND ID_Avion = ? AND (Ciudad_Salida = ? OR Ciudad_Destino = ?)";
         PreparedStatement stmt = App.con.prepareStatement(query);
         stmt.setString(1, fecha);
         stmt.setInt(2, IDAvion);
         stmt.setInt(3, CiudadSalida);
+        stmt.setInt(4, CiudadSalida);
         ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
-            // ? Esta disponible
             return rs.getInt(1) < 1;
-        } else return true;
+        } else {
+            return true;
+        }
     }
+
 
     /**
      * Login del usuario

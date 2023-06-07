@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="README.md update">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Boton Mi Cuenta Borrado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,14 +157,7 @@
       <workItem from="1686048364801" duration="135000" />
       <workItem from="1686048510778" duration="16472000" />
       <workItem from="1686146114292" duration="88000" />
-      <workItem from="1686152259289" duration="5466000" />
-    </task>
-    <task id="LOCAL-00042" summary="CSS updates">
-      <created>1685480721755</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1685480721755</updated>
+      <workItem from="1686152259289" duration="6058000" />
     </task>
     <task id="LOCAL-00043" summary="Header to PDF">
       <created>1685566442760</created>
@@ -503,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686159142009</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Boton Mi Cuenta Borrado">
+      <created>1686160062820</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1686160062820</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -528,7 +527,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Show/Hide password" />
     <MESSAGE value="Actualizar Usuario" />
     <MESSAGE value="Modificación de Usuario, Intentar poner Imagenes de Perfil" />
     <MESSAGE value="PFP de usuarios" />
@@ -553,6 +551,7 @@
     <MESSAGE value="Actualizacion de Imagenes y del README.md" />
     <MESSAGE value="Actualiada la imagen de mis Reservas" />
     <MESSAGE value="README.md update" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md update" />
+    <MESSAGE value="Boton Mi Cuenta Borrado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Boton Mi Cuenta Borrado" />
   </component>
 </project>
