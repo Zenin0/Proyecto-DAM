@@ -119,9 +119,6 @@ public class InicioUserController implements Initializable {
     @FXML
     private Label tittleLabel;
 
-    @FXML
-    private Button miCuentaButton;
-
 
     @FXML
     private ImageView imagenUsuario;
@@ -196,17 +193,6 @@ public class InicioUserController implements Initializable {
         this.endSession.setOnAction((event) -> {
             try {
                 endSession();
-            } catch (IOException e) {
-                Alert dialog = new Alert(AlertType.ERROR);
-                dialog.setTitle("ERROR");
-                dialog.setHeaderText(e.getMessage());
-                dialog.show();
-            }
-        });
-
-        this.miCuentaButton.setOnAction(event -> {
-            try {
-                App.setRoot("myAccount");
             } catch (IOException e) {
                 Alert dialog = new Alert(AlertType.ERROR);
                 dialog.setTitle("ERROR");

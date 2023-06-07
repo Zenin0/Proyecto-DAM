@@ -99,8 +99,7 @@
             <MenuButton fx:id="menuciudadSalidaVuelos" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
             <MenuButton fx:id="menuciudadDestinoReservas" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
             <MenuButton fx:id="menuciudadSalidaReservas" mnemonicParsing="false" text="Cualquiera" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="4" />
-            <Button fx:id="miCuentaButton" mnemonicParsing="false" text="Mi Cuenta" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="endSession" mnemonicParsing="false" text="Cerrar Sesión" GridPane.columnSpan="2" GridPane.rowIndex="4" />
             <ImageView fx:id="imagenUsuario" fitHeight="110.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
