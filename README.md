@@ -79,7 +79,8 @@ administradores (root).
 
 ### Ventana de añadir un vuelo
 
-Apartado donde se gestionará el `añadido de nuevos vuelos`.
+Apartado donde se gestionará el `añadido de nuevos vuelos` con un menu para la ciudad de salida, un menu 
+para la ciudad de destino, y menu para los aviones, y un selector de fecha.
 
   <p align="center">
     <img src="./images/Add-Vuelo.png" alt="Login Screen">
@@ -87,7 +88,7 @@ Apartado donde se gestionará el `añadido de nuevos vuelos`.
 
 ### Ventana para elminar un vuelo
 
-Apartado donde se gestionará el `borrado de vuelos`.
+Apartado donde se gestionará el `borrado de vuelos` con una lista, mostrado todos los vuelos de forma rapida.
 
   <p align="center">
     <img src="./images/Del-Vuelo.png" alt="Login Screen">
@@ -96,7 +97,7 @@ Apartado donde se gestionará el `borrado de vuelos`.
 
 ### Ventana para añadir una ciudad
 
-Apartado donde se gestionará el `añadido de nuevas ciudades`.
+Apartado donde se gestionará el `añadido de nuevas ciudades` con su nombre y a que país pertenece.
 
   <p align="center">
     <img src="./images/Add-Ciudad.png" alt="Login Screen">
@@ -105,7 +106,8 @@ Apartado donde se gestionará el `añadido de nuevas ciudades`.
 
 ### Ventana para añadir un avión
 
-Apartado donde se gestionará el `añadido de nueva avion`.
+Apartado donde se gestionará el `añadido de nueva avion`, con su Nombre, y su capacidad maxima, 
+que no será mayor que 200 ya que _MA_ no puede mantener aviones de mas de 200 pasajeros.
 
   <p align="center">
     <img src="./images/Add-Avion.png" alt="Login Screen">
@@ -113,7 +115,7 @@ Apartado donde se gestionará el `añadido de nueva avion`.
 
 ### Ventana para elminar un avión
 
-Apartado donde se gestionará el `eliminado de un avión`.
+Apartado donde se gestionará el `eliminado de un avión` que son listados de forma facil de leer.
 
   <p align="center">
     <img src="./images/Del-Avion.png" alt="Login Screen">
@@ -122,10 +124,14 @@ Apartado donde se gestionará el `eliminado de un avión`.
 
 ### Ventana para reservar
 
-Apartado donde se gestionará el `la reserva de un vuelo`.
+Apartado donde se gestionará el `la reserva de un vuelo`, con `seleccion de asiento`, y la `descarga de un justificante` en formato PDF.
 
   <p align="center">
     <img src="./images/Reservar-Screen.png" alt="Login Screen">
+  </p>
+
+  <p align="center">
+    <img src="./images/Asiento-Reserva-Seleccion.png" alt="Login Screen">
   </p>
 
 ### Mis Reservas Screen
@@ -139,7 +145,7 @@ Apartado simiplar al de reservar un vuelo, pero para listar `nuestras reservas` 
 
 ### Ventana de Mi cuenta
 
-Ventana donde podremos `cambiar la información de nuestra cuenta`
+Ventana donde podremos `cambiar la información de nuestra cuenta`, tanto la `Imagen de perfil`, el `nombre de usuario`, y la `contraseña`.
 
   <p align="center">
     <img src="./images/My-Account-Screen.png" alt="Login Screen">
