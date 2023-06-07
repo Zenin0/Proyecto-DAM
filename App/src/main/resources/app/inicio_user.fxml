@@ -38,6 +38,9 @@
                <font>
                   <Font size="30.0" />
                </font>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
             </Label>
             <Label text="Ciudades De Destino" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
