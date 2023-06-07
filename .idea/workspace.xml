@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Code reorg">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Imagen de perfil en el inicio_user.fxml mas pequeña">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Mis-Reservas-Screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Mis-Reservas-Screen.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Reservar-Screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Reservar-Screen.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,38 +84,39 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "java.suggest.annotation.dependency": "false",
-    "last_opened_file_path": "/home/dam/Escritorio/DAM/PRM/Proyecto-DAM",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.47241378",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;java.suggest.annotation.dependency&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/dam/Escritorio/DAM/PRM/Proyecto-DAM&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.47241378&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;database.query.execution&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/App/src/main/resources/app/css" />
@@ -154,14 +157,9 @@
       <workItem from="1685784718983" duration="14993000" />
       <workItem from="1685992294090" duration="13225000" />
       <workItem from="1686048364801" duration="135000" />
-      <workItem from="1686048510778" duration="16359000" />
-    </task>
-    <task id="LOCAL-00037" summary="Images Updates">
-      <created>1685376441759</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1685376441759</updated>
+      <workItem from="1686048510778" duration="16472000" />
+      <workItem from="1686146114292" duration="88000" />
+      <workItem from="1686152259289" duration="2571000" />
     </task>
     <task id="LOCAL-00038" summary="Mouse Hover cambiando la opacidad">
       <created>1685377062000</created>
@@ -499,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686144541200</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Imagen de perfil en el inicio_user.fxml mas pequeña">
+      <created>1686146046866</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1686146046866</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,7 +529,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="JavaDoc update" />
     <MESSAGE value="gitignore update" />
     <MESSAGE value="Comprobar si el avión esta disponible (Está en la ciudad de despegue) antes de crear el vuelo" />
     <MESSAGE value="Show/Hide password" />
@@ -549,6 +553,7 @@
     <MESSAGE value="Code formatting" />
     <MESSAGE value="Unused code" />
     <MESSAGE value="Code reorg" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code reorg" />
+    <MESSAGE value="Imagen de perfil en el inicio_user.fxml mas pequeña" />
+    <option name="LAST_COMMIT_MESSAGE" value="Imagen de perfil en el inicio_user.fxml mas pequeña" />
   </component>
 </project>
