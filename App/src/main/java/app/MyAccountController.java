@@ -27,26 +27,19 @@ import java.util.ResourceBundle;
  */
 public class MyAccountController implements Initializable {
 
+    private static File selectedImageFile;
     @FXML
     private Button actualizarButton;
-
     @FXML
     private ImageView imagenUsuario;
-
     @FXML
     private PasswordField newPass1Field;
-
     @FXML
     private PasswordField newPass2Field;
-
     @FXML
     private TextField newUserNameField;
-
     @FXML
     private Button volverButton;
-
-    private static File selectedImageFile;
-
 
     /**
      * Inicializar la ventana
@@ -122,9 +115,7 @@ public class MyAccountController implements Initializable {
         imagenUsuario.setOnMouseClicked(event -> {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Selecciona una imagen de perfil");
-            fileChooser.getExtensionFilters().add(
-                    new FileChooser.ExtensionFilter("Image Files", "*.png")
-            );
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png"));
 
             Stage stage = (Stage) imagenUsuario.getScene().getWindow();
             selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -147,6 +138,7 @@ public class MyAccountController implements Initializable {
 
     /**
      * Cargar la imagen de usuario
+     *
      * @throws SQLException Error al hacer la consulta
      * @see #applyCircularMask(ImageView)
      */
@@ -207,6 +199,7 @@ public class MyAccountController implements Initializable {
 
     /**
      * Aplicar una mascara cirucular a la image
+     *
      * @param imageView ImageView
      */
     private void applyCircularMask(ImageView imageView) {

@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Cosas generales, reorganizacion de codigo, JavaDoc, etc.">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Version Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +155,7 @@
       <workItem from="1685784718983" duration="14993000" />
       <workItem from="1685992294090" duration="13225000" />
       <workItem from="1686048364801" duration="135000" />
-      <workItem from="1686048510778" duration="13649000" />
-    </task>
-    <task id="LOCAL-00033" summary="README.md javadoc website">
-      <created>1685030298828</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1685030298828</updated>
+      <workItem from="1686048510778" duration="14810000" />
     </task>
     <task id="LOCAL-00034" summary="FXML Updates">
       <created>1685031282247</created>
@@ -499,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686142780250</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Version Update">
+      <created>1686143009934</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1686143009934</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,7 +525,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Columnas de las Tablas ajustables" />
     <MESSAGE value="IP change and SQL inserts" />
     <MESSAGE value="SQL inserts" />
     <MESSAGE value="README.md update &amp; algunas comprobaciones de campos vacíos" />
@@ -549,6 +549,7 @@
     <MESSAGE value="Imagen añadida en el inicio_user.fxml" />
     <MESSAGE value="Intercambiada la posicion de Cerrar Sesion por Mi Cuenta" />
     <MESSAGE value="Cosas generales, reorganizacion de codigo, JavaDoc, etc." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cosas generales, reorganizacion de codigo, JavaDoc, etc." />
+    <MESSAGE value="Version Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version Update" />
   </component>
 </project>

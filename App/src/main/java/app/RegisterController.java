@@ -140,6 +140,7 @@ public class RegisterController implements Initializable {
 
     /**
      * Cambiar a la ventana de login
+     *
      * @throws IOException Error al cambiar a la ventana de login
      */
     @FXML
@@ -149,6 +150,7 @@ public class RegisterController implements Initializable {
 
     /**
      * Registrar un nuevo usuario
+     *
      * @throws SQLException Error al hacer la consulta
      */
 

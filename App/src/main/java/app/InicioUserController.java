@@ -622,6 +622,7 @@ public class InicioUserController implements Initializable {
 
     /**
      * Cerrar la sesion
+     *
      * @throws IOException Error al cambiar de FXML
      */
     private void endSession() throws IOException {
@@ -635,6 +636,7 @@ public class InicioUserController implements Initializable {
 
     /**
      * Reservar un vuelo
+     *
      * @throws SQLException Error en la consulta
      * @see #modificarReserva()
      * @see #eliminarReserva()
@@ -801,6 +803,7 @@ public class InicioUserController implements Initializable {
 
     /**
      * Modificar la vista para reservar un vuelo
+     *
      * @throws SQLException Error en la consutla
      * @see #menuMisReservas()
      */
@@ -880,6 +883,7 @@ public class InicioUserController implements Initializable {
 
     /**
      * Modificar la vista para mis reservas
+     *
      * @throws SQLException Error en la consulta
      * @see #menuReservar()
      */

@@ -1,7 +1,5 @@
 package app;
 
-import javafx.scene.image.Image;
-
 /**
  * Datos globales
  */

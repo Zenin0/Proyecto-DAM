@@ -36,9 +36,7 @@ public class MD5Hasher {
                 hashtext.insert(0, "0");
             }
             return hashtext.toString();
-        }
-
-        catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }
