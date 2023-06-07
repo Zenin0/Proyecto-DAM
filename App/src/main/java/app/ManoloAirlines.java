@@ -543,47 +543,6 @@ public class ManoloAirlines {
         } else return true;
     }
 
-
-    /**
-     * Crear el PDF de justificante
-     *
-     * @param pdfText  Texto del PDF
-     * @param savePath Ruta seleccionada
-     * @return Si se ha creado el PDF
-     * @see #getReservaInfo(int)
-     */
-    public static boolean createPDF(String pdfText, String savePath) throws IOException, DocumentException {
-        Document PDFdocument = new Document();
-        if (!savePath.contains(".pdf")) savePath += ".pdf";
-        PdfWriter.getInstance(PDFdocument, new FileOutputStream(savePath));
-        PDFdocument.open();
-        Image topImage = Image.getInstance(new URL("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/header.png"));
-        topImage.setAlignment(Element.ALIGN_CENTER);
-        topImage.scaleToFit(500, 300);
-        PDFdocument.add(topImage);
-        Font titleFont = new Font(Font.FontFamily.HELVETICA, 25, Font.BOLD);
-        Paragraph titleParagraph = new Paragraph("Justificante de Vuelo", titleFont);
-        titleParagraph.setAlignment(Element.ALIGN_CENTER);
-        titleParagraph.setSpacingBefore(60);
-        titleParagraph.setSpacingAfter(60);
-        PDFdocument.add(titleParagraph);
-        Font infoFont = new Font(Font.FontFamily.HELVETICA, 18);
-        Paragraph infoParagraph = new Paragraph(pdfText, infoFont);
-        infoParagraph.setAlignment(Element.ALIGN_CENTER);
-        infoParagraph.setSpacingAfter(20);
-        PDFdocument.add(infoParagraph);
-        Image qrCodeImage = Image.getInstance("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/Zenin0/Proyecto-DAM");
-        qrCodeImage.setAlignment(Element.ALIGN_CENTER);
-        qrCodeImage.scaleAbsolute(150, 150);
-        float qrCodeX = (PDFdocument.getPageSize().getWidth() - qrCodeImage.getScaledWidth()) / 2;
-        qrCodeImage.setAbsolutePosition(qrCodeX, 50);
-        PDFdocument.add(qrCodeImage);
-        PDFdocument.close();
-
-        return true;
-    }
-
-
     /**
      * Login del usuario
      *
@@ -694,8 +653,75 @@ public class ManoloAirlines {
 
             }
         }
+    }
 
+    /**
+     * Actualiar un usuario
+     *
+     * @param username          Nombre de usuario
+     * @param newUsername       Nuevo nombre de usuario
+     * @param password          Contraseña nueva
+     * @param selectedImageFile Imagen de perfil
+     * @return Si se ha creado
+     */
+    public static boolean actualizar(String username, String newUsername, String password, File selectedImageFile) {
+        try {
+            String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ?";
+            PreparedStatement checkStatement = App.con.prepareStatement(query);
+            checkStatement.setString(1, username);
+            ResultSet resultSet = checkStatement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
 
+            if (count > 0) {
+                String updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Image = ? WHERE Nombre_Usuario = ?";
+                if (!password.isEmpty()) {
+                    updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Pass = ?, Image = ? WHERE Nombre_Usuario = ?";
+                }
+
+                PreparedStatement updateStatement = App.con.prepareStatement(updateQuery);
+                updateStatement.setString(1, newUsername);
+
+                int parameterIndex = 2;
+                if (!password.isEmpty()) {
+                    MD5Hasher md5 = new MD5Hasher(password);
+                    updateStatement.setString(parameterIndex++, md5.getMd5());
+                }
+
+                if (selectedImageFile != null) {
+                    FileInputStream fileInputStream = new FileInputStream(selectedImageFile);
+                    updateStatement.setBinaryStream(parameterIndex++, fileInputStream, selectedImageFile.length());
+                } else {
+                    updateStatement.setBinaryStream(parameterIndex++, null);
+                }
+
+                updateStatement.setString(parameterIndex, username);
+                updateStatement.executeUpdate();
+
+                Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+                dialog.setTitle("Usuario");
+                dialog.setHeaderText("Usuario actualizado correctamente");
+                dialog.show();
+                return true;
+            } else {
+                Alert dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setHeaderText("ERROR");
+                dialog.setHeaderText("Este usuario no existe");
+                dialog.show();
+                return false;
+            }
+        } catch (SQLException e) {
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
+            dialog.show();
+        } catch (IOException e) {
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("ERROR");
+            dialog.setHeaderText(e.getMessage());
+            dialog.show();
+        }
+        return false;
     }
 
     /**
@@ -896,22 +922,6 @@ public class ManoloAirlines {
         return 0;
     }
 
-    /**
-     * Eliminar una reserva
-     *
-     * @param IDReserva ID de la reserva
-     * @see Reserva
-     * @see #reservarVuelo(int, int, int)
-     * @see #modificarReserva(int, int)
-     */
-    public static void eliminarReserva(int IDReserva) throws SQLException {
-        String query = "DELETE FROM Reservas WHERE ID_Reserva = ?";
-        PreparedStatement checkStatement = App.con.prepareStatement(query);
-        checkStatement.setInt(1, IDReserva);
-        checkStatement.executeUpdate();
-
-
-    }
 
     /**
      * Modificar una reserva
@@ -933,72 +943,58 @@ public class ManoloAirlines {
     }
 
     /**
-     * Actualiar un usuario
+     * Eliminar una reserva
      *
-     * @param username          Nombre de usuario
-     * @param newUsername       Nuevo nombre de usuario
-     * @param password          Contraseña nueva
-     * @param selectedImageFile Imagen de perfil
-     * @return Si se ha creado
+     * @param IDReserva ID de la reserva
+     * @see Reserva
+     * @see #reservarVuelo(int, int, int)
+     * @see #modificarReserva(int, int)
      */
-    public static boolean actualizar(String username, String newUsername, String password, File selectedImageFile) {
-        try {
-            String query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre_Usuario = ?";
-            PreparedStatement checkStatement = App.con.prepareStatement(query);
-            checkStatement.setString(1, username);
-            ResultSet resultSet = checkStatement.executeQuery();
-            resultSet.next();
-            int count = resultSet.getInt(1);
+    public static void eliminarReserva(int IDReserva) throws SQLException {
+        String query = "DELETE FROM Reservas WHERE ID_Reserva = ?";
+        PreparedStatement checkStatement = App.con.prepareStatement(query);
+        checkStatement.setInt(1, IDReserva);
+        checkStatement.executeUpdate();
 
-            if (count > 0) {
-                String updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Image = ? WHERE Nombre_Usuario = ?";
-                if (!password.isEmpty()) {
-                    updateQuery = "UPDATE Usuarios SET Nombre_Usuario = ?, Pass = ?, Image = ? WHERE Nombre_Usuario = ?";
-                }
 
-                PreparedStatement updateStatement = App.con.prepareStatement(updateQuery);
-                updateStatement.setString(1, newUsername);
-
-                int parameterIndex = 2;
-                if (!password.isEmpty()) {
-                    MD5Hasher md5 = new MD5Hasher(password);
-                    updateStatement.setString(parameterIndex++, md5.getMd5());
-                }
-
-                if (selectedImageFile != null) {
-                    FileInputStream fileInputStream = new FileInputStream(selectedImageFile);
-                    updateStatement.setBinaryStream(parameterIndex++, fileInputStream, selectedImageFile.length());
-                } else {
-                    updateStatement.setBinaryStream(parameterIndex++, null);
-                }
-
-                updateStatement.setString(parameterIndex, username);
-                updateStatement.executeUpdate();
-
-                Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
-                dialog.setTitle("Usuario");
-                dialog.setHeaderText("Usuario actualizado correctamente");
-                dialog.show();
-                return true;
-            } else {
-                Alert dialog = new Alert(Alert.AlertType.ERROR);
-                dialog.setHeaderText("ERROR");
-                dialog.setHeaderText("Este usuario no existe");
-                dialog.show();
-                return false;
-            }
-        } catch (SQLException e) {
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setTitle("ERROR");
-            dialog.setContentText("Error en la BDD: " + e.getErrorCode() + "-" + e.getMessage());
-            dialog.show();
-        } catch (IOException e) {
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setTitle("ERROR");
-            dialog.setHeaderText(e.getMessage());
-            dialog.show();
-        }
-        return false;
     }
 
+    /**
+     * Crear el PDF de justificante
+     *
+     * @param pdfText  Texto del PDF
+     * @param savePath Ruta seleccionada
+     * @return Si se ha creado el PDF
+     * @see #getReservaInfo(int)
+     */
+    public static boolean createPDF(String pdfText, String savePath) throws IOException, DocumentException {
+        Document PDFdocument = new Document();
+        if (!savePath.contains(".pdf")) savePath += ".pdf";
+        PdfWriter.getInstance(PDFdocument, new FileOutputStream(savePath));
+        PDFdocument.open();
+        Image topImage = Image.getInstance(new URL("https://raw.githubusercontent.com/Zenin0/Proyecto-DAM/main/App/src/main/resources/app/css/header.png"));
+        topImage.setAlignment(Element.ALIGN_CENTER);
+        topImage.scaleToFit(500, 300);
+        PDFdocument.add(topImage);
+        Font titleFont = new Font(Font.FontFamily.HELVETICA, 25, Font.BOLD);
+        Paragraph titleParagraph = new Paragraph("Justificante de Vuelo", titleFont);
+        titleParagraph.setAlignment(Element.ALIGN_CENTER);
+        titleParagraph.setSpacingBefore(60);
+        titleParagraph.setSpacingAfter(60);
+        PDFdocument.add(titleParagraph);
+        Font infoFont = new Font(Font.FontFamily.HELVETICA, 18);
+        Paragraph infoParagraph = new Paragraph(pdfText, infoFont);
+        infoParagraph.setAlignment(Element.ALIGN_CENTER);
+        infoParagraph.setSpacingAfter(20);
+        PDFdocument.add(infoParagraph);
+        Image qrCodeImage = Image.getInstance("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/Zenin0/Proyecto-DAM");
+        qrCodeImage.setAlignment(Element.ALIGN_CENTER);
+        qrCodeImage.scaleAbsolute(150, 150);
+        float qrCodeX = (PDFdocument.getPageSize().getWidth() - qrCodeImage.getScaledWidth()) / 2;
+        qrCodeImage.setAbsolutePosition(qrCodeX, 50);
+        PDFdocument.add(qrCodeImage);
+        PDFdocument.close();
+
+        return true;
+    }
 }

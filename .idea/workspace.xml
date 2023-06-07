@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Code formatting">
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Unused code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,14 +154,7 @@
       <workItem from="1685784718983" duration="14993000" />
       <workItem from="1685992294090" duration="13225000" />
       <workItem from="1686048364801" duration="135000" />
-      <workItem from="1686048510778" duration="15032000" />
-    </task>
-    <task id="LOCAL-00035" summary="Generar los asientos por columnas en vez de por filas">
-      <created>1685368859861</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1685368859861</updated>
+      <workItem from="1686048510778" duration="15164000" />
     </task>
     <task id="LOCAL-00036" summary="Seats Selecable">
       <created>1685375999146</created>
@@ -498,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686144206824</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Unused code">
+      <created>1686144409282</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1686144409282</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -523,7 +524,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="SQL inserts" />
     <MESSAGE value="README.md update &amp; algunas comprobaciones de campos vacíos" />
     <MESSAGE value="JavaDoc update" />
     <MESSAGE value="gitignore update" />
@@ -548,6 +548,7 @@
     <MESSAGE value="Cosas generales, reorganizacion de codigo, JavaDoc, etc." />
     <MESSAGE value="Version Update" />
     <MESSAGE value="Code formatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code formatting" />
+    <MESSAGE value="Unused code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unused code" />
   </component>
 </project>
