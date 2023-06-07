@@ -9,17 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Intercambiada la posicion de Cerrar Sesion por Mi Cuenta">
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Cosas generales, reorganizacion de codigo, JavaDoc, etc.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Gestioner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/Getter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/MyAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,14 +154,7 @@
       <workItem from="1685784718983" duration="14993000" />
       <workItem from="1685992294090" duration="13225000" />
       <workItem from="1686048364801" duration="135000" />
-      <workItem from="1686048510778" duration="13267000" />
-    </task>
-    <task id="LOCAL-00032" summary="README.md javadoc website">
-      <created>1685030136817</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1685030136817</updated>
+      <workItem from="1686048510778" duration="13649000" />
     </task>
     <task id="LOCAL-00033" summary="README.md javadoc website">
       <created>1685030298828</created>
@@ -507,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686083309080</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Cosas generales, reorganizacion de codigo, JavaDoc, etc.">
+      <created>1686142780250</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1686142780250</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,7 +524,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="PDF Updates, Scene Builder Corrections, login con enter" />
     <MESSAGE value="Columnas de las Tablas ajustables" />
     <MESSAGE value="IP change and SQL inserts" />
     <MESSAGE value="SQL inserts" />
@@ -557,6 +548,7 @@
     <MESSAGE value="README.md update" />
     <MESSAGE value="Imagen añadida en el inicio_user.fxml" />
     <MESSAGE value="Intercambiada la posicion de Cerrar Sesion por Mi Cuenta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Intercambiada la posicion de Cerrar Sesion por Mi Cuenta" />
+    <MESSAGE value="Cosas generales, reorganizacion de codigo, JavaDoc, etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cosas generales, reorganizacion de codigo, JavaDoc, etc." />
   </component>
 </project>
