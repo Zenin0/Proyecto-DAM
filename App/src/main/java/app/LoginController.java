@@ -141,7 +141,7 @@ public class LoginController implements Initializable {
             // ? Que tipo de usuario ha hecho login
             if (res == 1) {
                 dialog.setTitle("¡Login correcto!");
-                dialog.setHeaderText("¡Bienvenido " + ManoloAirlines.getNombreAndApellidos(ManoloAirlines.getUsernameID(this.usuLog.getText())) + "!");
+                dialog.setHeaderText("¡Bienvenido " + GlobalData.userName + "!");
                 dialog.show();
                 App.setRoot("inicio_admin");
             } else if (res == 0) {

@@ -9,9 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Boton Mi Cuenta Borrado">
+    <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Corregida la funcion ManoloAirlines#getDispnibilidad">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_40_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_40__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_41_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_41__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_44_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_44__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_47_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_47__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_48_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_48__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/ManoloAirlines.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,14 +168,8 @@
       <workItem from="1686048364801" duration="135000" />
       <workItem from="1686048510778" duration="16472000" />
       <workItem from="1686146114292" duration="88000" />
-      <workItem from="1686152259289" duration="6058000" />
-    </task>
-    <task id="LOCAL-00043" summary="Header to PDF">
-      <created>1685566442760</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1685566442760</updated>
+      <workItem from="1686152259289" duration="6199000" />
+      <workItem from="1686226517286" duration="284000" />
     </task>
     <task id="LOCAL-00044" summary="Header to PDF">
       <created>1685566499818</created>
@@ -502,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686160062820</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Corregida la funcion ManoloAirlines#getDispnibilidad">
+      <created>1686160667731</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1686160667731</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Actualizar Usuario" />
     <MESSAGE value="Modificación de Usuario, Intentar poner Imagenes de Perfil" />
     <MESSAGE value="PFP de usuarios" />
     <MESSAGE value="Default PFP" />
@@ -552,6 +563,7 @@
     <MESSAGE value="Actualiada la imagen de mis Reservas" />
     <MESSAGE value="README.md update" />
     <MESSAGE value="Boton Mi Cuenta Borrado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Boton Mi Cuenta Borrado" />
+    <MESSAGE value="Corregida la funcion ManoloAirlines#getDispnibilidad" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corregida la funcion ManoloAirlines#getDispnibilidad" />
   </component>
 </project>
