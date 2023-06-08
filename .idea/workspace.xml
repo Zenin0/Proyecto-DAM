@@ -10,19 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bdb9707-d292-4d32-a505-41e571e29785" name="Changes" comment="Corregida la funcion ManoloAirlines#getDispnibilidad">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_40_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_40__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_41_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_41__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_44_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_44__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_47_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_47__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_48_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_5_23_18_48__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/bdd.sql" beforeDir="false" afterPath="$PROJECT_DIR$/App/bdd.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/GlobalData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/app/InicioUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/inicio_admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/app/myAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/app-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/app-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/inicio_admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/classes/app/myAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/classes/app/myAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/App/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

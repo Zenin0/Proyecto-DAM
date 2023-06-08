@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.InicioAdminController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.InicioAdminController">
    <children>
       <GridPane prefHeight="494.0" prefWidth="612.0" VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -66,7 +66,7 @@
             <DatePicker fx:id="fechaDatePicker" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label fx:id="fechaLabel" contentDisplay="CENTER" text="Fecha Salida" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button fx:id="deleteVueloButton" mnemonicParsing="false" text="Eliminar" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Label prefHeight="17.0" prefWidth="358.0" styleClass="h1" text="Gestion Administrativa" wrapText="true" GridPane.columnIndex="1" />
+            <Label prefHeight="17.0" prefWidth="460.0" styleClass="h1" text="Gestion Administrativa" wrapText="true" GridPane.columnIndex="1" />
             <Button fx:id="endSessionButton" mnemonicParsing="false" text="Cerrar Sesión" GridPane.rowIndex="5" />
             <Button fx:id="addVueloButton" mnemonicParsing="false" text="Añadir Vuelo" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Button fx:id="delVueloButton" mnemonicParsing="false" text="Eliminar Vuelo" GridPane.halignment="LEFT" GridPane.rowIndex="3" />

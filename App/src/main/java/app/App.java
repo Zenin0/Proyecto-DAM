@@ -72,7 +72,7 @@ public class App extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"), 1080, 700);
+        scene = new Scene(loadFXML("login"), 1180, 700);
         stage.setTitle("Manolo Airlines");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("css/logoMA.png"))));
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("css/style.css")).toExternalForm());

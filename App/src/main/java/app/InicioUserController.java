@@ -375,7 +375,7 @@ public class InicioUserController implements Initializable {
         int idreserva = selectedReserva.getID();
 
         int vueloID = ManoloAirlines.getIDVueloFromIDReserva(idreserva);
-        int numAsientos = ManoloAirlines.getAsientosLibres(ManoloAirlines.getIDAvioFromVuelo(vueloID), vueloID).size();
+        int numAsientos = ManoloAirlines.getCapacidadAvion(ManoloAirlines.getIDAvioFromVuelo(vueloID));
         int numCols = ManoloAirlines.getNumCols(numAsientos);
         int numRows = ManoloAirlines.getNumRows(numAsientos, numCols);
 
@@ -634,7 +634,7 @@ public class InicioUserController implements Initializable {
         // * Cargar la ventana de seleccion de asiento
         if (selectedVuelo != null) {
             int vueloID = selectedVuelo.getId();
-            int numAsientos = ManoloAirlines.getAsientosLibres(ManoloAirlines.getIDAvioFromVuelo(vueloID), vueloID).size();
+            int numAsientos = ManoloAirlines.getCapacidadAvion(ManoloAirlines.getIDAvioFromVuelo(vueloID));
             int numCols = ManoloAirlines.getNumCols(numAsientos);
             int numRows = ManoloAirlines.getNumRows(numAsientos, numCols);
 

@@ -45,7 +45,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MyAccountController">
+<VBox minHeight="700.0" minWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MyAccountController">
    <children>
       <GridPane VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -60,7 +60,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="volverButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" text="Volver" GridPane.rowIndex="4" />
+            <Button fx:id="volverButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" text="Volver" GridPane.rowIndex="4" />
             <ImageView fx:id="imagenUsuario" fitHeight="188.0" fitWidth="184.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                <image>
                   <Image url="@css/user.png" />
